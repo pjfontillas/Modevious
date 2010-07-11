@@ -252,11 +252,11 @@ var $c = (function () {
     showEmail: function () {
       var url;
       $$(".email").each(function (a) {
-        url = a.href.replace(this.at, '@');
-        url = url.replace(this.dot, '.');
+        url = a.href.replace(this.config.at, '@');
+        url = url.replace(this.config.dot, '.');
         a.href = url;
         url = url.replace("mailto:", '');
-        a.update(url);
+        a.update(url);       
       }.bind(this));
     },
     /**
