@@ -7,8 +7,8 @@ $c.exclude("/js/lib/jquery-1.4.2.min.js");
 $c.exclude("/js/modevious-h.js");
 
 // Modevious extensions
-$c.include("/css/custom-theme/jquery-ui-1.8.1.custom.css");
-$c.include("/js/lib/jquery-ui-1.8.1.custom.min.js");
+$c.include("/css/modevious/ui.css");
+$c.include("/js/lib/jquery-ui-1.8.2.custom.min.js");
 
 $c.include("/js/lib/tools.expose-1.0.5.js");
 
@@ -19,6 +19,13 @@ $c.include("/js/lib/jquery.pnotify.min.js");
 
 $c.include("/css/dumbcrossfade.css");
 $c.include("/js/lib/jquery.dumbcrossfade-1.2.min.js");
+
+$c.include("/js/lib/soundmanager2-nodebug-jsmin.js");
+
+// define configuration for components that allow it
+soundManager.url = "/swf/";
+soundManager.flashVersion = 9;
+soundManager.useFlashBlock = false;
 
 // define run-time event functions
 $c.onLoad(function () {
@@ -52,10 +59,4 @@ $c.onLoad(function () {
 
 	// initialize email address de-obfuscation
 	$c.showEmail();
-
-	//* initialize popUp links
-	$$("popUp").each(function(a){
-		$c.popUp(a.readAttribute("src"));
-	});
-	/**/
 });

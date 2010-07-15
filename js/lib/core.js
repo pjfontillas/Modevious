@@ -304,13 +304,111 @@ var $c = (function () {
       return fileArray[fileArray.length - 1];
     },
     /**
-    * popUp (String)
-    *   Allows developers to force new windows. Use only when necessary, 
-    *   visitors like and need to be able to choose how pages open. No title or
-    *   window options configuration supported.
+    * vAlign ()
+    *   Vertically aligns an element relative to their parent element. The 
+    *   element may not have any top or bottom margins, but may be horizontally 
+    *   aligned (centered) using "margin: 0px auto;". Using "margin: 50px auto;"
+    *   will produce errors, and you should not be setting a margin for 
+    *   top/bottom anyways since you will are vertically aligning the element!
+    *   If an element also has the class "centered" then align it horizontally
+    *   as well.
     */
-    popUp: function (url) {
-      window.open(url);
+    vAlign: function () {
+      var parentHeight;
+      var thisHeight;
+      var newTop;
+      // align most elements to their parent element
+      $j(".vAlign").each(function(){
+        // get parent height - get element height	
+        // get difference and set as new top
+        parentHeight = $j(this).parent().outerHeight(true);
+        thisHeight = $j(this).outerHeight(true);
+        // get the new top positioning but split the free space in half
+        newTop = (parentHeight - thisHeight) / 2;
+        // if element is larger than parent somehow (ie element vs browser 
+        //  window) reset newTop to 0 to prevent pushing the element off-screen.
+        if (newTop < 1) {
+          newTop = 0;
+        }
+        // set style
+        $j(this).css({
+          "position": "relative",
+          "top": [newTop, "px"].join('')
+        });
+      });
+      // some elements should be aligned with the browser window
+      $j(".vAlignWindow").each(function(){
+        // get browser height - get element height	
+        parentHeight = document.viewport.getHeight();
+        thisHeight = $j(this).outerHeight(true);
+        newTop = (parentHeight - thisHeight) / 2;
+        if (newTop < 1) {
+          newTop = 0;
+        }
+        $j(this).css({
+          "position": "fixed",
+          "top": [newTop, "px"].join('')
+        });
+        if ($j(this).hasClass("centered")) {
+          parentWidth = document.viewport.getWidth();
+          thisWidth = $j(this).outerWidth(true);
+          newLeft = (parentWidth - thisWidth) / 2;
+          if (newLeft < 1) {
+            newLeft = 0;
+          }
+          $j(this).css({
+            "left": [newLeft, "px"].join('')
+          });
+        }
+      });	
+    },
+    /**
+    * vAlignThis (element)
+    *   Vertically aligns a single element. If they also have the class centered
+    *   then align it horizontally as well.
+    */
+    vAlignThis: function (element) {
+      var parentHeight;
+      var thisHeight;
+      var newTop;
+      // only align the element that is sent
+      // assuming we passed a jQuery element/object
+      if (element.hasClass("vAlignWindow")) {
+        parentHeight = document.viewport.getHeight();
+        thisHeight = element.outerHeight(true);
+        newTop = (parentHeight - thisHeight) / 2;
+        if (newTop < 1) {
+          newTop = 0;
+        }
+        element.css({
+          'position': 'fixed',
+          'top': newTop + 'px'
+        });
+        if (element.hasClass('centered')) {
+          //alert('single element centered to browser');
+          parentWidth = document.viewport.getWidth();
+          thisWidth = element.outerWidth(true);
+          newLeft = (parentWidth - thisWidth) / 2;
+          if (newLeft < 1) {
+            newLeft = 0;
+          }
+          element.css({
+            "left": [newLeft, "px"].join('')
+          });
+        }
+      } else {
+        parentHeight = element.parent().outerHeight(true);
+        thisHeight = element.outerHeight(true);
+        newTop = (parentHeight - thisHeight) / 2;
+        if (newTop < 1) {
+          newTop = 0;
+        }
+        // set style
+        element.css({
+          "position": "relative",
+          "top": [newTop, "px"].join('')
+        });
+      }
     }
   };
 }());
