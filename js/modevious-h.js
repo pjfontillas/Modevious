@@ -1,3 +1,10 @@
+/**
+* This codes shows examples of what can be done when "compiling" the library.
+* My "compiled" production version I provide as a download at
+* http://modevious.com doesn't use these as the scripts and CSS files listed
+* here are already compacted into one large JS and CSS file.
+*/
+
 // Modevious libraries
 $c.exclude("/js/lib/core.js");
 $c.exclude("/js/lib/prototype.js");
