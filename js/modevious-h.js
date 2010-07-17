@@ -61,4 +61,9 @@ $c.onLoad(function () {
 
 	// initialize email address de-obfuscation
 	$c.showEmail();
+	
+	// set preferred style sheet from cookie if possible
+	if ($c.readCookie("style").length !== 0) {
+	  setActiveStyleSheet($c.readCookie("style");
+	}
 });

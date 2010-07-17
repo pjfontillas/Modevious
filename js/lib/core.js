@@ -417,6 +417,37 @@ var $c = (function () {
           "top": [newTop, "px"].join('')
         });
       }
+    },
+    /**
+    * setStyleSheet (title)
+    *   Activates style sheet or group of style sheets matching <title>.
+    */
+    setActiveStyleSheet: function (title) {
+      var i, a, main;
+      for (i = 0; (a = document.getElementsByTagName("link")[i]); i++) {
+        if (a.getAttribute("rel").indexOf("style") !== -1 &&
+          a.getAttribute("title")) {
+          a.disabled = true;
+          if (a.getAttribute("title") === title) {
+            a.disabled = false;
+          }
+        }
+      }
+      this.createCookie("style", title, 365);   
+    },
+    /**
+    * getActiveStyleSheet ()
+    *   Returns title of active style sheet or group of style sheets.
+    */
+    getActiveStyleSheet: function () {
+      var i, a;
+      for (i = 0; (a = document.getElementsByTagName("link")[i]); i++) {
+        if (a.getAttribute("rel").indexOf("style") !== -1 &&
+          a.getAttribute("title") && !a.disabled) {
+          return a.getAttribute("title");
+        }
+      }
+      return null;
     }
   };
 }());
