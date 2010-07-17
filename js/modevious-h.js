@@ -1,6 +1,6 @@
 /**
 * This codes shows examples of what can be done when "compiling" the library.
-* My "compiled" production version I provide as a download at
+* The "compiled" production version provided by PJ Fontillas as a download at
 * http://modevious.com doesn't use these as the scripts and CSS files listed
 * here are already compacted into one large JS and CSS file.
 */
