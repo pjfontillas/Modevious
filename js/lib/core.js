@@ -18,6 +18,19 @@
 *     var $$; // from Prototype
 *     var jQuery; // from jQuery
 */
+if (modeviousConfig === null) {
+  // if config not found, provide default one
+  document.modeviousConfig = {
+    warnings: false,
+    at: "(AT)",
+    dot: "(DOT)",
+    update: false,
+    soundManager: {
+      url: "/swf",
+      flashVersion: 9
+    }
+  };
+}
 var $c = (function () {
   // private methods and variables
   /**
@@ -69,12 +82,7 @@ var $c = (function () {
   }
   return { // public methods and variables
     version: 109,
-    config: {
-      loadedScriptsWarnings: false,
-      at: "(AT)",
-      dot: "(DOT)",
-      update: false
-    },
+    config: modeviousConfig,
     loadedScripts: [],
     /**
     * changePage (String, Element)
@@ -185,9 +193,9 @@ var $c = (function () {
         if (this.loadedScripts[i].indexOf(scriptID) !== -1) {
           //set flag to true, meaning a script is already loaded.
           loaded = true;
-          // Optional, if <loadedScriptsWarnings> is true throw an alert when 
+          // Optional, if <warnings> is true throw an alert when 
           // a page tries to load the same script multiple times.
-          if (this.config.loadedScriptsWarnings) {
+          if (this.config.warnings) {
             alert([
               "This page attempted to load: <",
               scriptID,

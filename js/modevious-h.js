@@ -29,11 +29,6 @@ $c.include("/js/lib/jquery.dumbcrossfade-1.2.min.js");
 
 $c.include("/js/lib/soundmanager2-nodebug-jsmin.js");
 
-// define configuration for components that allow it
-soundManager.url = "/swf/";
-soundManager.flashVersion = 9;
-soundManager.useFlashBlock = false;
-
 // define run-time event functions
 $c.onLoad(function () {
 	// initialize jQuery UI

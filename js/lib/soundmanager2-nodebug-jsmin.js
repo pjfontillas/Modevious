@@ -70,3 +70,8 @@ a.resetOnPosition(0);a._iO.onbeforefinishcomplete&&a._iO.onbeforefinishcomplete.
 a._iO.onmetadata&&a._iO.onmetadata.apply(a)};this._onbufferchange=function(d){if(a.playState===0)return false;if(d&&a.isBuffering||!d&&!a.isBuffering)return false;a.isBuffering=d===1?true:false;a._iO.onbufferchange&&a._iO.onbufferchange.apply(a)};this._ondataerror=function(){a.playState>0&&a._iO.ondataerror&&a._iO.ondataerror.apply(a)}};if(!b.hasHTML5||C)if(j.addEventListener){j.addEventListener("focus",v,false);j.addEventListener("load",b.beginDelayedInit,false);j.addEventListener("unload",b.destruct,
 false);D&&j.addEventListener("mousemove",v,false)}else if(j.attachEvent){j.attachEvent("onfocus",v);j.attachEvent("onload",b.beginDelayedInit);j.attachEvent("unload",b.destruct)}else{W.onerror();W.disable()}fa=function(){if(document.readyState==="complete"){H();document.detachEvent("onreadystatechange",fa)}};if(document.addEventListener)document.addEventListener("DOMContentLoaded",H,false);else document.attachEvent&&document.attachEvent("onreadystatechange",fa);document.readyState==="complete"&&setTimeout(H,
 100)}var W=null;if(typeof SM2_DEFER==="undefined"||!SM2_DEFER)W=new ha;j.SoundManager=ha;j.soundManager=W})(window);
+
+// needed here because of the way soundManager 2 loads its internal components.
+soundManager.url = $c.config.soundManager.url;
+soundManager.flashVersion = $c.config.soundManager.flashVersion;
+soundManager.useFlashBlock = false;
