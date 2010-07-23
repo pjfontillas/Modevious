@@ -31,6 +31,7 @@ if (modeviousConfig === null) {
     }
   };
 }
+var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
   // private methods and variables
   /**
@@ -451,4 +452,3 @@ var $c = (function () {
     }
   };
 }());
-var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
