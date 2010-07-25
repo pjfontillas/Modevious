@@ -68,7 +68,7 @@ var $c = (function () {
       return false;
     }
     pageRequest.onreadystatechange = function () {  
-      this.filterData(pageRequest, objectID); // actually change the content
+      $c.filterData(pageRequest, objectID); // actually change the content
     };
     if (dataToSend) {
       var sendData = ["sendData=", dataToSend].join('');
@@ -90,7 +90,7 @@ var $c = (function () {
     *   Updates <objectID>'s innerHTML with content from <pageName>.
     */
     changePage: function (pageName, objectID) {
-      this.fetchData(pageName, null, objectID); 
+      $c.fetchData(pageName, null, objectID); 
     },
     /**
     * createCookie (String, String, Int)
@@ -130,7 +130,7 @@ var $c = (function () {
     *   Deletes a cookie by assigning its days to a negative value.
     */
     eraseCookie: function (name) {
-      this.createCookie(name, '', -1);
+      $c.createCookie(name, '', -1);
     },
     /**
     * onLoad(Function) 
@@ -151,7 +151,7 @@ var $c = (function () {
       }
     },
     onLoad: function (func) {
-      this.addLoadEvent(func);
+      $c.addLoadEvent(func);
     },
     /**
     * getUrlVariable (String)
@@ -190,18 +190,18 @@ var $c = (function () {
     */
     include: function (scriptID) {
       var loaded = false; // flag indicating if a script is loaded.
-      for (var i = 0;i < this.loadedScripts.length;i++) {
-        if (this.loadedScripts[i].indexOf(scriptID) !== -1) {
+      for (var i = 0;i < $c.loadedScripts.length;i++) {
+        if ($c.loadedScripts[i].indexOf(scriptID) !== -1) {
           //set flag to true, meaning a script is already loaded.
           loaded = true;
           // Optional, if <warnings> is true throw an alert when 
           // a page tries to load the same script multiple times.
-          if (this.config.warnings) {
+          if ($c.config.warnings) {
             alert([
               "This page attempted to load: <",
               scriptID,
               "> multiple times.",
-              "Please contact the webmaster to correct this."
+              "Please contact the webmaster to correct $c."
             ].join(''));
           }
         }
@@ -210,7 +210,7 @@ var $c = (function () {
         // if the script has not been loaded yet add it to the array, the 
         // array.length returns size, so a size of 0 would put the ID in the 
         // first cell, 1 would be the next cell, which is the array.length
-        this.loadedScripts[this.loadedScripts.length] = scriptID;
+        $c.loadedScripts[$c.loadedScripts.length] = scriptID;
         var ext = scriptID.substr((scriptID.lastIndexOf('.') + 1),
           scriptID.length).toLowerCase();
         switch (ext) {
@@ -248,10 +248,10 @@ var $c = (function () {
     add2Lib: function (scriptID) {
       // add to array without loading the script, used for scripts that are
       // already loaded without the use of Core's include().
-      this.loadedScripts[this.loadedScripts.length] = scriptID;
+      $c.loadedScripts[$c.loadedScripts.length] = scriptID;
     },
     exclude: function (scriptID) {
-      this.add2Lib(scriptID);
+      $c.add2Lib(scriptID);
     },
     /**
     * showEmail ()
@@ -261,8 +261,8 @@ var $c = (function () {
     showEmail: function () {
       var url;
       $$(".email").each(function (a) {
-        url = a.href.replace(this.config.at, '@');
-        url = url.replace(this.config.dot, '.');
+        url = a.href.replace($c.config.at, '@');
+        url = url.replace($c.config.dot, '.');
         a.href = url;
         url = url.replace("mailto:", '');
         a.update(url);       
@@ -434,7 +434,7 @@ var $c = (function () {
           }
         }
       }
-      this.createCookie("style", title, 365);   
+      $c.createCookie("style", title, 365);   
     },
     /**
     * getActiveStyleSheet ()
