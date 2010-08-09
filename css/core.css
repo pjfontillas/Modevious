@@ -3,129 +3,99 @@
 	width: 100% !important;
 	float: left !important;
 }
-
 .one-half, .half {
 	width: 50% !important;
 	float: left !important;
 }
-
-
 .two-thirds {
 	width: 66% !important;
 	float: left !important;
 }
-
 .one-third, .third {
 	width: 33% !important;
 	float: left !important;
 }
-
 .three-fourths {
 	width: 75% !important;
 	float: left !important;
 }
-
 .one-fourth, .fourth {
 	width: 25% !important;
 	float: left !important;
 }
-
 .one-fifth {
 	width: 20% !important;
 	float: left !important;
 }
-
 .two-fifths {
 	width: 40% !important;
 	float: left !important;
 }
-
 .three-fifths {
 	width: 60% !important;
 	float: left !important;
 }
-
 .four-fifths {
 	width: 80% !important;
 	float: left !important;
 }
-
 .text-left {
 	text-align: left !important;
 }
-
 .text-center {
 	text-align: center !important;
 }
-
 .text-right {
 	text-align: right !important;
 }
-
 .text-justify {
 	text-align: justify !important;
 }
-
 .centered {
 	margin: 0px auto !important;
-} /* When overriding centering of an element should already have a predefined width, otherwise this rule may fail! */
-
+}
 .float-left {
 	float: left !important;	
 }
-
 .float-right {
 	float: right !important;
 }
-
 .clear-float {
 	clear: both !important;	
 }
-
 .clickable {
 	cursor: pointer !important;
 }
-
 .padded {
 	padding: 20px !important;
-} /* Adds default of 10px on each side, overrides default padding from browser or other css! */
-
+}
 .padded-x {
 	padding: 0px 20px !important;
 }
-
 .padded-y {
 	padding: 20px 0px !important;
 }
-
 .no-padding {
 	padding: 0px !important;
 }
-
 .bordered {
 	border: 1px solid #AAAAAA !important;
 }
-
 .hidden {
 	display: none !important;
 }
-
 .has-margins {
 	margin: 5px !important;
 }
-
 .has-margins-x {
 	margin: 0px 5px !important;
 }
-
 .has-margins-y {
 	margin: 5px 0px !important;
 }
-
 .no-margins {
 	margin: 0px !important;
 }
-
 .code {
 	width: 95% !important;
 	height: auto !important;
@@ -134,7 +104,6 @@
 	background: #FFF !important;
 	margin: 10px auto !important;
 }
-
 .maximize-x {
 	width: 100% !important;
 }
