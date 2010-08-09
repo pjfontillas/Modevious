@@ -107,3 +107,26 @@
 .maximize-x {
 	width: 100% !important;
 }
+#console {
+  position: absolute;
+  z-index: 100000;
+  top: -1000px;
+}
+#console_top {
+  background: url(modevious/images/console_top.png);
+  width: 640px;
+  height: 54px;
+  cursor: move;
+}
+#console_middle {
+  background: url(modevious/images/console_middle.png);
+  width: 640px;
+ }
+ #console_bottom {
+  background: url(modevious/images/console_bottom.png);
+  width: 640px;
+  height: 50px;
+}
+#console_close_button {
+  cursor: pointer;
+}

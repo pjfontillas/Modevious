@@ -85,6 +85,8 @@ var $c = (function () {
     version: 109,
     config: modeviousConfig,
     loadedScripts: [],
+    log: [],
+    konamiCounter: 0,
     /**
     * changePage (String, Element)
     *   Updates <objectID>'s innerHTML with content from <pageName>.
@@ -449,6 +451,110 @@ var $c = (function () {
         }
       }
       return null;
+    },
+    /**
+    * trace (message)
+    *   Stores <message> in a log to serve for debugging regardless of
+    *   browser used for testing. Can be sent to a server side 
+    *   script (PHP, ASP, etc.) that can then store the log in a database
+    *   or send it via email.
+    */
+    trace: function (message) {
+      // log and debug support
+      $c.log[$c.log.length] = message;
+    },
+    /**
+    * showLog (event)
+    *   If key presses are done in the correct order this function moves the log
+    *   to be just about under the current vertical offset.
+    */
+    showLog: function (event)  {
+      switch ($c.konamiCode) {
+        case 0:
+          if (event.keycode == Event.KEY_UP) {
+            $c.konamiCode++;
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        case 1:
+          if (event.keycode == Event.KEY_UP) {
+            $c.konamiCode++;
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        case 2:
+          if (event.keycode == Event.KEY_DOWN) {
+            $c.konamiCode++;
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        case 3:
+          if (event.keycode == Event.KEY_DOWN) {
+            $c.konamiCode++;
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        case 4:
+          if (event.keycode == Event.KEY_LEFT) {
+            $c.konamiCode++;
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        case 5:
+          if (event.keycode == Event.KEY_RIGHT) {
+            $c.konamiCode++;
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        case 6:
+          if (event.keycode == Event.KEY_LEFT) {
+            $c.konamiCode++;
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        case 7:
+          if (event.keyCode == Event.KEY_RIGHT) {
+            $j("#console").animate({
+              top: document.viewport.getScrollOffsets().left
+            });
+          } else {
+            $c.konamiCode = 0;
+          }
+          break;
+        default:
+          $c.konamiCode = 0;
+      }
+    },
+    /**
+    * hideLog ()
+    *   Moves the log to 1000px above the page, effectively hiding it.
+    */
+    hideLog: function () {
+      $j("#console").animate({
+        top: "-1000"
+      });
     }
   };
 }());
+// add console to the page
+$j("body").append([
+  "<div id=\"console\">",
+    "<div id=\"console_top\">",
+      "<p id=\"console_close_button\">close X</p>",
+    "</div>",
+    "<div id=\"console_middle\"></div>",
+    "<div id=\"console_bottom\"></div>",
+  "</div>"
+].join(''));
+// add close behavior to console close button
+$j("console_close_button").click($c.hideLog);
+// create listener for code to open console
+// UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT
+Event.observe(document, "keypress", $c.showLog);
