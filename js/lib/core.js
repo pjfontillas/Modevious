@@ -246,11 +246,28 @@ var $c = (function () {
         curr_hour = curr_hour - 12;
       }
       var curr_min = d.getMinutes();  
-      curr_min = [curr_min, ''].join('');
+      curr_min = [
+        curr_min,
+        ''
+      ].join('');
       if (curr_min.length === 1) {
         curr_min = ['0', curr_min].join('');
       }
-      return [curr_hour, " : ", curr_min, ' ', a_p].join('');
+      var curr_ms = d.getMilliseconds();
+      if (curr_ms < 100) {
+        curr_ms = [
+          '0',
+          curr_ms
+        ].join('');
+      }
+      return [
+        curr_hour,
+        ":",
+        curr_min,
+        ":",
+        curr_ms,
+        a_p
+      ].join(' ');
     },
     /**
     * getFileType (String)
@@ -431,56 +448,56 @@ var $c = (function () {
     showLog: function (event)  {
       switch ($c.konamiCounter) {
         case 0:
-          if (event.keyCode == 56) {
+          if (event.keyCode == Event.KEY_UP) {
             $c.konamiCounter++;
           } else {
             $c.konamiCounter = 0;
           }
           break;
         case 1:
-          if (event.keyCode == 56) {
+          if (event.keyCode == Event.KEY_UP) {
             $c.konamiCounter++;
           } else {
             $c.konamiCounter = 0;
           }
           break;
         case 2:
-          if (event.keyCode == 50) {
+          if (event.keyCode == Event.KEY_DOWN) {
             $c.konamiCounter++;
           } else {
             $c.konamiCounter = 0;
           }
           break;
         case 3:
-          if (event.keyCode == 50) {
+          if (event.keyCode == Event.KEY_DOWN) {
             $c.konamiCounter++;
           } else {
             $c.konamiCounter = 0;
           }
           break;
         case 4:
-          if (event.keyCode == 52) {
+          if (event.keyCode == Event.KEY_LEFT) {
             $c.konamiCounter++;
           } else {
             $c.konamiCounter = 0;
           }
           break;
         case 5:
-          if (event.keyCode == 54) {
+          if (event.keyCode == Event.KEY_RIGHT) {
             $c.konamiCounter++;
           } else {
             $c.konamiCounter = 0;
           }
           break;
         case 6:
-          if (event.keyCode == 52) {
+          if (event.keyCode == Event.KEY_LEFT) {
             $c.konamiCounter++;
           } else {
             $c.konamiCounter = 0;
           }
           break;
         case 7:
-          if (event.keyCode == 54) {
+          if (event.keyCode == Event.KEY_RIGHT) {
             // get all messages and update console
             var log = '';
             for (var i = 0; i < $c.log.length; i++){
@@ -490,7 +507,7 @@ var $c = (function () {
                 "</p>"
               ].join('');
             }
-            $j("#console_middle").html(log);
+            $j("#console_text").html(log);
             $j("#console").animate({
               top: document.viewport.getScrollOffsets().left
             });

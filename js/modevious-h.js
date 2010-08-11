@@ -92,7 +92,9 @@ $c.onLoad(function () {
     "<div id=\"console_top\">",
       "<p id=\"console_close_button\">close X</p>",
     "</div>",
-    "<div id=\"console_middle\"></div>",
+    "<div id=\"console_middle\">",
+      "<div id=\"console_text\"></div>",
+    "</div>",
     "<div id=\"console_bottom\"></div>",
   "</div>"
   ].join(''));
@@ -100,9 +102,40 @@ $c.onLoad(function () {
   $j("#console_close_button").click($c.hideLog);
   // create listener for code to open console
   // UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT
-  Event.observe(document, "keypress", function(event) {$c.showLog(event);});
+  //Event.observe(document, "keypress", function(event) {$c.showLog(event);});
+  // currently using an IE hack, may remove this if supported in IE6+ (or IE7+)
+  if (document.addEventListener) {
+    document.addEventListener("keydown", function(event) {
+      $c.showLog(event);
+    }, false);
+  } else {
+    document.attachEvent("onkeydown", function(event) {
+      $c.showLog(event);
+    });    
+  }
   // allow for users to move the console
-  $j("#console").draggable({ handle: "#console_top"});
-    
+  $j("#console").draggable({ handle: "#console_top, #console_bottom"});
+ 
   $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+  $c.trace("Modevious started and running smoothly!");
+
 });

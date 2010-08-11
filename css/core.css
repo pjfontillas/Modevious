@@ -123,20 +123,32 @@
 #console_middle {
   background: url(modevious/images/console_middle.png);
   width: 600px;
-  height: 480px;
+  height: 240px;
   padding: 0px 20px;
-  overflow: auto;
   margin: 0px;
+}
+#console_text {
+  width: 600px;
+  height: 230px;
+  overflow: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  border-top: 1px solid #AAA;
+  border-bottom: 1px solid #AAA;
 }
  #console_bottom {
   background: url(modevious/images/console_bottom.png);
   width: 640px;
   height: 50px;
   margin: 0px;
+  cursor: move;
 }
 #console_close_button {
   cursor: pointer;
   width: 50px;
   float: right;
   font-size: 90%;
+  color: #AAA;
+}
+#console_close_button:hover {
+  color: #9CF;
 }
