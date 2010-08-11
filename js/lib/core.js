@@ -1,5 +1,5 @@
 /**
-* Core v1.0.9
+* Core v1.1.0
 *   Maintainer
 *     Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
 *   Description
@@ -18,7 +18,10 @@
 *     var $$; // from Prototype
 *     var jQuery; // from jQuery
 */
-if (modeviousConfig === null) {
+try {
+  if (modeviousConfig) {
+  } // do nothing
+} catch (err) {
   // if config not found, provide default one
   document.modeviousConfig = {
     warnings: false,
@@ -33,57 +36,10 @@ if (modeviousConfig === null) {
 }
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
-  // private methods and variables
-  /**
-  * filterData (String, Element)
-  *   Updates the actual content of the specified <objectID> with content from
-  *   {pageRequest}.
-  */
-  function filterData(pageRequest, objectID) {
-    if (pageRequest.readyState === 4 && 
-    (pageRequest.status === 200 || location.href.indexOf("http") === -1)) {
-      document.getElementById(objectID).innerHTML = pageRequest.responseText;
-    }
-  }
-  /**
-  * fetchData (String, String, Element)
-  *   Fetches the content from the <url> specified and passes control to 
-  *   filterData().
-  */
-  function fetchData(url, dataToSend, objectID) {
-    var pageRequest = false;
-    if (window.XMLHttpRequest) {
-      pageRequest = new XMLHttpRequest();
-    } else if (window.ActiveXObject) { 
-      try {
-        pageRequest = new ActiveXObject("Msxml2.XMLHTTP");
-      } 
-      catch (e) {
-        try {
-          pageRequest = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        catch (e2) {} // do nothing
-      }
-    } else {
-      return false;
-    }
-    pageRequest.onreadystatechange = function () {  
-      $c.filterData(pageRequest, objectID); // actually change the content
-    };
-    if (dataToSend) {
-      var sendData = ["sendData=", dataToSend].join('');
-      pageRequest.open("POST", url, true);
-      pageRequest.setRequestHeader("Content-Type",
-        "application/x-www-form-urlencoded");
-      pageRequest.send(sendData);
-    } else {
-      pageRequest.open("GET", url, true);
-      pageRequest.send(null);
-    }
-  }
+  // private methods and variables (none at the moment)
   return { // public methods and variables
     version: 109,
-    config: modeviousConfig,
+    config: document.modeviousConfig,
     loadedScripts: [],
     log: [],
     konamiCounter: 0,
@@ -461,7 +417,11 @@ var $c = (function () {
     */
     trace: function (message) {
       // log and debug support
-      $c.log[$c.log.length] = message;
+      $c.log[$c.log.length] = [
+        $c.getTime(),
+        ": ",
+        message
+      ].join('');
     },
     /**
     * showLog (event)
@@ -469,67 +429,77 @@ var $c = (function () {
     *   to be just about under the current vertical offset.
     */
     showLog: function (event)  {
-      switch ($c.konamiCode) {
+      switch ($c.konamiCounter) {
         case 0:
-          if (event.keycode == Event.KEY_UP) {
-            $c.konamiCode++;
+          if (event.keyCode == 56) {
+            $c.konamiCounter++;
           } else {
-            $c.konamiCode = 0;
+            $c.konamiCounter = 0;
           }
           break;
         case 1:
-          if (event.keycode == Event.KEY_UP) {
-            $c.konamiCode++;
+          if (event.keyCode == 56) {
+            $c.konamiCounter++;
           } else {
-            $c.konamiCode = 0;
+            $c.konamiCounter = 0;
           }
           break;
         case 2:
-          if (event.keycode == Event.KEY_DOWN) {
-            $c.konamiCode++;
+          if (event.keyCode == 50) {
+            $c.konamiCounter++;
           } else {
-            $c.konamiCode = 0;
+            $c.konamiCounter = 0;
           }
           break;
         case 3:
-          if (event.keycode == Event.KEY_DOWN) {
-            $c.konamiCode++;
+          if (event.keyCode == 50) {
+            $c.konamiCounter++;
           } else {
-            $c.konamiCode = 0;
+            $c.konamiCounter = 0;
           }
           break;
         case 4:
-          if (event.keycode == Event.KEY_LEFT) {
-            $c.konamiCode++;
+          if (event.keyCode == 52) {
+            $c.konamiCounter++;
           } else {
-            $c.konamiCode = 0;
+            $c.konamiCounter = 0;
           }
           break;
         case 5:
-          if (event.keycode == Event.KEY_RIGHT) {
-            $c.konamiCode++;
+          if (event.keyCode == 54) {
+            $c.konamiCounter++;
           } else {
-            $c.konamiCode = 0;
+            $c.konamiCounter = 0;
           }
           break;
         case 6:
-          if (event.keycode == Event.KEY_LEFT) {
-            $c.konamiCode++;
+          if (event.keyCode == 52) {
+            $c.konamiCounter++;
           } else {
-            $c.konamiCode = 0;
+            $c.konamiCounter = 0;
           }
           break;
         case 7:
-          if (event.keyCode == Event.KEY_RIGHT) {
+          if (event.keyCode == 54) {
+            // get all messages and update console
+            var log = '';
+            for (var i = 0; i < $c.log.length; i++){
+              log += [
+                "<p>",
+                $c.log[i],
+                "</p>"
+              ].join('');
+            }
+            $j("#console_middle").html(log);
             $j("#console").animate({
               top: document.viewport.getScrollOffsets().left
             });
           } else {
-            $c.konamiCode = 0;
-          }
+          } // do nothing, we're always resetting the counter
+          $c.konamiCounter = 0;
           break;
         default:
-          $c.konamiCode = 0;
+          $c.konamiCounter = 0;
       }
     },
     /**
@@ -543,18 +513,3 @@ var $c = (function () {
     }
   };
 }());
-// add console to the page
-$j("body").append([
-  "<div id=\"console\">",
-    "<div id=\"console_top\">",
-      "<p id=\"console_close_button\">close X</p>",
-    "</div>",
-    "<div id=\"console_middle\"></div>",
-    "<div id=\"console_bottom\"></div>",
-  "</div>"
-].join(''));
-// add close behavior to console close button
-$j("console_close_button").click($c.hideLog);
-// create listener for code to open console
-// UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT
-Event.observe(document, "keypress", $c.showLog);

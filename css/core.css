@@ -114,19 +114,29 @@
 }
 #console_top {
   background: url(modevious/images/console_top.png);
-  width: 640px;
-  height: 54px;
+  width: 600px;
+  height: 34px;
+  padding: 10px 20px;
   cursor: move;
+  margin: 0px;
 }
 #console_middle {
   background: url(modevious/images/console_middle.png);
-  width: 640px;
- }
+  width: 600px;
+  height: 480px;
+  padding: 0px 20px;
+  overflow: auto;
+  margin: 0px;
+}
  #console_bottom {
   background: url(modevious/images/console_bottom.png);
   width: 640px;
   height: 50px;
+  margin: 0px;
 }
 #console_close_button {
   cursor: pointer;
+  width: 50px;
+  float: right;
+  font-size: 90%;
 }
