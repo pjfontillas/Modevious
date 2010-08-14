@@ -521,7 +521,7 @@ var $c = (function () {
     */
     hideLog: function () {
       $j("#console").animate({
-        top: "-1000"
+        top: "-500"
       });
     },
     /**
