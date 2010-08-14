@@ -38,7 +38,8 @@ var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
   // private methods and variables (none at the moment)
   return { // public methods and variables
-    version: 109,
+    version: 110,
+    versionString: "1.1.0",
     config: document.modeviousConfig,
     loadedScripts: [],
     log: [],
@@ -439,6 +440,11 @@ var $c = (function () {
         ": ",
         message
       ].join('');
+      $j("#console_text").append([
+        "<p>",
+        $c.log[$c.log.length - 1],
+        "</p>"
+      ].join(''));
     },
     /**
     * showLog (event)
@@ -498,18 +504,8 @@ var $c = (function () {
           break;
         case 7:
           if (event.keyCode == Event.KEY_RIGHT) {
-            // get all messages and update console
-            var log = '';
-            for (var i = 0; i < $c.log.length; i++){
-              log += [
-                "<p>",
-                $c.log[i],
-                "</p>"
-              ].join('');
-            }
-            $j("#console_text").html(log);
             $j("#console").animate({
-              top: document.viewport.getScrollOffsets().left
+              top: document.viewport.getScrollOffsets().top
             });
           } else {
           } // do nothing, we're always resetting the counter
@@ -527,6 +523,15 @@ var $c = (function () {
       $j("#console").animate({
         top: "-1000"
       });
+    },
+    /**
+    * getFlashMovie (movieName)
+    *   Returns element of Flash object requested via <movieName>.
+    *   IE, as usual, behaves differently than other browsers.
+    */
+    getFlashMovie: function (movieName) {   
+      var isIE = navigator.appName.indexOf("Microsoft") != -1;
+      return (isIE) ? window[movieName] : document[movieName];  
     }
   };
 }());

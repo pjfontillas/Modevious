@@ -46,46 +46,7 @@ $c.include("/js/lib/sha512-min.js");
 
 // define run-time event functions
 $c.onLoad(function () {
-  $c.trace("Starting Modevious...");
-	// initialize jQuery UI
-	$j(".tabs").tabs();
-	$j(".accordion").accordion({ 
-		header: "h3", 
-		autoHeight: false, 
-		collapsible: true 
-	});
-	$j(":button").button();
-	$j(".draggable").draggable();
-	$j(".resizable").resizable();
 
-	// initialize Expose elements
-	$j(".expose").click(function(){
-		$j(this).expose({
-			api: true, 
-			closeOnEsc: false, 
-			zIndex: 10001
-		}).load();
-	});
-
-	// initialize AutoMouseOver elements
-	$j(".mouse-over").autoMouseOver();
-
-	// initialize DumbCrossFade elements
-	$j(".dumbCrossFade .dumbItem").dumbCrossFade({
-		doHoverPause: false 
-	});
-
-	// initialize email address de-obfuscation
-	$c.showEmail();
-	
-	// set preferred style sheet from cookie if possible
-  try {
-    if ($c.readCookie("style").length !== 0) {
-      setActiveStyleSheet($c.readCookie("style"));
-    }
-  } catch (err) {
-  } // do nothing
-  
   // initialize console 
   $j("body").append([
   "<div id=\"console\">",
@@ -115,27 +76,53 @@ $c.onLoad(function () {
   }
   // allow for users to move the console
   $j("#console").draggable({ handle: "#console_top, #console_bottom"});
- 
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
-  $c.trace("Modevious started and running smoothly!");
 
+  $c.trace("Starting Modevious...");
+	// initialize jQuery UI
+	$j(".tabs").tabs();
+	$j(".accordion").accordion({ 
+		header: "h3", 
+		autoHeight: false, 
+		collapsible: true 
+	});
+	$j(":button").button();
+	$j(".draggable").draggable();
+	$j(".resizable").resizable();
+  $c.trace("jQuery User Interface initialized.");
+
+	// initialize Expose elements
+	$j(".expose").click(function(){
+		$j(this).expose({
+			api: true, 
+			closeOnEsc: false, 
+			zIndex: 10001
+		}).load();
+	});
+  $c.trace("Expose elements initialized.");
+
+	// initialize AutoMouseOver elements
+	$j(".mouse-over").autoMouseOver();
+  $c.trace("AutoMouseOver elements initialized.");
+
+	// initialize DumbCrossFade elements
+	$j(".dumbCrossFade .dumbItem").dumbCrossFade({
+		doHoverPause: false 
+	});
+  $c.trace("DumbCrossFade elements initialized.");
+
+	// initialize email address de-obfuscation
+	$c.showEmail();
+  $c.trace("Email addressed de-obfuscated.");
+	
+	// set preferred style sheet from cookie if possible
+  try {
+    if ($c.readCookie("style").length !== 0) {
+      setActiveStyleSheet($c.readCookie("style"));
+      $c.trace("Style sheet cookie found, setting active style sheet.");
+    }
+  } catch (err) {
+    $c.trace("No cookie for style sheet found.");
+  }
+
+  $c.trace("Modevious started and running smoothly!");
 });
