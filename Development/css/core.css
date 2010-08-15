@@ -123,13 +123,13 @@
 #console_middle {
   background: url(modevious/images/console_middle.png);
   width: 580px;
-  height: 290px;
-  padding: 5px 30px;
+  height: 325px;
+  padding: 0px 30px;
   margin: 0px;
 }
 #console_text {
   width: 568px;
-  height: 278px;
+  height: 313px;
   padding: 5px;
   border: 1px solid #AAA;
   background: #000;
@@ -140,7 +140,7 @@
  #console_bottom {
   background: url(modevious/images/console_bottom.png);
   width: 640px;
-  height: 50px;
+  height: 25px;
   margin: 0px;
   cursor: move;
 }
@@ -149,7 +149,8 @@
   width: 50px;
   float: right;
   font-size: 90%;
-  color: #FFF;
+  color: #AAA;
+  
 }
 #console_close_button:hover {
   color: #F00;
