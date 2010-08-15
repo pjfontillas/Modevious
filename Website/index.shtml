@@ -1,0 +1,155 @@
+<!--#include virtual="/include/links.htm" -->
+  <title>Modevious</title>
+  <style type="text/css">
+    .no-padding {
+      padding: 0px !important;
+    }
+    .splash-item {
+      height: 320px;
+      overflow: auto;
+    }
+    .splash-item p a {
+      border-bottom: 1px dashed;
+      text-decoration: none;
+    }
+    .splash-item p a:hover {
+      border-bottom: 1px solid;
+    }
+    #splash-menu {
+      width: 956px;
+      margin: 0px auto;
+      padding: 0px;
+    }
+    #splash-menu li {
+      width: 237px;
+      margin: 0px auto;
+    }
+    #splash-menu a {
+      cursor: pointer !important;
+      width: 100%;
+    }
+    #computing {
+      background: url(images/clouds.jpg) !important;
+    }
+    #know {
+      background: url(images/diagonal-stripes.png) !important;
+    }
+    #theming {
+      background: url(images/theming_bg.jpg) !important;
+      color: #000;
+    }
+    #theming a {
+      color: #FFF;
+    }
+    </style>
+</head>
+<body>
+<!--#include virtual="/include/navigation.htm" -->
+  <div id="core">
+    <div id="splash-tabs" class="tabs no-padding">
+      <div id="what" class="splash-item no-padding">
+        <div class="dumbCrossFade">
+          <div class="dumbItem"><a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="958" height="316" longdesc="http://www.modevious.com" /></a></div>
+          <div class="dumbItem"><a href="/download/"><img src="/images/Simplify-Your-Code.jpg" alt="Modevious" width="958" height="316" longdesc="http://www.modevious.com" /></a></div>
+        </div>
+      </div>
+      <div id="computing" class="splash-item padded-x">
+        <div class="half"><div class="padded">
+          <h2>What is distributed computing?</h2>
+          <p><a href="http://en.wikipedia.org/wiki/Distributed_computing" title="View Wikipedia article">According to Wikipedia</a>:</p>
+          <p class="padded quote">Distributed computing also refers to the use of distributed systems to solve 
+          computational problems. In distributed computing, a problem is divided into 
+          many tasks, each of which is solved by one computer.</p>
+        </div></div>
+        <div class="half"><div class="padded">
+          <p>With the agile progression of technology we are now at a point where
+          just about any device with a web browser is capable of running JavaScript.</p>
+          <p>Rather than placing almost all of the work on the web server we are now able
+          to leverage the power of individual computers to help process our web pages
+          and applications.</p>
+          <p>Modevious attempts to alleviate the process of creating and maintaining web
+          pages and applications that use client-based technologies to enhance our
+          experience on the web.</p>
+        </div></div>
+      </div>
+      <div id="know" class="splash-item padded-x">
+          <div class="half"><div class="padded">
+            <h2>Mobile optimization</h2>
+            <p>Understandably, some mobile devices don't fully support
+            JavaScript or have slower processors that would make running
+            client-side code problematic.</p>
+            <p>I'm well on my way to optimizing Modevious to support mobile
+            devices in a way that facilitates developing for both the 
+            desktop and the mobile experience.</p>
+            <p>Mobile optimization will include features like blacklisting and
+            whitelisting scripts that can run while on a mobile device. This can
+            help allow necessary scripts to run while preventing resource hogging
+            applications from loading on a mobile device.</p>
+            <p>Don't worry, mobile support is a top priority. Between my iPhone, my
+            brother's G1, and multiple Blackberry's I have experience truly
+            horrendous browsing experiences using a mobile browser. But I have
+            also seen efficient and user-friendly presentations as well so I am
+            certain mobile optimization is plausible.</p>
+          </div></div>
+          <div class="half"><div class="padded">
+            <h2>Possible jQuery conlicts</h2>
+            <p>If you already run jQuery scripts check to see if the author
+            implemented the encapsulation method for running jQuery code.</p>
+            <p>One of the biggest problems with using the Prototype JS and jQuery
+            libraries together was the conflicting use of '$'.</p>
+            <p>If the author did not protect calls to their script from this conflict
+            you will have to convert their run-time script - the script or code that
+            initializes their application. Change all references to '$' to '$j' to
+            have it work with Modevious.</p>
+          </div></div>
+      </div>
+      <div id="theming" class="splash-item no-padding">
+        <div class="half"><div class="padded">
+          <h2>jQuery UI</h2>
+          <p>The jQuery UI is currently just about the extent of theming Modevious directly
+          deals with.</p>
+          <p>Modevious comes with its own custom jQuery UI theme but feel free to
+          <a href="http://jqueryui.com/themeroller/" 
+          title="Go to the jQuery UI Theme Roller">roll your own.</a> Just
+          remember to replace the appropriate files and try to stay within the
+          correct jQuery and jQuery UI versions.</p>
+        </div></div>
+        <div class="half"><div class="padded">
+          <h2>Core CSS</h2>
+          <p>Remember <a href="http://www.w3schools.com/CSS/css_howto.asp"
+          title="W3 Schools info on CSS">inline-styling?</a> <strong>Don't use that</strong>.</p>
+          <p>For the most common applications of inline-styling 
+          there are <a href="css/core.css" title="Core CSS Rules">Core CSS classes</a> that will provide all the markup needed. Need to make
+          the text in a certain paragraph left-aligned? Use the class "text-left". Need
+          an element to float? Apply the class "float-left" or "float-right".</p>
+          <p>I encourage this use because that certain style may apply to only one page 
+          or a specific element, in which case I then believe it is better to 
+          leave it out of the global CSS rules.</p>
+        </div></div>
+      </div>
+      <ul id="splash-menu">
+        <li><a href="#what">What is Modevious?</a></li>
+        <li><a href="#computing">Distributed Computing</a></li>
+        <li><a href="#know">Things You Need To Know</a></li>
+        <li><a href="#theming">About Theming</a></li>
+      </ul>      
+    </div> 
+    <div class="clear-float"></div>
+  </div><!-- End #core -->
+<!--#include virtual="/include/footer.htm" -->
+<script type="text/javascript">
+$c.onLoad(function(){
+  $j("#splash-tabs").tabs( "option", "event", "mouseover" );
+  $j.pnotify({
+    pnotify_title: "Warning", 
+    pnotify_text: [
+      "This information is currently outdated and is being ", 
+      "updated while I make the move to GitHub and release v.1.0.9. ",
+      "v.1.1.0 will be a big step with completely enhanced code."].join(''), 
+    pnotify_type: "error",
+    pnotify_hide: false
+    });
+});
+</script>
+</body>
+</html>

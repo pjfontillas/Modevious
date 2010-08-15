@@ -1,0 +1,48 @@
+<!--#include virtual="/include/links.htm" -->
+  <title>Contact me</title>
+  <style type="text/css">
+  #contact_form {
+    border: 1px solid #AAA;
+    border-right: 0px;
+    background: #FFF;
+  }
+  #core {
+    background: url(images/contact_bg.jpg) #FFF;
+  }
+  </style>
+</head>
+<body>
+<!--#include virtual="/include/navigation.htm" -->
+  <div id="core">
+    <div class="half">
+      <p>&nbsp;</p>
+    </div>
+    <div class="half"><div id="contact_form" class="padded-x">    
+      <form method="post" action="ed/">
+        <h1>Need to talk to me?</h1>
+        <p>You can send an email to <a class="email" href="mailto:me(AT)pjfontillas(DOT)com">me(AT)pjfontillas(DOT)com</a>.</p>
+        <p>Or simply use this form.</p>
+        <p>
+          <label>Your name: </label>
+          <input name="name" type="text" />
+        </p>
+        <p>
+          <label>Your email: </label>
+          <input name="email" type="text" />
+        </p>
+        <p>
+          <label>Whatcha got to say?</label>
+        </p>
+        <p>
+        <textarea rows="5" cols="50" name="message"></textarea>
+        </p>
+        <p>
+        <input type="submit" value="Send it!" />
+        </p>
+    </form>
+    </div></div>
+    <div class="clear-float"></div>          
+  </div><!-- End #core -->
+<!--#include virtual="/include/footer.htm" -->
+</body>
+</html>

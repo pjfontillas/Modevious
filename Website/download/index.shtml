@@ -1,0 +1,181 @@
+<!--#include virtual="/include/links.htm" -->
+  <title>Downloads</title>
+  <style type="text/css">
+  #todo-list a {
+    border-bottom: 0px !important;
+  }
+  #todo-list a:hover {
+    border-bottom: 0px !important;
+  }
+  </style>
+</head>
+<body>
+<!--#include virtual="/include/navigation.htm" -->
+  <div id="core">
+    <div class="full">
+      <div class="padded">  
+        <div class="ui-widget">
+          <div class="draggable resizable ui-state-error padded">
+            <p class="text-center">
+            <span class="ui-icon ui-icon-alert float-left"></span>
+            <strong>Wait!</strong> Do you even know what you're downloading?! 
+            If you haven't already, go check out the 
+            <a href="/components/" 
+              title="What makes up Modevious">Components page</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="two-thirds">
+      <div class="padded">
+        <p>This version of Modevious is a major step towards the next big 
+        release. This current version (v.1.0.9) covers:</p>
+        <ul>
+          <li>A major re-write of the code for the Core. The Core now supports 
+          public and private members and methods.</li>
+          <li>Minor bug fixes for some functions and components.</li>
+          <li>Added project to GitHub to share with and invite others to
+          participate. Also tracks bugs and issues for Modevious</li>
+        </ul>
+        <p>Version 1.1.0 will cover:</p>
+        <ul>
+          <li>jQuery UI updated to 1.8.2.</li>
+          <li>Bug reports for some components issued.</li>
+          <li>Setting up <a href="http://pivotaltracker.com"
+            title="PivotalTracker">PivotalTracker</a> for developers to 
+          collaborate on implementing new features and cleaning up code.</li>
+          <li>New components and added functionality.</li>
+        </ul>
+        <p>All updates <em>after version</em> 1.0.9 are 
+        <strong>cumulative</strong>. If you already installed and are using 
+        Modevious, simply grab the latest update you want and you've got all 
+        previous updates as well! Don't go backwards though... even though I 
+        cannot see any reason why you'd do so I'm willing to bet some of you 
+        will try or at least accidentally do it.</p>
+        <p><em>Still</em> on my To-Do List is a better update system. In a 
+        future release I am going to include a dashboard type of page that 
+        initializes a variable that activates the system. My hopes are that 
+        authors will use the system to allow developers and site maintainers to 
+        keep updated or at least informed of new releases by accessing the 
+        dashboard.</p>
+        <p>I also wish to include a demo or test page which you can use to 
+        experiment with.</p>
+        <!-- <p>Like what I've done? Care to help me buy a tie or a cup of 
+        coffee? I would definitely appreciate it!</p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <p>
+          <input type="hidden" name="cmd" value="_s-xclick" />
+          <input type="hidden" name="hosted_button_id" value="8HQ3GJYCSYW2A" />
+          <input type="image" 
+            src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" 
+            name="submit" alt="PayPal - The safer, easier way to pay online!" />
+          <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" 
+            width="1" height="1" />
+        </p>
+        </form> -->
+      </div>
+    </div>
+    <div class="one-third">
+      <div class="padded">
+        <h1 class="no-margins">Current version</h1>
+        <p><strong>1.0.9</strong> | <em>Latest build on July 14th, 2010.</em></p>
+        <p>HTTP downloads are available and the source code is openly
+        available should you access the scripts on this site or on 
+        <a href="http://github.com/pjfontillas/modevious" 
+          title="Modevious on GitHub">GitHub</a>.</p>
+        <form action="http://www.modevious.com/cache/modevious.latest.zip">
+        <div><a href="http://www.modevious.com/cache/modevious.latest.zip" 
+          title="Download the latest release">
+          <button>Download Modevious</button></a></div></form>
+        <p>Older versions can be <a href="http://www.modevious.com/cache/" 
+          title="A public directory">fetched from the cache via HTTP</a>.</p>
+        <p>If you would like to mirror these downloads please 
+        <a href="/contact/" title="Drop me a message!">contact me</a>.</p>
+          <p>I am using <a href="http://www.pivotaltracker.com/projects/97677" 
+        title="From PivotalLabs">PivotalTracker</a> to keep track of features
+        and tasks. If you wish to join the development team feel free to
+        <a href="/contact/" title="Send me a message">contact me</a>.</p>
+          <!--<h1 class="no-margins">To-Do List</h1>
+        <div id="todo-list" class="accordion text-left">
+          <div>
+            <h3><a href="#">Component | SoundManager 2</a></h3>
+            <p>I've written my own soundplayer in Flash with its own API but 
+            this one is far more developed. Since it is free to use 
+            (BSD License) it would make for a perfect component for 
+            Modevious.</p>
+          </div>
+          <div>
+            <h3><a href="#">JS | Validation</a></h3>
+            <p>Modularize a method I use for form validation. Uses the concept 
+            of only allowing a limited set of input types. (e.g.: "0123456789" 
+            for phone #s when formatting "()- " are removed. Concept can be 
+            reversed to look for invalid characters, regardless of the rest of 
+            the input.</p>
+          </div>
+          <div>
+            <h3><a href="#">Component | jQuery UI Dialog</a></h3>
+            <p>Cannot move or resize in IE8 unless using Compatibility View. Is 
+            this occuring because I use '$j' instead of '$'? Receiving an error 
+            stating Webpage error details:<br /><br />User Agent: Mozilla/4.0 
+            (compatible; MSIE 8.0; Windows NT 6.0; WOW64; Trident/4.0; SLCC1; 
+            .NET CLR 2.0.50727; InfoPath.2; .NET CLR 3.5.30729; Media Center PC 
+            5.0; .NET CLR 3.0.30729; OfficeLivePatch.1.3; 
+            OfficeLiveConnector.1.5)<br /><br />Timestamp: Wed, 23 Jun 2010 
+            17:14:35 UTC<br /><br />Message: Object doesn't support this 
+            property or method<br />Line: 374<br />Char: 492<br />Code: 0<br />
+            URI:http://trunk.modevious.com/js/lib/jquery-ui-1.8.1.custom.min.js
+            </p>
+          </div>
+          <div>
+            <h3><a href="#">Component | PNotify Issues in IE</a></h3>
+            <p>PNotify behaves differently in IE and messages cannot be closed 
+            by clicking on the close button. Contact the author to 
+            collaborate.</p>
+          </div>
+          <div>
+            <h3><a href="#">JS | Vertically aligning and centering</a></h3>
+            <p>Finding I need a simple way to vertically align an element, both 
+            within its parent or to the browser window.</p>
+          </div>
+          <div>
+            <h3><a href="#">Component | jQuery UI 1.8.2 released</a></h3>
+            <p>Need to update jQuery UI, hopefully this will help resolve issues
+             with the 1.8.1, specifically pertaining to dialog and PNotify.</p>
+          </div>
+          <div>
+            <h3><a href="#">Component | PNotify issues</a></h3>
+            <p>PNotify seems to be having some issues. Current deployment in 
+            systems show some minor CSS issues across all browsers and failure 
+            to close a message using the close 'x' button in IE</p>
+          </div>
+          <div>
+            <h3><a href="#">JS | (De-)Obfuscation support</a></h3>
+            <p>Already have email in place; use for screennames?</p>
+          </div>
+          <div>
+            <h3><a href="#">JS | Enhance update support</a></h3>
+            <p>Although the code to implement the technique exists, I have not 
+            yet used it in production releases.</p>
+          </div>
+          <div>          
+            <h3><a href="#">CSS + JS | Page protect</a></h3>
+            <p>Invisible layer prevents the ability to click until all scripts 
+            are loaded.</p>
+          </div>
+          <div>
+            <h3><a href="#">Tool | Testing page</a></h3>
+            <p>Create test page which can be used to test new code and
+            experiment with.</p>
+          </div>
+          <div>
+            <h3><a href="#">Component | Tooltip widget</a></h3>
+            <p>Add tooltip widget to Modevious.</p>
+          </div>
+        </div>-->
+      </div>
+    </div>  
+    <div class="clear-float"></div>          
+  </div><!-- End #core -->
+<!--#include virtual="/include/footer.htm" -->
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!--#include virtual="/include/links.htm" -->
+  <title>Components | DumbCrossFade</title>
+  <style type="text/css">
+  #slideshow {
+    width: 960px;
+    height: 320px;
+    margin: 20px auto;
+    border: 1px solid #AAA;
+    background: url(/css/dumbcrossfade/working.gif) #FFF center no-repeat;
+    clear: both;
+  }
+  </style>
+</head>
+<body>
+<!--#include virtual="/include/navigation.htm" -->
+  <div id="slideshow">
+    <div class="dumbCrossFade">
+      <div class="dumbItem"><a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="960" height="320" longdesc="http://www.modevious.com" /></a></div>
+      <div class="dumbItem"><a href="/download/"><img src="/images/Simplify-Your-Code.jpg" alt="Modevious" width="960" height="320" longdesc="http://www.modevious.com" /></a></div>
+    </div>
+  </div>
+  <div id="core">
+    <div class="full"><div class="padded">
+      <p>See that up there? That's also on the front page.  That is DumbCrossfade in action.</p>
+      <p>jquery.dumbCrossFade is intended to be a light-weight slide transition that enables external manipulation. Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base tool.</p>
+<pre class="code">option parameters: 
+  slideType: can be one of the following: 'slidehorizontal', 'slidevertical', 'fade', default 'slidehorizontal'
+  index: integer, is zero-based, is what item to start from, default 0
+  showTime: integer,  is how long to show an item in milliseconds, default 5000
+  transitionTime: integer, is how long the fade takes in milliseconds, default 1000
+  doHoverPause: boolean, sets if pausing on mouse over is enabled or not, default true
+  maxZIndex: integer, is the z-index of the element being faded into view. The faded out is maxZIndex - 1, default 100
+  slideChange: event function, is fired when the slide has changed, passes in index of current slide, default null
+  slideDirection: can be one of the following: 'forward', 'backward', default 'forward'
+  fadeInOut: only useful when slideType is 'slidehorizontal' or 'slidevertical' for a transition slide-wipe affect, default false
+
+  //You can use options like so:
+  var options = {
+    'doHoverPause': false,
+    slideChange: function (currentSlideIndex) {
+      alert(currentSlideIndex);
+    }
+  };
+  $('.slide').dumbCrossFade(options);
+
+//instance methods:
+  $(jquerySelector).dumbCrossFade('stop'): stops auto playing slides
+  $(jquerySelector).dumbCrossFade('start'): starts auto playing slides
+  $(jquerySelector).dumbCrossFade('jump',index): jumps to slide index specified, zero-based index
+  $(jquerySelector).dumbCrossFade('next'): goes to the next slide
+  $(jquerySelector).dumbCrossFade('previous'): goes to the previous slide
+</pre>
+      <p>Supports full jQuery chaining, instance methods and settings override.</p>
+      <p>for example:</p>
+<pre class="code">
+$('.slides').dumbCrossFade();
+
+$('a.next').click(function() {
+  $('.slides').dumbCrossFade('next');
+});
+</pre>
+      <div class="ui-widget">
+        <div class="ui-state-highlight padded">
+          <p class="text-center"><span class="ui-icon ui-icon-info float-left"></span> <strong>This information is taken directly from <a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm">DumbCrossFade's homepage</a>.</strong></p>
+        </div>
+      </div>
+    </div></div>
+    <div class="clear-float"></div>      
+  </div><!-- End #core -->
+<!--#include virtual="/include/footer.htm" -->
+</body>
+</html>

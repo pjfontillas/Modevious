@@ -1,0 +1,45 @@
+<!--#include virtual="/include/links.htm" -->
+  <title>Components | Expose</title>
+</head>
+<body>
+<!--#include virtual="/include/navigation.htm" -->
+  <div id="core">
+    <div class="full">
+      <img src="images/expose.jpg" alt="Expose" width="960" height="246" longdesc="http://flowplayer.org/tools/expose.html" />
+      <div class="padded">    
+        <h2>Demo</h2>
+        <p> Start entering text on the fields below and you'll see the exposing effect: </p>
+        <form action="#">
+          <p><input id="username" class="expose"/></p>
+        </form>
+        <h2>The story</h2>
+        <p>Expose is a JavaScript tool that exposes selected HTML elements on the   page so that the surrounding elements will gradually fade out. The   exposing effect was first introduced in the <a href="http://flowplayer.org/tools/overlay.html">overlay</a> tool.   Usually the effect is an integral part of the program and cannot be used   separately. This tool takes the idea of exposing a little further. It   is a separate tool that can be used as a general purpose expose utility.   You can use it for overlays, forms, images, videos or Flash objects. </p>
+        <p>You can use CSS to tweak the look of the semi-transparent surrounding   layer which we refer to as the &quot;mask&quot;. </p>
+        <h2>Demos</h2>
+        <p>We believe that the best way to learn is through demos. The following demos are fully documented and a standalone page is provided to get mask working on your site. It's really important to <strong>study the first demo</strong> "Minimal setup for mask" because it teaches you the basics of using the library.</p>
+        <ul>
+        <li> <a href="http://flowplayer.org/tools/demos/toolbox/expose/index.html">Minimal setup for expose</a> </li>
+        <li> <a href="http://flowplayer.org/tools/demos/toolbox/expose/styling.html">Styling the mask with a background image</a> </li>
+        <li> <a href="http://flowplayer.org/tools/demos/toolbox/expose/form.html">Exposing a form</a> </li>
+        <li> <a href="http://flowplayer.org/tools/demos/toolbox/expose/video.html">Exposing videos with a custom mask</a> </li>
+        </ul>
+        <h3>Expose and Flowplayer demos</h3>
+        <p>These demos show how to use a video player together with the mask tool:</p>
+        <ul>
+        <li> <a href="http://flowplayer.org/demos/events/mouseover.html">Exposing video upon mouseover</a></li>
+        <li> <a href="http://flowplayer.org/demos/tools/overlay2.htm">Exposing videos</a></li>
+        <li> <a href="http://flowplayer.org/demos/tools/fake-fullscreen.html">Custom fullscreen action with overlay and mask</a></li>
+        </ul>        
+        <p>&nbsp;</p>
+        <div class="ui-widget">
+          <div class="ui-state-highlight padded">
+            <p class="text-center"><span class="ui-icon ui-icon-info float-left"></span> <strong>This information is taken directly from <a href="http://flowplayer.org/tools/toolbox/expose.html">Expose's homepage</a>.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear-float"></div>
+  </div><!-- End #core -->
+<!--#include virtual="/include/footer.htm" -->
+</body>
+</html>

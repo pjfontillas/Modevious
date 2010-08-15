@@ -1,0 +1,168 @@
+<!--#include virtual="/include/links.htm" -->
+  <title>Usage</title>
+  <script type="text/javascript" src="js/shadowbox-h.js"></script>
+  <style type="text/css">
+  .no-padding {
+    padding: 0px !important;
+  }
+  </style>
+</head>
+<body>
+<!--#include virtual="/include/navigation.htm" -->
+  <div id="core">
+    <div class="tabs no-padding">
+      <ul class="no-padding">
+        <li><a href="#include">Include</a></li>
+        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#plugins">Plugins</a></li>
+      </ul>      
+      <div id="include">
+        <h2>Download</h2>
+        <p>Have you downloaded Modevious? Do you know what to do with it?</p>
+        <p>If you do, you probably don't need to read this. Otherwise... let's get
+        started.</p>
+        <p>If you haven't already go ahead and 
+        <a href="/download/" 
+          title="Get the latest version!">download Modevious</a>.</p>
+        <p>Upload it to your web server, make sure you drop it in your project's
+        root folder. This is an important step since I haven't yet figured out
+        how to automatically find out where you stored the files. Until then
+        make sure you've put Modevious in your root ('/') folder.</p>        
+      </div>
+      <div id="configuration">
+        <p>To add it to your web site or application use this code:</p>
+        <p class="padded code">
+        &lt;link type="text/css" href="/css/modevious/ui.css" rel="stylesheet" /&gt;<br />
+        &lt;script type="text/javascript" src="/js/modevious.js"&gt;&lt;/script&gt;<br />
+        </p>
+        <h2>Huh? That's it?</h2>
+        <p>Seriously, that's all you have to do to get started.</p>
+      </div>
+      <div id="plugins" class="no-padding">
+        <div class="centerd"><img src="images/shadowbox.jpg" alt="Shadowbox" width="958" height="360" longdesc="http://www.shadowbox-js.com" /></div>    
+        <div class="half">
+          <div class="padded-x text-justify">
+            <p>With both the Prototype JS and jQuery libraries you have a plethora of plugins and widgets available.</p>
+            <p>If it's a Prototype JS plugin just add it to your project and you should be set! If you're using a
+            jQuery plugin remember that we use '$j' instead of '$'! Or you can encapsulate the jQuery code. Refer to
+            the <a href="/components/jquery/" title="jQuery information">jQuery documentation</a> for more information.</p>
+            <hr />
+            <p><a href="http://www.shadowbox-js.com">Shadowbox</a> is an online media viewer application that supports all of the   web's <a href="http://shadowbox-js.com/support.html#media">most popular</a> media publishing formats. Shadowbox is written entirely in JavaScript   and CSS and is <a href="http://shadowbox-js.com/options.html">highly   customizable</a>. Using Shadowbox, website authors can showcase a wide   assortment of media in <a href="http://shadowbox-js.com/support.html#browsers">all major browsers</a> without navigating users away from the linking page.</p>
+            <p>I appended the code</p>
+<pre class="code">
+Shadowbox.init({adapter:'base',players:['img','swf','flv','qt','wmp','iframe','html'],continuous:true});""Shadowbox.init({adapter:'base',players:['img','swf','flv','qt','wmp','iframe','html'],continuous:true});
+</pre> 
+            <p>
+            to the minified 
+            version of Shadowbox.js to have it auto initialize once the script is loaded.
+            I also changed /css/shadowbox.css by making the z-index rule for #sb-container be 10002 instead of 999. That way it overlays both PNotify and Expose. Other changes
+            to the CSS include renaming the url for the navigation buttons to match putting Shadowbox in /js/lib/ and rewriting a rule for #sb-overlay to have it fixed and the size
+            of the viewport only using basic CSS 2.1.
+            </p>
+            <p>Shadowbox was is a wonderful tool, but isn't free for commercial usage. In order to use it for commercial purposes you need
+            to purchase a license. It's not overly expensive, and I think it is worth the price, but for the reason that all tools
+            packaged in Modevious come free I cannot include it. But looking at this page, wouldn't you agree that it's
+            relatively simple adding it as an extra plugin? Just remember to purchase a license should you use it for commercial reasons.</p>
+          </div>
+        </div>    
+        <div class="half">
+          <div class="tabs">
+            <ul>
+              <li><a href="#images">Images</a></li>
+              <li><a href="#flash">Flash</a></li>
+              <li><a href="#movies">Movies</a></li>
+            </ul>
+            <div id="images">
+              <p>The simplest way to use Shadowbox is to display a single piece of   content, with a thumbnail link on the page. When the user clicks on the   thumbnail, Shadowbox will open to display a larger version of the image.</p>
+              <table border="0" cellpadding="0" cellspacing="10">
+                <tbody>
+                <tr>
+                  <td><a rel="shadowbox" href="http://shadowbox-js.com/gallery/tiger.jpg"><img alt="Tiger" src="http://shadowbox-js.com/gallery/tiger-thumb.jpg" /></a></td>
+                  <td><a rel="shadowbox" href="http://shadowbox-js.com/gallery/colours.jpg"><img alt="Colours" src="http://shadowbox-js.com/gallery/colours-thumb.jpg" /></a></td>
+                </tr>
+                </tbody>
+              </table>
+              <h3>Thumb Gallery</h3>
+              <p>Unlike the previous image gallery, this one is triggered   by thumbnail links. It also uses a <a href="http://shadowbox-js.com/options.html#countertype">skip counter</a>, <a href="http://shadowbox-js.com/options.html#animsequence">synchronous</a> animations, and is <a href="http://shadowbox-js.com/options.html#continuous">continuous</a>.</p>
+              <table border="0" cellpadding="0" cellspacing="10">
+              <tbody>
+              <tr>
+                <td><a rel="shadowbox[MustangThumbs];options={counterType:'skip',continuous:true,animSequence:'sync'}" href="http://shadowbox-js.com/gallery/mustang/red.jpg"><img src="http://shadowbox-js.com/gallery/mustang/red-thumb.jpg" alt="Red" id="red-mustang" /></a></td>
+                <td><a rel="shadowbox[MustangThumbs];options={counterType:'skip',continuous:true,animSequence:'sync'}" href="http://shadowbox-js.com/gallery/mustang/blue.jpg" title="Blue   Mustang"><img src="http://shadowbox-js.com/gallery/mustang/blue-thumb.jpg" alt="Blue" id="blue-mustang" /></a></td>
+                <td><a rel="shadowbox[MustangThumbs];options={counterType:'skip',continuous:true,animSequence:'sync',handleOversize:'resize'}" href="http://shadowbox-js.com/gallery/mustang/grey.jpg"><img src="http://shadowbox-js.com/gallery/mustang/grey-thumb.jpg" alt="Grey" id="grey-mustang" /></a></td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div id="flash">
+              <h3>Flash</h3>
+              <p>Shadowbox is able to display Flash through the use of the   Flash <a href="http://shadowbox-js.com/options.html#players">player</a>.   Flash video is also supported.</p>
+              <table border="0" cellpadding="0" cellspacing="10">
+                <tbody>
+                  <tr>
+                    <td><a rel="shadowbox;width=400;height=300" title="Girl Skipping" href="http://shadowbox-js.com/gallery/skip.swf"><img src="http://shadowbox-js.com/gallery/skip-thumb.gif" alt="Skip" /></a></td>
+                    <td><a rel="shadowbox;width=600;height=450" title="Alien" href="http://shadowbox-js.com/gallery/alien.flv"><img src="http://shadowbox-js.com/gallery/alien-thumb.gif" alt="Alien" /></a></td>
+                  </tr>
+                  <tr>
+                    <td>Single SWF</td>
+                    <td>Flash Video</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="movies">
+              <h3>Movies</h3>
+              <p>Shadowbox supports all of the web's most popular movie   formats including QuickTime, Flash video, and Windows Media Player.</p>
+              <table border="0" cellpadding="0" cellspacing="10">
+                <tbody>
+                <tr>
+                  <td><a rel="shadowbox;width=405;height=340;player=swf" title="Ebon Coast" href="http://www.youtube.com/v/lSnWhsmlGec&amp;hl=en&amp;fs=1&amp;rel=0&amp;autoplay=1"><img src="http://shadowbox-js.com/gallery/mckee-thumb.jpg" alt="Mckee" /></a></td>
+                  <td><a rel="shadowbox;width=480;height=204" title="The Dark Knight" href="http://movies.apple.com/movies/wb/the_dark_knight/the_dark_knight-tlr2-h.ref.mov"><img src="http://shadowbox-js.com/gallery/darkknight-thumb.jpg" alt="Dark Knight" /></a></td>
+                  <td><a rel="shadowbox;width=512;height=322;options={flashVars:{id:'v2155043',vid:2021599,autoPlay:1},flashParams:{AllowScriptAccess:'always',allowFullScreen:'true'}}" title="Sweetness" href="http://d.yimg.com/static.video.yahoo.com/yep/YV_YEP.swf?ver=2.2.40"><img src="http://shadowbox-js.com/gallery/sweetness-thumb.jpg" alt="Sweetness" /></a></td>
+                </tr>
+                <tr>
+                  <td>YouTube</td>
+                  <td>Apple Trailer</td>
+                  <td>Yahoo! Video</td>
+                </tr>
+                </tbody>
+              </table>
+              <table border="0" cellpadding="0" cellspacing="10">
+                <tbody>
+                <tr>
+                  <td><a rel="shadowbox;width=400;height=225;options={flashVars:{clip_id:1893986,autoplay:'true'}}" title="The Last Eggtion Hero" href="http://vimeo.com/moogaloop.swf"><img src="http://shadowbox-js.com/gallery/eggtion-thumb.jpg" alt="Eggtion" /></a></td>
+                  <td><a rel="shadowbox;width=405;height=340" title="While My Ukulele Gently Weeps" href="http://video.google.com/googleplayer.swf?docid=1352016870638076087&amp;autoplay=1"><img src="http://shadowbox-js.com/gallery/ukulele-thumb.jpg" alt="Ukulele" /></a></td>
+                </tr>
+                <tr>
+                  <td>Vimeo</td>
+                  <td>Google Video</td>
+                </tr>
+                </tbody>
+              </table>       
+            </div>
+          </div>
+          <div>
+            <p>Shadowbox was written by Michael Jackson (the web developer, not the pop star). Here's what he has to say about himself:</p>
+          </div>
+          <div class="quote padded-x">
+            <p>Hi, I’m Michael Jackson (yes, the <em>real</em> Michael Jackson.)   I’m a California native currently residing in the beautiful state of   Utah. I’ve been designing and developing web sites since I was a kid,   and have worked professionally in the field since 2004. I currently keep   my <a href="http://github.com/mjijackson">code on GitHub</a>, my <a href="http://twitter.com/mjijackson">random thoughts on Twitter</a>, and   my <a href="http://delicious.com/mjijackson">bookmarks on Delicious</a>.</p>
+            <p>I am passionate about clean, modern design and code. When it comes to   the web, I believe that <a href="http://www.webstandards.org/">standards</a> are a good thing and that both businesses and individuals are greatly   benefitted by adherence to them. Instead of striving for backwards   compatibility with antiquated browsers such as the <a href="http://www.positioniseverything.net/explorer.html">infamous   Internet Explorer</a>, I chose to live in the present and target more   modern, standards-compliant web browsers. My basic philosophy is this:   people who use better browsers deserve a better experience.</p>
+            <p> If you would like to get in touch, please feel free to contact me at <a class="email" href="mailto:mjijackson(AT)gmail(DOT)com">mjijackson(AT)gmail(DOT)com</a>.</p>
+          </div>
+        </div>
+        <div class="full">
+          <div class="padded">
+            <div class="ui-widget">
+              <div class="ui-state-highlight padded">
+              <p class="text-center"><span class="ui-icon ui-icon-info float-left"></span> <strong>The above information is taken directly from <a href="http://shadowbox-js.com">Shadowbox's website</a>.</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div class="clear-float"></div>
+    </div>
+<!--#include virtual="/include/footer.htm" -->
+</body>
+</html>
