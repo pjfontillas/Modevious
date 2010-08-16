@@ -144,11 +144,11 @@
   margin: 0px;
   cursor: move;
 }
-#console_close_button {
+#minimize_console_button {
   cursor: pointer;
-  width: 48px;
-  height: 23px;
-  margin: 20px 0px 7px 0px;
+  width: 27px;
+  height: 27px;
+  margin: 15px 0px 8px 0px;
   float: right;
-  background: url(modevious/images/close_console.gif) no-repeat;
+  background: url(modevious/images/minimize.png) no-repeat;
 }

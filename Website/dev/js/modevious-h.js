@@ -51,7 +51,7 @@ $c.onLoad(function () {
   $j("body").append([
   "<div id=\"console\">",
     "<div id=\"console_top\">",
-      "<p id=\"console_close_button\"></p>",
+      "<div id=\"minimize_console_button\"></div>",
     "</div>",
     "<div id=\"console_middle\">",
       "<div id=\"console_text\"></div>",
@@ -60,7 +60,7 @@ $c.onLoad(function () {
   "</div>"
   ].join(''));
   // add close behavior to console close button
-  $j("#console_close_button").click($c.hideLog);
+  $j("#minimize_console_button").click($c.hideLog);
   // create listener for code to open console
   // UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT
   //Event.observe(document, "keypress", function(event) {$c.showLog(event);});
