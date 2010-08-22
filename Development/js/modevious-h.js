@@ -18,10 +18,10 @@ $c.exclude("/js/modevious-h.js");
 
 // jQuery User interface
 $c.include("/css/modevious/ui.css");
-$c.include("/js/lib/jquery-ui-1.8.2.min.js");
+$c.include("/js/lib/jquery-ui-1.8.4.min.js");
 
-// Expose jQuery plugin
-$c.include("/js/lib/tools.expose-1.0.5.js");
+// jQuery Tools
+$c.include("/js/lib/jquery.tools.min.js");
 
 // autoMouseOver jQuery plugin
 $c.include("/js/lib/jquery.autoMouseOver.js");
