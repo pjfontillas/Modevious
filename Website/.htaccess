@@ -1,4 +1,0 @@
-AuthName "Modevious Beta"
-AuthUserFile "/home/godefcor/.htpasswds/public_html/www.modevious.com/passwd"
-
-Options +Indexes
