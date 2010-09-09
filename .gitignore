@@ -35,6 +35,9 @@ ehthumbs.db
 Icon
 Thumbs.db
 desktop.ini
+.Trash*
+.Spotlight*
+.fseventsd
 
 # Custom files #
 ################
