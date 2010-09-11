@@ -1,3 +1,11 @@
+@charset "UTF-8";
+#page_protect {
+  z-index: 100000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #F00;
+}
 html {
 	overflow: scroll;
 }
@@ -38,6 +46,9 @@ a:visited {
 }
 #core p a:hover {
 	border-bottom: 1px solid !important;
+}
+p a:visited:before {
+   content: "\2713";
 }
 #navigation {
 	width: 100%;
@@ -124,4 +135,7 @@ button {
 }
 .tabs div p a {
 	color: #F60 !important;
+}
+#page_protect {
+  display: none;
 }

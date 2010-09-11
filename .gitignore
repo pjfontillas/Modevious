@@ -42,3 +42,5 @@ desktop.ini
 # Custom files #
 ################
 .ftpquota
+.htaccess
+cgi-bin
