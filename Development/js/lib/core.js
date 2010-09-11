@@ -18,12 +18,24 @@
 *     var $$; // from Prototype
 *     var jQuery; // from jQuery
 */
-try {
-  if (modeviousConfig) {
-  } // do nothing
-} catch (err) {
-  // if config not found, provide default one
-  document.modeviousConfig = {
+/* Example config override for updates and email settings
+$config = {
+  warnings: false,
+  at: "xATx",
+  dot: "xDOTx",
+  update: true,
+  soundManager: {
+    url: "/swf",
+    flashVersion: 9
+  }
+};
+//*/
+var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
+var $c = (function () {
+  // private methods and variables
+  var version = 110
+  var versionString = "1.1.0"
+  var config = {
     warnings: false,
     at: "(AT)",
     dot: "(DOT)",
@@ -32,18 +44,28 @@ try {
       url: "/swf",
       flashVersion: 9
     }
-  };
-}
-var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
-var $c = (function () {
-  // private methods and variables (none at the moment)
+  }
+  var loadedScripts = []
+  var log = []
+  var konamiCounter = 0
   return { // public methods and variables
-    version: 110,
-    versionString: "1.1.0",
-    config: document.modeviousConfig,
-    loadedScripts: [],
-    log: [],
-    konamiCounter: 0,
+    version: version,
+    versionString: versionString,
+    config: config,
+    loadedScripts: loadedScripts,
+    log: log,
+    konamiCounter: konamiCounter,
+    /**
+    * init ()
+    *   Checks to see if $config is set. May be used later on to initialize
+    *   other components but for now only does configuration.
+    */
+    init: function () {
+      try {
+        $c.config = $config;
+      } catch (e) {        
+      } // do nothing
+    },
     /**
     * changePage (String, Element)
     *   Updates <objectID>'s innerHTML with content from <pageName>.
@@ -535,3 +557,4 @@ var $c = (function () {
     }
   };
 }());
+$c.init(); // sets config
