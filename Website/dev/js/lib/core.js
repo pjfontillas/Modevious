@@ -18,41 +18,11 @@
 *     var $$; // from Prototype
 *     var jQuery; // from jQuery
 */
-/*
-try {
-  if (modeviousConfig) {
-  } // do nothing
-} catch (err) {
-  // if config not found, provide default one
-  document.modeviousConfig = {
-    warnings: false,
-    at: "(AT)",
-    dot: "(DOT)",
-    update: false,
-    soundManager: {
-      url: "/swf",
-      flashVersion: 9
-    }
-  };
-}
-//*/
-/*
-$config = {
-  warnings: false,
-  at: "xATx",
-  dot: "xDOTx",
-  update: true,
-  soundManager: {
-    url: "/swf",
-    flashVersion: 9
-  }
-};
-//*/
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
   // private methods and variables
   var version = 110
-  var versionString = "1.1.0"
+  var versionString = "v1.1.0"
   var config = {
     warnings: false,
     at: "(AT)",
@@ -66,6 +36,10 @@ var $c = (function () {
   var loadedScripts = []
   var log = []
   var konamiCounter = 0
+  var updateName = []
+  var updateVersion = []
+  var updateURL = []
+  var updateCounter = 0
   return { // public methods and variables
     version: version,
     versionString: versionString,
@@ -73,6 +47,11 @@ var $c = (function () {
     loadedScripts: loadedScripts,
     log: log,
     konamiCounter: konamiCounter,
+    updateName: updateName,
+    updateVersion: updateVersion,
+    updateURL: updateURL,
+    updateCounter: updateCounter,
+    updateFound: false,
     /**
     * init ()
     *   Checks to see if $config is set. May be used later on to initialize
@@ -83,13 +62,15 @@ var $c = (function () {
         $c.config = $config;
       } catch (e) {        
       } // do nothing
+      return true;
     },
     /**
     * changePage (String, Element)
     *   Updates <objectID>'s innerHTML with content from <pageName>.
     */
     changePage: function (pageName, objectID) {
-      $c.fetchData(pageName, null, objectID); 
+      $c.fetchData(pageName, null, objectID);
+      return true;
     },
     /**
     * createCookie (String, String, Int)
@@ -105,6 +86,7 @@ var $c = (function () {
         expires = '';
       }
       document.cookie = [name, '=', value, expires, "; path=/"].join('');
+      return true;
     },
     /**
     * readCookie (String)
@@ -148,9 +130,11 @@ var $c = (function () {
           func();
         };
       }
+      return true;
     },
     onLoad: function (func) {
       $c.addLoadEvent(func);
+      return true;
     },
     /**
     * getUrlVariable (String)
@@ -235,6 +219,7 @@ var $c = (function () {
           alert(["Unsupported filetype: .", ext].join(''));    
         }
       }
+      return true;
     },
     /**
     * exclude (String)
@@ -248,9 +233,11 @@ var $c = (function () {
       // add to array without loading the script, used for scripts that are
       // already loaded without the use of Core's include().
       $c.loadedScripts[$c.loadedScripts.length] = scriptID;
+      return true;
     },
     exclude: function (scriptID) {
       $c.add2Lib(scriptID);
+      return true;
     },
     /**
     * showEmail ()
@@ -266,6 +253,7 @@ var $c = (function () {
         url = url.replace("mailto:", '');
         a.update(url);       
       }.bind(this));
+      return true;
     },
     /**
     * getTime ()
@@ -385,7 +373,8 @@ var $c = (function () {
             "left": [newLeft, "px"].join('')
           });
         }
-      });	
+      });
+      return true;
     },
     /**
     * vAlignThis (element)
@@ -434,6 +423,7 @@ var $c = (function () {
           "top": [newTop, "px"].join('')
         });
       }
+      return true;
     },
     /**
     * setStyleSheet (title)
@@ -450,7 +440,8 @@ var $c = (function () {
           }
         }
       }
-      $c.createCookie("style", title, 365);   
+      $c.createCookie("style", title, 365);
+      return true;
     },
     /**
     * getActiveStyleSheet ()
@@ -485,6 +476,7 @@ var $c = (function () {
         $c.log[$c.log.length - 1],
         "</p>"
       ].join(''));
+      return true;
     },
     /**
     * showLog (event)
@@ -550,10 +542,12 @@ var $c = (function () {
           } else {
           } // do nothing, we're always resetting the counter
           $c.konamiCounter = 0;
+          return true;
           break;
         default:
           $c.konamiCounter = 0;
       }
+      return false;
     },
     /**
     * hideLog ()
@@ -563,6 +557,7 @@ var $c = (function () {
       $j("#console").animate({
         top: "-500"
       });
+      return true;
     },
     /**
     * getFlashMovie (movieName)
@@ -572,7 +567,98 @@ var $c = (function () {
     getFlashMovie: function (movieName) {   
       var isIE = navigator.appName.indexOf("Microsoft") != -1;
       return (isIE) ? window[movieName] : document[movieName];  
+    },
+    /**
+    * update (name, version, url)
+    *   Adds a record in the updateArray for the component that called this fn.
+    *   Only runs if config.update is set to true.
+    */
+    update: function (name, version, url) {
+      $c.updateName[updateName.length] = name;
+      $c.updateVersion[updateVersion.length] = version;
+      $c.updateURL[updateURL.length] = url;
+    },
+    /**
+    * fetchUpdates()
+    *   Actually fetches updates using Ajax.Request, parsing responses as JSON
+    *   data and creating appropriate messages. This is a recursive function
+    *   that continually calls itself until it returns true, which means that
+    *   all elements in the updateArray have been checked.
+    */
+    fetchUpdates: function () {
+      var data, updateType;    
+      if ($c.config.update) {
+        $j("body").css("cursor", "progress"); // show that page is busy
+        $c.trace([
+          "Fetching update from: ",
+          $c.updateURL[updateCounter]
+        ].join(''));
+        var url = [
+          $c.updateURL[updateCounter],
+          "?callback=?"
+        ].join('');
+        $j.getJSON(url, function (data) { 
+          if (parseInt(data.version) > $c.updateVersion[$c.updateCounter]) {
+            if (data.type == "Critical") {
+              updateType = "ui-state-error";
+            } else {
+              updateType = "ui-state-highlight";
+            }
+            $j("#update_manager").append([  
+            "<div class=\"update ",
+            updateType,
+            "\">",
+            "<p><strong>",
+            $c.updateName[updateCounter], // component name
+            "</strong> | <small>",
+            data.versionString,
+            "</small></p>",
+            "<p>",
+            data.description,
+            "</p>",
+            "<p><a href=\"",
+            data.url,
+            "\">Download this update</a>",
+            " | <a href=\"",
+            data.changelog,
+            "\">View the changelog</a></p>",
+            "</div>"
+            ].join(''));
+            $c.updateFound = true;
+            $c.trace([
+              "Found an update for: ",
+              $c.updateName[updateCounter]
+            ].join(''));
+          }
+          $c.updateCounter++;
+          if ($c.updateCounter != $c.updateURL.length) { // not done yet
+            return $c.fetchUpdates(); // recursively call this fn
+          } else {
+            if ($c.updateFound) {
+              $j("#progress").hide("blind");
+            } else {
+              $j("#progress").html("Everything is up-to-date!");
+            }
+            $j("body").css("cursor", "auto"); // change cursor back
+            return true;
+          }
+        });
+      }
+      return false;
     }
   };
 }());
 $c.init(); // sets config
+/**
+* Update Mechanism
+*   I am going to encourage the use of this system for other plugins and
+*   libraries. However, I understand not everbody will want to do this
+*   and so provide this technique for attempting to update if Modevious's
+*   Update System is in place; if Modevious is not being used this will
+*   fail silently and cause no errors. So basically, if the system is there it
+*   will use it, otherwise nothing happens.
+*/
+try { // to update Modevious
+  $c.update("Modevious", 110, "http://modevious.com/js/update.php");
+} catch (e) {
+} // do nothing

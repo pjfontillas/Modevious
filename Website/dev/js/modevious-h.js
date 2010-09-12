@@ -44,6 +44,9 @@ $c.include("/js/lib/sha1-min.js");
 $c.include("/js/lib/sha256-min.js");
 $c.include("/js/lib/sha512-min.js");
 
+// XML to JSON
+$c.include("/js/lib/jqXMLUtils.js");
+
 // define run-time event functions
 $c.onLoad(function () {
 
