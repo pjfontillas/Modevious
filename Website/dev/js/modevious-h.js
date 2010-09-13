@@ -6,46 +6,43 @@
 */
 
 // Other libraries
-$c.exclude("/js/lib/prototype.js");
-$c.exclude("/js/lib/jquery-1.4.2.min.js");
+$c.exclude("/js/src/prototype.min.js");
+$c.exclude("/js/src/jquery-1.4.2.min.js");
 
 // Core libary
-$c.include("/css/core.css");
-$c.exclude("/js/lib/core.js");
+$c.include("/css/modevious/core.min.css");
+$c.exclude("/js/src/core.js");
 
 // Exclude this configuration file
 $c.exclude("/js/modevious-h.js");
 
 // jQuery User interface
-$c.include("/css/modevious/ui.css");
-$c.include("/js/lib/jquery-ui-1.8.2.min.js");
+$c.include("/css/modevious/jquery.ui.custom.css");
+$c.include("/js/src/jquery-ui-1.8.4.min.js");
 
-// Expose jQuery plugin
-$c.include("/js/lib/tools.expose-1.0.5.js");
+// jQuery Tools
+$c.include("/js/src/jquery.tools.min.js");
 
 // autoMouseOver jQuery plugin
-$c.include("/js/lib/jquery.autoMouseOver.js");
+$c.include("/js/src/jquery.autoMouseOver.min.js");
 
 // Pines Notify jQuery plugin
-$c.include("/css/jquery.pnotify.default.css");
-$c.include("/js/lib/jquery.pnotify.min.js");
+$c.include("/css/modevious/jquery.pnotify.min.css");
+$c.include("/js/src/jquery.pnotify.min.js");
 
 // dumbCrossfade jQuery plugin
-$c.include("/css/dumbcrossfade.css");
-$c.include("/js/lib/jquery.dumbcrossfade-2.0.min.js");
+$c.include("/css/modevious/dumbcrossfade.min.css");
+$c.include("/js/src/jquery.dumbcrossfade-2.0.min.js");
 
 // Sound Manager 2 component
-$c.include("/js/lib/soundmanager2-nodebug-jsmin.js");
+$c.include("/js/src/soundmanager2-nodebug-jsmin.js");
 
 // Encryption components
-$c.include("/js/lib/md5-min.js");
-$c.include("/js/lib/ripemd160-min.js");
-$c.include("/js/lib/sha1-min.js");
-$c.include("/js/lib/sha256-min.js");
-$c.include("/js/lib/sha512-min.js");
-
-// XML to JSON
-$c.include("/js/lib/jqXMLUtils.js");
+$c.include("/js/src/md5-min.js");
+$c.include("/js/src/ripemd160-min.js");
+$c.include("/js/src/sha1-min.js");
+$c.include("/js/src/sha256-min.js");
+$c.include("/js/src/sha512-min.js");
 
 // define run-time event functions
 $c.onLoad(function () {

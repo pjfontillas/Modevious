@@ -8,6 +8,7 @@
     border: 1px solid #AAA;
     background: url(/css/dumbcrossfade/working.gif) #FFF center no-repeat;
     clear: both;
+    overflow: hidden;
   }
   </style>
 </head>

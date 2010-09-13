@@ -15,6 +15,9 @@
     .splash-item p a:hover {
       border-bottom: 1px solid;
     }
+    #what {
+      overflow: hidden;
+    }
     #splash-menu {
       width: 956px;
       margin: 0px auto;
@@ -27,6 +30,7 @@
     #splash-menu a {
       cursor: pointer !important;
       width: 100%;
+      font-size: 14px;
     }
     #computing {
       background: url(images/clouds.jpg) !important;
@@ -137,19 +141,5 @@
     <div class="clear-float"></div>
   </div><!-- End #core -->
 <!--#include virtual="/include/footer.htm" -->
-<script type="text/javascript">
-$c.onLoad(function(){
-  $j("#splash-tabs").tabs( "option", "event", "mouseover" );
-  $j.pnotify({
-    pnotify_title: "Warning", 
-    pnotify_text: [
-      "This information is currently outdated and is being ", 
-      "updated while I make the move to GitHub and release v.1.0.9. ",
-      "v.1.1.0 will be a big step with completely enhanced code."].join(''), 
-    pnotify_type: "error",
-    pnotify_hide: false
-    });
-});
-</script>
 </body>
 </html>
