@@ -1,0 +1,19 @@
+<!--#include virtual="/include/links.htm" -->
+	<title>Components | MUpS</title>
+</head>
+<body>
+<!--#include virtual="/include/navigation.htm" -->
+	<div id="core">
+		<div class="full">
+			<img src="images/prototype.jpg" alt="Prototype JS" width="960" height="320" />				
+					<div class="padded">
+						<h3>Modevious Update System (MUpS)</h3>
+						<p>MUpS is an Ajax-based tool that bypasses the Same Origin Policy and allows plugin authors to let their users know that an update is available by using a server-side script that feeds JSON data to this client-based application.</p>
+						<p>Each plugin simply uses a normalized method of calling MUpS and giving it their update information. If a plugin doesn't use the system, no problem; we just don't check for updates for that certain plugin. If a plugin is written so that it supports the use of the system, but is used in a project where Modevious isn't included we still have no problem. The normalized method uses a technique where should a check for Modevious fail the error is simply caught and once again we simply don't check for updates (or in this case even register our update data)!</p>
+					</div>
+		</div>	 
+		<div class="clear-float"></div>						
+	</div><!-- End #core -->
+<!--#include virtual="/include/footer.htm" -->
+</body>
+</html>
