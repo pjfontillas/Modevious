@@ -1,106 +1,134 @@
 <!--#include virtual="/include/links.htm" -->
-  <title>Modevious Components</title>
-  <style type="text/css">
-  #widgets a img { margin-right: 20px }
-  #widgets div { margin-bottom: 20px }
-  #side_panel { 
-    border-right: 1px solid #aaa; 
-    background: url(images/components_bg.jpg) repeat-x #0C5C92;
-    color: #EEE;
-  }
-  </style>
+	<title>Modevious Components</title>
+	<style type="text/css">
+	#widgets a img { margin-right: 20px }
+	#widgets div { margin-bottom: 20px }
+	#side_panel { 
+		border-right: 1px solid #aaa; 
+		background: url(images/components_bg.jpg) repeat-x #0C5C92;
+		color: #EEE;
+	}
+	#list {
+		width: 960px;
+		margin: 20px auto;
+	}
+	.component {
+		width: 960px;
+	}
+	.icon, .name, .description {
+		float: left;
+		width: 240px;
+		height: 150px;
+	}
+	.description {
+		width: 480px;
+	}
+	</style>
 </head>
 <body>
 <!--#include virtual="/include/navigation.htm" -->
-  <div id="core">
-    <div class="fourth"><div id="side_panel" class="padded">
-      <p>Modevious is comprised of multiple
-      JavaScript libraries and widgets created
-      using those libraries.</p>
-      <p>However, Modevious is also a mindset: 
-      a set of logic, tips, and techniques for
-      creating web sites and applications.</p>
-      <p>Modevious is not a database; it helps in
-      interacting with one. It is also
-      not a Content Management System (CMS)
-      but can be easily integrated into many
-      of them.</p>
-      <p>Rather, Modevious's goal is to help
-      you rapidly create prototypes, designs,
-      widgets, and applications for use
-      on the web.</p>
-      <p>I fully support the idea
-      that in order to learn how to write
-      better code and create cleaner designs
-      one must tinker with and experience
-      things first-hand.</p>
-      <p>I also
-      believe that re-inventing the wheel
-      is usually a fruitless endeavor. Pulling
-      together tools that are known to work
-      well with each other allows for
-      experimentation and thinking "outside
-      the box." If you do want to revamp
-      existing tools go ahead and join the
-      Prototype, jQuery, and other numerous
-      teams who have decided to do the same.
-      Just please share what you have done with
-      the rest of us, and we'll be glad to do
-      the same.</p>
-      <p>Modevious was created with web
-      developers and designers in mind, and 
-      will hopefully create a community that
-      will help each other grow and enjoy
-      what they do.</p>
-    </div></div>
-    <div class="three-fourths">
-      <h1 class="padded">Libraries</h1>
-      <div class="third">
-        <a href="core/" title="Core Library">
-        <img src="images/Modevious.png" width="240" height="150" alt="Core Library" />
-        </a>
-      </div>
-      <div class="third">
-        <a href="prototype/" title="Prototype Library">
-        <img src="images/Prototype.png" width="200" height="131" alt="Prototype Library" />
-        </a>
-      </div>
-      <div class="third">
-        <a href="jquery/" title="jQuery Library">
-        <img src="images/jQuery.png" width="230" height="100" alt="jQuery Library" />
-        </a>
-      </div>
-      <div id="widgets" class="padded clear-float">
-        <h1>Widgets</h1>
-        <div class="half">
-          <a href="automouseover/" title="AutoMouseOver">
-          <img src="images/no-icon.png" width="100" height="100" alt="AutoMouseOver" />
-          AutoMouseOver</a>
-        </div>
-        <div class="half">
-          <a href="dumbcrossfade/" title="DumbCrossFade">
-          <img src="images/no-icon.png" width="100" height="100" alt="DumbCrossFade" />
-          DumbCrossFade</a>
-        </div>
-        <div class="half">
-          <a href="expose/" title="Expose">
-          <img src="images/no-icon.png" width="100" height="100" alt="Expose" />
-          Expose</a>
-        </div>
-        <div class="half">
-          <a href="jqueryui/" title="jQuery User Interface">
-          <img src="images/user-interface.png" width="100" height="100" alt="jQuery User Interface" />
-          jQuery User Interface</a>
-        </div>
-        <div class="half">
-          <a href="pnotify/" title="PNotify">
-          <img src="images/pnotify.png" width="100" height="100" alt="PNotify" />
-          PNotify</a>
-        </div>
-      </div>
-    </div>
-    <div class="clear-float"></div>            
-  </div><!-- End #core -->
+	<div id="core" class="hidden">
+		<div class="fourth"><div id="side_panel" class="padded">
+			<p>Modevious is comprised of multiple
+			JavaScript libraries and widgets created
+			using those libraries.</p>
+			<p>However, Modevious is also a mindset: 
+			a set of logic, tips, and techniques for
+			creating web sites and applications.</p>
+			<p>Modevious is not a database; it helps in
+			interacting with one. It is also
+			not a Content Management System (CMS)
+			but can be easily integrated into many
+			of them.</p>
+			<p>Rather, Modevious's goal is to help
+			you rapidly create prototypes, designs,
+			widgets, and applications for use
+			on the web.</p>
+			<p>I fully support the idea
+			that in order to learn how to write
+			better code and create cleaner designs
+			one must tinker with and experience
+			things first-hand.</p>
+			<p>I also
+			believe that re-inventing the wheel
+			is usually a fruitless endeavor. Pulling
+			together tools that are known to work
+			well with each other allows for
+			experimentation and thinking "outside
+			the box." If you do want to revamp
+			existing tools go ahead and join the
+			Prototype, jQuery, and other numerous
+			teams who have decided to do the same.
+			Just please share what you have done with
+			the rest of us, and we'll be glad to do
+			the same.</p>
+			<p>Modevious was created with web
+			developers and designers in mind, and 
+			will hopefully create a community that
+			will help each other grow and enjoy
+			what they do.</p>
+		</div></div>
+		<div class="three-fourths">
+			<h1 class="padded">Libraries</h1>
+			<div class="third">
+				<a href="core/" title="Core Library">
+				<img src="images/Modevious.png" width="240" height="150" alt="Core Library" />
+				</a>
+			</div>
+			<div class="third">
+				<a href="prototype/" title="Prototype Library">
+				<img src="images/Prototype.png" width="200" height="131" alt="Prototype Library" />
+				</a>
+			</div>
+			<div class="third">
+				<a href="jquery/" title="jQuery Library">
+				<img src="images/jQuery.png" width="230" height="100" alt="jQuery Library" />
+				</a>
+			</div>
+			<div id="widgets" class="padded clear-float">
+				<h1>Widgets</h1>
+				<div class="half">
+					<a href="automouseover/" title="AutoMouseOver">
+					<img src="images/no-icon.png" width="100" height="100" alt="AutoMouseOver" />
+					AutoMouseOver</a>
+				</div>
+				<div class="half">
+					<a href="dumbcrossfade/" title="DumbCrossFade">
+					<img src="images/no-icon.png" width="100" height="100" alt="DumbCrossFade" />
+					DumbCrossFade</a>
+				</div>
+				<div class="half">
+					<a href="expose/" title="Expose">
+					<img src="images/no-icon.png" width="100" height="100" alt="Expose" />
+					Expose</a>
+				</div>
+				<div class="half">
+					<a href="jqueryui/" title="jQuery User Interface">
+					<img src="images/user-interface.png" width="100" height="100" alt="jQuery User Interface" />
+					jQuery User Interface</a>
+				</div>
+				<div class="half">
+					<a href="pnotify/" title="PNotify">
+					<img src="images/pnotify.png" width="100" height="100" alt="PNotify" />
+					PNotify</a>
+				</div>
+			</div>
+		</div>
+		<div class="clear-float"></div>						
+	</div><!-- End #core -->
+	<div id="list">
+		<div class="component">
+			<div class="icon">
+				<img src="images/Modevious.png" width="240" height="150" alt="Core Library" />
+			</div>
+			<div class="name">
+				<p>Core</p>
+			</div>
+			<div class="description">
+				<p>Library built for Modevious</p>
+			</div>
+		</div>
+	</div>
 <!--#include virtual="/include/footer.htm" -->
 </body>
 </html>

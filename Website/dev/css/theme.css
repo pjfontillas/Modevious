@@ -1,134 +1,148 @@
 html {
-	overflow: scroll;
+  overflow: scroll;
 }
 body {
-	padding: 0px 0px 0px 0px;
-	margin: 0px;
-	font-family: georgia;
-	background: url(theme/at_bg.jpg) top center #630;
-	font-size: 14px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px;
+  font-family: Myriad;
+  background: #FFF;
+  color: #000;
+  font-size: 12px;
 }
 img {
-	border: 0px;
+  border: 0px;
 }
 a {
-	text-decoration: none;
-	outline: none;
+  outline: none;
+  color: #69F;
 }
 a:visited {
-	color: #F60;
+  color: #69F;
 }
 #core {
-	width: 960px;
-	height: auto;
-	overflow: visible;
-	margin: 20px auto;
-	background: url(theme/light-grid.jpg) repeat;
-	border: 1px solid #AAA;
-}
-#core p a {
-	color: #F60;
-	border-bottom: 1px dashed !important;
-}
-#core p a:visited {
-	color: #00F;
+  width: 960px;
+  height: auto;
+  overflow: visible;
+  margin: 20px auto;
+  background: url(theme/light-grid.jpg) repeat;
+  border: 1px solid #AAA;
 }
 #core li a {
-	border-bottom: 0px !important;
+  border-bottom: 0px !important;
 }
-#core p a:hover {
-	border-bottom: 1px solid !important;
+#core p a:visited:before, #core li a:visited:before {
+  content:  "\2713 ";
 }
 #navigation {
-	width: 100%;
+  width: 100%;
+  padding: 20px 0px 0px 0px;
 }
 #menu {
-	position: relative;
-	width: 960px;
-	height: 34px;
-	margin: 0px auto;
-	overflow: visible;
-	padding: 0px;
-	position: relative;
-	z-index: 1000;
-	color: #EEE;
-	font-family: garamond;
-	font-weight: bold;
-	border: 1px solid #AAA;
-	border-top: 0px;
-	background: url(theme/header-bg.jpg) repeat-x #300;
+  position: relative;
+  width: 960px;
+  height: 34px;
+  margin: 0px auto;
+  overflow: visible;
+  padding: 0px;
+  position: relative;
+  z-index: 1000;
+  color: #EEE;
+  font-weight: bold;
+  border: 1px solid #AAA;
+  background: url(theme/header-bg.jpg) repeat-x #300;
+}
+#home-text {
+  display: none;
+}
+#home-icon {
+  position: relative;
+  height: 34px;
+  overflow: hidden;
+  float: left;
+  margin: 0px;
+  border-right: 1px solid transparent;
+}
+#home-icon:hover {
+  border-right: 1px solid #AAA;
+  /*overflow: visible;*/
 }
 .menu-item {
-	position: relative;
-	height: 30px;
-	overflow: hidden;
-	float: left;
-	margin: 0px;
-	font-size: 21px;	
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+  float: left;
+  margin: 1px 0px;
+  border: 1px solid transparent;
+  font-size: 21px;  
 }
 .menu-item:hover {
-	overflow: visible;
+  border: 1px solid #AAA;
+  /*overflow: visible;*/
 }
 #menu a {
-	position: relative;
-	display: block;
-	color: #EEE;
-	text-decoration: none;
-	padding: 5px 15px;
+  position: relative;
+  display: block;
+  color: #EEE;
+  text-decoration: none;
+  padding: 5px 15px;
+}
+#menu a:visited {
+  text-decoration: none;
 }
 #menu a:hover {
-	color: #F60;
+  background: #69F;
+  color: #FFF;
+}
+#menu a:active {
+  background: #00F;
+  color: #FFF;
 }
 .sub-menu {
-	border: 1px solid #AAA;
-	border-top: 1px solid #300;
-	background: url(theme/brown-overlay.png);
-	font-size: 12px;
+  border: 1px solid #AAA;
+  border-top: 1px solid #300;
+  background: url(theme/overlay.png);
+  font-size: 12px;
 }
 .sub-menu ul {
-	margin: 0px;
-	padding: 0px;
-	list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
 }
 #footer {
-	width: 100%;
-	clear: both;
-}
-#footer a {
-	color: #F60;
-}
-#footer a:hover {
-	text-decoration: underline;
+  width: 100%;
+  clear: both;
 }
 #aligned-footer {
-	width: 920px;
-	height: 100px;
-	overflow: visible;
-	padding: 20px;
-	margin: 0px auto;
-	color: #EEE;	
-	text-align: center;
+  width: 920px;
+  height: 100px;
+  overflow: visible;
+  padding: 20px;
+  margin: 0px auto;
+  text-align: center;
+}
+#aligned-footer p a, #aligned-footer p a:visited {
+  text-decoration: none;
+}
+#aligned-footer p a:hover {
+	text-decoration: underline;
 }
 .quote {
-	border: 1px solid #AAA;
-	padding: 5px;
-	margin: 5px;
-	background: url(theme/blockquote.png) #FFF no-repeat;
+  border: 1px solid #AAA;
+  padding: 5px;
+  margin: 5px;
+  background: url(theme/blockquote.png) #FFF no-repeat;
 }
 button {
-	outline: none !important;
+  outline: none !important;
 }
-.ui-state-error a {
-	color: #FFF !important;
-	text-decoration: none;
-	border-bottom: 1px dotted;
+#contact_form {
+  background: url(theme/contact_card.png);
+  width: 760px;
+  height: 425px;
+  padding: 100px 100px 75px 100px;
+  margin: 0px auto;
 }
-.tabs div p a {
-	color: #F60 !important;
-}
-.ui-pnotify-text  a {
-	border-bottom: 1px dashed !important;
-}
-.ui-pnotify-text a:hover {
-	border-bottom: 1px solid !important;
+#address {
+  padding: 125px 0px;
+  text-align: right;
 }
