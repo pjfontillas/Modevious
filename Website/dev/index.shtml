@@ -47,7 +47,7 @@
 				<div class="half"><div class="padded">
 					<h2>What is cloud computing?</h2>
 					<p><a href="http://en.wikipedia.org/wiki/Cloud_computing" title="View Wikipedia article">According to Wikipedia</a>:</p>
-					<p class="padded quote">Cloud computing is Internet-based computing, whereby shared resources, software, and information are provided to computers and other devices on demand, like the electricity grid.<p>
+					<p class="padded quote">Cloud computing is Internet-based computing, whereby shared resources, software, and information are provided to computers and other devices on demand, like the electricity grid.</p>
 				</div></div>
 				<div class="half"><div class="padded">
 					<h2>How does that affect me?</h2>
@@ -91,9 +91,6 @@
 				<li class="ui-corner-all"><a href="#theming">About Theming</a></li>
 			</ul>			
 		</div> 
-		<div class="half">
-
-		</div>
 		<div class="clear-float"></div>
 	</div><!-- End #core -->
 <!--#include virtual="/include/footer.htm" -->
