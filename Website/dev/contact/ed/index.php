@@ -3,7 +3,7 @@
 </head>
 <body>
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/include/navigation.htm'); ?>
-  <div id="core">
+  <div id="core" class="ui-corner-all">
     <div class="full">
       <p class="padded">
 <?php

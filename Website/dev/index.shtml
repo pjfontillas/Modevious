@@ -39,9 +39,9 @@
 <body>
 <!--#include virtual="/include/navigation.htm" -->
 	<div id="core" class="ui-corner-all">
-		<div id="splash-tabs" class="tabs no-padding">
+		<div id="splash-tabs" class="no-padding">
 		<div id="what" class="splash-item no-padding">
-			<a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="958" height="316" longdesc="http://www.modevious.com" /></a>
+			<a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="958" height="320" longdesc="http://www.modevious.com" /></a>
 			</div>
 			<div id="computing" class="splash-item padded-x">
 				<div class="half"><div class="padded">
@@ -94,5 +94,14 @@
 		<div class="clear-float"></div>
 	</div><!-- End #core -->
 <!--#include virtual="/include/footer.htm" -->
+<script type="text/javascript">
+$c.onLoad(function () {
+	$j("#splash-tabs").tabs({ 
+		fx: {
+			opacity: "toggle"
+		}
+	});
+});
+</script>
 </body>
 </html>
