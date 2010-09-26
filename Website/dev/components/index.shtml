@@ -28,6 +28,9 @@
 	.name h1 a {
 		text-decoration: none;
 	}
+	.name h1 a:hover {
+		text-decoration: underline;
+	}
 	.description {
 		width: 680px;
 		padding: 0px 0px 0px 40px;
@@ -40,7 +43,7 @@
 	<div id="list">
 		<div class="component">
 			<div class="icon">
-				<a href="core/" title="The Core library"><img class="ui-corner-all" src="images/modevious.png" width="150" height="150" alt="Core Library" /></a>
+				<a href="core/" title="The Core library"><img class="ui-corner-all" src="images/modevious.png" width="150" height="150" alt="Core Library image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="core/" title="The Core library">Core</a></h1>
@@ -53,20 +56,7 @@
 		</div><!-- END of Core component -->
 		<div class="component">
 			<div class="icon ui-corner-all">
-				<a href="prototype/" title="The Prototype JS library"><img class="ui-corner-all" src="images/Prototype.png" width="200" height="131" alt="Prototype JS" /></a>
-			</div>
-			<div class="name">
-				<h1><a href="prototype/" title="The Prototype JS library">Prototype</a></h1>
-			</div>
-			<div class="description">
-				<p>Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.</p>
-				<p>Featuring a unique, easy-to-use toolkit for class-driven development and the nicest Ajax library around, Prototype is quickly becoming the codebase of choice for web application developers everywhere.</p>
-			</div>
-			<div class="clear-float"></div>
-		</div><!-- END of Prototype JS component -->
-		<div class="component">
-			<div class="icon ui-corner-all">
-				<a href="jquery/" title="The jQuery library"><img class="ui-corner-all" src="images/jQuery.png" width="230" height="100" alt="jQuery" /></a>
+				<a href="jquery/" title="The jQuery library"><img class="ui-corner-all" src="images/jQuery.png" width="230" height="100" alt="jQuery image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="jquery/" title="The jQuery library">jQuery</a></h1>
@@ -77,6 +67,32 @@
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of jQuery component -->
+		<div class="component">
+			<div class="icon ui-corner-all">
+				<a href="jquery/" title="The easy way to stay updated"><img class="ui-corner-all" src="images/no-icon.png" width="100" height="100" alt="MUpS icon" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="mups/" title="The easy way to stay updated">MUpS</a></h1>
+			</div>
+			<div class="description">
+				<p>The Modevious Update System (MUpS) is an AJAX-based system designed to pull update data for components that register themselves with the system through the use of JSON formatted data. Bypasses the Same Origin Policy problems by cleaning data and limiting what third parties have access to.</p>
+				<p>It's like having all your feeds aggregated in one place and stripped down to only what you are looking for.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of MUpS -->
+		<div class="component">
+			<div class="icon ui-corner-all">
+				<a href="prototype/" title="The Prototype JS library"><img class="ui-corner-all" src="images/Prototype.png" width="200" height="131" alt="Prototype JS image" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="prototype/" title="The Prototype JS library">Prototype</a></h1>
+			</div>
+			<div class="description">
+				<p>Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.</p>
+				<p>Featuring a unique, easy-to-use toolkit for class-driven development and the nicest Ajax library around, Prototype is quickly becoming the codebase of choice for web application developers everywhere.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of Prototype JS component -->
 	</div>
 <!--#include virtual="/include/footer.htm" -->
 </body>

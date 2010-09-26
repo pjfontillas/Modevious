@@ -43,7 +43,7 @@
 		<div id="what" class="splash-item no-padding">
 			<a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="958" height="320" longdesc="http://www.modevious.com" /></a>
 			</div>
-			<div id="computing" class="splash-item padded-x">
+			<div id="computing" class="hidden splash-item padded-x">
 				<div class="half"><div class="padded">
 					<h2>What is cloud computing?</h2>
 					<p><a href="http://en.wikipedia.org/wiki/Cloud_computing" title="View Wikipedia article">According to Wikipedia</a>:</p>
@@ -56,7 +56,7 @@
 					<p>Modevious attempts to alleviate the process of creating and maintaining web pages and applications that use client-based technologies to enhance our experience on the web.</p>
 				</div></div>
 			</div>
-			<div id="know" class="splash-item padded-x">
+			<div id="know" class="hidden splash-item padded-x">
 					<div class="half"><div class="padded">
 						<h2>Mobile optimization</h2>
 						<p>Understandably, some mobile devices don't fully support JavaScript or have slower processors that would make running client-side code problematic.</p>
@@ -70,7 +70,7 @@
 						<p>If the author did not protect calls to their script from this conflict you will have to convert their run-time script - the script or code that initializes their application. Change all references to '$' to '$j' to have it work with Modevious.</p>
 					</div></div>
 			</div>
-			<div id="theming" class="splash-item no-padding">
+			<div id="theming" class="hidden splash-item no-padding">
 				<div class="half"><div class="padded">
 					<h2>jQuery UI</h2>
 					<p>The jQuery UI is currently just about the extent of theming Modevious directly deals with.</p>
@@ -84,7 +84,7 @@
 					<p>I encourage this use because that certain style may apply to only one page or a specific element, in which case I then believe it is better to leave it out of the global CSS rules.</p>
 				</div></div>
 			</div>
-			<ul id="splash-menu">
+			<ul id="splash-menu" class="hidden">
 				<li class="ui-corner-all"><a href="#what">What does it do?</a></li>
 				<li class="ui-corner-all"><a href="#computing">Cloud Computing</a></li>
 				<li class="ui-corner-all"><a href="#know">Things You Need To Know</a></li>
@@ -101,6 +101,7 @@ $c.onLoad(function () {
 			opacity: "toggle"
 		}
 	});
+	$j("#computing, #know, #theming, #splash-menu").removeClass("hidden");
 });
 </script>
 </body>
