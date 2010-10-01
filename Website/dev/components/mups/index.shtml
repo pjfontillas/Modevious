@@ -5,7 +5,6 @@
 <!--#include virtual="/include/navigation.htm" -->
 	<div id="core">
 		<div class="full">
-			<img src="images/prototype.jpg" alt="Prototype JS" width="960" height="320" />				
 					<div class="padded">
 						<h3>Modevious Update System (MUpS)</h3>
 						<p>MUpS is an Ajax-based tool that bypasses the Same Origin Policy and allows plugin authors to let their users know that an update is available by using a server-side script that feeds JSON data to this client-based application.</p>
