@@ -11,7 +11,7 @@
 		clear: left;
 	}
 	.icon {
-		width: 240px;
+		width: 320px;
 		float: left;
 	}
 	.icon img {
@@ -19,7 +19,7 @@
 		background: #FFF;
 	}		
 	.name {
-		width: 680px;
+		width: 600px;
 		float: left;
 		padding: 0px 0px 0px 40px;
 	}
@@ -33,7 +33,7 @@
 		text-decoration: underline;
 	}
 	.description {
-		width: 680px;
+		width: 600px;
 		padding: 0px 0px 0px 40px;
 		float: left;
 	}
@@ -44,7 +44,20 @@
 	<div id="list">
 		<div class="component">
 			<div class="icon">
-				<a href="core/" title="The Core library"><img class="ui-corner-all" src="images/modevious.png" width="150" height="150" alt="Core Library image" /></a>
+				<a href="automouseover/" title="Mouse over, and it changes"><img src="images/no-icon.png" width="100" height="100" alt="autoMouseOver icon" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="automouseover/" title="Mouse over, and it changes">autoMouseOver</a></h1>
+			</div>
+			<div class="description">
+				<p>autoMouseOver is a jQuery plugin that automatically adds a mouseover effect to any selected images based on their naming structure.</p>
+				<p>With the default settings, any selected image that has "-out." in its src attribute (eg. home-out.png) will try to mouseover to the same image name but with "-over." instead (eg. home-over.png). The default settings can be changed when the plugin is called.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of autoMouseOver -->
+		<div class="component">
+			<div class="icon">
+				<a href="core/" title="The Core library"><img src="images/modevious.png" width="150" height="150" alt="Core Library image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="core/" title="The Core library">Core</a></h1>
@@ -56,8 +69,21 @@
 			<div class="clear-float"></div>
 		</div><!-- END of Core component -->
 		<div class="component">
-			<div class="icon ui-corner-all">
-				<a href="jquery/" title="The jQuery library"><img class="ui-corner-all" src="images/jQuery.png" width="230" height="100" alt="jQuery image" /></a>
+			<div class="icon">
+				<a href="dumbcrossfade/" title="Easy to use transitions"><img src="images/no-icon.png" width="100" height="100" alt="dumbCrossFade icon" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="dumbcrossfade/" title="Easy to use transitions">dumbCrossFade</a></h1>
+			</div>
+			<div class="description">
+				<p>jquery.dumbCrossFade is intended to be a light-weight slide transition that enables external manipulation.
+Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base tool.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of dumbCrossFade -->
+		<div class="component">
+			<div class="icon">
+				<a href="jquery/" title="The jQuery library"><img src="images/jQuery.png" width="230" height="100" alt="jQuery image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="jquery/" title="The jQuery library">jQuery</a></h1>
@@ -69,8 +95,8 @@
 			<div class="clear-float"></div>
 		</div><!-- END of jQuery component -->
 		<div class="component">
-			<div class="icon ui-corner-all">
-				<a href="mups/" title="The easy way to stay updated"><img class="ui-corner-all" src="images/no-icon.png" width="100" height="100" alt="MUpS icon" /></a>
+			<div class="icon">
+				<a href="mups/" title="The easy way to stay updated"><img src="images/no-icon.png" width="100" height="100" alt="MUpS icon" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="mups/" title="The easy way to stay updated">MUpS</a></h1>
@@ -82,8 +108,21 @@
 			<div class="clear-float"></div>
 		</div><!-- END of MUpS -->
 		<div class="component">
-			<div class="icon ui-corner-all">
-				<a href="prototype/" title="The Prototype JS library"><img class="ui-corner-all" src="images/Prototype.png" width="200" height="131" alt="Prototype JS image" /></a>
+			<div class="icon">
+				<a href="pines-notify/" title="Notify 'em"><img src="images/no-icon.png" width="100" height="100" alt="Pines Notify icon" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="pines-notify/" title="Notify 'em">Pines Notify</a></h1>
+			</div>
+			<div class="description">
+				<p>The Pines Notify is a jQuery plugin developed by Hunter Perrin as part of Pines.</p>
+				<p>It is a notification system that uses the jQuery UI CSS library for styling, which means it is fully and easily themeable.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of Pines Notify -->
+		<div class="component">
+			<div class="icon">
+				<a href="prototype/" title="The Prototype JS library"><img src="images/Prototype.png" width="200" height="131" alt="Prototype JS image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="prototype/" title="The Prototype JS library">Prototype</a></h1>

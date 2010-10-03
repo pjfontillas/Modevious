@@ -3,7 +3,7 @@
 </head>
 <body>
 <!--#include virtual="/include/navigation.htm" -->
-  <div id="core" class="ui-corner-all">
+  <div id="core">
     <div class="full">
       <div class="padded">  
         <div class="ui-widget">

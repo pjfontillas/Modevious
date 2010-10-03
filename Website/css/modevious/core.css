@@ -1,0 +1,154 @@
+/* Override rules for creating custom page layouts on demand. */
+.full {
+	width: 100% !important;
+	float: left !important;
+}
+.one-half, .half {
+	width: 50% !important;
+	float: left !important;
+}
+.two-thirds {
+	width: 66% !important;
+	float: left !important;
+}
+.one-third, .third {
+	width: 33% !important;
+	float: left !important;
+}
+.three-fourths {
+	width: 75% !important;
+	float: left !important;
+}
+.one-fourth, .fourth {
+	width: 25% !important;
+	float: left !important;
+}
+.one-fifth {
+	width: 20% !important;
+	float: left !important;
+}
+.two-fifths {
+	width: 40% !important;
+	float: left !important;
+}
+.three-fifths {
+	width: 60% !important;
+	float: left !important;
+}
+.four-fifths {
+	width: 80% !important;
+	float: left !important;
+}
+.text-left {
+	text-align: left !important;
+}
+.text-center {
+	text-align: center !important;
+}
+.text-right {
+	text-align: right !important;
+}
+.text-justify {
+	text-align: justify !important;
+}
+.centered {
+	margin: 0px auto !important;
+}
+.float-left {
+	float: left !important;	
+}
+.float-right {
+	float: right !important;
+}
+.clear-float {
+	clear: both !important;	
+}
+.clickable {
+	cursor: pointer !important;
+}
+.padded {
+	padding: 20px !important;
+}
+.padded-x {
+	padding: 0px 20px !important;
+}
+.padded-y {
+	padding: 20px 0px !important;
+}
+.no-padding {
+	padding: 0px !important;
+}
+.bordered {
+	border: 1px solid #AAAAAA !important;
+}
+.hidden {
+	display: none !important;
+}
+.has-margins {
+	margin: 5px !important;
+}
+.has-margins-x {
+	margin: 0px 5px !important;
+}
+.has-margins-y {
+	margin: 5px 0px !important;
+}
+.no-margins {
+	margin: 0px !important;
+}
+.code {
+	width: 95% !important;
+	height: auto !important;
+	overflow: scroll !important;
+	border: 1px solid #AAA !important;
+	background: #FFF !important;
+	margin: 10px auto !important;
+}
+.maximize-x {
+	width: 100% !important;
+}
+#console {
+  position: absolute;
+  z-index: 100000;
+  top: -500px;
+}
+#console_top {
+  background: url(console/console_top.png);
+  width: 600px;
+  height: 50px;
+  padding: 0px 20px;
+  cursor: move;
+  margin: 0px;
+}
+#console_middle {
+  background: url(console/console_middle.png);
+  width: 580px;
+  height: 325px;
+  padding: 0px 30px;
+  margin: 0px;
+}
+#console_text {
+  width: 568px;
+  height: 313px;
+  padding: 5px;
+  border: 1px solid #AAA;
+  background: #000;
+  color: #FFF;
+  overflow: auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+ #console_bottom {
+  background: url(console/console_bottom.png);
+  width: 640px;
+  height: 25px;
+  margin: 0px;
+  cursor: move;
+}
+#minimize_console_button {
+  cursor: pointer;
+  width: 27px;
+  height: 27px;
+  margin: 15px 0px 8px 0px;
+  float: right;
+  background: url(console/minimize.png) no-repeat;
+}

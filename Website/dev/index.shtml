@@ -38,7 +38,7 @@
 </head>
 <body>
 <!--#include virtual="/include/navigation.htm" -->
-	<div id="core" class="ui-corner-all">
+	<div id="core"c>
 		<div id="splash-tabs" class="no-padding">
 		<div id="what" class="splash-item no-padding">
 			<a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="958" height="320" longdesc="http://www.modevious.com" /></a>
@@ -85,10 +85,10 @@
 				</div></div>
 			</div>
 			<ul id="splash-menu" class="hidden">
-				<li class="ui-corner-all"><a href="#what">What does it do?</a></li>
-				<li class="ui-corner-all"><a href="#computing">Cloud Computing</a></li>
-				<li class="ui-corner-all"><a href="#know">Things You Need To Know</a></li>
-				<li class="ui-corner-all"><a href="#theming">About Theming</a></li>
+				<li><a href="#what">What does it do?</a></li>
+				<li><a href="#computing">Cloud Computing</a></li>
+				<li><a href="#know">Things You Need To Know</a></li>
+				<li><a href="#theming">About Theming</a></li>
 			</ul>			
 		</div> 
 		<div class="clear-float"></div>

@@ -9,12 +9,12 @@
 </head>
 <body>
 <!--#include virtual="/include/navigation.htm" -->
-	<div id="core" class="ui-corner-all">
+	<div id="core">
 		<div class="tabs no-padding">
 			<ul class="no-padding">
 				<li><a href="#include">Include</a></li>
 				<li><a href="#configuration">Configuration</a></li>
-				<li><a href="#plugins">Plugins</a></li>
+				<li><a href="#plugin-example">Plugin Example</a></li>
 			</ul>			
 			<div id="include">
 				<h2>Download</h2>
@@ -31,7 +31,7 @@
 				<h2>Huh? That's it?</h2>
 				<p>Seriously, that's all you have to do to get started.</p>
 			</div>
-			<div id="plugins" class="no-padding">
+			<div id="plugin-example" class="no-padding">
 				<div class="centerd"><img src="images/shadowbox.jpg" alt="Shadowbox" width="958" height="360" longdesc="http://www.shadowbox-js.com" /></div>		
 				<div class="half">
 					<div class="padded-x text-justify">
@@ -45,6 +45,7 @@ Shadowbox.init({adapter:'base',players:['img','swf','flv','qt','wmp','iframe','h
 </pre> 
 						<p>to the minified version of Shadowbox.js to have it auto initialize once the script is loaded. I also changed /css/shadowbox.css by making the z-index rule for #sb-container be 10002 instead of 999. That way it overlays both PNotify and Expose. Other changes to the CSS include renaming the url for the navigation buttons to match putting Shadowbox in /js/lib/ and rewriting a rule for #sb-overlay to have it fixed and the size of the viewport only using basic CSS 2.1.</p>
 						<p>Shadowbox was is a wonderful tool, but isn't free for commercial usage. In order to use it for commercial purposes you need to purchase a license. It's not overly expensive, and I think it is worth the price, but for the reason that all tools packaged in Modevious come free I cannot include it. But looking at this page, wouldn't you agree that it's relatively simple adding it as an extra plugin? Just remember to purchase a license should you use it for commercial reasons.</p>
+						<p>One more gripe I have about using Shadowbox is its use of the rel attribute. Although ingenious, the methods it employs don't <a href="http://validator.w3.org/check?uri=referer" alt="Check for yourself">validate as XHTML 1.1</a>. A small and minor setback, but one nonetheless.</p>
 					</div>
 				</div>		
 				<div class="half">
@@ -128,7 +129,7 @@ Shadowbox.init({adapter:'base',players:['img','swf','flv','qt','wmp','iframe','h
 					</div>
 					<div class="quote padded-x">
 						<p>Hi, I’m Michael Jackson (yes, the <em>real</em> Michael Jackson.)	 I’m a California native currently residing in the beautiful state of	 Utah. I’ve been designing and developing web sites since I was a kid,	 and have worked professionally in the field since 2004. I currently keep	 my <a href="http://github.com/mjijackson">code on GitHub</a>, my <a href="http://twitter.com/mjijackson">random thoughts on Twitter</a>, and	 my <a href="http://delicious.com/mjijackson">bookmarks on Delicious</a>.</p>
-						<p>I am passionate about clean, modern design and code. When it comes to	 the web, I believe that <a href="http://www.webstandards.org/">standards</a> are a good thing and that both businesses and individuals are greatly	 benefitted by adherence to them. Instead of striving for backwards	 compatibility with antiquated browsers such as the <a href="http://www.positioniseverything.net/explorer.html">infamous	 Internet Explorer</a>, I chose to live in the present and target more	 modern, standards-compliant web browsers. My basic philosophy is this:	 people who use better browsers deserve a better experience.</p>
+						<p>I am passionate about clean, modern design and code. When it comes to	 the web, I believe that <a href="http://www.webstanhttp://validator.w3.org/check?uri=refererdards.org/">standards</a> are a good thing and that both businesses and individuals are greatly	 benefitted by adherence to them. Instead of striving for backwards	 compatibility with antiquated browsers such as the <a href="http://www.positioniseverything.net/explorer.html">infamous	 Internet Explorer</a>, I chose to live in the present and target more	 modern, standards-compliant web browsers. My basic philosophy is this:	 people who use better browsers deserve a better experience.</p>
 						<p> If you would like to get in touch, please feel free to contact me at <a class="email" href="mailto:mjijackson(AT)gmail(DOT)com">mjijackson(AT)gmail(DOT)com</a>.</p>
 					</div>
 				</div>

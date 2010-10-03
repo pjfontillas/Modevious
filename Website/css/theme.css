@@ -2,21 +2,22 @@ html {
 	overflow: scroll;
 }
 body {
-	padding: 0px 0px 0px 0px;
+	padding: 40px 0px 50px 0px;
 	margin: 0px;
-	font-family: georgia;
-	background: url(theme/at_bg.jpg) top center #630;
-	font-size: 14px;
+	font-family: Arial;
+	background: #000;
+	color: #FFF;
+	font-size: 12px;
 }
 img {
 	border: 0px;
 }
 a {
-	text-decoration: none;
 	outline: none;
+	color: #69F;
 }
 a:visited {
-	color: #F60;
+	color: #69F;
 }
 #core {
 	width: 960px;
@@ -25,89 +26,98 @@ a:visited {
 	margin: 20px auto;
 	background: url(theme/light-grid.jpg) repeat;
 	border: 1px solid #AAA;
-}
-#core p a {
-	color: #F60;
-	border-bottom: 1px dashed !important;
-}
-#core p a:visited {
-	color: #00F;
+	color: #000;
 }
 #core li a {
 	border-bottom: 0px !important;
 }
-#core p a:hover {
-	border-bottom: 1px solid !important;
-}
-#navigation {
-	width: 100%;
+#core p a:visited:before, #core li a:visited:before {
+	content:	"\2713 ";
 }
 #menu {
-	position: relative;
-	width: 960px;
-	height: 34px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 32px;
 	margin: 0px auto;
-	overflow: visible;
+	overflow: hidden;
 	padding: 0px;
-	position: relative;
 	z-index: 1000;
+	background: #000;
 	color: #EEE;
-	font-family: garamond;
 	font-weight: bold;
-	border: 1px solid #AAA;
-	border-top: 0px;
-	background: url(theme/header-bg.jpg) repeat-x #300;
+	font-family: georgia;
+}
+#home-text {
+	display: none;
+}
+#home-icon {
+	position: relative;
+	width: 92px;
+	height: 32px;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+#home-icon a {
+	position: relative;
+	float: left;
+	display: block;
+	width: 32px;
+	height: 32px;
+	padding: 0px 30px;
 }
 .menu-item {
 	position: relative;
-	height: 30px;
+	height: 32px;
 	overflow: hidden;
 	float: left;
 	margin: 0px;
-	font-size: 21px;	
+	border-right: 1px solid transparent;
+	font-size: 12px;	
 }
-.menu-item:hover {
-	overflow: visible;
-}
-#menu a {
+.menu-item a {
+	height: 12px;
 	position: relative;
 	display: block;
-	color: #EEE;
+	color: #AAA;
 	text-decoration: none;
-	padding: 5px 15px;
+	padding: 11px 30px;
+}
+.menu-item a:visited {
+	text-decoration: none;
 }
 #menu a:hover {
-	color: #F60;
+	color: #FFF;
+}
+#menu a:active {
+	color: #69F;
 }
 .sub-menu {
-	border: 1px solid #AAA;
-	border-top: 1px solid #300;
-	background: url(theme/brown-overlay.png);
-	font-size: 12px;
-}
-.sub-menu ul {
-	margin: 0px;
-	padding: 0px;
-	list-style-type: none;
+	display: none;
 }
 #footer {
-	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
 	clear: both;
-}
-#footer a {
-	color: #F60;
-}
-#footer a:hover {
-	text-decoration: underline;
-}
-#aligned-footer {
-	width: 920px;
-	height: 100px;
-	overflow: visible;
-	padding: 20px;
-	margin: 0px auto;
-	color: #EEE;	
+	width: 100%;
+	height: 50px;
 	text-align: center;
+	font-size: 12px;
+	background: #000;
+	color: #FFF;
+	overflow: hidden;
+}
+#footer p {
+	margin: 10px 20px;
+}
+#footer p a, #footer p a:visited {
+	text-decoration: none;
+}
+#footer p a:hover {
+	text-decoration: underline;
 }
 .quote {
 	border: 1px solid #AAA;
@@ -118,17 +128,15 @@ a:visited {
 button {
 	outline: none !important;
 }
-.ui-state-error a {
-	color: #FFF !important;
-	text-decoration: none;
-	border-bottom: 1px dotted;
+#contact_form {
+	background: url(theme/contact_card.png);
+	width: 760px;
+	height: 425px;
+	padding: 100px 100px 75px 100px;
+	margin: 0px auto;
+	color: #000;
 }
-.tabs div p a {
-	color: #F60 !important;
-}
-.ui-pnotify-text  a {
-	border-bottom: 1px dashed !important;
-}
-.ui-pnotify-text a:hover {
-	border-bottom: 1px solid !important;
+#address {
+	padding: 125px 0px;
+	text-align: right;
 }
