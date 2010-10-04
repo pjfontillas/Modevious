@@ -13,11 +13,8 @@
 	.icon {
 		width: 320px;
 		float: left;
+		text-align: center;
 	}
-	.icon img {
-		border: 1px solid #555;
-		background: #FFF;
-	}		
 	.name {
 		width: 600px;
 		float: left;
