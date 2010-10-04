@@ -96,6 +96,18 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of jQuery component -->
 		<div class="component">
 			<div class="icon">
+				<a href="jquery-ui/" title="Enhanced user experience using jQuery UI"><img src="images/user-interface.png" width="100" height="100" alt="jQuery UI icon" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="jquery-ui/" title="Enhanced user experience using jQuery UI">jQuery UI</a></h1>
+			</div>
+			<div class="description">
+				<p>jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of jQuery UI component -->
+		<div class="component">
+			<div class="icon">
 				<a href="mups/" title="The easy way to stay updated"><img src="images/no-icon.png" width="100" height="100" alt="MUpS icon" /></a>
 			</div>
 			<div class="name">
