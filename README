@@ -1,85 +1,49 @@
   WHAT IS MODEVIOUS?
 
-With the agile progression of technology we are now at a point where just about 
-any device with a web browser is capable of running JavaScript.
+We are now at a point where most web browsers are capable of running JavaScript.
 
-Rather than placing almost all of the work on the web server we are now able to 
-leverage the power of individual computers to help process our web pages and 
-applications.
+Rather than placing almost all of the work on the web server we are now able to leverage the power of individual computers to help process our web pages and applications.
 
-Modevious attempts to alleviate the process of creating and maintaining web 
-pages and applications that use client-based technologies to enhance our 
-experience on the web.
+Modevious attempts to alleviate the process of creating and maintaining web pages and applications that use client-based technologies to enhance our experience on the web.
 
-Modevious is comprised of multiple JavaScript libraries and widgets created 
-using those libraries.
+Modevious is comprised of multiple JavaScript libraries and widgets created using those libraries.
 
-However, Modevious is also a mindset: a set of logic, tips, and techniques for 
-creating web sites and applications.
+However, Modevious is also a mindset: a set of logic, tips, and techniques for creating web sites and applications.
 
-Modevious is not a database; it helps in interacting with one. It is also not a 
-Content Management System (CMS) but can be easily integrated into many of them.
+Modevious is not a database; it helps in interacting with one. It is also not a Content Management System (CMS) but can be easily integrated into many of them.
 
-Rather, Modevious's goal is to help you rapidly create prototypes, designs, 
-widgets, and applications for use on the web.
+Rather, Modevious's goal is to help you rapidly create prototypes, designs, widgets, and applications for use on the web.
 
-I fully support the idea that in order to learn how to write better code and 
-create cleaner designs one must tinker with and experience things first-hand.
+I fully support the idea that in order to learn how to write better code and create cleaner designs one must tinker with and experience things first-hand.
 
-I also believe that re-inventing the wheel is usually a fruitless endeavor. 
-Pulling together tools that are known to work well with each other allows for 
-experimentation and thinking "outside the box." If you do want to revamp 
-existing tools go ahead and join the Prototype, jQuery, and other numerous 
-teams who have decided to do the same. Just please share what you have done 
-with the rest of us, and we'll be glad to do the same.
+I also believe that re-inventing the wheel is can be an unnecessary endeavor. Pulling together tools that are known to work well with each other allows for experimentation and thinking "outside the box." If you do want to revamp existing tools go ahead and join the Prototype, jQuery, and other numerous teams who have decided to do the same. Just please share what you have done with the rest of us, and we'll be glad to do the same.
 
-Modevious was created with web developers and designers in mind, and will 
-hopefully create a community that will help each other grow and enjoy what 
-they do.
+Modevious was created with web developers and designers in mind, and will hopefully create a community that will help each other grow and enjoy what they do.
 
   ON WHAT HARDWARE DOES IT RUN ON?
 
-Hopefully just about any configuration possible, so long as they have a modern
-web browser. Mobile hardware optimization is the next big step, hoping to make
-it as easy to develop for.
+Hopefully just about any configuration possible, so long as they have a modern web browser. Mobile hardware optimization is the next big step, hoping to make it as easy to develop for.
 
   DOCUMENTATION:
 
-You can find information on the Wiki or more likely at
-http://modevious.com/
+You can find information on the Wiki or more likely at http://modevious.com
 
-I provide a "compiled" version for Modevious at its informational site, along
-with support and additional documentation and example uses. The source that is
-hosted on GitHub is best used for development purposes, but can be deployed 
-should you wish to use the latest and greatest with the knowledge of its
-unsure stability in mind.
+I provide a "compiled" version for Modevious at its informational site, along with support and additional documentation and example uses. The source that is hosted on GitHub is best used for development purposes, but can be deployed should you wish to use the latest and greatest with the knowledge of its unsure stability in mind.
 
-Feature tracking is done via PivotalTracker:
-<http://www.pivotaltracker.com/projects/97677>
+Feature tracking is done via PivotalTracker (http://www.pivotaltracker.com/projects/97677)
 
   LICENSING:
 
-Licenses for components and libraries used can be found in /licenses.txt.
-Modevious itself is intended to be open source and free to use. If anybody can
-help me choose the best license to use for Modevious itself that would be
-greatly appreciated. Otherwise please abide by the licensing that comes with
-each component. On the same note, should you find any problems in licensing
-between components that prevents use of one with another please let me know
-so we can address it and choose the best course of action.
+Licenses for components and libraries used can be found in /licenses.txt. Modevious itself is intended to be open source and free to use. Please abide by the licensing that comes with each component. On the same note, should you find any problems in licensing between components that prevents use of one with another please let me know so we can address it and choose the best course of action.
 
   USAGE:
   
-Again, look at the information website:
-<http://modevious.com/>
+Again, look at the information website (http://modevious.com)
 
-You can also look directly in:
-<http://modevious.com/usage/>
+You can also look directly in (http://modevious.com/usage)
 
   CONTACT:
   
-If you think of something that you think should be included or added to
-Modevious, either as a bug fix or new feature, please send a message to the 
-current maintainer. Modevious is meant to be used for everyone, and anything
-you think can be beneficial to may be helpful to others as well.
+If you think of something that you think should be included or added to Modevious, either as a bug fix or new feature, please send a message to the current maintainer. Modevious is meant to be used for everyone, and anything you think can be beneficial to may be helpful to others as well.
 
 Thanks for looking into Modevious!
