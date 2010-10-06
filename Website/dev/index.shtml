@@ -34,6 +34,32 @@
 		#theming {
 			background: url(images/diagonal-stripes.png);
 		}
+		#features {
+			width: 960px;
+			margin: 0px auto;
+			clear: both;
+		}
+		.feature {
+			float: left;
+			width: 480px;
+		}
+		.feature .image {
+			width: 50px;
+			height: 50px;
+			float: left;
+		}
+		.feature .name {
+			width: 410px;
+			padding: 0px 10px;
+			float: right;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.feature .description {
+			width: 410px;
+			padding: 0px 10px;		
+			float: right;
+		}
 		</style>
 </head>
 <body>
@@ -93,6 +119,63 @@
 		</div> 
 		<div class="clear-float"></div>
 	</div><!-- End #core -->
+	<div id="features">
+		<div class="feature">
+			<div class="image">
+				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Easy to use</p>
+			</div>
+			<div class="description">
+				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+			</div>
+		</div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Easy to use</p>
+			</div>
+			<div class="description">
+				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+			</div>
+		</div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Easy to use</p>
+			</div>
+			<div class="description">
+				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+			</div>
+		</div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Easy to use</p>
+			</div>
+			<div class="description">
+				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+			</div>
+		</div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Easy to use</p>
+			</div>
+			<div class="description">
+				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+			</div>
+		</div>
+	</div><!-- End #features -->
 <!--#include virtual="/include/footer.htm" -->
 <script type="text/javascript">
 $c.onLoad(function () {
