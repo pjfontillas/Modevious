@@ -51,11 +51,11 @@ a:visited {
 }
 #home-icon {
 	position: relative;
-	width: 92px;
-	height: 32px;
+	width: 155px;
+	height: 31px;
 	float: left;
-	margin: 0px;
-	padding: 0px;
+	margin: 0px 10px;
+	padding: 1px 0px 0px 0px;
 }
 #home-icon a {
 	position: relative;
