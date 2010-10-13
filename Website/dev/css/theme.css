@@ -51,7 +51,7 @@ a:visited {
 }
 #home-icon {
 	position: relative;
-	width: 155px;
+	width: 135px;
 	height: 31px;
 	float: left;
 	margin: 0px 10px;
@@ -63,7 +63,6 @@ a:visited {
 	display: block;
 	width: 32px;
 	height: 32px;
-	padding: 0px 30px;
 }
 .menu-item {
 	position: relative;
@@ -72,7 +71,7 @@ a:visited {
 	float: left;
 	margin: 0px;
 	border-right: 1px solid transparent;
-	font-size: 12px;	
+	font-size: 11px;	
 }
 .menu-item a {
 	height: 12px;
@@ -80,7 +79,7 @@ a:visited {
 	display: block;
 	color: #AAA;
 	text-decoration: none;
-	padding: 11px 30px;
+	padding: 10px 30px;
 }
 .menu-item a:visited {
 	text-decoration: none;
