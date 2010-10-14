@@ -7,7 +7,7 @@
 	}
 	.component {
 		width: 960px;
-		margin: 20px 0px;
+		margin: 50px 0px;
 		clear: left;
 	}
 	.icon {
@@ -41,10 +41,10 @@
 	<div id="list">
 		<div class="component">
 			<div class="icon">
-				<a href="automouseover/" title="Mouse over, and it changes"><img src="images/no-icon.png" width="100" height="100" alt="autoMouseOver icon" /></a>
+				<a href="http://www.m79.ca/automouseover/" title="Mouse over, and it changes"><img src="images/automouseover.jpg" width="320" height="240" alt="autoMouseOver icon" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="automouseover/" title="Mouse over, and it changes">autoMouseOver</a></h1>
+				<h1><a href="http://www.m79.ca/automouseover/" title="Mouse over, and it changes">autoMouseOver</a></h1>
 			</div>
 			<div class="description">
 				<p>autoMouseOver is a jQuery plugin that automatically adds a mouseover effect to any selected images based on their naming structure.</p>
@@ -67,23 +67,36 @@
 		</div><!-- END of Core component -->
 		<div class="component">
 			<div class="icon">
-				<a href="dumbcrossfade/" title="Easy to use transitions"><img src="images/no-icon.png" width="100" height="100" alt="dumbCrossFade icon" /></a>
+				<a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions"><img src="images/dumbcrossfade.jpg" width="320" height="240" alt="dumbCrossFade image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="dumbcrossfade/" title="Easy to use transitions">dumbCrossFade</a></h1>
+				<h1><a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions">dumbCrossFade</a></h1>
 			</div>
 			<div class="description">
 				<p>jquery.dumbCrossFade is intended to be a light-weight slide transition that enables external manipulation.
 Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base tool.</p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of dumbCrossFade -->
+		</div><!-- END of dumbCrossFade component-->
 		<div class="component">
 			<div class="icon">
-				<a href="jquery/" title="The jQuery library"><img src="images/jQuery.png" width="230" height="100" alt="jQuery image" /></a>
+				<a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption"><img src="images/encryption.jpg" width="320" height="240" alt="Encryption image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="jquery/" title="The jQuery library">jQuery</a></h1>
+				<h1><a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption">Encryption</a></h1>
+			</div>
+			<div class="description">
+				<p>MD5 is a secure hash algorithm. It takes a string as input, and produces a 128-bit number, the hash. The same string always produces the same hash, but given a hash, it is not generally possible to determine the original string. Secure hash algorithms are useful for protecting passwords and ensuring data integrity.</p>
+				<p>Their site has a JavaScript implementation of MD5, and some other secure hash algorithms. This allows web sites to perform simple cryptography on clients, enabling some useful applications.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of Encryption component -->
+		<div class="component">
+			<div class="icon">
+				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jQuery.png" width="230" height="100" alt="jQuery image" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="http://jquery.com/" title="The jQuery library">jQuery</a></h1>
 			</div>
 			<div class="description">
 				<p>jQuery is a new kind of JavaScript Library.</p>
@@ -93,10 +106,22 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of jQuery component -->
 		<div class="component">
 			<div class="icon">
-				<a href="jquery-ui/" title="Enhanced user experience using jQuery UI"><img src="images/user-interface.png" width="100" height="100" alt="jQuery UI icon" /></a>
+				<a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web"><img src="images/jquery_tools.jpg" width="320" height="240" alt="jQuery Tools image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="jquery-ui/" title="Enhanced user experience using jQuery UI">jQuery UI</a></h1>
+				<h1><a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web">jQuery Tools</a></h1>
+			</div>
+			<div class="description">
+				<p>jQuery Tools is a collection of the most important user-interface components for modern websites. Used by large sites all over the world. And we've got a custom build you can use.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of jQuery Tools component -->
+		<div class="component">
+			<div class="icon">
+				<a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI"><img src="images/user-interface.png" width="100" height="100" alt="jQuery UI icon" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI">jQuery UI</a></h1>
 			</div>
 			<div class="description">
 				<p>jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.</p>
@@ -105,23 +130,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of jQuery UI component -->
 		<div class="component">
 			<div class="icon">
-				<a href="mups/" title="The easy way to stay updated"><img src="images/no-icon.png" width="100" height="100" alt="MUpS icon" /></a>
+				<a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em"><img src="images/pnotify.png" width="100" height="100" alt="Pines Notify icon" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="mups/" title="The easy way to stay updated">MUpS</a></h1>
-			</div>
-			<div class="description">
-				<p>The Modevious Update System (MUpS) is an AJAX-based system designed to pull update data for components that register themselves with the system through the use of JSON formatted data. Bypasses the Same Origin Policy problems by cleaning data and limiting what third parties have access to.</p>
-				<p>It's like having all your feeds aggregated in one place and stripped down to only what you are looking for.</p>
-			</div>
-			<div class="clear-float"></div>
-		</div><!-- END of MUpS -->
-		<div class="component">
-			<div class="icon">
-				<a href="pines-notify/" title="Notify 'em"><img src="images/no-icon.png" width="100" height="100" alt="Pines Notify icon" /></a>
-			</div>
-			<div class="name">
-				<h1><a href="pines-notify/" title="Notify 'em">Pines Notify</a></h1>
+				<h1><a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em">Pines Notify</a></h1>
 			</div>
 			<div class="description">
 				<p>The Pines Notify is a jQuery plugin developed by Hunter Perrin as part of Pines.</p>
@@ -131,10 +143,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of Pines Notify -->
 		<div class="component">
 			<div class="icon">
-				<a href="prototype/" title="The Prototype JS library"><img src="images/Prototype.png" width="200" height="131" alt="Prototype JS image" /></a>
+				<a href="http://www.prototypejs.org/" title="The Prototype JS library"><img src="images/Prototype.png" width="200" height="131" alt="Prototype JS image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="prototype/" title="The Prototype JS library">Prototype</a></h1>
+				<h1><a href="http://www.prototypejs.org/" title="The Prototype JS library">Prototype</a></h1>
 			</div>
 			<div class="description">
 				<p>Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.</p>
@@ -142,6 +154,31 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of Prototype JS component -->
+		<div class="component">
+			<div class="icon">
+				<a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript"><img src="images/soundmanager2.jpg" width="320" height="240" alt="SoundManager2 image" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript">SoundManager 2</a></h1>
+			</div>
+			<div class="description">
+				<p>SoundManager 2 makes it easier to play audio using JavaScript. By wrapping and extending HTML5 and Flash Audio APIs, SoundManager 2 brings reliable cross-platform audio to JavaScript.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of SoundManager 2 component -->
+		<div class="component">
+			<div class="icon">
+				<a href="http://www.alistapart.com/articles/alternate/" title="Alternative Style: Working With Alternate Style Sheets"><img src="images/style_switcher.jpg" width="320" height="240" alt="Style Switcher image" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="http://www.alistapart.com/articles/alternate/" title="Alternative Style: Working With Alternate Style Sheets">Style Switcher</a></h1>
+			</div>
+			<div class="description">
+				<p>So you've got a web page. You’ve marked it up with structural XHTML. You’ve also been a good little web developer and used style sheets to control what your document looks like. You’ve even gone the extra mile and created several alternative style sheets to show how hardcore you are.</p>
+				<p>Great. But now you need a cross-browser way to dynamically switch between the style sheets.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of Style Switcher component -->
 	</div>
 <!--#include virtual="/include/footer.htm" -->
 </body>

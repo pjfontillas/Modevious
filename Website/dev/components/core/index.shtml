@@ -21,23 +21,16 @@
 </head>
 <body>
 <!--#include virtual="/include/navigation.htm" -->
-	<div id="slideshow" class="ui-corner-all">
+	<div id="slideshow">
 		<img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="960" height="320" longdesc="http://www.modevious.com" />
 	</div>
-	<div id="core" class="ui-corner-all">
+	<div id="core">
 		<div class="full">
 			<div class="padded">
 				<div class="third"><div id="overview">
 				<p>The Core library is an essential part of Modevious.</p>
-				<p>I, <a href="http://pjfontillas.com/" 
-				title="Developer, designer, and devious mastermind!"
-				>Patrick James Fontillas</a>, am the current maintainer. That doesn't 
-				necessarily mean that I am the only person developing it, however. 
-				Instead, I supervise major changes done to the code, and help plan where
-				it's going. Basically, I spend a large amount of time working on it.</p>
-				<p>The Core library holds some of the most common ajax functions used. 
-				Some can be found in other libraries, some are new ideas unique to 
-				Modevious.</p>
+				<p>I, <a href="http://pjfontillas.com/" title="Developer, designer, and devious mastermind!">Patrick James Fontillas</a>, am the current maintainer. That doesn't necessarily mean that I am the only person developing it, however. Instead, I supervise major changes done to the code, and help plan where it's going. Basically, I spend a large amount of time working on it.</p>
+				<p>The Core library holds some of the most common ajax functions used. Some can be found in other libraries, some are new ideas unique to Modevious.</p>
 				</div></div>
 				<div class="two-thirds">
 					<div id="functions" class="accordion">
@@ -54,22 +47,19 @@
 							<h3><a href="#">Depreciated functions</a></h3>
 							<div>
 							<h4>$c.popUp</h4>
-							<p>Removed to comply with good usability guidelines. The user
-							should always have control over how they choose to open links.</p>
+							<p>Removed to comply with good usability guidelines. The user	should always have control over how they choose to open links.</p>
 							<h4>$c.fetchData</h4>
-							<p>Now a private function. Can only be accessed using
-							$c.changePage.</p>
+							<p>Now a private function. Can only be accessed using c.changePage.</p>
 							<h4>$c.filterData</h4>
-							<p>Now a private function. Can only be accessed using
-							$c.changePage, which then accesses this function.</p>
+							<p>Now a private function. Can only be accessed using $c.changePage, which then accesses this function.</p>
 							</div>
 						</div>
 						<div>
-							<h3><a href="#">changePage(pageName,objectID)</a></h3>
+							<h3><a href="#">changePage(pageName, objectID)</a></h3>
 							<div><p>Updates {objectID}'s innerHTML with content from {pageName}.</p></div>
 						</div>
 						<div>
-							<h3><a href="#">createCookie(name,value,days)</a></h3>
+							<h3><a href="#">createCookie(name, value, days)</a></h3>
 							<div><p>Creates a cookie of {name} with {value}, and lasts for number of {days}.</p></div>
 						</div>
 						<div>
@@ -80,13 +70,12 @@
 							<h3><a href="#">exclude(scriptID)</a></h3>
 							<div>
 							<h5>Originally add2Lib(scriptID)</h5>
-							<p>Certain libraries are either already loaded through an HTML 
-							include/link or are blacklisted for the sake of other libraries. 
-							The exclude() function simply adds the scripts to the included 
-							libraries list, preventing them from being loaded. 
-							They are not actually loaded, just stored as if loaded.</p>
+							<p>Certain libraries are either already loaded through an HTML include/link or are blacklisted for the sake of other libraries. The exclude() function simply adds the scripts to the included libraries list, preventing them from being loaded. They are not actually loaded, just stored as if loaded.</p>
 							</div>
 						</div>
+						<div>
+							<h3><a href="#">fetchUpdates()</a></h3>
+							<div><p>Actually fetches updates using Ajax.Request, parsing responses as JSON data and creating appropriate messages. This is a recursive function that continually calls itself until it returns true, which means that all elements in the updateArray have been checked.</p></div>
 						<div>
 							<h3><a href="#">getFileName(file)</a></h3>
 							<div><p>Returns the name for a file/link/url.</p></div>
@@ -101,37 +90,23 @@
 						</div>
 						<div>
 							<h3><a href="#">getUrlVariable(urlVariable)</a></h3>
-							<div><p>Gets the value of a variable embedded in a URL 
-							e.g.: http://modevious.com/?jsVar='sweet'. Pass the name of the 
-							variable (e.g.'s case: jsVar) to the function to get its value.</p></div>
+							<div><p>Gets the value of a variable embedded in a URL e.g.: http://modevious.com/?jsVar='sweet'. Pass the name of the variable (e.g.'s case: jsVar) to the function to get its value.</p></div>
 						</div>
 						<div>
 							<h3><a href="#">include(scriptID)</a></h3>
-							<div><p>Imports and records scripts to be used as part of our library. 
-							Helps prevent scripts being loaded multiple times and reduces 
-							bandwith usage if JavaScript is disabled by the browser. 
-							HTML can have few includes, or at least the files included 
-							(aka header files = script-h.js) are much smaller than the actual libraries.</p>
-							<p>{scriptID} is the location of the script, it's possible that the script 
-							exists in multiple locations, and each will be loaded, this function 
-							is currently only used to help prevent multiple loading of the same 
-							exact script (e.g. multiple versions of a script can be used, and 
-							although discouraged, it might be necessary to do so).
-							They just require different paths.</p></div>
+							<div><p>Imports and records scripts to be used as part of our library. Helps prevent scripts being loaded multiple times and reduces bandwith usage if JavaScript is disabled by the browser. HTML can have few includes, or at least the files included (aka header files = script-h.js) are much smaller than the actual libraries.</p>
+							<p>{scriptID} is the location of the script, it's possible that the script exists in multiple locations, and each will be loaded, this function is currently only used to help prevent multiple loading of the same exact script (e.g. multiple versions of a script can be used, and although discouraged, it might be necessary to do so). They just require different paths.</p></div>
 						</div>
 						<div>
 							<h3><a href="#">onLoad(func)</a></h3>
 							<div>
 							<h5>Originally addLoadEvent(func)</h5>
-							<p>Similar to the onLoad HTML attribute, onLoad() runs the specified 
-							function after the page is done loading.</p>
+							<p>Similar to the onLoad HTML attribute, onLoad() runs the specified function after the page is done loading.</p>
 							</div>
 						</div>
 						<div>
 							<h3><a href="#">popUp(url)</a></h3>
-							<div><p>Allows developers to force new windows. Use only when necessary, 
-							visitors like and need to be able to choose how pages open. 
-							No title or window feature configuration supported.</p></div>
+							<div><p>Allows developers to force new windows. Use only when necessary, visitors like and need to be able to choose how pages open. No title or window feature configuration supported.</p></div>
 						</div>
 						<div>
 							<h3><a href="#">readCookie(name)</a></h3>
@@ -139,8 +114,11 @@
 						</div>
 						<div>
 							<h3><a href="#">showEmail()</a></h3>
-							<div><p>Will de-obfuscate the email address, replacing the link 
-							content as well as the href attribute.</p></div>
+							<div><p>Will de-obfuscate the email address, replacing the link content as well as the href attribute.</p></div>
+						</div>
+						<div>
+							<h3><a href="#">update(name, version, url)</a></h3>
+							<div><p>Adds a record in the updateArray for the component that called this fn. Only runs if config.update is set to true.</p></div>
 						</div>
 					</div>
 				</div>
