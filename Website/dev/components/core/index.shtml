@@ -85,6 +85,10 @@
 							<div><p>Returns the extension for a file/link/url.</p></div>
 						</div>
 						<div>
+							<h3><a href="#">getActiveStyleSheet ()</a></h3>
+							<div><p>Returns title of active style sheet or group of style sheets.</p></div>
+						</div>
+						<div>
 							<h3><a href="#">getTime()</a></h3>
 							<div><p>Returns time in HH:MM AM/PM format.</p></div>
 						</div>
@@ -113,14 +117,33 @@
 							<div><p>Returns value of cookie {name}, if !found, returns null.</p></div>
 						</div>
 						<div>
+							<h3><a href="#">setStyleSheet (title)</a></h3>
+							<div><p>Activates style sheet or group of style sheets matching &lt;title&gt;.</p></div>
+						</div>
 							<h3><a href="#">showEmail()</a></h3>
 							<div><p>Will de-obfuscate the email address, replacing the link content as well as the href attribute.</p></div>
+						</div>
+						<div>
+							<h3><a href="#">showLog (event)</a></h3>
+							<div><p>If key presses are done in the correct order this function moves the log to be just about under the current vertical offset.</p></div>
+						</div>
+						<div>
+							<h3><a href="#">trace (message)</a></h3>
+							<div><p>Stores &lt;message&gt; in a log to serve for debugging regardless of browser used for testing. Can be sent to a server side script (PHP, ASP, etc.) that can then store the log in a database or send it via email.</p></div>
 						</div>
 						<div>
 							<h3><a href="#">update(name, version, url)</a></h3>
 							<div><p>Adds a record in the updateArray for the component that called this fn. Only runs if config.update is set to true.</p></div>
 						</div>
-					</div>
+						<div>
+							<h3><a href="#">vAlign()</a></h3>
+							<div><p>Vertically aligns an element relative to their parent element. The element may not have any top or bottom margins, but may be horizontally aligned (centered) using "margin: 0px auto;". Using "margin: 50px auto;" will produce errors, and you should not be setting a margin for top/bottom anyways since you will are vertically aligning the element! If an element also has the class "centered" then align it horizontally as well.</p></div>
+						</div>
+						<div>
+							<h3><a href="#">vAlignThis (element)</a></h3>
+							<div><p>Vertically aligns a single element. If they also have the class centered then align it horizontally as well.</p></div>
+						</div>
+					</div><!-- End #functions section -->
 				</div>
 			</div>
 		</div>	 

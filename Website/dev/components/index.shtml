@@ -54,7 +54,7 @@
 		</div><!-- END of autoMouseOver -->
 		<div class="component">
 			<div class="icon">
-				<a href="core/" title="The Core library"><img src="images/modevious.png" width="150" height="150" alt="Core Library image" /></a>
+				<a href="core/" title="The Core library"><img src="images/core.jpg" width="320" height="240" alt="Core Library image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="core/" title="The Core library">Core</a></h1>
@@ -93,7 +93,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of Encryption component -->
 		<div class="component">
 			<div class="icon">
-				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jQuery.png" width="230" height="100" alt="jQuery image" /></a>
+				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jquery.jpg" width="320" height="240" alt="jQuery image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="http://jquery.com/" title="The jQuery library">jQuery</a></h1>
@@ -118,7 +118,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of jQuery Tools component -->
 		<div class="component">
 			<div class="icon">
-				<a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI"><img src="images/user-interface.png" width="100" height="100" alt="jQuery UI icon" /></a>
+				<a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI"><img src="images/jquery_ui.jpg" width="320" height="240" alt="jQuery UI icon" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI">jQuery UI</a></h1>
@@ -130,7 +130,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of jQuery UI component -->
 		<div class="component">
 			<div class="icon">
-				<a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em"><img src="images/pnotify.png" width="100" height="100" alt="Pines Notify icon" /></a>
+				<a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em"><img src="images/pines_notify.jpg" width="320" height="240" alt="Pines Notify icon" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em">Pines Notify</a></h1>
@@ -143,7 +143,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of Pines Notify -->
 		<div class="component">
 			<div class="icon">
-				<a href="http://www.prototypejs.org/" title="The Prototype JS library"><img src="images/Prototype.png" width="200" height="131" alt="Prototype JS image" /></a>
+				<a href="http://www.prototypejs.org/" title="The Prototype JS library"><img src="images/prototype.jpg" width="320" height="240" alt="Prototype JS image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="http://www.prototypejs.org/" title="The Prototype JS library">Prototype</a></h1>
@@ -176,6 +176,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			<div class="description">
 				<p>So you've got a web page. You’ve marked it up with structural XHTML. You’ve also been a good little web developer and used style sheets to control what your document looks like. You’ve even gone the extra mile and created several alternative style sheets to show how hardcore you are.</p>
 				<p>Great. But now you need a cross-browser way to dynamically switch between the style sheets.</p>
+				<p>Our Style Switcher originates from "A List <em>apart</em>", and has been directly integrated into the <a href="core/" title="Easy to use">Core library</a></p>
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of Style Switcher component -->
