@@ -91,7 +91,7 @@
 					</div></div>
 					<div class="half"><div class="padded">
 						<h2>Possible jQuery conlicts</h2>
-						<p>If you already run jQuery scripts check to see if the author implemented the encapsulation method for running jQuery code.</p>
+						<p>If you already run jQuery scripts check to see if the author implemented the <a href="http://docs.jquery.com/Using_jQuery_with_Other_Libraries#Referencing_Magic_-_Shortcuts_for_jQuery" title="Fixes conflicts">referencing method for running jQuery code</a>.</p>
 						<p>One of the biggest problems with using the Prototype JS and jQuery libraries together was the conflicting use of '$'.</p>
 						<p>If the author did not protect calls to their script from this conflict you will have to convert their run-time script - the script or code that initializes their application. Change all references to '$' to '$j' to have it work with Modevious.</p>
 					</div></div>
@@ -106,7 +106,7 @@
 				<div class="half"><div class="padded">
 					<h2>Core CSS</h2>
 					<p>Remember <a href="http://www.w3schools.com/CSS/css_howto.asp" title="W3 Schools info on CSS">inline-styling?</a> <strong>Don't use that</strong>.</p>
-					<p>For the most common applications of inline-styling there are <a href="css/core.css" title="Core CSS Rules">Core CSS classes</a> that will provide all the markup needed. Need to make the text in a certain paragraph left-aligned? Use the class "text-left". Need an element to float? Apply the class "float-left" or "float-right".</p>
+					<p>For the most common applications of inline-styling there are <a href="css/modevious/core.css" title="Core CSS Rules">Core CSS classes</a> that will provide all the markup needed. Need to make the text in a certain paragraph left-aligned? Use the class "text-left". Need an element to float? Apply the class "float-left" or "float-right".</p>
 					<p>I encourage this use because that certain style may apply to only one page or a specific element, in which case I then believe it is better to leave it out of the global CSS rules.</p>
 				</div></div>
 			</div>
