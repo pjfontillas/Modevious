@@ -113,6 +113,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="description">
 				<p>jQuery Tools is a collection of the most important user-interface components for modern websites. Used by large sites all over the world. And we've got a custom build you can use.</p>
+				<p>Our build contains tooltip, tooltip.slide, tooltip.dynamic, overlay, overlay.apple, dateinput, rangeinput, validator, toolbox.expose, and toolbox.mousewheel.</p>
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of jQuery Tools component -->
