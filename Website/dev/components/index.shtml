@@ -96,7 +96,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jquery.jpg" width="320" height="240" alt="jQuery image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://jquery.com/" title="The jQuery library">jQuery</a> <small>Version 1.4.2</small></h1>
+				<h1><a href="http://jquery.com/" title="The jQuery library">jQuery</a> <small>Version 1.4.3</small></h1>
 			</div>
 			<div class="description">
 				<p>jQuery is a new kind of JavaScript Library.</p>
@@ -109,7 +109,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web"><img src="images/jquery_tools.jpg" width="320" height="240" alt="jQuery Tools image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web">jQuery Tools</a> <small>Version 1.2.4</small></h1>
+				<h1><a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web">jQuery Tools</a> <small>Version 1.2.5</small></h1>
 			</div>
 			<div class="description">
 				<p>jQuery Tools is a collection of the most important user-interface components for modern websites. Used by large sites all over the world. And we've got a custom build you can use.</p>
@@ -122,7 +122,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI"><img src="images/jquery_ui.jpg" width="320" height="240" alt="jQuery UI icon" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI">jQuery UI</a> <small>Version 1.8.4</small></h1>
+				<h1><a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI">jQuery UI</a> <small>Version 1.8.5</small></h1>
 			</div>
 			<div class="description">
 				<p>jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.</p>
