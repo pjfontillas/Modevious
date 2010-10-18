@@ -16,7 +16,7 @@
 		text-align: center;
 	}
 	.name {
-		width: 600px;
+		width: 400px;
 		float: left;
 		padding: 0px 0px 0px 40px;
 	}
@@ -29,8 +29,13 @@
 	.name h1 a:hover {
 		text-decoration: underline;
 	}
+	.version {
+		width: 200px;
+		float: left;
+		font-weight: bold;
+	}
 	.description {
-		width: 600px;
+		width: 500px;
 		padding: 0px 0px 0px 40px;
 		float: left;
 	}
@@ -44,7 +49,10 @@
 				<a href="http://www.m79.ca/automouseover/" title="Mouse over, and it changes"><img src="images/automouseover.jpg" width="320" height="240" alt="autoMouseOver icon" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://www.m79.ca/automouseover/" title="Mouse over, and it changes">autoMouseOver</a> <small>Version 1.0</small></h1>
+				<h1><a href="http://www.m79.ca/automouseover/" title="Mouse over, and it changes">autoMouseOver</a></h1>
+			</div>
+			<div class="version">
+				Version 1.0
 			</div>
 			<div class="description">
 				<p>autoMouseOver is a jQuery plugin that automatically adds a mouseover effect to any selected images based on their naming structure.</p>
@@ -70,7 +78,10 @@
 				<a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions"><img src="images/dumbcrossfade.jpg" width="320" height="240" alt="dumbCrossFade image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions">dumbCrossFade</a> <small>Version 2.0</small></h1>
+				<h1><a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions">dumbCrossFade</a></h1>
+			</div>
+			<div class="version">
+				Version 2.0
 			</div>
 			<div class="description">
 				<p>jquery.dumbCrossFade is intended to be a light-weight slide transition that enables external manipulation.
@@ -83,7 +94,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption"><img src="images/encryption.jpg" width="320" height="240" alt="Encryption image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption">Encryption</a> <small>Version 2.2</small></h1>
+				<h1><a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption">Encryption</a></h1>
+			</div>
+			<div class="version">
+				Version 2.2
 			</div>
 			<div class="description">
 				<p>MD5 is a secure hash algorithm. It takes a string as input, and produces a 128-bit number, the hash. The same string always produces the same hash, but given a hash, it is not generally possible to determine the original string. Secure hash algorithms are useful for protecting passwords and ensuring data integrity.</p>
@@ -96,7 +110,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jquery.jpg" width="320" height="240" alt="jQuery image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://jquery.com/" title="The jQuery library">jQuery</a> <small>Version 1.4.3</small></h1>
+				<h1><a href="http://jquery.com/" title="The jQuery library">jQuery</a></h1>
+			</div>
+			<div class="version">
+				Version 1.4.3
 			</div>
 			<div class="description">
 				<p>jQuery is a new kind of JavaScript Library.</p>
@@ -109,7 +126,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web"><img src="images/jquery_tools.jpg" width="320" height="240" alt="jQuery Tools image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web">jQuery Tools</a> <small>Version 1.2.5</small></h1>
+				<h1><a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web">jQuery Tools</a></h1>
+			</div>
+			<div class="version">
+				Version 1.2.5
 			</div>
 			<div class="description">
 				<p>jQuery Tools is a collection of the most important user-interface components for modern websites. Used by large sites all over the world. And we've got a custom build you can use.</p>
@@ -122,7 +142,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI"><img src="images/jquery_ui.jpg" width="320" height="240" alt="jQuery UI icon" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI">jQuery UI</a> <small>Version 1.8.5</small></h1>
+				<h1><a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI">jQuery UI</a></h1>
+			</div>
+			<div class="version">
+				Version 1.8.5
 			</div>
 			<div class="description">
 				<p>jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.</p>
@@ -134,7 +157,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em"><img src="images/pines_notify.jpg" width="320" height="240" alt="Pines Notify icon" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em">Pines Notify</a> <small>Version 1.0.1</small></h1>
+				<h1><a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em">Pines Notify</a></h1>
+			</div>
+			<div class="version">
+				Version 1.0.1
 			</div>
 			<div class="description">
 				<p>The Pines Notify is a jQuery plugin developed by Hunter Perrin as part of Pines.</p>
@@ -147,7 +173,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://www.prototypejs.org/" title="The Prototype JS library"><img src="images/prototype.jpg" width="320" height="240" alt="Prototype JS image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://www.prototypejs.org/" title="The Prototype JS library">Prototype</a> <small>Version 1.6.1</small></h1>
+				<h1><a href="http://www.prototypejs.org/" title="The Prototype JS library">Prototype</a></h1>
+			</div>
+			<div class="version">
+				Version 1.6.1
 			</div>
 			<div class="description">
 				<p>Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.</p>
@@ -160,7 +189,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript"><img src="images/soundmanager2.jpg" width="320" height="240" alt="SoundManager2 image" /></a>
 			</div>
 			<div class="name">
-				<h1><a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript">SoundManager 2</a> <small>Version 2.96a.20100624</a></h1>
+				<h1><a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript">SoundManager 2</a></h1>
+			</div>
+			<div class="version">
+				Version 2.96a.20100624
 			</div>
 			<div class="description">
 				<p>SoundManager 2 makes it easier to play audio using JavaScript. By wrapping and extending HTML5 and Flash Audio APIs, SoundManager 2 brings reliable cross-platform audio to JavaScript.</p>
