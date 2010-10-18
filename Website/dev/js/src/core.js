@@ -604,23 +604,25 @@ var $c = (function () {
             } else {
               updateType = "ui-state-highlight";
             }
-            $j("#update_manager").append([  
+            // use .sub('<', '&lt;').sub('>', '&gt;') to strip characters from data
+            // received from external sources.
+            $j("#update_manager").append([
             "<div class=\"update ",
-            updateType,
+            updateType.sub('<', '&lt;').sub('>', '&gt;'),
             "\">",
             "<p><strong>",
             $c.updateName[updateCounter], // component name
             "</strong> | <small>",
-            data.versionString,
+            data.versionString.sub('<', '&lt;').sub('>', '&gt;'),
             "</small></p>",
             "<p>",
-            data.description,
+            data.description.sub('<', '&lt;').sub('>', '&gt;'),
             "</p>",
             "<p><a href=\"",
-            data.url,
+            data.url.sub('<', '&lt;').sub('>', '&gt;'),
             "\">Download this update</a>",
             " | <a href=\"",
-            data.changelog,
+            data.changelog.sub('<', '&lt;').sub('>', '&gt;'),
             "\">View the changelog</a></p>",
             "</div>"
             ].join(''));

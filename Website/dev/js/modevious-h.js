@@ -7,7 +7,7 @@
 
 // Other libraries
 $c.exclude("/js/src/prototype.min.js");
-$c.exclude("/js/src/jquery-1.4.2.min.js");
+$c.exclude("/js/src/jquery-1.4.3.min.js");
 
 // Core libary
 $c.include("/css/modevious/core.min.css");
@@ -17,8 +17,8 @@ $c.exclude("/js/src/core.js");
 $c.exclude("/js/modevious-h.js");
 
 // jQuery User interface
-$c.include("/css/modevious/jquery.ui.custom.css");
-$c.include("/js/src/jquery-ui-1.8.4.min.js");
+$c.include("/css/modevious/jquery.ui.1.8.5.custom.css");
+$c.include("/js/src/jquery-ui-1.8.5.min.js");
 
 // jQuery Tools
 $c.include("/js/src/jquery.tools.min.js");
