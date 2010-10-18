@@ -12,9 +12,12 @@
 			overflow: hidden;
 		}
 		#splash-menu {
-			width: 956px;
+			width: 960px;
 			margin: 0px auto;
 			padding: 0px;
+		}
+		#splash-tabs {
+			border: 0px;
 		}
 		#splash-menu li {
 			width: 237px;
@@ -27,12 +30,6 @@
 		}
 		.splash-item a {
 			color: #69F;
-		}
-		#computing {
-			background: url(images/clouds.jpg);
-		}
-		#theming {
-			background: url(images/diagonal-stripes.png);
 		}
 		#features {
 			width: 960px;
@@ -66,8 +63,19 @@
 <!--#include virtual="/include/navigation.htm" -->
 	<div id="core">
 		<div id="splash-tabs" class="no-padding">
+		<ul id="splash-menu" class="hidden">
+			<li><a href="#what">What does it do?</a></li>
+			<li><a href="#computing">Cloud Computing</a></li>
+			<li><a href="#know">Things You Need To Know</a></li>
+			<li><a href="#theming">About Theming</a></li>
+		</ul>			
 		<div id="what" class="splash-item no-padding">
-			<a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="958" height="320" longdesc="http://www.modevious.com" /></a>
+				<div class="half"><div class="padded">
+					<p>I'll tell you what it does... soon...</p>
+				</div></div>
+				<div class="half"><div class="padded">
+					<p>Image goes here.</p>
+				</div></div>			
 			</div>
 			<div id="computing" class="hidden splash-item padded-x">
 				<div class="half"><div class="padded">
@@ -110,12 +118,6 @@
 					<p>I encourage this use because that certain style may apply to only one page or a specific element, in which case I then believe it is better to leave it out of the global CSS rules.</p>
 				</div></div>
 			</div>
-			<ul id="splash-menu" class="hidden">
-				<li><a href="#what">What does it do?</a></li>
-				<li><a href="#computing">Cloud Computing</a></li>
-				<li><a href="#know">Things You Need To Know</a></li>
-				<li><a href="#theming">About Theming</a></li>
-			</ul>			
 		</div> 
 		<div class="clear-float"></div>
 	</div><!-- End #core -->

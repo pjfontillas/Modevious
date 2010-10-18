@@ -17,7 +17,7 @@ $c.exclude("/js/src/core.js");
 $c.exclude("/js/modevious-h.js");
 
 // jQuery User interface
-$c.include("/css/modevious/jquery.ui.1.8.5.custom.css");
+$c.include("/css/modevious/jquery-ui-1.8.5.custom.css");
 $c.include("/js/src/jquery-ui-1.8.5.min.js");
 
 // jQuery Tools
