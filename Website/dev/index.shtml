@@ -7,6 +7,8 @@
 		.splash-item {
 			height: 320px;
 			overflow: auto;
+			padding: 0px !important;
+			font-size: 0.7em;
 		}
 		#what {
 			overflow: hidden;
@@ -23,7 +25,7 @@
 		#splash-menu a {
 			cursor: pointer !important;
 			width: 100%;
-			font-size: 14px;
+			font-size: 0.8em;
 		}
 		.splash-item a {
 			color: #69F;
@@ -46,7 +48,7 @@
 			width: 410px;
 			padding: 0px 10px;
 			float: right;
-			font-size: 16px;
+			font-size: 1em;
 			font-weight: bold;
 		}
 		.feature .description {
@@ -59,7 +61,7 @@
 <body>
 <!--#include virtual="/include/navigation.htm" -->
 	<div id="splash-tabs" class="no-padding">
-		<div id="what" class="splash-item no-padding">
+		<div id="what" class="splash-item">
 			<div class="half"><div class="padded">
 				<h1>"Merging Our DEVelopment Into One Universal System"</h1>
 				<p>Modevious is a collection, testing tool, and maintenance system of JavaScript libraries and plugins.</p>
@@ -71,7 +73,7 @@
 				<p>Image goes here.</p>
 			</div></div>
 		</div><!-- #what -->
-		<div id="computing" class="hidden splash-item padded-x">
+		<div id="computing" class="hidden splash-item">
 			<div class="half"><div class="padded">
 				<h1>What is cloud computing?</h1>
 				<p><a href="http://en.wikipedia.org/wiki/Cloud_computing" title="View Wikipedia article">According to Wikipedia</a>:</p>
@@ -84,7 +86,7 @@
 				<p>Modevious attempts to alleviate the process of creating and maintaining web pages and applications that use client-based technologies to enhance our experience on the web.</p>
 			</div></div>
 		</div><!-- #theming -->
-		<div id="know" class="hidden splash-item padded-x">
+		<div id="know" class="hidden splash-item">
 				<div class="half"><div class="padded">
 					<h1>Possible jQuery conlicts</h1>
 					<p>If you already run jQuery scripts check to see if the author implemented the <a href="http://docs.jquery.com/Using_jQuery_with_Other_Libraries#Referencing_Magic_-_Shortcuts_for_jQuery" title="Fixes conflicts">referencing method for running jQuery code</a>.</p>
@@ -94,9 +96,10 @@
 				<div class="half"><div class="padded">
 					<h1>Mobile optimization</h1>
 					<p>Modevious is designed for the desktop user experience. If you're looking for a library that is designed from the ground up to cater to mobile needs check out <a href="http://jquerymobile.com" title="For a good mobile UX">jQuery Mobile</a>.</p>
+					<p>You <strong>can</strong> use Modevious on the mobile platform, you may just get some uncommon behavior or decreased performance based on the hardware it runs on.</p>
 				</div></div>
 		</div><!-- #know -->
-		<div id="theming" class="hidden splash-item no-padding">
+		<div id="theming" class="hidden splash-item">
 			<div class="half"><div class="padded">
 				<h1>jQuery UI</h1>
 				<p>The jQuery UI is currently just about the extent of theming Modevious directly deals with.</p>

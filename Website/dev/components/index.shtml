@@ -38,6 +38,11 @@
 		width: 500px;
 		padding: 0px 0px 0px 40px;
 		float: left;
+		color: #DDD;
+		font-size: 1.3em;
+	}
+	.description:hover {
+		color: #FFF;
 	}
 	</style>
 </head>
