@@ -4,3 +4,121 @@
 	<p class="float-right"><a href="/include/navigation.htm" title="Navigational sitemap">Sitemap</a> | <a href="http://dev.modevious.com/" title="Modevious Development">Development</a> | <a href="#top" title="Back to the top of the page">Back to top &uarr;</a></p>
 	<p>Powered by <a href="http://www.modevious.com/" title="You design, it empowers">Modevious</a> | Produced by <a href="http://www.pjfontillas.com/" title="Developer, designer, and devious mastermind!">PJ Fontillas</a><br /><a href="http://validator.w3.org/check?uri=referer" title="Don't believe me? Click here to check!">Valid XHTML 1.1</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer/" title="Valid CSS2.1">Valid CSS 2.1</a> | <a href="/licenses.txt">Licensing</a></p>						
 </div>
+<div id="download-container">
+	<div class="full">
+		<div class="padded">	
+			<div id="close-download">hide</div>
+			<div class="ui-widget">
+				<div class="ui-state-error padded">
+					<p class="text-center">
+					<span class="ui-icon ui-icon-alert float-left"></span>
+					<strong>Wait!</strong> Do you even know what you're downloading?! 
+					If you haven't already, go check out the 
+					<a href="/components/" 
+						title="What makes up Modevious">Components page</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="two-thirds">
+		<div class="padded">
+			<p>Version 1.1.0 is a huge step forward. I've introduced new features,
+			updated components, and generally made all-around enhancements to
+			the entire project.</p>
+			<ul>
+				<li><a href="/update" 
+					title="Update with AJAX">Modevious Update System</a> allows you to check for updates to
+					any plugins that make use of the system!</li>
+				<li>jQuery UI updated to version 1.8.4</li>
+				<li>Expose upgrade to a custom build of 
+				<a href="http://flowplayer.org/tools/index.html" 
+					title="Tools!">jQuery Tools</a></li>
+			</ul>
+			<p>Still working on unit-testing and experimental code page but all
+			is on track!</p>
+			<p>All updates <em>after version</em> 1.0.9 are 
+			<strong>cumulative</strong>. If you already installed and are using 
+			Modevious, simply grab the latest update you want and you've got all 
+			previous updates as well! Don't go backwards though... even though I 
+			cannot see any reason why you'd do so I'm willing to bet some of you 
+			will try or at least accidentally do it.</p>
+			<p>Like what I've done? Care to help me buy a tie or a cup of 
+			coffee? I would definitely appreciate it!</p>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<p>
+				<input type="hidden" name="cmd" value="_s-xclick" />
+				<input type="hidden" name="hosted_button_id" value="8HQ3GJYCSYW2A" />
+				<input type="image" 
+					src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" 
+					name="submit" alt="PayPal - The safer, easier way to pay online!" />
+				<img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" 
+					width="1" height="1" />
+			</p>
+			</form>
+		</div>
+	</div>
+	<div class="one-third">
+		<div class="padded">
+			<h1 class="no-margins">Current version</h1>
+			<p><strong>1.1.0</strong> | <em>Latest build on Sep. 11th, 2010.</em>
+			<br /><a href="http://github.com/pjfontillas/modevious/commits/master"
+				title="Latest changes">View the changelog</a></p>
+			<p>HTTP downloads are available and the source code is openly
+			available should you access the scripts on this site or on 
+			<a href="http://github.com/pjfontillas/modevious" 
+				title="Modevious on GitHub">GitHub</a>.</p>
+			<form action="http://www.modevious.com/cache/modevious.1.1.0.zip">
+			<div><a href="http://www.modevious.com/cache/modevious.1.1.0.zip" 
+				title="Download the latest release">
+				<button>Download Modevious</button></a></div></form>
+			<p>Older versions can be <a href="http://www.modevious.com/cache/" 
+				title="A public directory">fetched from the cache via HTTP</a>.</p>
+			<p>If you would like to mirror these downloads please 
+			<a href="/contact/" title="Drop me a message!">contact me</a>.</p>
+				<p>I am using <a href="http://www.pivotaltracker.com/projects/97677" 
+			title="From PivotalLabs">PivotalTracker</a> to keep track of features
+			and tasks. If you wish to join the development team feel free to
+			<a href="/contact/" title="Send me a message">contact me</a>.</p>
+		</div>
+	</div>
+	<div class="clear-float"></div>					
+</div><!-- #download-container -->
+<script type="text/javascript">
+	$c.onLoad(function () {
+		$c.trace("Starting behavior configuration for #menu-download");
+		$("menu-download").observe("click", function (event) {
+			$c.trace("Download link pressed, stopping default link behavior");
+			event.stop();
+			var downloadContainer = $j("#download-container");
+			if ($j("#download-container").is(":hidden")) {
+				$c.trace("#download-container was hidden, now showing");
+				downloadContainer.show().draggable();
+			}
+			$c.trace("Moving #download-container");
+			$c.trace([
+				"document.viewport.getWidth(): ",
+				document.viewport.getWidth()
+			].join(''));
+			$c.trace([
+				"downloadContainer.outerWidth(true): ",
+				downloadContainer.outerWidth(true)
+			].join(''));
+			downloadContainer.animate({
+				top: document.viewport.getScrollOffsets().top + 50,
+				left: (document.viewport.getWidth() - downloadContainer.outerWidth(true)) / 2
+			}).expose({
+				closeOnClick: false,
+				closeOnEsc: false,
+				color: "#000"
+			});
+		});
+		$("close-download").observe("click", function () {
+				$c.trace("Hiding #download-container");
+				$j("#download-container").animate({
+					top: -1000
+				});
+				$j.mask.close();
+		});
+		$c.trace("Finished configuring behavior for #menu-download");
+	});
+</script>

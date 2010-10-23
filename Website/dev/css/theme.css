@@ -134,3 +134,27 @@ button {
 	padding: 125px 0px;
 	text-align: right;
 }
+#download-container {
+	width: 960px;
+	border: 1px solid #AAA;
+	background: #FFF;
+	color: #000;
+	margin: 0px auto;
+	position: absolute;
+	top: -1000px;
+	z-index: 1001;
+	display: none;
+	cursor: move;
+}
+#close-download {
+	width: 100%;
+	padding: 10px 0px;
+	background: #000;
+	color: #AAA;
+	text-align: center;
+	margin: 10px 0px;
+}
+#close-download:hover {
+	color: #FFF;
+	cursor: pointer;
+}
