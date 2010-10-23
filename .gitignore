@@ -19,6 +19,7 @@
 *.rar
 *.tar
 *.zip
+!modevious.*.zip
 
 # Logs and databases #
 ######################
