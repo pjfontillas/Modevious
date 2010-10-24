@@ -19,7 +19,7 @@
 			border: 0px;
 		}
 		#splash-menu li {
-			width: 236px;
+			width: 235px;
 			margin: 0px auto;
 		}
 		#splash-menu a {

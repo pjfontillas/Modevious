@@ -122,11 +122,11 @@ a:visited {
 button {
 	outline: none !important;
 }
-#contact_form {
+#contact_form, #contact-container {
 	background: url(theme/contact_card.png);
-	width: 760px;
-	height: 425px;
-	padding: 100px 100px 75px 100px;
+	width: 759px;
+	height: 389px;
+	padding: 30px;
 	margin: 0px auto;
 	color: #000;
 }
@@ -146,7 +146,7 @@ button {
 	display: none;
 	cursor: move;
 }
-#close-download {
+#hide-download, #hide-contact {
 	width: 100%;
 	padding: 10px 0px;
 	background: #000;
@@ -154,7 +154,14 @@ button {
 	text-align: center;
 	margin: 10px 0px;
 }
-#close-download:hover {
+#hide-download:hover, #hide-contact:hover {
 	color: #FFF;
 	cursor: pointer;
+}
+#contact-container {
+	display: none;
+	position: absolute;
+	top: -1000px;
+	z-index: 1001;
+	cursor: move;
 }
