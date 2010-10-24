@@ -122,7 +122,7 @@ a:visited {
 button {
 	outline: none !important;
 }
-#contact_form, #contact-container {
+#contact_form {
 	background: url(theme/contact_card.png);
 	width: 759px;
 	height: 389px;
@@ -131,7 +131,7 @@ button {
 	color: #000;
 }
 #address {
-	padding: 125px 0px;
+	padding: 100px 0px 0px 0px;
 	text-align: right;
 }
 #download-container {
@@ -159,9 +159,16 @@ button {
 	cursor: pointer;
 }
 #contact-container {
-	display: none;
 	position: absolute;
 	top: -1000px;
 	z-index: 1001;
 	cursor: move;
+	width: 759px;
+	height: auto;
+	border: 1px solid #AAA;
+	padding: 30px;
+	margin: 0px auto;
+	background: url(theme/contact_card_bg.jpg) no-repeat #FFF;
+	color: #000;
+	display: none;
 }

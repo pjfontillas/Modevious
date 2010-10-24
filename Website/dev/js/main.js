@@ -8,7 +8,7 @@ $c.onLoad(function () {
 		if (downloadContainer.is(":hidden")) {
 			$c.trace("#download-container was hidden, now showing");
 			downloadContainer.show().css({
-				left: (document.viewport.getWidth() - downloadContainer.outerWidth(true)) / 2 
+				left: (document.viewport.getWidth() - downloadContainer.outerWidth(true)) / 2
 			}).draggable();
 		}
 		$c.trace("Moving #download-container");
@@ -37,7 +37,7 @@ $c.onLoad(function () {
 		if (contactContainer.is(":hidden")) {
 			$c.trace("#contact-container was hidden, now showing");
 			contactContainer.show().css({
-				left: (document.viewport.getWidth() - contactContainer.outerWidth(true)) / 2 
+				left: (document.viewport.getWidth() - contactContainer.outerWidth(true)) / 2
 			}).draggable();
 		}
 		$c.trace("Moving #contact-container");
@@ -51,7 +51,7 @@ $c.onLoad(function () {
 		].join(''));
 		contactContainer.animate({
 			top: document.viewport.getScrollOffsets().top + 50
-		});	
+		});
 	});
 	$("submit-contact-form").observe("click", function (event) {
 		event.stop();
@@ -84,12 +84,23 @@ $c.onLoad(function () {
 						$("contact-email").value = '';
 					};
 				} else {
-					$j("#contact-container").block({
-						message: "<p>Something went wrong, please try again or wait a while before resubmitting through this form!</p>"
-					});
-					fn = function () {
-						$j("#contact-container").unblock();
-					};
+					if (data.status == "rejected") {
+						$j("#contact-container").block({
+							message: "<p>Please check what you entered</p>"
+						});
+						fn = function () {
+							$j("#contact-container").unblock();
+						};
+					} else {
+						if (data.status == "failure") {
+							$j("#contact-container").block({
+								message: "<p>Something went wrong, please try again or wait a while before resubmitting through this form!</p>"
+							});
+							fn = function () {
+								$j("#contact-container").unblock();
+							};
+						}
+					}
 				}
 				setTimeout(fn, 3000);
 			},
@@ -104,6 +115,9 @@ $c.onLoad(function () {
 		$j("#contact-container").animate({
 			top: -1000
 		});
+		$("contact-name").value = '';
+		$("contact-message").value = '';
+		$("contact-email").value = '';
 	});
 	$c.trace("Finished configuring behavior for #contact-download");
 	$j("#download-container").click(function () {
