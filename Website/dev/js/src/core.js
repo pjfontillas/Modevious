@@ -35,18 +35,31 @@ var $c = (function () {
   }
   var loadedScripts = []
   var log = []
-  var konamiCounter = 0
   var updateName = []
   var updateVersion = []
   var updateURL = []
   var updateCounter = 0
+  var consoleCounter = 0
+  var consoleCode = [ // Konami Code
+  	Event.KEY_UP,
+  	Event.KEY_UP,
+  	Event.KEY_DOWN,
+  	Event.KEY_DOWN,
+  	Event.KEY_LEFT,
+  	Event.KEY_RIGHT,
+  	Event.KEY_LEFT,
+  	Event.KEY_RIGHT,
+  	66,
+  	65
+	]
   return { // public methods and variables
     version: version,
     versionString: versionString,
     config: config,
     loadedScripts: loadedScripts,
     log: log,
-    konamiCounter: konamiCounter,
+    consoleCounter: consoleCounter,
+    consoleCode: consoleCode,
     updateName: updateName,
     updateVersion: updateVersion,
     updateURL: updateURL,
@@ -484,70 +497,16 @@ var $c = (function () {
     *   to be just about under the current vertical offset.
     */
     showLog: function (event)  {
-      switch ($c.konamiCounter) {
-        case 0:
-          if (event.keyCode == Event.KEY_UP) {
-            $c.konamiCounter++;
-          } else {
-            $c.konamiCounter = 0;
-          }
-          break;
-        case 1:
-          if (event.keyCode == Event.KEY_UP) {
-            $c.konamiCounter++;
-          } else {
-            $c.konamiCounter = 0;
-          }
-          break;
-        case 2:
-          if (event.keyCode == Event.KEY_DOWN) {
-            $c.konamiCounter++;
-          } else {
-            $c.konamiCounter = 0;
-          }
-          break;
-        case 3:
-          if (event.keyCode == Event.KEY_DOWN) {
-            $c.konamiCounter++;
-          } else {
-            $c.konamiCounter = 0;
-          }
-          break;
-        case 4:
-          if (event.keyCode == Event.KEY_LEFT) {
-            $c.konamiCounter++;
-          } else {
-            $c.konamiCounter = 0;
-          }
-          break;
-        case 5:
-          if (event.keyCode == Event.KEY_RIGHT) {
-            $c.konamiCounter++;
-          } else {
-            $c.konamiCounter = 0;
-          }
-          break;
-        case 6:
-          if (event.keyCode == Event.KEY_LEFT) {
-            $c.konamiCounter++;
-          } else {
-            $c.konamiCounter = 0;
-          }
-          break;
-        case 7:
-          if (event.keyCode == Event.KEY_RIGHT) {
-            $j("#console").animate({
-              top: document.viewport.getScrollOffsets().top
-            });
-          } else {
-          } // do nothing, we're always resetting the counter
-          $c.konamiCounter = 0;
-          return true;
-          break;
-        default:
-          $c.konamiCounter = 0;
-      }
-      return false;
+    	if (event.keyCode == $c.consoleCode[$c.consoleCounter]) {
+    		$c.consoleCounter++;
+    	} else {
+    		$c.consoleCounter = 0;
+    	}
+    	if ($c.consoleCounter == $c.consoleCode.length) {
+		    $j("#console").animate({
+		      top: document.viewport.getScrollOffsets().top
+		    });
+    	}
     },
     /**
     * hideLog ()
