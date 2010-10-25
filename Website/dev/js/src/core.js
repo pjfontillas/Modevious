@@ -31,7 +31,19 @@ var $c = (function () {
     soundManager: {
       url: "/swf",
       flashVersion: 9
-    }
+    },
+    consoleCode: [ // Konami Code
+			Event.KEY_UP,
+			Event.KEY_UP,
+			Event.KEY_DOWN,
+			Event.KEY_DOWN,
+			Event.KEY_LEFT,
+			Event.KEY_RIGHT,
+			Event.KEY_LEFT,
+			Event.KEY_RIGHT,
+			66,
+			65
+		]
   }
   var loadedScripts = []
   var log = []
@@ -40,18 +52,6 @@ var $c = (function () {
   var updateURL = []
   var updateCounter = 0
   var consoleCounter = 0
-  var consoleCode = [ // Konami Code
-  	Event.KEY_UP,
-  	Event.KEY_UP,
-  	Event.KEY_DOWN,
-  	Event.KEY_DOWN,
-  	Event.KEY_LEFT,
-  	Event.KEY_RIGHT,
-  	Event.KEY_LEFT,
-  	Event.KEY_RIGHT,
-  	66,
-  	65
-	]
   return { // public methods and variables
     version: version,
     versionString: versionString,
@@ -59,7 +59,6 @@ var $c = (function () {
     loadedScripts: loadedScripts,
     log: log,
     consoleCounter: consoleCounter,
-    consoleCode: consoleCode,
     updateName: updateName,
     updateVersion: updateVersion,
     updateURL: updateURL,
@@ -75,7 +74,6 @@ var $c = (function () {
         $c.config = $config;
       } catch (e) {        
       } // do nothing
-      return true;
     },
     /**
     * changePage (String, Element)
@@ -83,7 +81,6 @@ var $c = (function () {
     */
     changePage: function (pageName, objectID) {
       $c.fetchData(pageName, null, objectID);
-      return true;
     },
     /**
     * createCookie (String, String, Int)
@@ -99,7 +96,6 @@ var $c = (function () {
         expires = '';
       }
       document.cookie = [name, '=', value, expires, "; path=/"].join('');
-      return true;
     },
     /**
     * readCookie (String)
@@ -143,11 +139,9 @@ var $c = (function () {
           func();
         };
       }
-      return true;
     },
     onLoad: function (func) {
       $c.addLoadEvent(func);
-      return true;
     },
     /**
     * getUrlVariable (String)
@@ -232,7 +226,6 @@ var $c = (function () {
           alert(["Unsupported filetype: .", ext].join(''));    
         }
       }
-      return true;
     },
     /**
     * exclude (String)
@@ -246,11 +239,9 @@ var $c = (function () {
       // add to array without loading the script, used for scripts that are
       // already loaded without the use of Core's include().
       $c.loadedScripts[$c.loadedScripts.length] = scriptID;
-      return true;
     },
     exclude: function (scriptID) {
       $c.add2Lib(scriptID);
-      return true;
     },
     /**
     * showEmail ()
@@ -266,7 +257,6 @@ var $c = (function () {
         url = url.replace("mailto:", '');
         a.update(url);       
       }.bind(this));
-      return true;
     },
     /**
     * getTime ()
@@ -387,7 +377,6 @@ var $c = (function () {
           });
         }
       });
-      return true;
     },
     /**
     * vAlignThis (element)
@@ -436,7 +425,6 @@ var $c = (function () {
           "top": [newTop, "px"].join('')
         });
       }
-      return true;
     },
     /**
     * setStyleSheet (title)
@@ -454,7 +442,6 @@ var $c = (function () {
         }
       }
       $c.createCookie("style", title, 365);
-      return true;
     },
     /**
     * getActiveStyleSheet ()
@@ -489,7 +476,7 @@ var $c = (function () {
         $c.log[$c.log.length - 1],
         "</p>"
       ].join(''));
-      return true;
+      return message; // chains message for possible use with other utilities
     },
     /**
     * showLog (event)
@@ -497,12 +484,12 @@ var $c = (function () {
     *   to be just about under the current vertical offset.
     */
     showLog: function (event)  {
-    	if (event.keyCode == $c.consoleCode[$c.consoleCounter]) {
+    	if (event.keyCode == $c.config.consoleCode[$c.consoleCounter]) {
     		$c.consoleCounter++;
     	} else {
     		$c.consoleCounter = 0;
     	}
-    	if ($c.consoleCounter == $c.consoleCode.length) {
+    	if ($c.consoleCounter == $c.config.consoleCode.length) {
 		    $j("#console").animate({
 		      top: document.viewport.getScrollOffsets().top
 		    });
@@ -516,7 +503,6 @@ var $c = (function () {
       $j("#console").animate({
         top: "-500"
       });
-      return true;
     },
     /**
     * getFlashMovie (movieName)
@@ -540,9 +526,8 @@ var $c = (function () {
     /**
     * fetchUpdates()
     *   Actually fetches updates using Ajax.Request, parsing responses as JSON
-    *   data and creating appropriate messages. This is a recursive function
-    *   that continually calls itself until it returns true, which means that
-    *   all elements in the updateArray have been checked.
+    *   data and creating appropriate messages. This function continually 
+    *		calls itself until all elements in the updateArray have been checked.
     */
     fetchUpdates: function () {
       var data, updateType;    
@@ -601,11 +586,9 @@ var $c = (function () {
               $j("#progress").html("Everything is up-to-date!");
             }
             $j("body").css("cursor", "auto"); // change cursor back
-            return true;
           }
         });
       }
-      return false;
     }
   };
 }());
