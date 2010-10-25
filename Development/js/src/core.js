@@ -24,7 +24,7 @@ var $c = (function () {
   var version = 110
   var versionString = "v1.1.0"
   var config = {
-    warnings: false,
+    warnings: true,
     at: "(AT)",
     dot: "(DOT)",
     update: false,
@@ -187,12 +187,12 @@ var $c = (function () {
           // Optional, if <warnings> is true throw an alert when 
           // a page tries to load the same script multiple times.
           if ($c.config.warnings) {
-            alert([
+            alert($c.trace([
               "This page attempted to load: <",
               scriptID,
               "> multiple times.",
               "Please contact the webmaster to correct $c."
-            ].join(''));
+            ].join('')));
           }
         }
       }
