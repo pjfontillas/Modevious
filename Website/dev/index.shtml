@@ -127,10 +127,10 @@
 				<img src="images/easy.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
-				<p>Easy to use</p>
+				<p>Packaged Tools</p>
 			</div>
 			<div class="description">
-				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+				<p>Commonly available scripts and plugins have been pre-packaged to ease the burden of finding and collecting tools. They've also been tested to work together and shouldn't cause conflicts.</p>
 			</div>
 		</div>
 		<div class="feature">
@@ -138,10 +138,10 @@
 				<img src="images/easy.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
-				<p>Easy to use</p>
+				<p>Configurable</p>
 			</div>
 			<div class="description">
-				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+				<p>Most aspects of Modevious can be tweaked to suit your needs. The default jQuery UI theme can be replaced, and several options can be set to favor your type of development environment.</p>
 			</div>
 		</div>
 		<div class="feature">
@@ -149,10 +149,10 @@
 				<img src="images/easy.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
-				<p>Easy to use</p>
+				<p>Update System</p>
 			</div>
 			<div class="description">
-				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+				<p>Modevious comes with a system to easily keep your plugins updated. If you're an end-user you'll know which plugins are starting to get outdated, and as a developer you've got another outlet that you can use to inform your users of updates.</p>
 			</div>
 		</div>
 		<div class="feature">
@@ -160,10 +160,10 @@
 				<img src="images/easy.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
-				<p>Easy to use</p>
+				<p>Well Documented</p>
 			</div>
 			<div class="description">
-				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+				<p>If it's not covered on this website, the <a href="components/" title="Go to components listing">components page</a> can point you to the right place to find the answers you're looking for.</p>
 			</div>
 		</div>
 		<div class="feature">

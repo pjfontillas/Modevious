@@ -51,10 +51,10 @@ a:visited {
 #home-icon {
 	position: relative;
 	width: 135px;
-	height: 31px;
+	height: 32px;
 	float: left;
-	margin: 1px 10px 0px 10px;
-	padding: 0px;
+	margin: 0px 10px;
+	padding: 3px 0px 0px 0px;
 }
 #home-icon a {
 	position: relative;

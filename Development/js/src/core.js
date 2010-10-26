@@ -53,8 +53,6 @@ var $c = (function () {
 	var updateCounter = 0
 	var consoleCounter = 0
 	return { // public methods and variables
-		version: version,
-		versionString: versionString,
 		config: config,
 		loadedScripts: loadedScripts,
 		log: log,
@@ -74,6 +72,20 @@ var $c = (function () {
 				$c.config = $config;
 			} catch (e) {				
 			} // do nothing
+		},
+		/**
+		*	getVersion ()
+		*		Returns version as an integer.
+		*/
+		getVersion: function () {
+			return version;
+		},
+		/**
+		*	getVersionString ()
+		*		Returns version string.
+		*/
+		getVersionString: function () {
+			return versionString;
 		},
 		/**
 		*	changePage (String, Element)
