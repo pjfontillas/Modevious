@@ -1,22 +1,22 @@
 /**
 *	Core v1.1.0
 *		Maintainer
-*		 Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
+*			Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
 *		Description
-*		 Holds some of the most common ajax functions used.
+*			Holds some of the most common ajax functions used.
 *		Dependencies
-*		 Prototype v1.6.1 
-*		 jQuery 1.4.2
+*			Prototype v1.6.1 
+*			jQuery 1.4.2
 *		Verified using JSLint.
 *		Module pattern.
 *		Implied global variables:
-*		 var window; // Is it safe to declare this?
-*		 var document; // Is it safe to declare this?
-*		 var XMLHttpRequest; // Will be depreciated next release
-*		 var ActiveXObject; // Will be depreciated next release
-*		 var alert; // What? How?
-*		 var $$; // from Prototype
-*		 var jQuery; // from jQuery
+*			var window; // Is it safe to declare this?
+*			var document; // Is it safe to declare this?
+*			var XMLHttpRequest; // Will be depreciated next release
+*			var ActiveXObject; // Will be depreciated next release
+*			var alert; // What? How?
+*			var $$; // from Prototype
+*			var jQuery; // from jQuery
 */
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
