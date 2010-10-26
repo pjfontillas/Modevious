@@ -124,7 +124,7 @@
 	<div id="features">
 		<div class="feature">
 			<div class="image">
-				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+				<img src="images/packaged.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
 				<p>Packaged Tools</p>
@@ -135,18 +135,19 @@
 		</div>
 		<div class="feature">
 			<div class="image">
-				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+				<img src="images/turn_key.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
 				<p>Configurable</p>
 			</div>
 			<div class="description">
-				<p>Most aspects of Modevious can be tweaked to suit your needs. The default jQuery UI theme can be replaced, and several options can be set to favor your type of development environment.</p>
+				<p>Most aspects of Modevious can be tweaked to suit your needs. The default jQuery UI theme can be replaced, and several options can be set to favor your type of development environment. Or you can just turn the key and start using it right away without modifying anything!</p>
 			</div>
 		</div>
+		<div class="clear-float"></div>
 		<div class="feature">
 			<div class="image">
-				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+				<img src="images/upgrade.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
 				<p>Update System</p>
@@ -157,7 +158,19 @@
 		</div>
 		<div class="feature">
 			<div class="image">
-				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+				<img src="images/console.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Console Available</p>
+			</div>
+			<div class="description">
+				<p>Cross-browser console that can be logged to and has some basic functionality that can help you debug at a level built-in browser development tools sometimes fail to do.</p>
+			</div>
+		</div>
+		<div class="clear-float"></div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/documented.png" width="50" height="50" alt="Easy" />
 			</div>
 			<div class="name">
 				<p>Well Documented</p>
