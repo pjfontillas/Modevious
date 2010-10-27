@@ -32,7 +32,7 @@
 		}
 		#features {
 			width: 960px;
-			margin: 0px auto;
+			margin: 50px auto;
 			clear: both;
 		}
 		.feature {
@@ -70,7 +70,7 @@
 				<p>Modevious also employs an update system that makes it easier for plugin authors and users to keep things up-to-date.</p>
 			</div></div>
 			<div class="half"><div class="padded">
-				<p>Image goes here.</p>
+				<img src="images/homepage_splash_image.png" width="400" height="300" alt="Modevious" />
 			</div></div>
 		</div><!-- #what -->
 		<div id="computing" class="hidden splash-item">
@@ -187,7 +187,7 @@
 				<p>Easy to use</p>
 			</div>
 			<div class="description">
-				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life. All your tools have been tested and found to work together so that you don't have to go out and find out what to use for the simplest of tasks like using tabs, dialogs, and masks as well as more complex ideas including AJAX, DOM manipulation, and JSON and XML parsing.</p>
+				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life.</p>
 			</div>
 		</div>
 	</div><!-- #features -->
