@@ -38,7 +38,7 @@
 		width: 500px;
 		padding: 0px 0px 0px 40px;
 		float: left;
-		color: #DDD;
+		color: #AAA;
 		font-size: 1.3em;
 	}
 	.description:hover {
