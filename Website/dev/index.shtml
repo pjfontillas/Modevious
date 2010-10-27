@@ -190,6 +190,7 @@
 				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life.</p>
 			</div>
 		</div>
+		<div class="clear-float"></div>
 	</div><!-- #features -->
 <!--#include virtual="/include/footer.htm" -->
 <script type="text/javascript">

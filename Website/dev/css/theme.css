@@ -1,5 +1,5 @@
 body {
-	padding: 40px 0px 0px 0px;
+	padding: 40px 0px 20px 0px;
 	margin: 0px;
 	font-family: Arial;
 	background: #000;
@@ -169,4 +169,12 @@ button {
 	background: url(theme/contact_card_bg.jpg) no-repeat #FFF;
 	color: #000;
 	display: none;
+}
+#back-to-top {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 5px;
+	background: #000;
+	color: #69F;
 }
