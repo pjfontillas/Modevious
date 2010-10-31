@@ -49,7 +49,7 @@
 <body>
 <!--#include virtual="/include/navigation.htm" -->
 	<div id="list">
-		<div class="component">
+		<div id="autoMouseOver" class="component">
 			<div class="icon">
 				<a href="http://www.m79.ca/automouseover/" title="Mouse over, and it changes"><img src="images/automouseover.jpg" width="320" height="240" alt="autoMouseOver icon" /></a>
 			</div>
@@ -65,7 +65,7 @@
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of autoMouseOver -->
-		<div class="component">
+		<div id="Core-Library" class="component">
 			<div class="icon">
 				<a href="core/" title="The Core library"><img src="images/core.jpg" width="320" height="240" alt="Core Library image" /></a>
 			</div>
@@ -78,7 +78,7 @@
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of Core component -->
-		<div class="component">
+		<div id="dumbCrossFade class="component">
 			<div class="icon">
 				<a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions"><img src="images/dumbcrossfade.jpg" width="320" height="240" alt="dumbCrossFade image" /></a>
 			</div>
@@ -94,7 +94,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of dumbCrossFade component-->
-		<div class="component">
+		<div id="Encryption" class="component">
 			<div class="icon">
 				<a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption"><img src="images/encryption.jpg" width="320" height="240" alt="Encryption image" /></a>
 			</div>
@@ -111,7 +111,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			<div class="clear-float"></div>
 		</div><!-- END of Encryption component -->
 		<div class="component">
-			<div class="icon">
+			<div id="jQuery" class="icon">
 				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jquery.jpg" width="320" height="240" alt="jQuery image" /></a>
 			</div>
 			<div class="name">
@@ -126,7 +126,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of jQuery component -->
-		<div class="component">
+		<div id="jQuery-Tools" class="component">
 			<div class="icon">
 				<a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web"><img src="images/jquery_tools.jpg" width="320" height="240" alt="jQuery Tools image" /></a>
 			</div>
@@ -142,7 +142,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of jQuery Tools component -->
-		<div class="component">
+		<div id="jQuery-UI" class="component">
 			<div class="icon">
 				<a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI"><img src="images/jquery_ui.jpg" width="320" height="240" alt="jQuery UI icon" /></a>
 			</div>
@@ -157,7 +157,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of jQuery UI component -->
-		<div class="component">
+		<div id="Pines-Notify" class="component">
 			<div class="icon">
 				<a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em"><img src="images/pines_notify.jpg" width="320" height="240" alt="Pines Notify icon" /></a>
 			</div>
@@ -174,7 +174,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			<div class="clear-float"></div>
 		</div><!-- END of Pines Notify -->
 		<div class="component">
-			<div class="icon">
+			<div id="Prototype" class="icon">
 				<a href="http://www.prototypejs.org/" title="The Prototype JS library"><img src="images/prototype.jpg" width="320" height="240" alt="Prototype JS image" /></a>
 			</div>
 			<div class="name">
@@ -189,9 +189,9 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of Prototype JS component -->
-		<div class="component">
+		<div id="SoundManager-2" class="component">
 			<div class="icon">
-				<a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript"><img src="images/soundmanager2.jpg" width="320" height="240" alt="SoundManager2 image" /></a>
+				<a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript"><img src="images/soundmanager2.jpg" width="320" height="240" alt="SoundManager 2 image" /></a>
 			</div>
 			<div class="name">
 				<h1><a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript">SoundManager 2</a></h1>
@@ -204,7 +204,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of SoundManager 2 component -->
-		<div class="component">
+		<div id="Style-Switcher" class="component">
 			<div class="icon">
 				<a href="http://www.alistapart.com/articles/alternate/" title="Alternative Style: Working With Alternate Style Sheets"><img src="images/style_switcher.jpg" width="320" height="240" alt="Style Switcher image" /></a>
 			</div>

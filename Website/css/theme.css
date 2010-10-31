@@ -1,13 +1,9 @@
-html {
-	overflow: scroll;
-}
 body {
-	padding: 40px 0px 50px 0px;
+	padding: 40px 0px 20px 0px;
 	margin: 0px;
 	font-family: Arial;
 	background: #000;
 	color: #FFF;
-	font-size: 12px;
 }
 img {
 	border: 0px;
@@ -44,21 +40,24 @@ a:visited {
 	overflow: hidden;
 	padding: 0px;
 	z-index: 1000;
-	background: #000;
+	background: url(theme/menu_bg.png);
 	color: #EEE;
 	font-weight: bold;
 	font-family: georgia;
+}
+#menu:hover {
+	background: #000;
 }
 #home-text {
 	display: none;
 }
 #home-icon {
 	position: relative;
-	width: 92px;
+	width: 135px;
 	height: 32px;
 	float: left;
-	margin: 0px;
-	padding: 0px;
+	margin: 0px 10px;
+	padding: 3px 0px 0px 0px;
 }
 #home-icon a {
 	position: relative;
@@ -66,7 +65,6 @@ a:visited {
 	display: block;
 	width: 32px;
 	height: 32px;
-	padding: 0px 30px;
 }
 .menu-item {
 	position: relative;
@@ -75,7 +73,7 @@ a:visited {
 	float: left;
 	margin: 0px;
 	border-right: 1px solid transparent;
-	font-size: 12px;	
+	font-size: 0.9em;	
 }
 .menu-item a {
 	height: 12px;
@@ -83,7 +81,7 @@ a:visited {
 	display: block;
 	color: #AAA;
 	text-decoration: none;
-	padding: 11px 30px;
+	padding: 10px 30px;
 }
 .menu-item a:visited {
 	text-decoration: none;
@@ -98,14 +96,11 @@ a:visited {
 	display: none;
 }
 #footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	clear: both;
-	width: 100%;
+	width: 960px;
 	height: 50px;
+	margin: 0px auto;
 	text-align: center;
-	font-size: 12px;
+	font-size: 1em;
 	background: #000;
 	color: #FFF;
 	overflow: hidden;
@@ -130,13 +125,59 @@ button {
 }
 #contact_form {
 	background: url(theme/contact_card.png);
-	width: 760px;
-	height: 425px;
-	padding: 100px 100px 75px 100px;
+	width: 759px;
+	height: 389px;
+	padding: 30px;
 	margin: 0px auto;
 	color: #000;
 }
 #address {
-	padding: 125px 0px;
+	padding: 100px 0px 0px 0px;
 	text-align: right;
+}
+#download-container {
+	width: 960px;
+	border: 1px solid #AAA;
+	background: #FFF;
+	color: #000;
+	margin: 0px auto;
+	position: absolute;
+	top: -1000px;
+	z-index: 1001;
+	display: none;
+	cursor: move;
+}
+#hide-download, #hide-contact {
+	width: 100%;
+	padding: 10px 0px;
+	background: #000;
+	color: #AAA;
+	text-align: center;
+	margin: 10px 0px;
+}
+#hide-download:hover, #hide-contact:hover {
+	color: #FFF;
+	cursor: pointer;
+}
+#contact-container {
+	position: absolute;
+	top: -1000px;
+	z-index: 1001;
+	cursor: move;
+	width: 759px;
+	height: auto;
+	border: 1px solid #AAA;
+	padding: 30px;
+	margin: 0px auto;
+	background: url(theme/contact_card_bg.jpg) no-repeat #FFF;
+	color: #000;
+	display: none;
+}
+#back-to-top {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 5px;
+	background: #000;
+	color: #69F;
 }

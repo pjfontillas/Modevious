@@ -40,10 +40,13 @@ a:visited {
 	overflow: hidden;
 	padding: 0px;
 	z-index: 1000;
-	background: #000;
+	background: url(theme/menu_bg.png);
 	color: #EEE;
 	font-weight: bold;
 	font-family: georgia;
+}
+#menu:hover {
+	background: #000;
 }
 #home-text {
 	display: none;
