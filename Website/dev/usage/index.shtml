@@ -18,25 +18,23 @@
 <!--#include virtual="/include/navigation.htm" -->
 	<div id="usage" class="tabs">
 		<ul>
-			<li><a href="#include">Include</a></li>
-			<li><a href="#configuration">Configuration</a></li>
+			<li><a href="#Include-and-configuration">Include and configuration</a></li>
 			<li><a href="#plugin-example">Plugin Example</a></li>
 		</ul>
-		<div id="include">
+		<div id="Include-and-configuration">
 			<h2>Download</h2>
 			<p>Have you downloaded Modevious? Do you know what to do with it?</p>
 			<p>If you do, you probably don't need to read this. Otherwise... let's get started.</p>
-			<p>If you haven't already go ahead and <a href="/download/" title="Get the latest version!">download Modevious</a>.</p>
+			<p>If you haven't already go ahead and <a class="download" href="/download/" title="Get the latest version!">download Modevious</a>.</p>
 			<p>Upload it to your web server, make sure you drop it in your project's root folder. This is an important step since I haven't yet figured out how to automatically find out where you stored the files. Until then make sure you've put Modevious in your root ('/') folder.</p>				
-		</div><!-- #include -->
-		<div id="configuration">
 			<p>To add it to your web site or application use this code:</p>
 			<p class="code">
-			&lt;script type="text/javascript" src="/js/modevious.js"&gt;&lt;/script&gt;
+			&lt;script type="text/javascript" src="/modevious/library.js"&gt;&lt;/script&gt;
 			</p>
+			<p>Supposing you put its folder, and therefore all of its files, in your root ('/'), or home, directory this is the only file you'll need to remember where you've placed it. I'm currently finishing up work on Modevious figuring out where its located on your website and finding the files it needs to include in order for everything to work properly. I'm already using this technique to include Core CSS and our custom jQuery UI Theme included in our package. I'm planning on expanding this technique for use with other resources and adding it to the library so other developers can easily make use of it.</p>
 			<h2>Huh? That's it?</h2>
-			<p>Seriously, that's all you have to do to get started.</p>
-		</div><!-- #configuration -->
+			<p>Seriously, that's all you have to do to get started. Put in a file that's included on every page and you're good to go.</p>
+		</div><!-- #Include-and-configuration -->
 		<div id="plugin-example">
 			<img id="shadowbox-image" src="images/shadowbox.jpg" alt="Shadowbox" width="920" height="360" longdesc="http://www.shadowbox-js.com" />
 			<div class="half">

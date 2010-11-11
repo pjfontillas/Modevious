@@ -1,14 +1,21 @@
 /**
-*	Core v1.1.0
+*	Core v1.2.0
 *		Maintainer
 *			Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
 *		Description
 *			Holds some of the most common ajax functions used.
 *		Dependencies
 *			Prototype v1.6.1 
-*			jQuery 1.4.2
+*			jQuery 1.4.3
 *		Verified using JSLint.
 *		Module pattern.
+*/
+/*jslint evil: true */
+/*global window: true, document: true, XMLHttpRequest: true, Event: true, 
+ActiveXObject: true, alert: true, $$: true, jQuery: true, $config: true,
+location: true, navigator:true */
+
+/**
 *		Implied global variables:
 *			var window; // Is it safe to declare this?
 *			var document; // Is it safe to declare this?
@@ -21,15 +28,15 @@
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
 	// private methods and variables
-	var version = 110
-	var versionString = "v1.1.0"
+	var version = 120;
+	var versionString = "v1.2.0";
 	var config = {
 		warnings: false,
 		at: "(AT)",
 		dot: "(DOT)",
 		update: false,
 		soundManager: {
-			url: "/swf",
+			url: "/modevious/swf",
 			flashVersion: 9
 		},
 		consoleCode: [ // Konami Code
@@ -43,15 +50,18 @@ var $c = (function () {
 			Event.KEY_RIGHT,
 			66,
 			65
-		]
-	}
-	var loadedScripts = []
-	var log = []
-	var updateName = []
-	var updateVersion = []
-	var updateURL = []
-	var updateCounter = 0
-	var consoleCounter = 0
+		],
+		modeviousLocation: '/modevious/',
+		jQueryUIThemeURL: "/modevious/jquery-ui-1.8.5.custom.css",
+		libraryURL: "/modevious/library.css"
+	};
+	var loadedScripts = [];
+	var log = [];
+	var updateName = [];
+	var updateVersion = [];
+	var updateURL = [];
+	var updateCounter = 0;
+	var consoleCounter = 0;
 	return { // public methods and variables
 		config: config,
 		loadedScripts: loadedScripts,
@@ -345,6 +355,9 @@ var $c = (function () {
 			var parentHeight;
 			var thisHeight;
 			var newTop;
+			var parentWidth;
+			var thisWidth;
+			var newLeft;
 			// align most elements to their parent element
 			$j(".vAlign").each(function(){
 				// get parent height - get element height	
@@ -393,14 +406,16 @@ var $c = (function () {
 		/**
 		*	vAlignThis (element)
 		*		Vertically aligns a single element. If they also have the class centered
-		*		then align it horizontally as well.
+		*		then align it horizontally as well. Only align the element that is sent
+		*		assuming we passed a jQuery element/object
 		*/
 		vAlignThis: function (element) {
 			var parentHeight;
 			var thisHeight;
 			var newTop;
-			// only align the element that is sent
-			// assuming we passed a jQuery element/object
+			var parentWidth;
+			var thisWidth;
+			var newLeft;
 			if (element.hasClass("vAlignWindow")) {
 				parentHeight = document.viewport.getHeight();
 				thisHeight = element.outerHeight(true);
@@ -443,7 +458,7 @@ var $c = (function () {
 		*		Activates style sheet or group of style sheets matching <title>.
 		*/
 		setActiveStyleSheet: function (title) {
-			var i, a, main;
+			var i, a;
 			for (i = 0; (a = document.getElementsByTagName("link")[i]); i++) {
 				if (a.getAttribute("rel").indexOf("style") !== -1 &&
 					a.getAttribute("title")) {

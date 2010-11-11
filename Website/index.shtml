@@ -7,92 +7,200 @@
 		.splash-item {
 			height: 320px;
 			overflow: auto;
+			padding: 0px !important;
+			font-size: 0.7em;
 		}
 		#what {
 			overflow: hidden;
 		}
-		#splash-menu {
-			width: 956px;
-			margin: 0px auto;
-			padding: 0px;
+		#splash-tabs {
+			width: 960px;
+			margin: 20px auto;
+			border: 0px;
 		}
 		#splash-menu li {
-			width: 237px;
+			width: 235px;
 			margin: 0px auto;
 		}
 		#splash-menu a {
 			cursor: pointer !important;
 			width: 100%;
-			font-size: 14px;
+			font-size: 0.8em;
 		}
 		.splash-item a {
 			color: #69F;
 		}
-		#computing {
-			background: url(images/clouds.jpg);
+		#features {
+			width: 960px;
+			margin: 50px auto;
+			clear: both;
 		}
-		#theming {
-			background: url(images/diagonal-stripes.png);
+		.feature {
+			float: left;
+			width: 480px;
 		}
+		.feature .image {
+			width: 50px;
+			height: 50px;
+			float: left;
+		}
+		.feature .name {
+			width: 410px;
+			padding: 0px 10px;
+			float: right;
+			font-size: 1em;
+			font-weight: bold;
+		}
+		.feature .name a {
+			color: #FFF;
+			text-decoration: none;
+		}
+		.feature .description {
+			width: 410px;
+			padding: 0px 10px;		
+			float: right;
+		}
+		.feature .description a {
+			color: #FFF;
+			text-decoration: none;
+		}
+
 		</style>
 </head>
 <body>
 <!--#include virtual="/include/navigation.htm" -->
-	<div id="core">
-		<div id="splash-tabs" class="no-padding">
-		<div id="what" class="splash-item no-padding">
-			<a href="/download/"><img src="/images/Modevious---Bridging-Two-Worlds-to-Make-One-Awesome-Library.jpg" alt="Modevious" width="958" height="320" longdesc="http://www.modevious.com" /></a>
-			</div>
-			<div id="computing" class="hidden splash-item padded-x">
+	<div id="splash-tabs" class="no-padding">
+		<div id="what" class="splash-item">
+			<div class="half"><div class="padded">
+				<h1>"Merging Our DEVelopment Into One Universal System"</h1>
+				<p>Modevious is a collection, testing tool, and maintenance system of JavaScript libraries and plugins.</p>
+				<p>Saying there will be one universal system may be over-reaching a bit, but the idea is that everything can work together.</p>
+				<p>Many tools essential to building an interactive site or application are already included in our library. No need to search for them.</p>
+				<p>Modevious also employs an update system that makes it easier for plugin authors and users to keep things up-to-date.</p>
+			</div></div>
+			<div class="half"><div class="padded">
+				<img src="images/homepage_splash_image.png" width="400" height="300" alt="Modevious" />
+			</div></div>
+		</div><!-- #what -->
+		<div id="computing" class="hidden splash-item">
+			<div class="half"><div class="padded">
+				<h1>What is cloud computing?</h1>
+				<p><a href="http://en.wikipedia.org/wiki/Cloud_computing" title="View Wikipedia article">According to Wikipedia</a>:</p>
+				<p class="padded quote">Cloud computing is Internet-based computing, whereby shared resources, software, and information are provided to computers and other devices on demand, like the electricity grid.</p>
+			</div></div>
+			<div class="half"><div class="padded">
+				<h1>How does that affect me?</h1>
+				<p>With the agile progression of technology we are now at a point where just about any device with a web browser is capable of running JavaScript.</p>
+				<p>Rather than placing almost all of the work on the web server we are now able to leverage the power of individual computers to help process our web pages and applications.</p>
+				<p>Modevious attempts to alleviate the process of creating and maintaining web pages and applications that use client-based technologies to enhance our experience on the web.</p>
+			</div></div>
+		</div><!-- #theming -->
+		<div id="know" class="hidden splash-item">
 				<div class="half"><div class="padded">
-					<h2>What is cloud computing?</h2>
-					<p><a href="http://en.wikipedia.org/wiki/Cloud_computing" title="View Wikipedia article">According to Wikipedia</a>:</p>
-					<p class="padded quote">Cloud computing is Internet-based computing, whereby shared resources, software, and information are provided to computers and other devices on demand, like the electricity grid.</p>
+					<h1>Possible jQuery conlicts</h1>
+					<p>If you already run jQuery scripts check to see if the author implemented the <a href="http://docs.jquery.com/Using_jQuery_with_Other_Libraries#Referencing_Magic_-_Shortcuts_for_jQuery" title="Fixes conflicts">referencing method for running jQuery code</a>.</p>
+					<p>One of the biggest problems with using the Prototype JS and jQuery libraries together was the conflicting use of '$'.</p>
+					<p>If the author did not protect calls to their script from this conflict you will have to convert their run-time script - the script or code that initializes their application. Change all references to '$' to '$j' to have it work with Modevious.</p>
 				</div></div>
 				<div class="half"><div class="padded">
-					<h2>How does that affect me?</h2>
-					<p>With the agile progression of technology we are now at a point where just about any device with a web browser is capable of running JavaScript.</p>
-					<p>Rather than placing almost all of the work on the web server we are now able to leverage the power of individual computers to help process our web pages and applications.</p>
-					<p>Modevious attempts to alleviate the process of creating and maintaining web pages and applications that use client-based technologies to enhance our experience on the web.</p>
+					<h1>Mobile optimization</h1>
+					<p>Modevious is designed for the desktop user experience. If you're looking for a library that is designed from the ground up to cater to mobile needs check out <a href="http://jquerymobile.com" title="For a good mobile UX">jQuery Mobile</a>.</p>
+					<p>You <strong>can</strong> use Modevious on the mobile platform, you may just get some uncommon behavior or decreased performance based on the hardware it runs on.</p>
 				</div></div>
+		</div><!-- #know -->
+		<div id="theming" class="hidden splash-item">
+			<div class="half"><div class="padded">
+				<h1>jQuery UI</h1>
+				<p>The jQuery UI is currently just about the extent of theming Modevious directly deals with.</p>
+				<p>Modevious comes with its own custom jQuery UI theme but feel free to
+				<a href="http://jqueryui.com/themeroller/" title="Go to the jQuery UI Theme Roller">roll your own.</a> Just remember to replace the appropriate files and try to stay within the correct jQuery and jQuery UI versions.</p>
+			</div></div>
+			<div class="half"><div class="padded">
+				<h1>Core CSS</h1>
+				<p>Remember <a href="http://www.w3schools.com/CSS/css_howto.asp" title="W3 Schools info on CSS">inline-styling?</a> <strong>Don't use that</strong>.</p>
+				<p>For the most common applications of inline-styling there are <a href="css/modevious/core.css" title="Core CSS Rules">Core CSS classes</a> that will provide all the markup needed. Need to make the text in a certain paragraph left-aligned? Use the class "text-left". Need an element to float? Apply the class "float-left" or "float-right".</p>
+				<p>I encourage this use because that certain style may apply to only one page or a specific element, in which case I then believe it is better to leave it out of the global CSS rules.</p>
+			</div></div>
+		</div><!-- #theming -->
+		<ul id="splash-menu" class="hidden">
+			<li><a href="#what">What does it do?</a></li>
+			<li><a href="#computing">Cloud Computing</a></li>
+			<li><a href="#know">Things You Need To Know</a></li>
+			<li><a href="#theming">About Theming</a></li>
+		</ul>
+	</div><!-- #splash-tabs -->
+	<div class="clear-float"></div>
+	<div id="features">
+		<div class="feature">
+			<div class="image">
+				<a href="components/" title="Pre-packaged tools, to make things easier"><img src="images/packaged.png" width="50" height="50" alt="Easy" /></a>
 			</div>
-			<div id="know" class="hidden splash-item padded-x">
-					<div class="half"><div class="padded">
-						<h2>Mobile optimization</h2>
-						<p>Understandably, some mobile devices don't fully support JavaScript or have slower processors that would make running client-side code problematic.</p>
-						<p>I'm well on my way to optimizing Modevious to support mobile devices in a way that facilitates developing for both the  desktop and the mobile experience.</p>
-						<p>Mobile optimization will include features like blacklisting and whitelisting scripts that can run while on a mobile device. This can help allow necessary scripts to run while preventing resource hogging applications from loading on a mobile device.</p>
-					</div></div>
-					<div class="half"><div class="padded">
-						<h2>Possible jQuery conlicts</h2>
-						<p>If you already run jQuery scripts check to see if the author implemented the encapsulation method for running jQuery code.</p>
-						<p>One of the biggest problems with using the Prototype JS and jQuery libraries together was the conflicting use of '$'.</p>
-						<p>If the author did not protect calls to their script from this conflict you will have to convert their run-time script - the script or code that initializes their application. Change all references to '$' to '$j' to have it work with Modevious.</p>
-					</div></div>
+			<div class="name">
+				<p><a href="components/" title="Pre-packaged tools, to make things easier">Packaged Tools</a></p>
 			</div>
-			<div id="theming" class="hidden splash-item no-padding">
-				<div class="half"><div class="padded">
-					<h2>jQuery UI</h2>
-					<p>The jQuery UI is currently just about the extent of theming Modevious directly deals with.</p>
-					<p>Modevious comes with its own custom jQuery UI theme but feel free to
-					<a href="http://jqueryui.com/themeroller/" title="Go to the jQuery UI Theme Roller">roll your own.</a> Just remember to replace the appropriate files and try to stay within the correct jQuery and jQuery UI versions.</p>
-				</div></div>
-				<div class="half"><div class="padded">
-					<h2>Core CSS</h2>
-					<p>Remember <a href="http://www.w3schools.com/CSS/css_howto.asp" title="W3 Schools info on CSS">inline-styling?</a> <strong>Don't use that</strong>.</p>
-					<p>For the most common applications of inline-styling there are <a href="css/core.css" title="Core CSS Rules">Core CSS classes</a> that will provide all the markup needed. Need to make the text in a certain paragraph left-aligned? Use the class "text-left". Need an element to float? Apply the class "float-left" or "float-right".</p>
-					<p>I encourage this use because that certain style may apply to only one page or a specific element, in which case I then believe it is better to leave it out of the global CSS rules.</p>
-				</div></div>
+			<div class="description">
+				<p><a href="components/" title="Pre-packaged tools, to make things easier">Commonly available scripts and plugins have been pre-packaged to ease the burden of finding and collecting tools. They've also been tested to work together and shouldn't cause conflicts.</a></p>
 			</div>
-			<ul id="splash-menu" class="hidden">
-				<li><a href="#what">What does it do?</a></li>
-				<li><a href="#computing">Cloud Computing</a></li>
-				<li><a href="#know">Things You Need To Know</a></li>
-				<li><a href="#theming">About Theming</a></li>
-			</ul>			
-		</div> 
+		</div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/turn_key.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Configurable</p>
+			</div>
+			<div class="description">
+				<p>Most aspects of Modevious can be tweaked to suit your needs. The default jQuery UI theme can be replaced, and several options can be set to favor your type of development environment. Or you can just turn the key and start using it right away without modifying anything!</p>
+			</div>
+		</div>
 		<div class="clear-float"></div>
-	</div><!-- End #core -->
+		<div class="feature">
+			<div class="image">
+				<img src="images/upgrade.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Update System</p>
+			</div>
+			<div class="description">
+				<p>Modevious comes with a system to easily keep your plugins updated. If you're an end-user you'll know which plugins are starting to get outdated, and as a developer you've got another outlet that you can use to inform your users of updates.</p>
+			</div>
+		</div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/console.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Console Available</p>
+			</div>
+			<div class="description">
+				<p>Cross-browser console that can be logged to and has some basic functionality that can help you debug at a level built-in browser development tools sometimes fail to do.</p>
+			</div>
+		</div>
+		<div class="clear-float"></div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/documented.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Well Documented</p>
+			</div>
+			<div class="description">
+				<p>If it's not covered on this website, the <a href="components/" title="Go to components listing">components page</a> can point you to the right place to find the answers you're looking for.</p>
+			</div>
+		</div>
+		<div class="feature">
+			<div class="image">
+				<img src="images/easy.png" width="50" height="50" alt="Easy" />
+			</div>
+			<div class="name">
+				<p>Easy to use</p>
+			</div>
+			<div class="description">
+				<p>Modevious is designed to make it easier for you to get your ideas out of your head and come to life.</p>
+			</div>
+		</div>
+		<div class="clear-float"></div>
+	</div><!-- #features -->
 <!--#include virtual="/include/footer.htm" -->
 <script type="text/javascript">
 $c.onLoad(function () {

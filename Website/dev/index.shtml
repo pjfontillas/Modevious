@@ -51,11 +51,20 @@
 			font-size: 1em;
 			font-weight: bold;
 		}
+		.feature .name a {
+			color: #FFF;
+			text-decoration: none;
+		}
 		.feature .description {
 			width: 410px;
 			padding: 0px 10px;		
 			float: right;
 		}
+		.feature .description a {
+			color: #FFF;
+			text-decoration: none;
+		}
+
 		</style>
 </head>
 <body>
@@ -124,13 +133,13 @@
 	<div id="features">
 		<div class="feature">
 			<div class="image">
-				<img src="images/packaged.png" width="50" height="50" alt="Easy" />
+				<a href="components/" title="Pre-packaged tools, to make things easier"><img src="images/packaged.png" width="50" height="50" alt="Easy" /></a>
 			</div>
 			<div class="name">
-				<p>Packaged Tools</p>
+				<p><a href="components/" title="Pre-packaged tools, to make things easier">Packaged Tools</a></p>
 			</div>
 			<div class="description">
-				<p>Commonly available scripts and plugins have been pre-packaged to ease the burden of finding and collecting tools. They've also been tested to work together and shouldn't cause conflicts.</p>
+				<p><a href="components/" title="Pre-packaged tools, to make things easier">Commonly available scripts and plugins have been pre-packaged to ease the burden of finding and collecting tools. They've also been tested to work together and shouldn't cause conflicts.</a></p>
 			</div>
 		</div>
 		<div class="feature">

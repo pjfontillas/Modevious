@@ -13,10 +13,25 @@
 			soundManager: {
 				url: "/swf",
 				flashVersion: 9
-			}
+			},
+			consoleCode: [ // Konami Code
+				Event.KEY_UP,
+				Event.KEY_UP,
+				Event.KEY_DOWN,
+				Event.KEY_DOWN,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				66,
+				65
+			],
+			modeviousLocation: '/modevious/',
+			jQueryUIThemeURL: "/modevious/jquery-ui-1.8.5.custom.css",
+			libraryURL: "/modevious/library.css"
 		};
 	</script>
-	<script type="text/javascript" src="/js/modevious.js"></script>
+	<script type="text/javascript" src="/modevious/library.js"></script>
 	<style type="text/css">
 		body {
 			background: #FFF;
@@ -30,8 +45,8 @@
 			width: 100%;
 			height: 10px;
 			padding: 10px 0px 15px 0px;
-			background: #69F;
-			border-bottom: 5px solid #9CF;
+			background: #000;
+			border-bottom: 5px solid #555;
 		}
 		#menu a {
 			color: #FFF;
@@ -41,7 +56,7 @@
 		#menu a:hover {
 			text-decoration: underline;
 		}
-		#update_manager {
+		#update-manager {
 			width: 960px;
 			padding: 10px;
 			margin: 0px auto;
@@ -63,12 +78,70 @@
 		<a id="exit" href="/" title="Finish">Back to website</a>
 		<a id="mups"><strong>Modevious Update System</strong></a>
 	</div>
-	<div id="update_manager">
+	<div id="update-manager">
 		<h1 id="progress">Checking for updates...</h1>
-	</div><!-- END #update_manager -->
+	</div><!-- END #update-manager -->
 	<script type="text/javascript">
 		$c.onLoad(function () {
-			$c.fetchUpdates();
+			var data, updateType;		
+			if ($c.config.update) {
+				$j("body").css("cursor", "progress"); // show that page is busy
+				$c.trace([
+					"Fetching update from: ",
+					$c.updateURL[$c.updateCounter]
+				].join(''));
+				var url = [
+					$c.updateURL[$c.updateCounter],
+					"?callback=?"
+				].join('');
+				$j.getJSON(url, function (data) { 
+					if (parseInt(data.version) > $c.updateVersion[$c.updateCounter]) {
+						if (data.type == "Critical") {
+							updateType = "ui-state-error";
+						} else {
+							updateType = "ui-state-highlight";
+						}
+						// use .sub('<', '&lt;').sub('>', '&gt;') to strip characters from data
+						// received from external sources.
+						$j("#update-manager").append([
+						"<div class=\"update ",
+						updateType.sub('<', '&lt;').sub('>', '&gt;'),
+						"\">",
+						"<p><strong>",
+						$c.updateName[$c.updateCounter], // component name
+						"</strong> | <small>",
+						data.versionString.sub('<', '&lt;').sub('>', '&gt;'),
+						"</small></p>",
+						"<p>",
+						data.description.sub('<', '&lt;').sub('>', '&gt;'),
+						"</p>",
+						"<p><a href=\"",
+						data.url.sub('<', '&lt;').sub('>', '&gt;'),
+						"\">Download this update</a>",
+						" | <a href=\"",
+						data.changelog.sub('<', '&lt;').sub('>', '&gt;'),
+						"\">View the changelog</a></p>",
+						"</div>"
+						].join(''));
+						$c.updateFound = true;
+						$c.trace([
+							"Found an update for: ",
+							$c.updateName[$c.updateCounter]
+						].join(''));
+					}
+					$c.updateCounter++;
+					if ($c.updateCounter != $c.updateURL.length) { // not done yet
+						return $c.fetchUpdates(); // recursively call this fn
+					} else {
+						if ($c.updateFound) {
+							$j("#progress").hide("blind");
+						} else {
+							$j("#progress").html("Everything is up-to-date!");
+						}
+						$j("body").css("cursor", "auto"); // change cursor back
+					}
+				});
+			}
 		});
 	</script>
 </body>
