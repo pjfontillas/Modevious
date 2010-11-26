@@ -63,6 +63,8 @@ html > body .ui-pnotify {
 	border-top: none;
 	/* Ensure that the history container is on top of the notices. */
 	z-index: 10000;
+	/* Modevious modification, hide the container by default */
+	display: none;
 }
 .ui-pnotify-history-container .ui-pnotify-history-header {
 	padding: 2px;
