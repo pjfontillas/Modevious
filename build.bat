@@ -55,7 +55,7 @@ copy /b build\library.js + Development\js\src\sha512-min.js build\library.js
 copy /b build\library.js + Development\js\init.min.js build\library.js
 
 :: Modevious Update System (MUpS)
-copy /b Development\update\index.html build\update
+copy /b Development\update\index.html build\update\index.html
 
 :: copy css images
 copy Development\css\console\* build\console

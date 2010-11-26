@@ -53,9 +53,12 @@ cat tmp/library.js Development/js/src/sha512-min.js tmp/library.js
 # Startup script (init)
 cat tmp/library.js Development/js/init.min.js tmp/library.js
 
+# Modevious Update System (MUpS)w
+cp Development/update/index.html Website/dev/modevious/update/index.html
+
 # move temporary files to "dev"
-cp tmp/library.js Website/dev/modevious
-cp tmp/library.css Website/dev/modevious
+cp tmp/library.js Website/dev/modevious/library.js
+cp tmp/library.css Website/dev/modevious/library.css
 
 # purge temporary files
 rm tmp/*

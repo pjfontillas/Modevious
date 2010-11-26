@@ -49,9 +49,12 @@ copy /b tmp\library.js + Development\js\src\sha512-min.js tmp\library.js
 :: Startup script (init)
 copy /b tmp\library.js + Development\js\init.min.js tmp\library.js
 
+:: Modevious Update System (MUpS)
+copy /b Development\update\index.html Website\dev\modevious\update\index.html
+
 :: move temporary files to "dev"
-copy /y tmp/library.js Website\dev\modevious
-copy /y tmp/library.css Website\dev\modevious
+copy /y tmp\library.js Website\dev\modevious\library.js
+copy /y tmp\library.css Website\dev\modevious\library.css
 
 :: purge temporary files
 rmdir /s /q tmp

@@ -73,6 +73,13 @@ var $c = (function () {
 		updateCounter: updateCounter,
 		updateFound: false,
 		/**
+		*	getVersion
+		*		Returns this library's current version as an integer.
+		*/
+		getVersion: function () {
+			return version;
+		},
+		/**
 		*	init ()
 		*		Checks to see if $config is set. May be used later on to initialize
 		*		other components but for now only does configuration.
@@ -563,6 +570,6 @@ $c.init(); // sets config
 *		will use it, otherwise nothing happens.
 */
 try { // to update Modevious
-	$c.update("Modevious", 110, "http://modevious.com/js/update.php");
+	$c.update("Modevious", $c.getVersion(), "http://modevious.com/js/update.php");
 } catch (e) {
 } // do nothing

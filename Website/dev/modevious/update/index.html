@@ -11,16 +11,31 @@
 			dot: "(DOT)",
 			update: true,
 			soundManager: {
-				url: "/swf",
+				url: "/modevious/swf",
 				flashVersion: 9
-			}
+			},
+			consoleCode: [ // Konami Code
+				Event.KEY_UP,
+				Event.KEY_UP,
+				Event.KEY_DOWN,
+				Event.KEY_DOWN,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				66,
+				65
+			],
+			modeviousLocation: '/modevious/',
+			jQueryUIThemeURL: "/modevious/jquery-ui-1.8.5.custom.css",
+			libraryURL: "/modevious/library.css"
 		};
 	</script>
-	<script type="text/javascript" src="/js/modevious.js"></script>
+	<script type="text/javascript" src="/modevious/library.js"></script>
 	<style type="text/css">
 		body {
 			background: #FFF;
-			color: #000;
+			color: #9CF;
 			padding: 40px 0px;
 		}
 		#menu {
@@ -31,8 +46,7 @@
 			height: 10px;
 			padding: 10px 0px 15px 0px;
 			background: #000;
-			color: #FFF;
-			border-bottom: 5px solid #AAA;
+			border-bottom: 5px solid #555;
 		}
 		#menu a {
 			color: #FFF;
@@ -42,7 +56,7 @@
 		#menu a:hover {
 			text-decoration: underline;
 		}
-		#update_manager {
+		#update-manager {
 			width: 960px;
 			padding: 10px;
 			margin: 0px auto;
@@ -64,9 +78,9 @@
 		<a id="exit" href="/" title="Finish">Back to website</a>
 		<a id="mups"><strong>Modevious Update System</strong></a>
 	</div>
-	<div id="update_manager">
+	<div id="update-manager">
 		<h1 id="progress">Checking for updates...</h1>
-	</div><!-- END #update_manager -->
+	</div><!-- END #update-manager -->
 	<script type="text/javascript">
 		$c.onLoad(function () {
 			var data, updateType;		
@@ -74,13 +88,15 @@
 				$j("body").css("cursor", "progress"); // show that page is busy
 				$c.trace([
 					"Fetching update from: ",
-					$c.updateURL[updateCounter]
+					$c.updateURL[$c.updateCounter]
 				].join(''));
 				var url = [
-					$c.updateURL[updateCounter],
+					$c.updateURL[$c.updateCounter],
 					"?callback=?"
 				].join('');
-				$j.getJSON(url, function (data) { 
+				$j.getJSON(url, function (data) {
+					$j.pnotify("Current version for " + $c.updateName[$c.updateCounter] + ": " + $c.updateVersion[$c.updateCounter]);
+					$j.pnotify("Updated version: " + data.version);
 					if (parseInt(data.version) > $c.updateVersion[$c.updateCounter]) {
 						if (data.type == "Critical") {
 							updateType = "ui-state-error";
@@ -89,12 +105,12 @@
 						}
 						// use .sub('<', '&lt;').sub('>', '&gt;') to strip characters from data
 						// received from external sources.
-						$j("#update_manager").append([
+						$j("#update-manager").append([
 						"<div class=\"update ",
 						updateType.sub('<', '&lt;').sub('>', '&gt;'),
 						"\">",
 						"<p><strong>",
-						$c.updateName[updateCounter], // component name
+						$c.updateName[$c.updateCounter], // component name
 						"</strong> | <small>",
 						data.versionString.sub('<', '&lt;').sub('>', '&gt;'),
 						"</small></p>",
@@ -112,7 +128,7 @@
 						$c.updateFound = true;
 						$c.trace([
 							"Found an update for: ",
-							$c.updateName[updateCounter]
+							$c.updateName[$c.updateCounter]
 						].join(''));
 					}
 					$c.updateCounter++;
@@ -128,6 +144,7 @@
 					}
 				});
 			}
+		});
 	</script>
 </body>
 </html>

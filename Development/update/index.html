@@ -11,7 +11,7 @@
 			dot: "(DOT)",
 			update: true,
 			soundManager: {
-				url: "/swf",
+				url: "/modevious/swf",
 				flashVersion: 9
 			},
 			consoleCode: [ // Konami Code
@@ -94,7 +94,7 @@
 					$c.updateURL[$c.updateCounter],
 					"?callback=?"
 				].join('');
-				$j.getJSON(url, function (data) { 
+				$j.getJSON(url, function (data) {
 					if (parseInt(data.version) > $c.updateVersion[$c.updateCounter]) {
 						if (data.type == "Critical") {
 							updateType = "ui-state-error";
