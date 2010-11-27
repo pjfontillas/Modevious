@@ -49,23 +49,23 @@ copy /b tmp\library.js + Development\js\src\sha256%1.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\sha512%1.js tmp\library.js
 
 :: Google Code Prettify
-copy /b tmp\library.js + Development\js\src\prettify%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\prettify.js tmp\library.js
 copy /b tmp\library.css + Development\css\prettify%1.css tmp\library.css
 
 :: Google Code Prettify language extensions
-copy /b tmp\library.js + Development\js\src\lang-apollo%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-css%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-hs%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-lisp%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-lua%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-ml%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-proto%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-scala%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-sql%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-vb%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-vhdl%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-wiki%1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-yaml%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-apollo.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-css.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-hs.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-lisp.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-lua.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-ml.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-proto.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-scala.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-sql.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-vb.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-vhdl.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-wiki.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-yaml.js tmp\library.js
 
 :: Startup script (init)
 copy /b tmp\library.js + Development\js\init%1.js tmp\library.js
