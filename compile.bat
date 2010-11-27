@@ -67,6 +67,10 @@ copy /b tmp\library.js + Development\js\src\lang-vhdl.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\lang-wiki.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\lang-yaml.js tmp\library.js
 
+:: Right-click Context Menu
+copy /b tmp\library.js + Development\js\src\jquery.contextMenu.js tmp\library.js
+copy /b tmp\library.css + Development\css\jquery.contextMenu.css tmp\library.css
+
 :: Startup script (init)
 copy /b tmp\library.js + Development\js\init%1.js tmp\library.js
 
