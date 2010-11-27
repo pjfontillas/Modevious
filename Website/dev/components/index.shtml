@@ -67,6 +67,22 @@
 		</div><!-- END of autoMouseOver -->
 		<div id="Core-Library" class="component">
 			<div class="icon">
+				<a href="http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/" title="jQuery Context Menu"><img src="images/context_menu.jpg" width="320" height="240" alt="Context Menu image" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/" title="jQuery Context Menu">Context Menu</a></h1>
+			</div>
+			<div class="version">
+				Version 1.01
+			</div>
+			<div class="description">
+				<p>jQuery Context Menu is a context menu plugin for jQuery. It was designed to make implementing context menu functionality easy and requires minimal effort to configure.</p>
+				<p>Why reinvent the wheel? The goal of this plugin is to streamline the way actions are binded to menu items and to use 100% CSS for styling. Keyboard shortcuts were added for navigating the menu once it’s open, and there are five methods to allow you to control and clean-up context menus on the fly.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of Context Menu component -->
+		<div id="Core-Library" class="component">
+			<div class="icon">
 				<a href="core/" title="The Core library"><img src="images/core.jpg" width="320" height="240" alt="Core Library image" /></a>
 			</div>
 			<div class="name">
@@ -116,9 +132,6 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			</div>
 			<div class="name">
 				<h1><a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify">Google Code Prettify</a></h1>
-			</div>
-			<div class="version">
-				Version 2010-07-21
 			</div>
 			<div class="description">
 				<p>A Javascript module and CSS file that allows syntax highlighting of source code snippets in an html page.</p>
