@@ -74,7 +74,11 @@ $c.onLoad(function () {
 		collapsible: true 
 	});
 	$j(":button").button();
-	$j(".draggable").draggable();
+	$j(".draggable").draggable({
+		cursor: "move",
+		cancel: "p, img, h1, h2, h3, h4, h5, a",
+		delay: 500
+	});
 	$j(".resizable").resizable();
   $c.trace("jQuery User Interface initialized.");
 

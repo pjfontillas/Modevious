@@ -154,3 +154,6 @@
 	right: auto;
 	top: auto;
 }
+.draggable p, .draggable img, .draggable h1, .draggable h2, .draggable h3, .draggable h4, .draggable h5, .draggable a {
+	cursor: auto !important;
+}
