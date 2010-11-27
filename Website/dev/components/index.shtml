@@ -65,7 +65,7 @@
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of autoMouseOver -->
-		<div id="Core-Library" class="component">
+		<div id="Context-Menu" class="component">
 			<div class="icon">
 				<a href="http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/" title="jQuery Context Menu"><img src="images/context_menu.jpg" width="320" height="240" alt="Context Menu image" /></a>
 			</div>
