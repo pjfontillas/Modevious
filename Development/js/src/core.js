@@ -12,7 +12,7 @@
 */
 /*jslint evil: true */
 /*global window: true, document: true, XMLHttpRequest: true, Event: true, 
-ActiveXObject: true, alert: true, $$: true, jQuery: true, $config: true,
+ActiveXObject: true, alert: true, $$: true, jQuery: true, window.$config: true,
 location: true, navigator:true */
 
 /**
@@ -34,7 +34,6 @@ var $c = (function () {
 		warnings: false,
 		at: "(AT)",
 		dot: "(DOT)",
-		update: false,
 		soundManager: {
 			url: "/modevious/swf",
 			flashVersion: 9
@@ -51,7 +50,7 @@ var $c = (function () {
 			66,
 			65
 		],
-		modeviousLocation: '/modevious/',
+		modeviousLocation: "/modevious/",
 		jQueryUIThemeURL: "/modevious/jquery-ui-1.8.5.custom.css",
 		libraryURL: "/modevious/library.css"
 	};
@@ -74,14 +73,39 @@ var $c = (function () {
 		updateFound: false,
 		/**
 		*	init ()
-		*		Checks to see if $config is set. May be used later on to initialize
+		*		Checks to see if window.$config is set. May be used later on to initialize
 		*		other components but for now only does configuration.
 		*/
 		init: function () {
-			try {
-				$c.config = $config;
-			} catch (e) {				
-			} // do nothing
+			if (window.$config !== undefined) {
+				if (window.$config.warnings !== undefined) {
+					$c.config.warnings = window.$config.warnings;
+				}
+				if (window.$config.at !== undefined) {
+					$c.config.at = window.$config.at;
+				}
+				if (window.$config.dot !== undefined) {
+					$c.config.dot = window.$config.dot;
+				}
+				if (window.$config.soundManager.url !== undefined) {
+					$c.config.soundManager.url = window.$config.soundManager.url;
+				}
+				if (window.$config.soundManager.flashVersion !== undefined) {
+					$c.config.soundManager.flashVersion = window.$config.soundManager.flashVersion;
+				}
+				if (window.$config.consoleCode !== undefined) {
+					$c.config.consoleCode = window.$config.consoleCode;
+				}
+				if (window.$config.modeviousLocation !== undefined) {
+					$c.config.modeviousLocation = window.$config.modeviousLocation;
+				}
+				if (window.$config.jQueryUIThemeURL !== undefined) {
+					$c.config.jQueryUIThemeURL = window.$config.jQueryUIThemeURL;
+				}
+				if (window.$config.libraryURL !== undefined) {
+					$c.config.libraryURL = window.$config.libraryURL;
+				}
+			}
 		},
 		/**
 		*	getVersion
@@ -511,7 +535,6 @@ var $c = (function () {
 		*		to be just about under the current vertical offset.
 		*/
 		showLog: function (event)	{
-			$j.pnotify(event.keyCode);
 			if (event.keyCode == $c.config.consoleCode[$c.consoleCounter]) {
 				$c.consoleCounter++;
 			} else {

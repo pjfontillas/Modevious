@@ -1,10 +1,6 @@
 /*global $c: true, $$: true, document: true, $j: true, soundManager: true,
 location: true */
-// define run-time event functions for Modevious
-soundManager.url = $c.config.soundManager.url;
-soundManager.flashVersion = $c.config.soundManager.flashVersion;
-
-// Find Modevious location
+/** Find Modevious location */
 // 1. Store length of array document.getElementsByTagName("script") or $$
 var scriptsIncluded = $$("script");
 var scriptsLength = scriptsIncluded.length;
@@ -27,10 +23,17 @@ for (var i = 0; i < scriptsLength; i++) {
 if (modeviousLocation != $c.config.modeviousLocation) {
 	$c.config.modeviousLocation = modeviousLocation;
 	$c.config.jQueryUIThemeURL = modeviousLocation + "jquery-ui-1.8.5.custom.css";
-	$c.config.libaryURL = modeviousLocation + "library.css";
+	$c.config.libraryURL = modeviousLocation + "library.css";
+	$c.config.soundManager.url = modeviousLocation + "swf";
 }
 $c.include($c.config.jQueryUIThemeURL);
 $c.include($c.config.libraryURL);	
+soundManager.url = $c.config.soundManager.url;
+soundManager.flashVersion = $c.config.soundManager.flashVersion;
+
+var stack_topleft = {"dir1": "down", "dir2": "right", "firstpos1": 15, "firstpos2": 15};
+var stack_bottomleft = {"dir1": "up", "dir2": "right", "firstpos1": 15, "firstpos2": 15};
+var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpos2": 15};
 
 $c.onLoad(function () {	
   // initialize console 

@@ -152,3 +152,7 @@
   float: right;
   background: url(console/minimize.png) no-repeat;
 }
+.ui-pnotify.stack-bottomright, .ui-pnotify.stack-bottomleft {
+	right: auto;
+	top: auto;
+}
