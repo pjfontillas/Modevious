@@ -78,7 +78,7 @@
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- END of Core component -->
-		<div id="dumbCrossFade class="component">
+		<div id="dumbCrossFade" class="component">
 			<div class="icon">
 				<a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions"><img src="images/dumbcrossfade.jpg" width="320" height="240" alt="dumbCrossFade image" /></a>
 			</div>
@@ -111,7 +111,7 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 			<div class="clear-float"></div>
 		</div><!-- END of Encryption component -->
 		<div class="component">
-			<div id="jQuery" class="icon">
+			<div id="Prettify" class="icon">
 				<a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify"><img src="images/google_code_prettify.jpg" width="320" height="240" alt="Google Code Prettify image" /></a>
 			</div>
 			<div class="name">
