@@ -112,6 +112,21 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 		</div><!-- END of Encryption component -->
 		<div class="component">
 			<div id="jQuery" class="icon">
+				<a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify"><img src="images/google_code_prettify.jpg" width="320" height="240" alt="Google Code Prettify image" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify">Google Code Prettify</a></h1>
+			</div>
+			<div class="version">
+				Version 2010-07-21
+			</div>
+			<div class="description">
+				<p>A Javascript module and CSS file that allows syntax highlighting of source code snippets in an html page.</p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- END of Google Code Prettify component -->
+		<div class="component">
+			<div id="jQuery" class="icon">
 				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jquery.jpg" width="320" height="240" alt="jQuery image" /></a>
 			</div>
 			<div class="name">
