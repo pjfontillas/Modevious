@@ -73,13 +73,6 @@ var $c = (function () {
 		updateCounter: updateCounter,
 		updateFound: false,
 		/**
-		*	getVersion
-		*		Returns this library's current version as an integer.
-		*/
-		getVersion: function () {
-			return version;
-		},
-		/**
 		*	init ()
 		*		Checks to see if $config is set. May be used later on to initialize
 		*		other components but for now only does configuration.
@@ -91,8 +84,8 @@ var $c = (function () {
 			} // do nothing
 		},
 		/**
-		*	getVersion ()
-		*		Returns version as an integer.
+		*	getVersion
+		*		Returns this library's current version as an integer.
 		*/
 		getVersion: function () {
 			return version;
@@ -518,6 +511,7 @@ var $c = (function () {
 		*		to be just about under the current vertical offset.
 		*/
 		showLog: function (event)	{
+			$j.pnotify(event.keyCode);
 			if (event.keyCode == $c.config.consoleCode[$c.consoleCounter]) {
 				$c.consoleCounter++;
 			} else {

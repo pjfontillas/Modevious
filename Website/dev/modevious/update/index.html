@@ -95,8 +95,6 @@
 					"?callback=?"
 				].join('');
 				$j.getJSON(url, function (data) {
-					$j.pnotify("Current version for " + $c.updateName[$c.updateCounter] + ": " + $c.updateVersion[$c.updateCounter]);
-					$j.pnotify("Updated version: " + data.version);
 					if (parseInt(data.version) > $c.updateVersion[$c.updateCounter]) {
 						if (data.type == "Critical") {
 							updateType = "ui-state-error";
