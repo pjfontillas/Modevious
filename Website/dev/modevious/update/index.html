@@ -4,33 +4,6 @@
 <head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<title>Modevious</title> 
-	<script type="text/javascript">
-		$config = {
-			warnings: false,
-			at: "(AT)",
-			dot: "(DOT)",
-			update: true,
-			soundManager: {
-				url: "/modevious/swf",
-				flashVersion: 9
-			},
-			consoleCode: [ // Konami Code
-				Event.KEY_UP,
-				Event.KEY_UP,
-				Event.KEY_DOWN,
-				Event.KEY_DOWN,
-				Event.KEY_LEFT,
-				Event.KEY_RIGHT,
-				Event.KEY_LEFT,
-				Event.KEY_RIGHT,
-				66,
-				65
-			],
-			modeviousLocation: '/modevious/',
-			jQueryUIThemeURL: "/modevious/jquery-ui-1.8.5.custom.css",
-			libraryURL: "/modevious/library.css"
-		};
-	</script>
 	<script type="text/javascript" src="/modevious/library.js"></script>
 	<style type="text/css">
 		body {
@@ -83,12 +56,12 @@
 	</div><!-- END #update-manager -->
 	<script type="text/javascript">
 		$c.onLoad(function () {
-			var data, updateType;		
-			if ($c.config.update) {
-				$j("body").css("cursor", "progress"); // show that page is busy
+			var data, updateType;
+			$j("body").css("cursor", "progress"); // show that page is busy
+			function mups() {
 				$c.trace([
-					"Fetching update from: ",
-					$c.updateURL[$c.updateCounter]
+					"Fetching updates for: ",
+					$c.updateName[$c.updateCounter],
 				].join(''));
 				var url = [
 					$c.updateURL[$c.updateCounter],
@@ -128,20 +101,26 @@
 							"Found an update for: ",
 							$c.updateName[$c.updateCounter]
 						].join(''));
+					} else {
+						$c.trace([
+							"No update found for: ",
+							$c.updateName[$c.updateCounter]
+						].join(''));
 					}
 					$c.updateCounter++;
-					if ($c.updateCounter != $c.updateURL.length) { // not done yet
-						return $c.fetchUpdates(); // recursively call this fn
-					} else {
+					if ($c.updateCounter >= $c.updateURL.length) {
 						if ($c.updateFound) {
 							$j("#progress").hide("blind");
 						} else {
 							$j("#progress").html("Everything is up-to-date!");
 						}
 						$j("body").css("cursor", "auto"); // change cursor back
+					} else {
+						mups();
 					}
 				});
 			}
+			mups();
 		});
 	</script>
 </body>
