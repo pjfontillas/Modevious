@@ -112,5 +112,9 @@ $c.onLoad(function () {
     $c.trace("No cookie for style sheet found.");
   }
 
+	// Initialize Google Code Prettify
+	prettyPrint();
+	$c.trace("Initialized Google Code Prettify, your example or source code is now pretty!");
+	
   $c.trace("Modevious started and running smoothly!");
 });
