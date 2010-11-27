@@ -1,4 +1,6 @@
 :: Compile src files and write to "dev" section of "Website" for testing
+:: %1 may hold ".min", which loads minify compatible resources
+
 :: remove old tmp files
 if exist tmp rmdir /s /q tmp
 
@@ -11,11 +13,11 @@ type nul > tmp\library.css
 copy /b tmp\library.js + Development\js\src\prototype.js tmp\library.js
 
 :: jQuery
-copy /b tmp\library.js + Development\js\src\jquery-1.4.3.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\jquery-1.4.3%1.js tmp\library.js
 
 :: Core libary
-copy /b tmp\library.css + Development\css\core.css tmp\library.css
-copy /b tmp\library.js + Development\js\src\core.js tmp\library.js
+copy /b tmp\library.css + Development\css\core%1.css tmp\library.css
+copy /b tmp\library.js + Development\js\src\core%1.js tmp\library.js
 
 :: jQuery User interface
 copy Development\css\jquery-ui-1.8.5.custom.css build
@@ -25,29 +27,48 @@ copy /b tmp\library.js + Development\js\src\jquery-ui-1.8.5.min.js tmp\library.j
 copy /b tmp\library.js + Development\js\src\jquery.tools.min.js tmp\library.js
 
 :: autoMouseOver jQuery plugin
-copy /b tmp\library.js + Development\js\src\jquery.autoMouseOver.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\jquery.autoMouseOver%1.js tmp\library.js
 
 :: Pines Notify jQuery plugin
-copy /b tmp\library.css + Development\css\jquery.pnotify.default.css tmp\library.css
-copy /b tmp\library.js + Development\js\src\jquery.pnotify.js tmp\library.js
+copy /b tmp\library.css + Development\css\jquery.pnotify.default%1.css tmp\library.css
+copy /b tmp\library.js + Development\js\src\jquery.pnotify%1.js tmp\library.js
 
 :: dumbCrossfade jQuery plugin
-copy /b tmp\library.css + Development\css\dumbcrossfade.css tmp\library.css
-copy /b tmp\library.js + Development\js\src\jquery.dumbcrossfade-2.0.js tmp\library.js
+copy /b tmp\library.css + Development\css\dumbcrossfade%1.css tmp\library.css
+copy /b tmp\library.js + Development\js\src\jquery.dumbcrossfade-2.0%1.js tmp\library.js
 
 :: SoundManager 2 component
 copy /b tmp\library.js + Development\js\src\soundmanager2-nodebug-jsmin.js tmp\library.js
 copy /b Development\swf\* tmp\swf
 
 :: Encryption components
-copy /b tmp\library.js + Development\js\src\md5.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\ripemd160.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\sha1.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\sha256.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\sha512.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\md5%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\ripemd160%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\sha1%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\sha256%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\sha512%1.js tmp\library.js
+
+:: Google Code Prettify
+copy /b tmp\library.js + Development\js\src\prettify%1.js tmp\library.js
+copy /b tmp\library.css + Development\css\prettify%1.css tmp\library.css
+
+:: Google Code Prettify language extensions
+copy /b tmp\library.js + Development\js\src\lang-apollo%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-css%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-hs%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-lisp%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-lua%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-ml%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-proto%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-scala%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-sql%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-vb%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-vhdl%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-wiki%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\lang-yaml%1.js tmp\library.js
 
 :: Startup script (init)
-copy /b tmp\library.js + Development\js\init.js tmp\library.js
+copy /b tmp\library.js + Development\js\init%1.js tmp\library.js
 
 :: Modevious Update System (MUpS)
 copy /b Development\update\index.html Website\dev\modevious\update\index.html
