@@ -97,12 +97,10 @@
 	margin: 0px !important;
 }
 .code {
-	width: 95% !important;
-	height: auto !important;
-	overflow: scroll !important;
 	border: 1px solid #AAA !important;
 	background: #FFF !important;
-	margin: 10px auto !important;
+	padding: 10px !important;
+	overflow: auto !important;
 }
 .maximize-x {
 	width: 100% !important;

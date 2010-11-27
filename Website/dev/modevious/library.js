@@ -6066,53 +6066,2275 @@ var hexcase=0;var b64pad="";function hex_sha1(a){return rstr2hex(rstr_sha1(str2r
  * Distributed under the BSD License
  * See http://pajhome.org.uk/crypt/md5 for details.
  */
-var hexcase=0;function hex_sha512(a){return rstr2hex(rstr_sha512(str2rstr_utf8(a)))}function hex_hmac_sha512(a,b){return rstr2hex(rstr_hmac_sha512(str2rstr_utf8(a),str2rstr_utf8(b)))}function sha512_vm_test(){return hex_sha512("abc").toLowerCase()=="ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f"}function rstr_sha512(a){return binb2rstr(binb_sha512(rstr2binb(a),a.length*8))}function rstr_hmac_sha512(c,f){var e=rstr2binb(c);if(e.length>32){e=binb_sha512(e,c.length*8)}var a=Array(32),d=Array(32);for(var b=0;b<32;b++){a[b]=e[b]^909522486;d[b]=e[b]^1549556828}var g=binb_sha512(a.concat(rstr2binb(f)),1024+f.length*8);return binb2rstr(binb_sha512(d.concat(g),1024+512))}function rstr2hex(c){try{hexcase}catch(g){hexcase=0}var f=hexcase?"0123456789ABCDEF":"0123456789abcdef";var b="";var a;for(var d=0;d<c.length;d++){a=c.charCodeAt(d);b+=f.charAt((a>>>4)&15)+f.charAt(a&15)}return b}function str2rstr_utf8(c){var b="";var d=-1;var a,e;while(++d<c.length){a=c.charCodeAt(d);e=d+1<c.length?c.charCodeAt(d+1):0;if(55296<=a&&a<=56319&&56320<=e&&e<=57343){a=65536+((a&1023)<<10)+(e&1023);d++}if(a<=127){b+=String.fromCharCode(a)}else{if(a<=2047){b+=String.fromCharCode(192|((a>>>6)&31),128|(a&63))}else{if(a<=65535){b+=String.fromCharCode(224|((a>>>12)&15),128|((a>>>6)&63),128|(a&63))}else{if(a<=2097151){b+=String.fromCharCode(240|((a>>>18)&7),128|((a>>>12)&63),128|((a>>>6)&63),128|(a&63))}}}}}return b}function rstr2binb(b){var a=Array(b.length>>2);for(var c=0;c<a.length;c++){a[c]=0}for(var c=0;c<b.length*8;c+=8){a[c>>5]|=(b.charCodeAt(c/8)&255)<<(24-c%32)}return a}function binb2rstr(b){var a="";for(var c=0;c<b.length*32;c+=8){a+=String.fromCharCode((b[c>>5]>>>(24-c%32))&255)}return a}var sha512_k;function binb_sha512(p,A){if(sha512_k==undefined){sha512_k=new Array(new int64(1116352408,-685199838),new int64(1899447441,602891725),new int64(-1245643825,-330482897),new int64(-373957723,-2121671748),new int64(961987163,-213338824),new int64(1508970993,-1241133031),new int64(-1841331548,-1357295717),new int64(-1424204075,-630357736),new int64(-670586216,-1560083902),new int64(310598401,1164996542),new int64(607225278,1323610764),new int64(1426881987,-704662302),new int64(1925078388,-226784913),new int64(-2132889090,991336113),new int64(-1680079193,633803317),new int64(-1046744716,-815192428),new int64(-459576895,-1628353838),new int64(-272742522,944711139),new int64(264347078,-1953704523),new int64(604807628,2007800933),new int64(770255983,1495990901),new int64(1249150122,1856431235),new int64(1555081692,-1119749164),new int64(1996064986,-2096016459),new int64(-1740746414,-295247957),new int64(-1473132947,766784016),new int64(-1341970488,-1728372417),new int64(-1084653625,-1091629340),new int64(-958395405,1034457026),new int64(-710438585,-1828018395),new int64(113926993,-536640913),new int64(338241895,168717936),new int64(666307205,1188179964),new int64(773529912,1546045734),new int64(1294757372,1522805485),new int64(1396182291,-1651133473),new int64(1695183700,-1951439906),new int64(1986661051,1014477480),new int64(-2117940946,1206759142),new int64(-1838011259,344077627),new int64(-1564481375,1290863460),new int64(-1474664885,-1136513023),new int64(-1035236496,-789014639),new int64(-949202525,106217008),new int64(-778901479,-688958952),new int64(-694614492,1432725776),new int64(-200395387,1467031594),new int64(275423344,851169720),new int64(430227734,-1194143544),new int64(506948616,1363258195),new int64(659060556,-544281703),new int64(883997877,-509917016),new int64(958139571,-976659869),new int64(1322822218,-482243893),new int64(1537002063,2003034995),new int64(1747873779,-692930397),new int64(1955562222,1575990012),new int64(2024104815,1125592928),new int64(-2067236844,-1578062990),new int64(-1933114872,442776044),new int64(-1866530822,593698344),new int64(-1538233109,-561857047),new int64(-1090935817,-1295615723),new int64(-965641998,-479046869),new int64(-903397682,-366583396),new int64(-779700025,566280711),new int64(-354779690,-840897762),new int64(-176337025,-294727304),new int64(116418474,1914138554),new int64(174292421,-1563912026),new int64(289380356,-1090974290),new int64(460393269,320620315),new int64(685471733,587496836),new int64(852142971,1086792851),new int64(1017036298,365543100),new int64(1126000580,-1676669620),new int64(1288033470,-885112138),new int64(1501505948,-60457430),new int64(1607167915,987167468),new int64(1816402316,1246189591))}var q=new Array(new int64(1779033703,-205731576),new int64(-1150833019,-2067093701),new int64(1013904242,-23791573),new int64(-1521486534,1595750129),new int64(1359893119,-1377402159),new int64(-1694144372,725511199),new int64(528734635,-79577749),new int64(1541459225,327033209));var s=new int64(0,0),r=new int64(0,0),J=new int64(0,0),I=new int64(0,0),G=new int64(0,0),F=new int64(0,0),E=new int64(0,0),D=new int64(0,0),C=new int64(0,0),B=new int64(0,0),m=new int64(0,0),l=new int64(0,0),t=new int64(0,0),o=new int64(0,0),z=new int64(0,0),w=new int64(0,0),u=new int64(0,0);var v,y;var n=new Array(80);for(y=0;y<80;y++){n[y]=new int64(0,0)}p[A>>5]|=128<<(24-(A&31));p[((A+128>>10)<<5)+31]=A;for(y=0;y<p.length;y+=32){int64copy(J,q[0]);int64copy(I,q[1]);int64copy(G,q[2]);int64copy(F,q[3]);int64copy(E,q[4]);int64copy(D,q[5]);int64copy(C,q[6]);int64copy(B,q[7]);for(v=0;v<16;v++){n[v].h=p[y+2*v];n[v].l=p[y+2*v+1]}for(v=16;v<80;v++){int64rrot(z,n[v-2],19);int64revrrot(w,n[v-2],29);int64shr(u,n[v-2],6);l.l=z.l^w.l^u.l;l.h=z.h^w.h^u.h;int64rrot(z,n[v-15],1);int64rrot(w,n[v-15],8);int64shr(u,n[v-15],7);m.l=z.l^w.l^u.l;m.h=z.h^w.h^u.h;int64add4(n[v],l,n[v-7],m,n[v-16])}for(v=0;v<80;v++){t.l=(E.l&D.l)^(~E.l&C.l);t.h=(E.h&D.h)^(~E.h&C.h);int64rrot(z,E,14);int64rrot(w,E,18);int64revrrot(u,E,9);l.l=z.l^w.l^u.l;l.h=z.h^w.h^u.h;int64rrot(z,J,28);int64revrrot(w,J,2);int64revrrot(u,J,7);m.l=z.l^w.l^u.l;m.h=z.h^w.h^u.h;o.l=(J.l&I.l)^(J.l&G.l)^(I.l&G.l);o.h=(J.h&I.h)^(J.h&G.h)^(I.h&G.h);int64add5(s,B,l,t,sha512_k[v],n[v]);int64add(r,m,o);int64copy(B,C);int64copy(C,D);int64copy(D,E);int64add(E,F,s);int64copy(F,G);int64copy(G,I);int64copy(I,J);int64add(J,s,r)}int64add(q[0],q[0],J);int64add(q[1],q[1],I);int64add(q[2],q[2],G);int64add(q[3],q[3],F);int64add(q[4],q[4],E);int64add(q[5],q[5],D);int64add(q[6],q[6],C);int64add(q[7],q[7],B)}var k=new Array(16);for(y=0;y<8;y++){k[2*y]=q[y].h;k[2*y+1]=q[y].l}return k}function int64(b,a){this.h=b;this.l=a}function int64copy(b,a){b.h=a.h;b.l=a.l}function int64rrot(c,a,b){c.l=(a.l>>>b)|(a.h<<(32-b));c.h=(a.h>>>b)|(a.l<<(32-b))}function int64revrrot(c,a,b){c.l=(a.h>>>b)|(a.l<<(32-b));c.h=(a.l>>>b)|(a.h<<(32-b))}function int64shr(c,a,b){c.l=(a.l>>>b)|(a.h<<(32-b));c.h=(a.h>>>b)}function int64add(g,b,f){var d=(b.l&65535)+(f.l&65535);var c=(b.l>>>16)+(f.l>>>16)+(d>>>16);var a=(b.h&65535)+(f.h&65535)+(c>>>16);var e=(b.h>>>16)+(f.h>>>16)+(a>>>16);g.l=(d&65535)|(c<<16);g.h=(a&65535)|(e<<16)}function int64add4(j,m,l,k,i){var h=(m.l&65535)+(l.l&65535)+(k.l&65535)+(i.l&65535);var g=(m.l>>>16)+(l.l>>>16)+(k.l>>>16)+(i.l>>>16)+(h>>>16);var f=(m.h&65535)+(l.h&65535)+(k.h&65535)+(i.h&65535)+(g>>>16);var e=(m.h>>>16)+(l.h>>>16)+(k.h>>>16)+(i.h>>>16)+(f>>>16);j.l=(h&65535)|(g<<16);j.h=(f&65535)|(e<<16)}function int64add5(l,o,n,m,k,j){var i=(o.l&65535)+(n.l&65535)+(m.l&65535)+(k.l&65535)+(j.l&65535);var h=(o.l>>>16)+(n.l>>>16)+(m.l>>>16)+(k.l>>>16)+(j.l>>>16)+(i>>>16);var g=(o.h&65535)+(n.h&65535)+(m.h&65535)+(k.h&65535)+(j.h&65535)+(h>>>16);var f=(o.h>>>16)+(n.h>>>16)+(m.h>>>16)+(k.h>>>16)+(j.h>>>16)+(g>>>16);l.l=(i&65535)|(h<<16);l.h=(g&65535)|(f<<16)};window.PR_SHOULD_USE_CONTINUATION=true;window.PR_TAB_WIDTH=8;window.PR_normalizedHtml=window.PR=window.prettyPrintOne=window.prettyPrint=void 0;window._pr_isIE6=function(){var y=navigator&&navigator.userAgent&&navigator.userAgent.match(/\bMSIE ([678])\./);y=y?+y[1]:false;window._pr_isIE6=function(){return y};return y};
-(function(){function y(b){return b.replace(L,"&amp;").replace(M,"&lt;").replace(N,"&gt;")}function H(b,f,i){switch(b.nodeType){case 1:var o=b.tagName.toLowerCase();f.push("<",o);var l=b.attributes,n=l.length;if(n){if(i){for(var r=[],j=n;--j>=0;)r[j]=l[j];r.sort(function(q,m){return q.name<m.name?-1:q.name===m.name?0:1});l=r}for(j=0;j<n;++j){r=l[j];r.specified&&f.push(" ",r.name.toLowerCase(),'="',r.value.replace(L,"&amp;").replace(M,"&lt;").replace(N,"&gt;").replace(X,"&quot;"),'"')}}f.push(">");
-for(l=b.firstChild;l;l=l.nextSibling)H(l,f,i);if(b.firstChild||!/^(?:br|link|img)$/.test(o))f.push("</",o,">");break;case 3:case 4:f.push(y(b.nodeValue));break}}function O(b){function f(c){if(c.charAt(0)!=="\\")return c.charCodeAt(0);switch(c.charAt(1)){case "b":return 8;case "t":return 9;case "n":return 10;case "v":return 11;case "f":return 12;case "r":return 13;case "u":case "x":return parseInt(c.substring(2),16)||c.charCodeAt(1);case "0":case "1":case "2":case "3":case "4":case "5":case "6":case "7":return parseInt(c.substring(1),
-8);default:return c.charCodeAt(1)}}function i(c){if(c<32)return(c<16?"\\x0":"\\x")+c.toString(16);c=String.fromCharCode(c);if(c==="\\"||c==="-"||c==="["||c==="]")c="\\"+c;return c}function o(c){var d=c.substring(1,c.length-1).match(RegExp("\\\\u[0-9A-Fa-f]{4}|\\\\x[0-9A-Fa-f]{2}|\\\\[0-3][0-7]{0,2}|\\\\[0-7]{1,2}|\\\\[\\s\\S]|-|[^-\\\\]","g"));c=[];for(var a=[],k=d[0]==="^",e=k?1:0,h=d.length;e<h;++e){var g=d[e];switch(g){case "\\B":case "\\b":case "\\D":case "\\d":case "\\S":case "\\s":case "\\W":case "\\w":c.push(g);
-continue}g=f(g);var s;if(e+2<h&&"-"===d[e+1]){s=f(d[e+2]);e+=2}else s=g;a.push([g,s]);if(!(s<65||g>122)){s<65||g>90||a.push([Math.max(65,g)|32,Math.min(s,90)|32]);s<97||g>122||a.push([Math.max(97,g)&-33,Math.min(s,122)&-33])}}a.sort(function(v,w){return v[0]-w[0]||w[1]-v[1]});d=[];g=[NaN,NaN];for(e=0;e<a.length;++e){h=a[e];if(h[0]<=g[1]+1)g[1]=Math.max(g[1],h[1]);else d.push(g=h)}a=["["];k&&a.push("^");a.push.apply(a,c);for(e=0;e<d.length;++e){h=d[e];a.push(i(h[0]));if(h[1]>h[0]){h[1]+1>h[0]&&a.push("-");
-a.push(i(h[1]))}}a.push("]");return a.join("")}function l(c){for(var d=c.source.match(RegExp("(?:\\[(?:[^\\x5C\\x5D]|\\\\[\\s\\S])*\\]|\\\\u[A-Fa-f0-9]{4}|\\\\x[A-Fa-f0-9]{2}|\\\\[0-9]+|\\\\[^ux0-9]|\\(\\?[:!=]|[\\(\\)\\^]|[^\\x5B\\x5C\\(\\)\\^]+)","g")),a=d.length,k=[],e=0,h=0;e<a;++e){var g=d[e];if(g==="(")++h;else if("\\"===g.charAt(0))if((g=+g.substring(1))&&g<=h)k[g]=-1}for(e=1;e<k.length;++e)if(-1===k[e])k[e]=++n;for(h=e=0;e<a;++e){g=d[e];if(g==="("){++h;if(k[h]===undefined)d[e]="(?:"}else if("\\"===
-g.charAt(0))if((g=+g.substring(1))&&g<=h)d[e]="\\"+k[h]}for(h=e=0;e<a;++e)if("^"===d[e]&&"^"!==d[e+1])d[e]="";if(c.ignoreCase&&r)for(e=0;e<a;++e){g=d[e];c=g.charAt(0);if(g.length>=2&&c==="[")d[e]=o(g);else if(c!=="\\")d[e]=g.replace(/[a-zA-Z]/g,function(s){s=s.charCodeAt(0);return"["+String.fromCharCode(s&-33,s|32)+"]"})}return d.join("")}for(var n=0,r=false,j=false,q=0,m=b.length;q<m;++q){var t=b[q];if(t.ignoreCase)j=true;else if(/[a-z]/i.test(t.source.replace(/\\u[0-9a-f]{4}|\\x[0-9a-f]{2}|\\[^ux]/gi,
-""))){r=true;j=false;break}}var p=[];q=0;for(m=b.length;q<m;++q){t=b[q];if(t.global||t.multiline)throw Error(""+t);p.push("(?:"+l(t)+")")}return RegExp(p.join("|"),j?"gi":"g")}function Y(b){var f=0;return function(i){for(var o=null,l=0,n=0,r=i.length;n<r;++n)switch(i.charAt(n)){case "\t":o||(o=[]);o.push(i.substring(l,n));l=b-f%b;for(f+=l;l>=0;l-=16)o.push("                ".substring(0,l));l=n+1;break;case "\n":f=0;break;default:++f}if(!o)return i;o.push(i.substring(l));return o.join("")}}function I(b,
-f,i,o){if(f){b={source:f,c:b};i(b);o.push.apply(o,b.d)}}function B(b,f){var i={},o;(function(){for(var r=b.concat(f),j=[],q={},m=0,t=r.length;m<t;++m){var p=r[m],c=p[3];if(c)for(var d=c.length;--d>=0;)i[c.charAt(d)]=p;p=p[1];c=""+p;if(!q.hasOwnProperty(c)){j.push(p);q[c]=null}}j.push(/[\0-\uffff]/);o=O(j)})();var l=f.length;function n(r){for(var j=r.c,q=[j,z],m=0,t=r.source.match(o)||[],p={},c=0,d=t.length;c<d;++c){var a=t[c],k=p[a],e=void 0,h;if(typeof k==="string")h=false;else{var g=i[a.charAt(0)];
-if(g){e=a.match(g[1]);k=g[0]}else{for(h=0;h<l;++h){g=f[h];if(e=a.match(g[1])){k=g[0];break}}e||(k=z)}if((h=k.length>=5&&"lang-"===k.substring(0,5))&&!(e&&typeof e[1]==="string")){h=false;k=P}h||(p[a]=k)}g=m;m+=a.length;if(h){h=e[1];var s=a.indexOf(h),v=s+h.length;if(e[2]){v=a.length-e[2].length;s=v-h.length}k=k.substring(5);I(j+g,a.substring(0,s),n,q);I(j+g+s,h,Q(k,h),q);I(j+g+v,a.substring(v),n,q)}else q.push(j+g,k)}r.d=q}return n}function x(b){var f=[],i=[];if(b.tripleQuotedStrings)f.push([A,/^(?:\'\'\'(?:[^\'\\]|\\[\s\S]|\'{1,2}(?=[^\']))*(?:\'\'\'|$)|\"\"\"(?:[^\"\\]|\\[\s\S]|\"{1,2}(?=[^\"]))*(?:\"\"\"|$)|\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$))/,
-null,"'\""]);else b.multiLineStrings?f.push([A,/^(?:\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$)|\`(?:[^\\\`]|\\[\s\S])*(?:\`|$))/,null,"'\"`"]):f.push([A,/^(?:\'(?:[^\\\'\r\n]|\\.)*(?:\'|$)|\"(?:[^\\\"\r\n]|\\.)*(?:\"|$))/,null,"\"'"]);b.verbatimStrings&&i.push([A,/^@\"(?:[^\"]|\"\")*(?:\"|$)/,null]);if(b.hashComments)if(b.cStyleComments){f.push([C,/^#(?:(?:define|elif|else|endif|error|ifdef|include|ifndef|line|pragma|undef|warning)\b|[^\r\n]*)/,null,"#"]);i.push([A,/^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h|[a-z]\w*)>/,
-null])}else f.push([C,/^#[^\r\n]*/,null,"#"]);if(b.cStyleComments){i.push([C,/^\/\/[^\r\n]*/,null]);i.push([C,/^\/\*[\s\S]*?(?:\*\/|$)/,null])}b.regexLiterals&&i.push(["lang-regex",RegExp("^"+Z+"(/(?=[^/*])(?:[^/\\x5B\\x5C]|\\x5C[\\s\\S]|\\x5B(?:[^\\x5C\\x5D]|\\x5C[\\s\\S])*(?:\\x5D|$))+/)")]);b=b.keywords.replace(/^\s+|\s+$/g,"");b.length&&i.push([R,RegExp("^(?:"+b.replace(/\s+/g,"|")+")\\b"),null]);f.push([z,/^\s+/,null," \r\n\t\u00a0"]);i.push([J,/^@[a-z_$][a-z_$@0-9]*/i,null],[S,/^@?[A-Z]+[a-z][A-Za-z_$@0-9]*/,
-null],[z,/^[a-z_$][a-z_$@0-9]*/i,null],[J,/^(?:0x[a-f0-9]+|(?:\d(?:_\d+)*\d*(?:\.\d*)?|\.\d\+)(?:e[+\-]?\d+)?)[a-z]*/i,null,"0123456789"],[E,/^.[^\s\w\.$@\'\"\`\/\#]*/,null]);return B(f,i)}function $(b){function f(D){if(D>r){if(j&&j!==q){n.push("</span>");j=null}if(!j&&q){j=q;n.push('<span class="',j,'">')}var T=y(p(i.substring(r,D))).replace(e?d:c,"$1&#160;");e=k.test(T);n.push(T.replace(a,s));r=D}}var i=b.source,o=b.g,l=b.d,n=[],r=0,j=null,q=null,m=0,t=0,p=Y(window.PR_TAB_WIDTH),c=/([\r\n ]) /g,
-d=/(^| ) /gm,a=/\r\n?|\n/g,k=/[ \r\n]$/,e=true,h=window._pr_isIE6();h=h?b.b.tagName==="PRE"?h===6?"&#160;\r\n":h===7?"&#160;<br>\r":"&#160;\r":"&#160;<br />":"<br />";var g=b.b.className.match(/\blinenums\b(?::(\d+))?/),s;if(g){for(var v=[],w=0;w<10;++w)v[w]=h+'</li><li class="L'+w+'">';var F=g[1]&&g[1].length?g[1]-1:0;n.push('<ol class="linenums"><li class="L',F%10,'"');F&&n.push(' value="',F+1,'"');n.push(">");s=function(){var D=v[++F%10];return j?"</span>"+D+'<span class="'+j+'">':D}}else s=h;
-for(;;)if(m<o.length?t<l.length?o[m]<=l[t]:true:false){f(o[m]);if(j){n.push("</span>");j=null}n.push(o[m+1]);m+=2}else if(t<l.length){f(l[t]);q=l[t+1];t+=2}else break;f(i.length);j&&n.push("</span>");g&&n.push("</li></ol>");b.a=n.join("")}function u(b,f){for(var i=f.length;--i>=0;){var o=f[i];if(G.hasOwnProperty(o))"console"in window&&console.warn("cannot override language handler %s",o);else G[o]=b}}function Q(b,f){b&&G.hasOwnProperty(b)||(b=/^\s*</.test(f)?"default-markup":"default-code");return G[b]}
-function U(b){var f=b.f,i=b.e;b.a=f;try{var o,l=f.match(aa);f=[];var n=0,r=[];if(l)for(var j=0,q=l.length;j<q;++j){var m=l[j];if(m.length>1&&m.charAt(0)==="<"){if(!ba.test(m))if(ca.test(m)){f.push(m.substring(9,m.length-3));n+=m.length-12}else if(da.test(m)){f.push("\n");++n}else if(m.indexOf(V)>=0&&m.replace(/\s(\w+)\s*=\s*(?:\"([^\"]*)\"|'([^\']*)'|(\S+))/g,' $1="$2$3$4"').match(/[cC][lL][aA][sS][sS]=\"[^\"]*\bnocode\b/)){var t=m.match(W)[2],p=1,c;c=j+1;a:for(;c<q;++c){var d=l[c].match(W);if(d&&
-d[2]===t)if(d[1]==="/"){if(--p===0)break a}else++p}if(c<q){r.push(n,l.slice(j,c+1).join(""));j=c}else r.push(n,m)}else r.push(n,m)}else{var a;p=m;var k=p.indexOf("&");if(k<0)a=p;else{for(--k;(k=p.indexOf("&#",k+1))>=0;){var e=p.indexOf(";",k);if(e>=0){var h=p.substring(k+3,e),g=10;if(h&&h.charAt(0)==="x"){h=h.substring(1);g=16}var s=parseInt(h,g);isNaN(s)||(p=p.substring(0,k)+String.fromCharCode(s)+p.substring(e+1))}}a=p.replace(ea,"<").replace(fa,">").replace(ga,"'").replace(ha,'"').replace(ia," ").replace(ja,
-"&")}f.push(a);n+=a.length}}o={source:f.join(""),h:r};var v=o.source;b.source=v;b.c=0;b.g=o.h;Q(i,v)(b);$(b)}catch(w){if("console"in window)console.log(w&&w.stack?w.stack:w)}}var A="str",R="kwd",C="com",S="typ",J="lit",E="pun",z="pln",P="src",V="nocode",Z=function(){for(var b=["!","!=","!==","#","%","%=","&","&&","&&=","&=","(","*","*=","+=",",","-=","->","/","/=",":","::",";","<","<<","<<=","<=","=","==","===",">",">=",">>",">>=",">>>",">>>=","?","@","[","^","^=","^^","^^=","{","|","|=","||","||=",
-"~","break","case","continue","delete","do","else","finally","instanceof","return","throw","try","typeof"],f="(?:^^|[+-]",i=0;i<b.length;++i)f+="|"+b[i].replace(/([^=<>:&a-z])/g,"\\$1");f+=")\\s*";return f}(),L=/&/g,M=/</g,N=/>/g,X=/\"/g,ea=/&lt;/g,fa=/&gt;/g,ga=/&apos;/g,ha=/&quot;/g,ja=/&amp;/g,ia=/&nbsp;/g,ka=/[\r\n]/g,K=null,aa=RegExp("[^<]+|<!--[\\s\\S]*?--\>|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>|</?[a-zA-Z](?:[^>\"']|'[^']*'|\"[^\"]*\")*>|<","g"),ba=/^<\!--/,ca=/^<!\[CDATA\[/,da=/^<br\b/i,W=/^<(\/?)([a-zA-Z][a-zA-Z0-9]*)/,
-la=x({keywords:"break continue do else for if return while auto case char const default double enum extern float goto int long register short signed sizeof static struct switch typedef union unsigned void volatile catch class delete false import new operator private protected public this throw true try typeof alignof align_union asm axiom bool concept concept_map const_cast constexpr decltype dynamic_cast explicit export friend inline late_check mutable namespace nullptr reinterpret_cast static_assert static_cast template typeid typename using virtual wchar_t where break continue do else for if return while auto case char const default double enum extern float goto int long register short signed sizeof static struct switch typedef union unsigned void volatile catch class delete false import new operator private protected public this throw true try typeof abstract boolean byte extends final finally implements import instanceof null native package strictfp super synchronized throws transient as base by checked decimal delegate descending event fixed foreach from group implicit in interface internal into is lock object out override orderby params partial readonly ref sbyte sealed stackalloc string select uint ulong unchecked unsafe ushort var break continue do else for if return while auto case char const default double enum extern float goto int long register short signed sizeof static struct switch typedef union unsigned void volatile catch class delete false import new operator private protected public this throw true try typeof debugger eval export function get null set undefined var with Infinity NaN caller delete die do dump elsif eval exit foreach for goto if import last local my next no our print package redo require sub undef unless until use wantarray while BEGIN END break continue do else for if return while and as assert class def del elif except exec finally from global import in is lambda nonlocal not or pass print raise try with yield False True None break continue do else for if return while alias and begin case class def defined elsif end ensure false in module next nil not or redo rescue retry self super then true undef unless until when yield BEGIN END break continue do else for if return while case done elif esac eval fi function in local set then until ",
-hashComments:true,cStyleComments:true,multiLineStrings:true,regexLiterals:true}),G={};u(la,["default-code"]);u(B([],[[z,/^[^<?]+/],["dec",/^<!\w[^>]*(?:>|$)/],[C,/^<\!--[\s\S]*?(?:-\->|$)/],["lang-",/^<\?([\s\S]+?)(?:\?>|$)/],["lang-",/^<%([\s\S]+?)(?:%>|$)/],[E,/^(?:<[%?]|[%?]>)/],["lang-",/^<xmp\b[^>]*>([\s\S]+?)<\/xmp\b[^>]*>/i],["lang-js",/^<script\b[^>]*>([\s\S]*?)(<\/script\b[^>]*>)/i],["lang-css",/^<style\b[^>]*>([\s\S]*?)(<\/style\b[^>]*>)/i],["lang-in.tag",/^(<\/?[a-z][^<>]*>)/i]]),["default-markup",
-"htm","html","mxml","xhtml","xml","xsl"]);u(B([[z,/^[\s]+/,null," \t\r\n"],["atv",/^(?:\"[^\"]*\"?|\'[^\']*\'?)/,null,"\"'"]],[["tag",/^^<\/?[a-z](?:[\w.:-]*\w)?|\/?>$/i],["atn",/^(?!style[\s=]|on)[a-z](?:[\w:-]*\w)?/i],["lang-uq.val",/^=\s*([^>\'\"\s]*(?:[^>\'\"\s\/]|\/(?=\s)))/],[E,/^[=<>\/]+/],["lang-js",/^on\w+\s*=\s*\"([^\"]+)\"/i],["lang-js",/^on\w+\s*=\s*\'([^\']+)\'/i],["lang-js",/^on\w+\s*=\s*([^\"\'>\s]+)/i],["lang-css",/^style\s*=\s*\"([^\"]+)\"/i],["lang-css",/^style\s*=\s*\'([^\']+)\'/i],
-["lang-css",/^style\s*=\s*([^\"\'>\s]+)/i]]),["in.tag"]);u(B([],[["atv",/^[\s\S]+/]]),["uq.val"]);u(x({keywords:"break continue do else for if return while auto case char const default double enum extern float goto int long register short signed sizeof static struct switch typedef union unsigned void volatile catch class delete false import new operator private protected public this throw true try typeof alignof align_union asm axiom bool concept concept_map const_cast constexpr decltype dynamic_cast explicit export friend inline late_check mutable namespace nullptr reinterpret_cast static_assert static_cast template typeid typename using virtual wchar_t where ",
-hashComments:true,cStyleComments:true}),["c","cc","cpp","cxx","cyc","m"]);u(x({keywords:"null true false"}),["json"]);u(x({keywords:"break continue do else for if return while auto case char const default double enum extern float goto int long register short signed sizeof static struct switch typedef union unsigned void volatile catch class delete false import new operator private protected public this throw true try typeof abstract boolean byte extends final finally implements import instanceof null native package strictfp super synchronized throws transient as base by checked decimal delegate descending event fixed foreach from group implicit in interface internal into is lock object out override orderby params partial readonly ref sbyte sealed stackalloc string select uint ulong unchecked unsafe ushort var ",
-hashComments:true,cStyleComments:true,verbatimStrings:true}),["cs"]);u(x({keywords:"break continue do else for if return while auto case char const default double enum extern float goto int long register short signed sizeof static struct switch typedef union unsigned void volatile catch class delete false import new operator private protected public this throw true try typeof abstract boolean byte extends final finally implements import instanceof null native package strictfp super synchronized throws transient ",
-cStyleComments:true}),["java"]);u(x({keywords:"break continue do else for if return while case done elif esac eval fi function in local set then until ",hashComments:true,multiLineStrings:true}),["bsh","csh","sh"]);u(x({keywords:"break continue do else for if return while and as assert class def del elif except exec finally from global import in is lambda nonlocal not or pass print raise try with yield False True None ",hashComments:true,multiLineStrings:true,tripleQuotedStrings:true}),["cv","py"]);
-u(x({keywords:"caller delete die do dump elsif eval exit foreach for goto if import last local my next no our print package redo require sub undef unless until use wantarray while BEGIN END ",hashComments:true,multiLineStrings:true,regexLiterals:true}),["perl","pl","pm"]);u(x({keywords:"break continue do else for if return while alias and begin case class def defined elsif end ensure false in module next nil not or redo rescue retry self super then true undef unless until when yield BEGIN END ",hashComments:true,
-multiLineStrings:true,regexLiterals:true}),["rb"]);u(x({keywords:"break continue do else for if return while auto case char const default double enum extern float goto int long register short signed sizeof static struct switch typedef union unsigned void volatile catch class delete false import new operator private protected public this throw true try typeof debugger eval export function get null set undefined var with Infinity NaN ",cStyleComments:true,regexLiterals:true}),["js"]);u(B([],[[A,/^[\s\S]+/]]),
-["regex"]);window.PR_normalizedHtml=H;window.prettyPrintOne=function(b,f){var i={f:b,e:f};U(i);return i.a};window.prettyPrint=function(b){function f(){for(var t=window.PR_SHOULD_USE_CONTINUATION?j.now()+250:Infinity;q<o.length&&j.now()<t;q++){var p=o[q];if(p.className&&p.className.indexOf("prettyprint")>=0){var c=p.className.match(/\blang-(\w+)\b/);if(c)c=c[1];for(var d=false,a=p.parentNode;a;a=a.parentNode)if((a.tagName==="pre"||a.tagName==="code"||a.tagName==="xmp")&&a.className&&a.className.indexOf("prettyprint")>=
-0){d=true;break}if(!d){a=p;if(null===K){d=document.createElement("PRE");d.appendChild(document.createTextNode('<!DOCTYPE foo PUBLIC "foo bar">\n<foo />'));K=!/</.test(d.innerHTML)}if(K){d=a.innerHTML;if("XMP"===a.tagName)d=y(d);else{a=a;if("PRE"===a.tagName)a=true;else if(ka.test(d)){var k="";if(a.currentStyle)k=a.currentStyle.whiteSpace;else if(window.getComputedStyle)k=window.getComputedStyle(a,null).whiteSpace;a=!k||k==="pre"}else a=true;a||(d=d.replace(/(<br\s*\/?>)[\r\n]+/g,"$1").replace(/(?:[\r\n]+[ \t]*)+/g,
-" "))}d=d}else{d=[];for(a=a.firstChild;a;a=a.nextSibling)H(a,d);d=d.join("")}d=d.replace(/(?:\r\n?|\n)$/,"");m={f:d,e:c,b:p};U(m);if(p=m.a){c=m.b;if("XMP"===c.tagName){d=document.createElement("PRE");for(a=0;a<c.attributes.length;++a){k=c.attributes[a];if(k.specified)if(k.name.toLowerCase()==="class")d.className=k.value;else d.setAttribute(k.name,k.value)}d.innerHTML=p;c.parentNode.replaceChild(d,c)}else c.innerHTML=p}}}}if(q<o.length)setTimeout(f,250);else b&&b()}for(var i=[document.getElementsByTagName("pre"),
-document.getElementsByTagName("code"),document.getElementsByTagName("xmp")],o=[],l=0;l<i.length;++l)for(var n=0,r=i[l].length;n<r;++n)o.push(i[l][n]);i=null;var j=Date;j.now||(j={now:function(){return(new Date).getTime()}});var q=0,m;f()};window.PR={combinePrefixPatterns:O,createSimpleLexer:B,registerLangHandler:u,sourceDecorator:x,PR_ATTRIB_NAME:"atn",PR_ATTRIB_VALUE:"atv",PR_COMMENT:C,PR_DECLARATION:"dec",PR_KEYWORD:R,PR_LITERAL:J,PR_NOCODE:V,PR_PLAIN:z,PR_PUNCTUATION:E,PR_SOURCE:P,PR_STRING:A,
-PR_TAG:"tag",PR_TYPE:S}})()PR.registerLangHandler(PR.createSimpleLexer([["com",/^#[^\r\n]*/,null,"#"],["pln",/^[\t\n\r \xA0]+/,null,"\t\n\r \u00a0"],["str",/^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/,null,'"']],[["kwd",/^(?:ADS|AD|AUG|BZF|BZMF|CAE|CAF|CA|CCS|COM|CS|DAS|DCA|DCOM|DCS|DDOUBL|DIM|DOUBLE|DTCB|DTCF|DV|DXCH|EDRUPT|EXTEND|INCR|INDEX|NDX|INHINT|LXCH|MASK|MSK|MP|MSU|NOOP|OVSK|QXCH|RAND|READ|RELINT|RESUME|RETURN|ROR|RXOR|SQUARE|SU|TCR|TCAA|OVSK|TCF|TC|TS|WAND|WOR|WRITE|XCH|XLQ|XXALQ|ZL|ZQ|ADD|ADZ|SUB|SUZ|MPY|MPR|MPZ|DVP|COM|ABS|CLA|CLZ|LDQ|STO|STQ|ALS|LLS|LRS|TRA|TSQ|TMI|TOV|AXT|TIX|DLY|INP|OUT)\s/,
-null],["typ",/^(?:-?GENADR|=MINUS|2BCADR|VN|BOF|MM|-?2CADR|-?[1-6]DNADR|ADRES|BBCON|[SE]?BANK\=?|BLOCK|BNKSUM|E?CADR|COUNT\*?|2?DEC\*?|-?DNCHAN|-?DNPTR|EQUALS|ERASE|MEMORY|2?OCT|REMADR|SETLOC|SUBRO|ORG|BSS|BES|SYN|EQU|DEFINE|END)\s/,null],["lit",/^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],["pln",/^-*(?:[!-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],["pun",/^[^\w\t\n\r \xA0()\"\\\';]+/]]),["apollo","agc","aea"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[ \t\r\n\f]+/,null," \t\r\n\u000c"]],[["str",/^\"(?:[^\n\r\f\\\"]|\\(?:\r\n?|\n|\f)|\\[\s\S])*\"/,null],["str",/^\'(?:[^\n\r\f\\\']|\\(?:\r\n?|\n|\f)|\\[\s\S])*\'/,null],["lang-css-str",/^url\(([^\)\"\']*)\)/i],["kwd",/^(?:url|rgb|\!important|@import|@page|@media|@charset|inherit)(?=[^\-\w]|$)/i,null],["lang-css-kw",/^(-?(?:[_a-z]|(?:\\[0-9a-f]+ ?))(?:[_a-z0-9\-]|\\(?:\\[0-9a-f]+ ?))*)\s*:/i],["com",/^\/\*[^*]*\*+(?:[^\/*][^*]*\*+)*\//],
-["com",/^(?:<!--|--\>)/],["lit",/^(?:\d+|\d*\.\d+)(?:%|[a-z]+)?/i],["lit",/^#(?:[0-9a-f]{3}){1,2}/i],["pln",/^-?(?:[_a-z]|(?:\\[\da-f]+ ?))(?:[_a-z\d\-]|\\(?:\\[\da-f]+ ?))*/i],["pun",/^[^\s\w\'\"]+/]]),["css"]);PR.registerLangHandler(PR.createSimpleLexer([],[["kwd",/^-?(?:[_a-z]|(?:\\[\da-f]+ ?))(?:[_a-z\d\-]|\\(?:\\[\da-f]+ ?))*/i]]),["css-kw"]);PR.registerLangHandler(PR.createSimpleLexer([],[["str",/^[^\)\"\']+/]]),["css-str"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t\n\x0B\x0C\r ]+/,null,"\t\n\u000b\u000c\r "],["str",/^\"(?:[^\"\\\n\x0C\r]|\\[\s\S])*(?:\"|$)/,null,'"'],["str",/^\'(?:[^\'\\\n\x0C\r]|\\[^&])\'?/,null,"'"],["lit",/^(?:0o[0-7]+|0x[\da-f]+|\d+(?:\.\d+)?(?:e[+\-]?\d+)?)/i,null,"0123456789"]],[["com",/^(?:(?:--+(?:[^\r\n\x0C]*)?)|(?:\{-(?:[^-]|-+[^-\}])*-\}))/],["kwd",/^(?:case|class|data|default|deriving|do|else|if|import|in|infix|infixl|infixr|instance|let|module|newtype|of|then|type|where|_)(?=[^a-zA-Z0-9\']|$)/,
-null],["pln",/^(?:[A-Z][\w\']*\.)*[a-zA-Z][\w\']*/],["pun",/^[^\t\n\x0B\x0C\r a-zA-Z0-9\'\"]+/]]),["hs"])PR.registerLangHandler(PR.createSimpleLexer([["opn",/^\(/,null,"("],["clo",/^\)/,null,")"],["com",/^;[^\r\n]*/,null,";"],["pln",/^[\t\n\r \xA0]+/,null,"\t\n\r \u00a0"],["str",/^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/,null,'"']],[["kwd",/^(?:block|c[ad]+r|catch|con[ds]|def(?:ine|un)|do|eq|eql|equal|equalp|eval-when|flet|format|go|if|labels|lambda|let|load-time-value|locally|macrolet|multiple-value-call|nil|progn|progv|quote|require|return-from|setq|symbol-macrolet|t|tagbody|the|throw|unwind)\b/,
-null],["lit",/^[+\-]?(?:0x[0-9a-f]+|\d+\/\d+|(?:\.\d+|\d+(?:\.\d*)?)(?:[ed][+\-]?\d+)?)/i],["lit",/^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],["pln",/^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],["pun",/^[^\w\t\n\r \xA0()\"\\\';]+/]]),["cl","el","lisp","scm"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t\n\r \xA0]+/,null,"\t\n\r \u00a0"],["str",/^(?:\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)|\'(?:[^\'\\]|\\[\s\S])*(?:\'|$))/,null,"\"'"]],[["com",/^--(?:\[(=*)\[[\s\S]*?(?:\]\1\]|$)|[^\r\n]*)/],["str",/^\[(=*)\[[\s\S]*?(?:\]\1\]|$)/],["kwd",/^(?:and|break|do|else|elseif|end|false|for|function|if|in|local|nil|not|or|repeat|return|then|true|until|while)\b/,null],["lit",/^[+-]?(?:0x[\da-f]+|(?:(?:\.\d+|\d+(?:\.\d*)?)(?:e[+\-]?\d+)?))/i],
-["pln",/^[a-z_]\w*/i],["pun",/^[^\w\t\n\r \xA0][^\w\t\n\r \xA0\"\'\-\+=]*/]]),["lua"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t\n\r \xA0]+/,null,"\t\n\r \u00a0"],["com",/^#(?:if[\t\n\r \xA0]+(?:[a-z_$][\w\']*|``[^\r\n\t`]*(?:``|$))|else|endif|light)/i,null,"#"],["str",/^(?:\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)|\'(?:[^\'\\]|\\[\s\S])*(?:\'|$))/,null,"\"'"]],[["com",/^(?:\/\/[^\r\n]*|\(\*[\s\S]*?\*\))/],["kwd",/^(?:abstract|and|as|assert|begin|class|default|delegate|do|done|downcast|downto|elif|else|end|exception|extern|false|finally|for|fun|function|if|in|inherit|inline|interface|internal|lazy|let|match|member|module|mutable|namespace|new|null|of|open|or|override|private|public|rec|return|static|struct|then|to|true|try|type|upcast|use|val|void|when|while|with|yield|asr|land|lor|lsl|lsr|lxor|mod|sig|atomic|break|checked|component|const|constraint|constructor|continue|eager|event|external|fixed|functor|global|include|method|mixin|object|parallel|process|protected|pure|sealed|trait|virtual|volatile)\b/],
-["lit",/^[+\-]?(?:0x[\da-f]+|(?:(?:\.\d+|\d+(?:\.\d*)?)(?:e[+\-]?\d+)?))/i],["pln",/^(?:[a-z_]\w*[!?#]?|``[^\r\n\t`]*(?:``|$))/i],["pun",/^[^\t\n\r \xA0\"\'\w]+/]]),["fs","ml"])PR.registerLangHandler(PR.sourceDecorator({keywords:"bool bytes default double enum extend extensions false fixed32 fixed64 float group import int32 int64 max message option optional package repeated required returns rpc service sfixed32 sfixed64 sint32 sint64 string syntax to true uint32 uint64",cStyleComments:true}),["proto"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t\n\r \xA0]+/,null,"\t\n\r \u00a0"],["str",/^(?:"(?:(?:""(?:""?(?!")|[^\\"]|\\.)*"{0,3})|(?:[^"\r\n\\]|\\.)*"?))/,null,'"'],["lit",/^`(?:[^\r\n\\`]|\\.)*`?/,null,"`"],["pun",/^[!#%&()*+,\-:;<=>?@\[\\\]^{|}~]+/,null,"!#%&()*+,-:;<=>?@[\\]^{|}~"]],[["str",/^'(?:[^\r\n\\']|\\(?:'|[^\r\n']+))'/],["lit",/^'[a-zA-Z_$][\w$]*(?!['$\w])/],["kwd",/^(?:abstract|case|catch|class|def|do|else|extends|final|finally|for|forSome|if|implicit|import|lazy|match|new|object|override|package|private|protected|requires|return|sealed|super|throw|trait|try|type|val|var|while|with|yield)\b/],
-["lit",/^(?:true|false|null|this)\b/],["lit",/^(?:(?:0(?:[0-7]+|X[0-9A-F]+))L?|(?:(?:0|[1-9][0-9]*)(?:(?:\.[0-9]+)?(?:E[+\-]?[0-9]+)?F?|L?))|\\.[0-9]+(?:E[+\-]?[0-9]+)?F?)/i],["typ",/^[$_]*[A-Z][_$A-Z0-9]*[a-z][\w$]*/],["pln",/^[$a-zA-Z_][\w$]*/],["com",/^\/(?:\/.*|\*(?:\/|\**[^*/])*(?:\*+\/?)?)/],["pun",/^(?:\.+|\/)/]]),["scala"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t\n\r \xA0]+/,null,"\t\n\r \u00a0"],["str",/^(?:"(?:[^\"\\]|\\.)*"|'(?:[^\'\\]|\\.)*')/,null,"\"'"]],[["com",/^(?:--[^\r\n]*|\/\*[\s\S]*?(?:\*\/|$))/],["kwd",/^(?:ADD|ALL|ALTER|AND|ANY|AS|ASC|AUTHORIZATION|BACKUP|BEGIN|BETWEEN|BREAK|BROWSE|BULK|BY|CASCADE|CASE|CHECK|CHECKPOINT|CLOSE|CLUSTERED|COALESCE|COLLATE|COLUMN|COMMIT|COMPUTE|CONSTRAINT|CONTAINS|CONTAINSTABLE|CONTINUE|CONVERT|CREATE|CROSS|CURRENT|CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|CURSOR|DATABASE|DBCC|DEALLOCATE|DECLARE|DEFAULT|DELETE|DENY|DESC|DISK|DISTINCT|DISTRIBUTED|DOUBLE|DROP|DUMMY|DUMP|ELSE|END|ERRLVL|ESCAPE|EXCEPT|EXEC|EXECUTE|EXISTS|EXIT|FETCH|FILE|FILLFACTOR|FOR|FOREIGN|FREETEXT|FREETEXTTABLE|FROM|FULL|FUNCTION|GOTO|GRANT|GROUP|HAVING|HOLDLOCK|IDENTITY|IDENTITYCOL|IDENTITY_INSERT|IF|IN|INDEX|INNER|INSERT|INTERSECT|INTO|IS|JOIN|KEY|KILL|LEFT|LIKE|LINENO|LOAD|NATIONAL|NOCHECK|NONCLUSTERED|NOT|NULL|NULLIF|OF|OFF|OFFSETS|ON|OPEN|OPENDATASOURCE|OPENQUERY|OPENROWSET|OPENXML|OPTION|OR|ORDER|OUTER|OVER|PERCENT|PLAN|PRECISION|PRIMARY|PRINT|PROC|PROCEDURE|PUBLIC|RAISERROR|READ|READTEXT|RECONFIGURE|REFERENCES|REPLICATION|RESTORE|RESTRICT|RETURN|REVOKE|RIGHT|ROLLBACK|ROWCOUNT|ROWGUIDCOL|RULE|SAVE|SCHEMA|SELECT|SESSION_USER|SET|SETUSER|SHUTDOWN|SOME|STATISTICS|SYSTEM_USER|TABLE|TEXTSIZE|THEN|TO|TOP|TRAN|TRANSACTION|TRIGGER|TRUNCATE|TSEQUAL|UNION|UNIQUE|UPDATE|UPDATETEXT|USE|USER|VALUES|VARYING|VIEW|WAITFOR|WHEN|WHERE|WHILE|WITH|WRITETEXT)(?=[^\w-]|$)/i,
-null],["lit",/^[+-]?(?:0x[\da-f]+|(?:(?:\.\d+|\d+(?:\.\d*)?)(?:e[+\-]?\d+)?))/i],["pln",/^[a-z_][\w-]*/i],["pun",/^[^\w\t\n\r \xA0\"\'][^\w\t\n\r \xA0+\-\"\']*/]]),["sql"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t\n\r \xA0\u2028\u2029]+/,null,"\t\n\r \u00a0\u2028\u2029"],["str",/^(?:[\"\u201C\u201D](?:[^\"\u201C\u201D]|[\"\u201C\u201D]{2})(?:[\"\u201C\u201D]c|$)|[\"\u201C\u201D](?:[^\"\u201C\u201D]|[\"\u201C\u201D]{2})*(?:[\"\u201C\u201D]|$))/i,null,'"\u201c\u201d'],["com",/^[\'\u2018\u2019][^\r\n\u2028\u2029]*/,null,"'\u2018\u2019"]],[["kwd",/^(?:AddHandler|AddressOf|Alias|And|AndAlso|Ansi|As|Assembly|Auto|Boolean|ByRef|Byte|ByVal|Call|Case|Catch|CBool|CByte|CChar|CDate|CDbl|CDec|Char|CInt|Class|CLng|CObj|Const|CShort|CSng|CStr|CType|Date|Decimal|Declare|Default|Delegate|Dim|DirectCast|Do|Double|Each|Else|ElseIf|End|EndIf|Enum|Erase|Error|Event|Exit|Finally|For|Friend|Function|Get|GetType|GoSub|GoTo|Handles|If|Implements|Imports|In|Inherits|Integer|Interface|Is|Let|Lib|Like|Long|Loop|Me|Mod|Module|MustInherit|MustOverride|MyBase|MyClass|Namespace|New|Next|Not|NotInheritable|NotOverridable|Object|On|Option|Optional|Or|OrElse|Overloads|Overridable|Overrides|ParamArray|Preserve|Private|Property|Protected|Public|RaiseEvent|ReadOnly|ReDim|RemoveHandler|Resume|Return|Select|Set|Shadows|Shared|Short|Single|Static|Step|Stop|String|Structure|Sub|SyncLock|Then|Throw|To|Try|TypeOf|Unicode|Until|Variant|Wend|When|While|With|WithEvents|WriteOnly|Xor|EndIf|GoSub|Let|Variant|Wend)\b/i,
-null],["com",/^REM[^\r\n\u2028\u2029]*/i],["lit",/^(?:True\b|False\b|Nothing\b|\d+(?:E[+\-]?\d+[FRD]?|[FRDSIL])?|(?:&H[0-9A-F]+|&O[0-7]+)[SIL]?|\d*\.\d+(?:E[+\-]?\d+)?[FRD]?|#\s+(?:\d+[\-\/]\d+[\-\/]\d+(?:\s+\d+:\d+(?::\d+)?(\s*(?:AM|PM))?)?|\d+:\d+(?::\d+)?(\s*(?:AM|PM))?)\s+#)/i],["pln",/^(?:(?:[a-z]|_\w)\w*|\[(?:[a-z]|_\w)\w*\])/i],["pun",/^[^\w\t\n\r \"\'\[\]\xA0\u2018\u2019\u201C\u201D\u2028\u2029]+/],["pun",/^(?:\[|\])/]]),["vb","vbs"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t\n\r \xA0]+/,null,"\t\n\r \u00a0"]],[["str",/^(?:[BOX]?"(?:[^\"]|"")*"|'.')/i],["com",/^--[^\r\n]*/],["kwd",/^(?:abs|access|after|alias|all|and|architecture|array|assert|attribute|begin|block|body|buffer|bus|case|component|configuration|constant|disconnect|downto|else|elsif|end|entity|exit|file|for|function|generate|generic|group|guarded|if|impure|in|inertial|inout|is|label|library|linkage|literal|loop|map|mod|nand|new|next|nor|not|null|of|on|open|or|others|out|package|port|postponed|procedure|process|pure|range|record|register|reject|rem|report|return|rol|ror|select|severity|shared|signal|sla|sll|sra|srl|subtype|then|to|transport|type|unaffected|units|until|use|variable|wait|when|while|with|xnor|xor)(?=[^\w-]|$)/i,
-null],["typ",/^(?:bit|bit_vector|character|boolean|integer|real|time|string|severity_level|positive|natural|signed|unsigned|line|text|std_u?logic(?:_vector)?)(?=[^\w-]|$)/i,null],["typ",/^\'(?:ACTIVE|ASCENDING|BASE|DELAYED|DRIVING|DRIVING_VALUE|EVENT|HIGH|IMAGE|INSTANCE_NAME|LAST_ACTIVE|LAST_EVENT|LAST_VALUE|LEFT|LEFTOF|LENGTH|LOW|PATH_NAME|POS|PRED|QUIET|RANGE|REVERSE_RANGE|RIGHT|RIGHTOF|SIMPLE_NAME|STABLE|SUCC|TRANSACTION|VAL|VALUE)(?=[^\w-]|$)/i,null],["lit",/^\d+(?:_\d+)*(?:#[\w\\.]+#(?:[+\-]?\d+(?:_\d+)*)?|(?:\.\d+(?:_\d+)*)?(?:E[+\-]?\d+(?:_\d+)*)?)/i],
-["pln",/^(?:[a-z]\w*|\\[^\\]*\\)/i],["pun",/^[^\w\t\n\r \xA0\"\'][^\w\t\n\r \xA0\-\"\']*/]]),["vhdl","vhd"])PR.registerLangHandler(PR.createSimpleLexer([["pln",/^[\t \xA0a-gi-z0-9]+/,null,"\t \u00a0abcdefgijklmnopqrstuvwxyz0123456789"],["pun",/^[=*~\^\[\]]+/,null,"=*~^[]"]],[["lang-wiki.meta",/(?:^^|\r\n?|\n)(#[a-z]+)\b/],["lit",/^(?:[A-Z][a-z][a-z0-9]+[A-Z][a-z][a-zA-Z0-9]+)\b/],["lang-",/^\{\{\{([\s\S]+?)\}\}\}/],["lang-",/^`([^\r\n`]+)`/],["str",/^https?:\/\/[^\/?#\s]*(?:\/[^?#\s]*)?(?:\?[^#\s]*)?(?:#\S*)?/i],["pln",/^(?:\r\n|[\s\S])[^#=*~^A-Zh\{`\[\r\n]*/]]),["wiki"]);
-PR.registerLangHandler(PR.createSimpleLexer([["kwd",/^#[a-z]+/i,null,"#"]],[]),["wiki.meta"])PR.registerLangHandler(PR.createSimpleLexer([["pun",/^[:|>?]+/,null,":|>?"],["dec",/^%(?:YAML|TAG)[^#\r\n]+/,null,"%"],["typ",/^[&]\S+/,null,"&"],["typ",/^!\S*/,null,"!"],["str",/^"(?:[^\\"]|\\.)*(?:"|$)/,null,'"'],["str",/^'(?:[^']|'')*(?:'|$)/,null,"'"],["com",/^#[^\r\n]*/,null,"#"],["pln",/^\s+/,null," \t\r\n"]],[["dec",/^(?:---|\.\.\.)(?:[\r\n]|$)/],["pun",/^-/],["kwd",/^\w+:[ \r\n]/],["pln",/^\w+/]]),
-["yaml","yml"])var scriptsIncluded=$$("script");var scriptsLength=scriptsIncluded.length;var modeviousScriptURL;var modeviousLocation;var pageLocation=location.href;for(var i=0;i<scriptsLength;i++){if(scriptsIncluded[i].src.include("modevious/library.js")){modeviousScriptURL=scriptsIncluded[i].src;modeviousLocation=modeviousScriptURL.sub(pageLocation,'/').sub("library.js",'');i=scriptsLength;}}
+var hexcase=0;function hex_sha512(a){return rstr2hex(rstr_sha512(str2rstr_utf8(a)))}function hex_hmac_sha512(a,b){return rstr2hex(rstr_hmac_sha512(str2rstr_utf8(a),str2rstr_utf8(b)))}function sha512_vm_test(){return hex_sha512("abc").toLowerCase()=="ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f"}function rstr_sha512(a){return binb2rstr(binb_sha512(rstr2binb(a),a.length*8))}function rstr_hmac_sha512(c,f){var e=rstr2binb(c);if(e.length>32){e=binb_sha512(e,c.length*8)}var a=Array(32),d=Array(32);for(var b=0;b<32;b++){a[b]=e[b]^909522486;d[b]=e[b]^1549556828}var g=binb_sha512(a.concat(rstr2binb(f)),1024+f.length*8);return binb2rstr(binb_sha512(d.concat(g),1024+512))}function rstr2hex(c){try{hexcase}catch(g){hexcase=0}var f=hexcase?"0123456789ABCDEF":"0123456789abcdef";var b="";var a;for(var d=0;d<c.length;d++){a=c.charCodeAt(d);b+=f.charAt((a>>>4)&15)+f.charAt(a&15)}return b}function str2rstr_utf8(c){var b="";var d=-1;var a,e;while(++d<c.length){a=c.charCodeAt(d);e=d+1<c.length?c.charCodeAt(d+1):0;if(55296<=a&&a<=56319&&56320<=e&&e<=57343){a=65536+((a&1023)<<10)+(e&1023);d++}if(a<=127){b+=String.fromCharCode(a)}else{if(a<=2047){b+=String.fromCharCode(192|((a>>>6)&31),128|(a&63))}else{if(a<=65535){b+=String.fromCharCode(224|((a>>>12)&15),128|((a>>>6)&63),128|(a&63))}else{if(a<=2097151){b+=String.fromCharCode(240|((a>>>18)&7),128|((a>>>12)&63),128|((a>>>6)&63),128|(a&63))}}}}}return b}function rstr2binb(b){var a=Array(b.length>>2);for(var c=0;c<a.length;c++){a[c]=0}for(var c=0;c<b.length*8;c+=8){a[c>>5]|=(b.charCodeAt(c/8)&255)<<(24-c%32)}return a}function binb2rstr(b){var a="";for(var c=0;c<b.length*32;c+=8){a+=String.fromCharCode((b[c>>5]>>>(24-c%32))&255)}return a}var sha512_k;function binb_sha512(p,A){if(sha512_k==undefined){sha512_k=new Array(new int64(1116352408,-685199838),new int64(1899447441,602891725),new int64(-1245643825,-330482897),new int64(-373957723,-2121671748),new int64(961987163,-213338824),new int64(1508970993,-1241133031),new int64(-1841331548,-1357295717),new int64(-1424204075,-630357736),new int64(-670586216,-1560083902),new int64(310598401,1164996542),new int64(607225278,1323610764),new int64(1426881987,-704662302),new int64(1925078388,-226784913),new int64(-2132889090,991336113),new int64(-1680079193,633803317),new int64(-1046744716,-815192428),new int64(-459576895,-1628353838),new int64(-272742522,944711139),new int64(264347078,-1953704523),new int64(604807628,2007800933),new int64(770255983,1495990901),new int64(1249150122,1856431235),new int64(1555081692,-1119749164),new int64(1996064986,-2096016459),new int64(-1740746414,-295247957),new int64(-1473132947,766784016),new int64(-1341970488,-1728372417),new int64(-1084653625,-1091629340),new int64(-958395405,1034457026),new int64(-710438585,-1828018395),new int64(113926993,-536640913),new int64(338241895,168717936),new int64(666307205,1188179964),new int64(773529912,1546045734),new int64(1294757372,1522805485),new int64(1396182291,-1651133473),new int64(1695183700,-1951439906),new int64(1986661051,1014477480),new int64(-2117940946,1206759142),new int64(-1838011259,344077627),new int64(-1564481375,1290863460),new int64(-1474664885,-1136513023),new int64(-1035236496,-789014639),new int64(-949202525,106217008),new int64(-778901479,-688958952),new int64(-694614492,1432725776),new int64(-200395387,1467031594),new int64(275423344,851169720),new int64(430227734,-1194143544),new int64(506948616,1363258195),new int64(659060556,-544281703),new int64(883997877,-509917016),new int64(958139571,-976659869),new int64(1322822218,-482243893),new int64(1537002063,2003034995),new int64(1747873779,-692930397),new int64(1955562222,1575990012),new int64(2024104815,1125592928),new int64(-2067236844,-1578062990),new int64(-1933114872,442776044),new int64(-1866530822,593698344),new int64(-1538233109,-561857047),new int64(-1090935817,-1295615723),new int64(-965641998,-479046869),new int64(-903397682,-366583396),new int64(-779700025,566280711),new int64(-354779690,-840897762),new int64(-176337025,-294727304),new int64(116418474,1914138554),new int64(174292421,-1563912026),new int64(289380356,-1090974290),new int64(460393269,320620315),new int64(685471733,587496836),new int64(852142971,1086792851),new int64(1017036298,365543100),new int64(1126000580,-1676669620),new int64(1288033470,-885112138),new int64(1501505948,-60457430),new int64(1607167915,987167468),new int64(1816402316,1246189591))}var q=new Array(new int64(1779033703,-205731576),new int64(-1150833019,-2067093701),new int64(1013904242,-23791573),new int64(-1521486534,1595750129),new int64(1359893119,-1377402159),new int64(-1694144372,725511199),new int64(528734635,-79577749),new int64(1541459225,327033209));var s=new int64(0,0),r=new int64(0,0),J=new int64(0,0),I=new int64(0,0),G=new int64(0,0),F=new int64(0,0),E=new int64(0,0),D=new int64(0,0),C=new int64(0,0),B=new int64(0,0),m=new int64(0,0),l=new int64(0,0),t=new int64(0,0),o=new int64(0,0),z=new int64(0,0),w=new int64(0,0),u=new int64(0,0);var v,y;var n=new Array(80);for(y=0;y<80;y++){n[y]=new int64(0,0)}p[A>>5]|=128<<(24-(A&31));p[((A+128>>10)<<5)+31]=A;for(y=0;y<p.length;y+=32){int64copy(J,q[0]);int64copy(I,q[1]);int64copy(G,q[2]);int64copy(F,q[3]);int64copy(E,q[4]);int64copy(D,q[5]);int64copy(C,q[6]);int64copy(B,q[7]);for(v=0;v<16;v++){n[v].h=p[y+2*v];n[v].l=p[y+2*v+1]}for(v=16;v<80;v++){int64rrot(z,n[v-2],19);int64revrrot(w,n[v-2],29);int64shr(u,n[v-2],6);l.l=z.l^w.l^u.l;l.h=z.h^w.h^u.h;int64rrot(z,n[v-15],1);int64rrot(w,n[v-15],8);int64shr(u,n[v-15],7);m.l=z.l^w.l^u.l;m.h=z.h^w.h^u.h;int64add4(n[v],l,n[v-7],m,n[v-16])}for(v=0;v<80;v++){t.l=(E.l&D.l)^(~E.l&C.l);t.h=(E.h&D.h)^(~E.h&C.h);int64rrot(z,E,14);int64rrot(w,E,18);int64revrrot(u,E,9);l.l=z.l^w.l^u.l;l.h=z.h^w.h^u.h;int64rrot(z,J,28);int64revrrot(w,J,2);int64revrrot(u,J,7);m.l=z.l^w.l^u.l;m.h=z.h^w.h^u.h;o.l=(J.l&I.l)^(J.l&G.l)^(I.l&G.l);o.h=(J.h&I.h)^(J.h&G.h)^(I.h&G.h);int64add5(s,B,l,t,sha512_k[v],n[v]);int64add(r,m,o);int64copy(B,C);int64copy(C,D);int64copy(D,E);int64add(E,F,s);int64copy(F,G);int64copy(G,I);int64copy(I,J);int64add(J,s,r)}int64add(q[0],q[0],J);int64add(q[1],q[1],I);int64add(q[2],q[2],G);int64add(q[3],q[3],F);int64add(q[4],q[4],E);int64add(q[5],q[5],D);int64add(q[6],q[6],C);int64add(q[7],q[7],B)}var k=new Array(16);for(y=0;y<8;y++){k[2*y]=q[y].h;k[2*y+1]=q[y].l}return k}function int64(b,a){this.h=b;this.l=a}function int64copy(b,a){b.h=a.h;b.l=a.l}function int64rrot(c,a,b){c.l=(a.l>>>b)|(a.h<<(32-b));c.h=(a.h>>>b)|(a.l<<(32-b))}function int64revrrot(c,a,b){c.l=(a.h>>>b)|(a.l<<(32-b));c.h=(a.l>>>b)|(a.h<<(32-b))}function int64shr(c,a,b){c.l=(a.l>>>b)|(a.h<<(32-b));c.h=(a.h>>>b)}function int64add(g,b,f){var d=(b.l&65535)+(f.l&65535);var c=(b.l>>>16)+(f.l>>>16)+(d>>>16);var a=(b.h&65535)+(f.h&65535)+(c>>>16);var e=(b.h>>>16)+(f.h>>>16)+(a>>>16);g.l=(d&65535)|(c<<16);g.h=(a&65535)|(e<<16)}function int64add4(j,m,l,k,i){var h=(m.l&65535)+(l.l&65535)+(k.l&65535)+(i.l&65535);var g=(m.l>>>16)+(l.l>>>16)+(k.l>>>16)+(i.l>>>16)+(h>>>16);var f=(m.h&65535)+(l.h&65535)+(k.h&65535)+(i.h&65535)+(g>>>16);var e=(m.h>>>16)+(l.h>>>16)+(k.h>>>16)+(i.h>>>16)+(f>>>16);j.l=(h&65535)|(g<<16);j.h=(f&65535)|(e<<16)}function int64add5(l,o,n,m,k,j){var i=(o.l&65535)+(n.l&65535)+(m.l&65535)+(k.l&65535)+(j.l&65535);var h=(o.l>>>16)+(n.l>>>16)+(m.l>>>16)+(k.l>>>16)+(j.l>>>16)+(i>>>16);var g=(o.h&65535)+(n.h&65535)+(m.h&65535)+(k.h&65535)+(j.h&65535)+(h>>>16);var f=(o.h>>>16)+(n.h>>>16)+(m.h>>>16)+(k.h>>>16)+(j.h>>>16)+(g>>>16);l.l=(i&65535)|(h<<16);l.h=(g&65535)|(f<<16)};// Copyright (C) 2006 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/**
+ * @fileoverview
+ * some functions for browser-side pretty printing of code contained in html.
+ * <p>
+ *
+ * For a fairly comprehensive set of languages see the
+ * <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html#langs">README</a>
+ * file that came with this source.  At a minimum, the lexer should work on a
+ * number of languages including C and friends, Java, Python, Bash, SQL, HTML,
+ * XML, CSS, Javascript, and Makefiles.  It works passably on Ruby, PHP and Awk
+ * and a subset of Perl, but, because of commenting conventions, doesn't work on
+ * Smalltalk, Lisp-like, or CAML-like languages without an explicit lang class.
+ * <p>
+ * Usage: <ol>
+ * <li> include this source file in an html page via
+ *   {@code <script type="text/javascript" src="/path/to/prettify.js"></script>}
+ * <li> define style rules.  See the example page for examples.
+ * <li> mark the {@code <pre>} and {@code <code>} tags in your source with
+ *    {@code class=prettyprint.}
+ *    You can also use the (html deprecated) {@code <xmp>} tag, but the pretty
+ *    printer needs to do more substantial DOM manipulations to support that, so
+ *    some css styles may not be preserved.
+ * </ol>
+ * That's it.  I wanted to keep the API as simple as possible, so there's no
+ * need to specify which language the code is in, but if you wish, you can add
+ * another class to the {@code <pre>} or {@code <code>} element to specify the
+ * language, as in {@code <pre class="prettyprint lang-java">}.  Any class that
+ * starts with "lang-" followed by a file extension, specifies the file type.
+ * See the "lang-*.js" files in this directory for code that implements
+ * per-language file handlers.
+ * <p>
+ * Change log:<br>
+ * cbeust, 2006/08/22
+ * <blockquote>
+ *   Java annotations (start with "@") are now captured as literals ("lit")
+ * </blockquote>
+ * @requires console
+ */
+
+// JSLint declarations
+/*global console, document, navigator, setTimeout, window */
+
+/**
+ * Split {@code prettyPrint} into multiple timeouts so as not to interfere with
+ * UI events.
+ * If set to {@code false}, {@code prettyPrint()} is synchronous.
+ */
+window['PR_SHOULD_USE_CONTINUATION'] = true;
+
+/** the number of characters between tab columns */
+window['PR_TAB_WIDTH'] = 8;
+
+/** Walks the DOM returning a properly escaped version of innerHTML.
+  * @param {Node} node
+  * @param {Array.<string>} out output buffer that receives chunks of HTML.
+  */
+window['PR_normalizedHtml']
+
+/** Contains functions for creating and registering new language handlers.
+  * @type {Object}
+  */
+  = window['PR']
+
+/** Pretty print a chunk of code.
+  *
+  * @param {string} sourceCodeHtml code as html
+  * @return {string} code as html, but prettier
+  */
+  = window['prettyPrintOne']
+/** Find all the {@code <pre>} and {@code <code>} tags in the DOM with
+  * {@code class=prettyprint} and prettify them.
+  * @param {Function?} opt_whenDone if specified, called when the last entry
+  *     has been finished.
+  */
+  = window['prettyPrint'] = void 0;
+
+/** browser detection. @extern @returns false if not IE, otherwise the major version. */
+window['_pr_isIE6'] = function () {
+  var ieVersion = navigator && navigator.userAgent &&
+      navigator.userAgent.match(/\bMSIE ([678])\./);
+  ieVersion = ieVersion ? +ieVersion[1] : false;
+  window['_pr_isIE6'] = function () { return ieVersion; };
+  return ieVersion;
+};
+
+
+(function () {
+  // Keyword lists for various languages.
+  var FLOW_CONTROL_KEYWORDS =
+      "break continue do else for if return while ";
+  var C_KEYWORDS = FLOW_CONTROL_KEYWORDS + "auto case char const default " +
+      "double enum extern float goto int long register short signed sizeof " +
+      "static struct switch typedef union unsigned void volatile ";
+  var COMMON_KEYWORDS = C_KEYWORDS + "catch class delete false import " +
+      "new operator private protected public this throw true try typeof ";
+  var CPP_KEYWORDS = COMMON_KEYWORDS + "alignof align_union asm axiom bool " +
+      "concept concept_map const_cast constexpr decltype " +
+      "dynamic_cast explicit export friend inline late_check " +
+      "mutable namespace nullptr reinterpret_cast static_assert static_cast " +
+      "template typeid typename using virtual wchar_t where ";
+  var JAVA_KEYWORDS = COMMON_KEYWORDS +
+      "abstract boolean byte extends final finally implements import " +
+      "instanceof null native package strictfp super synchronized throws " +
+      "transient ";
+  var CSHARP_KEYWORDS = JAVA_KEYWORDS +
+      "as base by checked decimal delegate descending event " +
+      "fixed foreach from group implicit in interface internal into is lock " +
+      "object out override orderby params partial readonly ref sbyte sealed " +
+      "stackalloc string select uint ulong unchecked unsafe ushort var ";
+  var JSCRIPT_KEYWORDS = COMMON_KEYWORDS +
+      "debugger eval export function get null set undefined var with " +
+      "Infinity NaN ";
+  var PERL_KEYWORDS = "caller delete die do dump elsif eval exit foreach for " +
+      "goto if import last local my next no our print package redo require " +
+      "sub undef unless until use wantarray while BEGIN END ";
+  var PYTHON_KEYWORDS = FLOW_CONTROL_KEYWORDS + "and as assert class def del " +
+      "elif except exec finally from global import in is lambda " +
+      "nonlocal not or pass print raise try with yield " +
+      "False True None ";
+  var RUBY_KEYWORDS = FLOW_CONTROL_KEYWORDS + "alias and begin case class def" +
+      " defined elsif end ensure false in module next nil not or redo rescue " +
+      "retry self super then true undef unless until when yield BEGIN END ";
+  var SH_KEYWORDS = FLOW_CONTROL_KEYWORDS + "case done elif esac eval fi " +
+      "function in local set then until ";
+  var ALL_KEYWORDS = (
+      CPP_KEYWORDS + CSHARP_KEYWORDS + JSCRIPT_KEYWORDS + PERL_KEYWORDS +
+      PYTHON_KEYWORDS + RUBY_KEYWORDS + SH_KEYWORDS);
+
+  // token style names.  correspond to css classes
+  /** token style for a string literal */
+  var PR_STRING = 'str';
+  /** token style for a keyword */
+  var PR_KEYWORD = 'kwd';
+  /** token style for a comment */
+  var PR_COMMENT = 'com';
+  /** token style for a type */
+  var PR_TYPE = 'typ';
+  /** token style for a literal value.  e.g. 1, null, true. */
+  var PR_LITERAL = 'lit';
+  /** token style for a punctuation string. */
+  var PR_PUNCTUATION = 'pun';
+  /** token style for a punctuation string. */
+  var PR_PLAIN = 'pln';
+
+  /** token style for an sgml tag. */
+  var PR_TAG = 'tag';
+  /** token style for a markup declaration such as a DOCTYPE. */
+  var PR_DECLARATION = 'dec';
+  /** token style for embedded source. */
+  var PR_SOURCE = 'src';
+  /** token style for an sgml attribute name. */
+  var PR_ATTRIB_NAME = 'atn';
+  /** token style for an sgml attribute value. */
+  var PR_ATTRIB_VALUE = 'atv';
+
+  /**
+   * A class that indicates a section of markup that is not code, e.g. to allow
+   * embedding of line numbers within code listings.
+   */
+  var PR_NOCODE = 'nocode';
+
+  /** A set of tokens that can precede a regular expression literal in
+    * javascript.
+    * http://www.mozilla.org/js/language/js20/rationale/syntax.html has the full
+    * list, but I've removed ones that might be problematic when seen in
+    * languages that don't support regular expression literals.
+    *
+    * <p>Specifically, I've removed any keywords that can't precede a regexp
+    * literal in a syntactically legal javascript program, and I've removed the
+    * "in" keyword since it's not a keyword in many languages, and might be used
+    * as a count of inches.
+    *
+    * <p>The link a above does not accurately describe EcmaScript rules since
+    * it fails to distinguish between (a=++/b/i) and (a++/b/i) but it works
+    * very well in practice.
+    *
+    * @private
+    */
+  var REGEXP_PRECEDER_PATTERN = function () {
+      var preceders = [
+          "!", "!=", "!==", "#", "%", "%=", "&", "&&", "&&=",
+          "&=", "(", "*", "*=", /* "+", */ "+=", ",", /* "-", */ "-=",
+          "->", /*".", "..", "...", handled below */ "/", "/=", ":", "::", ";",
+          "<", "<<", "<<=", "<=", "=", "==", "===", ">",
+          ">=", ">>", ">>=", ">>>", ">>>=", "?", "@", "[",
+          "^", "^=", "^^", "^^=", "{", "|", "|=", "||",
+          "||=", "~" /* handles =~ and !~ */,
+          "break", "case", "continue", "delete",
+          "do", "else", "finally", "instanceof",
+          "return", "throw", "try", "typeof"
+          ];
+      var pattern = '(?:^^|[+-]';
+      for (var i = 0; i < preceders.length; ++i) {
+        pattern += '|' + preceders[i].replace(/([^=<>:&a-z])/g, '\\$1');
+      }
+      pattern += ')\\s*';  // matches at end, and matches empty string
+      return pattern;
+      // CAVEAT: this does not properly handle the case where a regular
+      // expression immediately follows another since a regular expression may
+      // have flags for case-sensitivity and the like.  Having regexp tokens
+      // adjacent is not valid in any language I'm aware of, so I'm punting.
+      // TODO: maybe style special characters inside a regexp as punctuation.
+    }();
+
+  // Define regexps here so that the interpreter doesn't have to create an
+  // object each time the function containing them is called.
+  // The language spec requires a new object created even if you don't access
+  // the $1 members.
+  var pr_amp = /&/g;
+  var pr_lt = /</g;
+  var pr_gt = />/g;
+  var pr_quot = /\"/g;
+  /** like textToHtml but escapes double quotes to be attribute safe. */
+  function attribToHtml(str) {
+    return str.replace(pr_amp, '&amp;')
+        .replace(pr_lt, '&lt;')
+        .replace(pr_gt, '&gt;')
+        .replace(pr_quot, '&quot;');
+  }
+
+  /** escapest html special characters to html. */
+  function textToHtml(str) {
+    return str.replace(pr_amp, '&amp;')
+        .replace(pr_lt, '&lt;')
+        .replace(pr_gt, '&gt;');
+  }
+
+
+  var pr_ltEnt = /&lt;/g;
+  var pr_gtEnt = /&gt;/g;
+  var pr_aposEnt = /&apos;/g;
+  var pr_quotEnt = /&quot;/g;
+  var pr_ampEnt = /&amp;/g;
+  var pr_nbspEnt = /&nbsp;/g;
+  /** unescapes html to plain text. */
+  function htmlToText(html) {
+    var pos = html.indexOf('&');
+    if (pos < 0) { return html; }
+    // Handle numeric entities specially.  We can't use functional substitution
+    // since that doesn't work in older versions of Safari.
+    // These should be rare since most browsers convert them to normal chars.
+    for (--pos; (pos = html.indexOf('&#', pos + 1)) >= 0;) {
+      var end = html.indexOf(';', pos);
+      if (end >= 0) {
+        var num = html.substring(pos + 3, end);
+        var radix = 10;
+        if (num && num.charAt(0) === 'x') {
+          num = num.substring(1);
+          radix = 16;
+        }
+        var codePoint = parseInt(num, radix);
+        if (!isNaN(codePoint)) {
+          html = (html.substring(0, pos) + String.fromCharCode(codePoint) +
+                  html.substring(end + 1));
+        }
+      }
+    }
+
+    return html.replace(pr_ltEnt, '<')
+        .replace(pr_gtEnt, '>')
+        .replace(pr_aposEnt, "'")
+        .replace(pr_quotEnt, '"')
+        .replace(pr_nbspEnt, ' ')
+        .replace(pr_ampEnt, '&');
+  }
+
+  /** is the given node's innerHTML normally unescaped? */
+  function isRawContent(node) {
+    return 'XMP' === node.tagName;
+  }
+
+  var newlineRe = /[\r\n]/g;
+  /**
+   * Are newlines and adjacent spaces significant in the given node's innerHTML?
+   */
+  function isPreformatted(node, content) {
+    // PRE means preformatted, and is a very common case, so don't create
+    // unnecessary computed style objects.
+    if ('PRE' === node.tagName) { return true; }
+    if (!newlineRe.test(content)) { return true; }  // Don't care
+    var whitespace = '';
+    // For disconnected nodes, IE has no currentStyle.
+    if (node.currentStyle) {
+      whitespace = node.currentStyle.whiteSpace;
+    } else if (window.getComputedStyle) {
+      // Firefox makes a best guess if node is disconnected whereas Safari
+      // returns the empty string.
+      whitespace = window.getComputedStyle(node, null).whiteSpace;
+    }
+    return !whitespace || whitespace === 'pre';
+  }
+
+  function normalizedHtml(node, out, opt_sortAttrs) {
+    switch (node.nodeType) {
+      case 1:  // an element
+        var name = node.tagName.toLowerCase();
+
+        out.push('<', name);
+        var attrs = node.attributes;
+        var n = attrs.length;
+        if (n) {
+          if (opt_sortAttrs) {
+            var sortedAttrs = [];
+            for (var i = n; --i >= 0;) { sortedAttrs[i] = attrs[i]; }
+            sortedAttrs.sort(function (a, b) {
+                return (a.name < b.name) ? -1 : a.name === b.name ? 0 : 1;
+              });
+            attrs = sortedAttrs;
+          }
+          for (var i = 0; i < n; ++i) {
+            var attr = attrs[i];
+            if (!attr.specified) { continue; }
+            out.push(' ', attr.name.toLowerCase(),
+                     '="', attribToHtml(attr.value), '"');
+          }
+        }
+        out.push('>');
+        for (var child = node.firstChild; child; child = child.nextSibling) {
+          normalizedHtml(child, out, opt_sortAttrs);
+        }
+        if (node.firstChild || !/^(?:br|link|img)$/.test(name)) {
+          out.push('<\/', name, '>');
+        }
+        break;
+      case 3: case 4: // text
+        out.push(textToHtml(node.nodeValue));
+        break;
+    }
+  }
+
+  /**
+   * Given a group of {@link RegExp}s, returns a {@code RegExp} that globally
+   * matches the union o the sets o strings matched d by the input RegExp.
+   * Since it matches globally, if the input strings have a start-of-input
+   * anchor (/^.../), it is ignored for the purposes of unioning.
+   * @param {Array.<RegExp>} regexs non multiline, non-global regexs.
+   * @return {RegExp} a global regex.
+   */
+  function combinePrefixPatterns(regexs) {
+    var capturedGroupIndex = 0;
+
+    var needToFoldCase = false;
+    var ignoreCase = false;
+    for (var i = 0, n = regexs.length; i < n; ++i) {
+      var regex = regexs[i];
+      if (regex.ignoreCase) {
+        ignoreCase = true;
+      } else if (/[a-z]/i.test(regex.source.replace(
+                     /\\u[0-9a-f]{4}|\\x[0-9a-f]{2}|\\[^ux]/gi, ''))) {
+        needToFoldCase = true;
+        ignoreCase = false;
+        break;
+      }
+    }
+
+    function decodeEscape(charsetPart) {
+      if (charsetPart.charAt(0) !== '\\') { return charsetPart.charCodeAt(0); }
+      switch (charsetPart.charAt(1)) {
+        case 'b': return 8;
+        case 't': return 9;
+        case 'n': return 0xa;
+        case 'v': return 0xb;
+        case 'f': return 0xc;
+        case 'r': return 0xd;
+        case 'u': case 'x':
+          return parseInt(charsetPart.substring(2), 16)
+              || charsetPart.charCodeAt(1);
+        case '0': case '1': case '2': case '3': case '4':
+        case '5': case '6': case '7':
+          return parseInt(charsetPart.substring(1), 8);
+        default: return charsetPart.charCodeAt(1);
+      }
+    }
+
+    function encodeEscape(charCode) {
+      if (charCode < 0x20) {
+        return (charCode < 0x10 ? '\\x0' : '\\x') + charCode.toString(16);
+      }
+      var ch = String.fromCharCode(charCode);
+      if (ch === '\\' || ch === '-' || ch === '[' || ch === ']') {
+        ch = '\\' + ch;
+      }
+      return ch;
+    }
+
+    function caseFoldCharset(charSet) {
+      var charsetParts = charSet.substring(1, charSet.length - 1).match(
+          new RegExp(
+              '\\\\u[0-9A-Fa-f]{4}'
+              + '|\\\\x[0-9A-Fa-f]{2}'
+              + '|\\\\[0-3][0-7]{0,2}'
+              + '|\\\\[0-7]{1,2}'
+              + '|\\\\[\\s\\S]'
+              + '|-'
+              + '|[^-\\\\]',
+              'g'));
+      var groups = [];
+      var ranges = [];
+      var inverse = charsetParts[0] === '^';
+      for (var i = inverse ? 1 : 0, n = charsetParts.length; i < n; ++i) {
+        var p = charsetParts[i];
+        switch (p) {
+          case '\\B': case '\\b':
+          case '\\D': case '\\d':
+          case '\\S': case '\\s':
+          case '\\W': case '\\w':
+            groups.push(p);
+            continue;
+        }
+        var start = decodeEscape(p);
+        var end;
+        if (i + 2 < n && '-' === charsetParts[i + 1]) {
+          end = decodeEscape(charsetParts[i + 2]);
+          i += 2;
+        } else {
+          end = start;
+        }
+        ranges.push([start, end]);
+        // If the range might intersect letters, then expand it.
+        if (!(end < 65 || start > 122)) {
+          if (!(end < 65 || start > 90)) {
+            ranges.push([Math.max(65, start) | 32, Math.min(end, 90) | 32]);
+          }
+          if (!(end < 97 || start > 122)) {
+            ranges.push([Math.max(97, start) & ~32, Math.min(end, 122) & ~32]);
+          }
+        }
+      }
+
+      // [[1, 10], [3, 4], [8, 12], [14, 14], [16, 16], [17, 17]]
+      // -> [[1, 12], [14, 14], [16, 17]]
+      ranges.sort(function (a, b) { return (a[0] - b[0]) || (b[1]  - a[1]); });
+      var consolidatedRanges = [];
+      var lastRange = [NaN, NaN];
+      for (var i = 0; i < ranges.length; ++i) {
+        var range = ranges[i];
+        if (range[0] <= lastRange[1] + 1) {
+          lastRange[1] = Math.max(lastRange[1], range[1]);
+        } else {
+          consolidatedRanges.push(lastRange = range);
+        }
+      }
+
+      var out = ['['];
+      if (inverse) { out.push('^'); }
+      out.push.apply(out, groups);
+      for (var i = 0; i < consolidatedRanges.length; ++i) {
+        var range = consolidatedRanges[i];
+        out.push(encodeEscape(range[0]));
+        if (range[1] > range[0]) {
+          if (range[1] + 1 > range[0]) { out.push('-'); }
+          out.push(encodeEscape(range[1]));
+        }
+      }
+      out.push(']');
+      return out.join('');
+    }
+
+    function allowAnywhereFoldCaseAndRenumberGroups(regex) {
+      // Split into character sets, escape sequences, punctuation strings
+      // like ('(', '(?:', ')', '^'), and runs of characters that do not
+      // include any of the above.
+      var parts = regex.source.match(
+          new RegExp(
+              '(?:'
+              + '\\[(?:[^\\x5C\\x5D]|\\\\[\\s\\S])*\\]'  // a character set
+              + '|\\\\u[A-Fa-f0-9]{4}'  // a unicode escape
+              + '|\\\\x[A-Fa-f0-9]{2}'  // a hex escape
+              + '|\\\\[0-9]+'  // a back-reference or octal escape
+              + '|\\\\[^ux0-9]'  // other escape sequence
+              + '|\\(\\?[:!=]'  // start of a non-capturing group
+              + '|[\\(\\)\\^]'  // start/emd of a group, or line start
+              + '|[^\\x5B\\x5C\\(\\)\\^]+'  // run of other characters
+              + ')',
+              'g'));
+      var n = parts.length;
+
+      // Maps captured group numbers to the number they will occupy in
+      // the output or to -1 if that has not been determined, or to
+      // undefined if they need not be capturing in the output.
+      var capturedGroups = [];
+
+      // Walk over and identify back references to build the capturedGroups
+      // mapping.
+      for (var i = 0, groupIndex = 0; i < n; ++i) {
+        var p = parts[i];
+        if (p === '(') {
+          // groups are 1-indexed, so max group index is count of '('
+          ++groupIndex;
+        } else if ('\\' === p.charAt(0)) {
+          var decimalValue = +p.substring(1);
+          if (decimalValue && decimalValue <= groupIndex) {
+            capturedGroups[decimalValue] = -1;
+          }
+        }
+      }
+
+      // Renumber groups and reduce capturing groups to non-capturing groups
+      // where possible.
+      for (var i = 1; i < capturedGroups.length; ++i) {
+        if (-1 === capturedGroups[i]) {
+          capturedGroups[i] = ++capturedGroupIndex;
+        }
+      }
+      for (var i = 0, groupIndex = 0; i < n; ++i) {
+        var p = parts[i];
+        if (p === '(') {
+          ++groupIndex;
+          if (capturedGroups[groupIndex] === undefined) {
+            parts[i] = '(?:';
+          }
+        } else if ('\\' === p.charAt(0)) {
+          var decimalValue = +p.substring(1);
+          if (decimalValue && decimalValue <= groupIndex) {
+            parts[i] = '\\' + capturedGroups[groupIndex];
+          }
+        }
+      }
+
+      // Remove any prefix anchors so that the output will match anywhere.
+      // ^^ really does mean an anchored match though.
+      for (var i = 0, groupIndex = 0; i < n; ++i) {
+        if ('^' === parts[i] && '^' !== parts[i + 1]) { parts[i] = ''; }
+      }
+
+      // Expand letters to groupts to handle mixing of case-sensitive and
+      // case-insensitive patterns if necessary.
+      if (regex.ignoreCase && needToFoldCase) {
+        for (var i = 0; i < n; ++i) {
+          var p = parts[i];
+          var ch0 = p.charAt(0);
+          if (p.length >= 2 && ch0 === '[') {
+            parts[i] = caseFoldCharset(p);
+          } else if (ch0 !== '\\') {
+            // TODO: handle letters in numeric escapes.
+            parts[i] = p.replace(
+                /[a-zA-Z]/g,
+                function (ch) {
+                  var cc = ch.charCodeAt(0);
+                  return '[' + String.fromCharCode(cc & ~32, cc | 32) + ']';
+                });
+          }
+        }
+      }
+
+      return parts.join('');
+    }
+
+    var rewritten = [];
+    for (var i = 0, n = regexs.length; i < n; ++i) {
+      var regex = regexs[i];
+      if (regex.global || regex.multiline) { throw new Error('' + regex); }
+      rewritten.push(
+          '(?:' + allowAnywhereFoldCaseAndRenumberGroups(regex) + ')');
+    }
+
+    return new RegExp(rewritten.join('|'), ignoreCase ? 'gi' : 'g');
+  }
+
+  var PR_innerHtmlWorks = null;
+  function getInnerHtml(node) {
+    // inner html is hopelessly broken in Safari 2.0.4 when the content is
+    // an html description of well formed XML and the containing tag is a PRE
+    // tag, so we detect that case and emulate innerHTML.
+    if (null === PR_innerHtmlWorks) {
+      var testNode = document.createElement('PRE');
+      testNode.appendChild(
+          document.createTextNode('<!DOCTYPE foo PUBLIC "foo bar">\n<foo />'));
+      PR_innerHtmlWorks = !/</.test(testNode.innerHTML);
+    }
+
+    if (PR_innerHtmlWorks) {
+      var content = node.innerHTML;
+      // XMP tags contain unescaped entities so require special handling.
+      if (isRawContent(node)) {
+        content = textToHtml(content);
+      } else if (!isPreformatted(node, content)) {
+        content = content.replace(/(<br\s*\/?>)[\r\n]+/g, '$1')
+            .replace(/(?:[\r\n]+[ \t]*)+/g, ' ');
+      }
+      return content;
+    }
+
+    var out = [];
+    for (var child = node.firstChild; child; child = child.nextSibling) {
+      normalizedHtml(child, out);
+    }
+    return out.join('');
+  }
+
+  /** returns a function that expand tabs to spaces.  This function can be fed
+    * successive chunks of text, and will maintain its own internal state to
+    * keep track of how tabs are expanded.
+    * @return {function (string) : string} a function that takes
+    *   plain text and return the text with tabs expanded.
+    * @private
+    */
+  function makeTabExpander(tabWidth) {
+    var SPACES = '                ';
+    var charInLine = 0;
+
+    return function (plainText) {
+      // walk over each character looking for tabs and newlines.
+      // On tabs, expand them.  On newlines, reset charInLine.
+      // Otherwise increment charInLine
+      var out = null;
+      var pos = 0;
+      for (var i = 0, n = plainText.length; i < n; ++i) {
+        var ch = plainText.charAt(i);
+
+        switch (ch) {
+          case '\t':
+            if (!out) { out = []; }
+            out.push(plainText.substring(pos, i));
+            // calculate how much space we need in front of this part
+            // nSpaces is the amount of padding -- the number of spaces needed
+            // to move us to the next column, where columns occur at factors of
+            // tabWidth.
+            var nSpaces = tabWidth - (charInLine % tabWidth);
+            charInLine += nSpaces;
+            for (; nSpaces >= 0; nSpaces -= SPACES.length) {
+              out.push(SPACES.substring(0, nSpaces));
+            }
+            pos = i + 1;
+            break;
+          case '\n':
+            charInLine = 0;
+            break;
+          default:
+            ++charInLine;
+        }
+      }
+      if (!out) { return plainText; }
+      out.push(plainText.substring(pos));
+      return out.join('');
+    };
+  }
+
+  var pr_chunkPattern = new RegExp(
+      '[^<]+'  // A run of characters other than '<'
+      + '|<\!--[\\s\\S]*?--\>'  // an HTML comment
+      + '|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>'  // a CDATA section
+      // a probable tag that should not be highlighted
+      + '|<\/?[a-zA-Z](?:[^>\"\']|\'[^\']*\'|\"[^\"]*\")*>'
+      + '|<',  // A '<' that does not begin a larger chunk
+      'g');
+  var pr_commentPrefix = /^<\!--/;
+  var pr_cdataPrefix = /^<!\[CDATA\[/;
+  var pr_brPrefix = /^<br\b/i;
+  var pr_tagNameRe = /^<(\/?)([a-zA-Z][a-zA-Z0-9]*)/;
+
+  /** split markup into chunks of html tags (style null) and
+    * plain text (style {@link #PR_PLAIN}), converting tags which are
+    * significant for tokenization (<br>) into their textual equivalent.
+    *
+    * @param {string} s html where whitespace is considered significant.
+    * @return {Object} source code and extracted tags.
+    * @private
+    */
+  function extractTags(s) {
+    // since the pattern has the 'g' modifier and defines no capturing groups,
+    // this will return a list of all chunks which we then classify and wrap as
+    // PR_Tokens
+    var matches = s.match(pr_chunkPattern);
+    var sourceBuf = [];
+    var sourceBufLen = 0;
+    var extractedTags = [];
+    if (matches) {
+      for (var i = 0, n = matches.length; i < n; ++i) {
+        var match = matches[i];
+        if (match.length > 1 && match.charAt(0) === '<') {
+          if (pr_commentPrefix.test(match)) { continue; }
+          if (pr_cdataPrefix.test(match)) {
+            // strip CDATA prefix and suffix.  Don't unescape since it's CDATA
+            sourceBuf.push(match.substring(9, match.length - 3));
+            sourceBufLen += match.length - 12;
+          } else if (pr_brPrefix.test(match)) {
+            // <br> tags are lexically significant so convert them to text.
+            // This is undone later.
+            sourceBuf.push('\n');
+            ++sourceBufLen;
+          } else {
+            if (match.indexOf(PR_NOCODE) >= 0 && isNoCodeTag(match)) {
+              // A <span class="nocode"> will start a section that should be
+              // ignored.  Continue walking the list until we see a matching end
+              // tag.
+              var name = match.match(pr_tagNameRe)[2];
+              var depth = 1;
+              var j;
+              end_tag_loop:
+              for (j = i + 1; j < n; ++j) {
+                var name2 = matches[j].match(pr_tagNameRe);
+                if (name2 && name2[2] === name) {
+                  if (name2[1] === '/') {
+                    if (--depth === 0) { break end_tag_loop; }
+                  } else {
+                    ++depth;
+                  }
+                }
+              }
+              if (j < n) {
+                extractedTags.push(
+                    sourceBufLen, matches.slice(i, j + 1).join(''));
+                i = j;
+              } else {  // Ignore unclosed sections.
+                extractedTags.push(sourceBufLen, match);
+              }
+            } else {
+              extractedTags.push(sourceBufLen, match);
+            }
+          }
+        } else {
+          var literalText = htmlToText(match);
+          sourceBuf.push(literalText);
+          sourceBufLen += literalText.length;
+        }
+      }
+    }
+    return { source: sourceBuf.join(''), tags: extractedTags };
+  }
+
+  /** True if the given tag contains a class attribute with the nocode class. */
+  function isNoCodeTag(tag) {
+    return !!tag
+        // First canonicalize the representation of attributes
+        .replace(/\s(\w+)\s*=\s*(?:\"([^\"]*)\"|'([^\']*)'|(\S+))/g,
+                 ' $1="$2$3$4"')
+        // Then look for the attribute we want.
+        .match(/[cC][lL][aA][sS][sS]=\"[^\"]*\bnocode\b/);
+  }
+
+  /**
+   * Apply the given language handler to sourceCode and add the resulting
+   * decorations to out.
+   * @param {number} basePos the index of sourceCode within the chunk of source
+   *    whose decorations are already present on out.
+   */
+  function appendDecorations(basePos, sourceCode, langHandler, out) {
+    if (!sourceCode) { return; }
+    var job = {
+      source: sourceCode,
+      basePos: basePos
+    };
+    langHandler(job);
+    out.push.apply(out, job.decorations);
+  }
+
+  /** Given triples of [style, pattern, context] returns a lexing function,
+    * The lexing function interprets the patterns to find token boundaries and
+    * returns a decoration list of the form
+    * [index_0, style_0, index_1, style_1, ..., index_n, style_n]
+    * where index_n is an index into the sourceCode, and style_n is a style
+    * constant like PR_PLAIN.  index_n-1 <= index_n, and style_n-1 applies to
+    * all characters in sourceCode[index_n-1:index_n].
+    *
+    * The stylePatterns is a list whose elements have the form
+    * [style : string, pattern : RegExp, DEPRECATED, shortcut : string].
+    *
+    * Style is a style constant like PR_PLAIN, or can be a string of the
+    * form 'lang-FOO', where FOO is a language extension describing the
+    * language of the portion of the token in $1 after pattern executes.
+    * E.g., if style is 'lang-lisp', and group 1 contains the text
+    * '(hello (world))', then that portion of the token will be passed to the
+    * registered lisp handler for formatting.
+    * The text before and after group 1 will be restyled using this decorator
+    * so decorators should take care that this doesn't result in infinite
+    * recursion.  For example, the HTML lexer rule for SCRIPT elements looks
+    * something like ['lang-js', /<[s]cript>(.+?)<\/script>/].  This may match
+    * '<script>foo()<\/script>', which would cause the current decorator to
+    * be called with '<script>' which would not match the same rule since
+    * group 1 must not be empty, so it would be instead styled as PR_TAG by
+    * the generic tag rule.  The handler registered for the 'js' extension would
+    * then be called with 'foo()', and finally, the current decorator would
+    * be called with '<\/script>' which would not match the original rule and
+    * so the generic tag rule would identify it as a tag.
+    *
+    * Pattern must only match prefixes, and if it matches a prefix, then that
+    * match is considered a token with the same style.
+    *
+    * Context is applied to the last non-whitespace, non-comment token
+    * recognized.
+    *
+    * Shortcut is an optional string of characters, any of which, if the first
+    * character, gurantee that this pattern and only this pattern matches.
+    *
+    * @param {Array} shortcutStylePatterns patterns that always start with
+    *   a known character.  Must have a shortcut string.
+    * @param {Array} fallthroughStylePatterns patterns that will be tried in
+    *   order if the shortcut ones fail.  May have shortcuts.
+    *
+    * @return {function (Object)} a
+    *   function that takes source code and returns a list of decorations.
+    */
+  function createSimpleLexer(shortcutStylePatterns, fallthroughStylePatterns) {
+    var shortcuts = {};
+    var tokenizer;
+    (function () {
+      var allPatterns = shortcutStylePatterns.concat(fallthroughStylePatterns);
+      var allRegexs = [];
+      var regexKeys = {};
+      for (var i = 0, n = allPatterns.length; i < n; ++i) {
+        var patternParts = allPatterns[i];
+        var shortcutChars = patternParts[3];
+        if (shortcutChars) {
+          for (var c = shortcutChars.length; --c >= 0;) {
+            shortcuts[shortcutChars.charAt(c)] = patternParts;
+          }
+        }
+        var regex = patternParts[1];
+        var k = '' + regex;
+        if (!regexKeys.hasOwnProperty(k)) {
+          allRegexs.push(regex);
+          regexKeys[k] = null;
+        }
+      }
+      allRegexs.push(/[\0-\uffff]/);
+      tokenizer = combinePrefixPatterns(allRegexs);
+    })();
+
+    var nPatterns = fallthroughStylePatterns.length;
+    var notWs = /\S/;
+
+    /**
+     * Lexes job.source and produces an output array job.decorations of style
+     * classes preceded by the position at which they start in job.source in
+     * order.
+     *
+     * @param {Object} job an object like {@code
+     *    source: {string} sourceText plain text,
+     *    basePos: {int} position of job.source in the larger chunk of
+     *        sourceCode.
+     * }
+     */
+    var decorate = function (job) {
+      var sourceCode = job.source, basePos = job.basePos;
+      /** Even entries are positions in source in ascending order.  Odd enties
+        * are style markers (e.g., PR_COMMENT) that run from that position until
+        * the end.
+        * @type {Array.<number|string>}
+        */
+      var decorations = [basePos, PR_PLAIN];
+      var pos = 0;  // index into sourceCode
+      var tokens = sourceCode.match(tokenizer) || [];
+      var styleCache = {};
+
+      for (var ti = 0, nTokens = tokens.length; ti < nTokens; ++ti) {
+        var token = tokens[ti];
+        var style = styleCache[token];
+        var match = void 0;
+
+        var isEmbedded;
+        if (typeof style === 'string') {
+          isEmbedded = false;
+        } else {
+          var patternParts = shortcuts[token.charAt(0)];
+          if (patternParts) {
+            match = token.match(patternParts[1]);
+            style = patternParts[0];
+          } else {
+            for (var i = 0; i < nPatterns; ++i) {
+              patternParts = fallthroughStylePatterns[i];
+              match = token.match(patternParts[1]);
+              if (match) {
+                style = patternParts[0];
+                break;
+              }
+            }
+
+            if (!match) {  // make sure that we make progress
+              style = PR_PLAIN;
+            }
+          }
+
+          isEmbedded = style.length >= 5 && 'lang-' === style.substring(0, 5);
+          if (isEmbedded && !(match && typeof match[1] === 'string')) {
+            isEmbedded = false;
+            style = PR_SOURCE;
+          }
+
+          if (!isEmbedded) { styleCache[token] = style; }
+        }
+
+        var tokenStart = pos;
+        pos += token.length;
+
+        if (!isEmbedded) {
+          decorations.push(basePos + tokenStart, style);
+        } else {  // Treat group 1 as an embedded block of source code.
+          var embeddedSource = match[1];
+          var embeddedSourceStart = token.indexOf(embeddedSource);
+          var embeddedSourceEnd = embeddedSourceStart + embeddedSource.length;
+          if (match[2]) {
+            // If embeddedSource can be blank, then it would match at the
+            // beginning which would cause us to infinitely recurse on the
+            // entire token, so we catch the right context in match[2].
+            embeddedSourceEnd = token.length - match[2].length;
+            embeddedSourceStart = embeddedSourceEnd - embeddedSource.length;
+          }
+          var lang = style.substring(5);
+          // Decorate the left of the embedded source
+          appendDecorations(
+              basePos + tokenStart,
+              token.substring(0, embeddedSourceStart),
+              decorate, decorations);
+          // Decorate the embedded source
+          appendDecorations(
+              basePos + tokenStart + embeddedSourceStart,
+              embeddedSource,
+              langHandlerForExtension(lang, embeddedSource),
+              decorations);
+          // Decorate the right of the embedded section
+          appendDecorations(
+              basePos + tokenStart + embeddedSourceEnd,
+              token.substring(embeddedSourceEnd),
+              decorate, decorations);
+        }
+      }
+      job.decorations = decorations;
+    };
+    return decorate;
+  }
+
+  /** returns a function that produces a list of decorations from source text.
+    *
+    * This code treats ", ', and ` as string delimiters, and \ as a string
+    * escape.  It does not recognize perl's qq() style strings.
+    * It has no special handling for double delimiter escapes as in basic, or
+    * the tripled delimiters used in python, but should work on those regardless
+    * although in those cases a single string literal may be broken up into
+    * multiple adjacent string literals.
+    *
+    * It recognizes C, C++, and shell style comments.
+    *
+    * @param {Object} options a set of optional parameters.
+    * @return {function (Object)} a function that examines the source code
+    *     in the input job and builds the decoration list.
+    */
+  function sourceDecorator(options) {
+    var shortcutStylePatterns = [], fallthroughStylePatterns = [];
+    if (options['tripleQuotedStrings']) {
+      // '''multi-line-string''', 'single-line-string', and double-quoted
+      shortcutStylePatterns.push(
+          [PR_STRING,  /^(?:\'\'\'(?:[^\'\\]|\\[\s\S]|\'{1,2}(?=[^\']))*(?:\'\'\'|$)|\"\"\"(?:[^\"\\]|\\[\s\S]|\"{1,2}(?=[^\"]))*(?:\"\"\"|$)|\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$))/,
+           null, '\'"']);
+    } else if (options['multiLineStrings']) {
+      // 'multi-line-string', "multi-line-string"
+      shortcutStylePatterns.push(
+          [PR_STRING,  /^(?:\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$)|\`(?:[^\\\`]|\\[\s\S])*(?:\`|$))/,
+           null, '\'"`']);
+    } else {
+      // 'single-line-string', "single-line-string"
+      shortcutStylePatterns.push(
+          [PR_STRING,
+           /^(?:\'(?:[^\\\'\r\n]|\\.)*(?:\'|$)|\"(?:[^\\\"\r\n]|\\.)*(?:\"|$))/,
+           null, '"\'']);
+    }
+    if (options['verbatimStrings']) {
+      // verbatim-string-literal production from the C# grammar.  See issue 93.
+      fallthroughStylePatterns.push(
+          [PR_STRING, /^@\"(?:[^\"]|\"\")*(?:\"|$)/, null]);
+    }
+    if (options['hashComments']) {
+      if (options['cStyleComments']) {
+        // Stop C preprocessor declarations at an unclosed open comment
+        shortcutStylePatterns.push(
+            [PR_COMMENT, /^#(?:(?:define|elif|else|endif|error|ifdef|include|ifndef|line|pragma|undef|warning)\b|[^\r\n]*)/,
+             null, '#']);
+        fallthroughStylePatterns.push(
+            [PR_STRING,
+             /^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h|[a-z]\w*)>/,
+             null]);
+      } else {
+        shortcutStylePatterns.push([PR_COMMENT, /^#[^\r\n]*/, null, '#']);
+      }
+    }
+    if (options['cStyleComments']) {
+      fallthroughStylePatterns.push([PR_COMMENT, /^\/\/[^\r\n]*/, null]);
+      fallthroughStylePatterns.push(
+          [PR_COMMENT, /^\/\*[\s\S]*?(?:\*\/|$)/, null]);
+    }
+    if (options['regexLiterals']) {
+      var REGEX_LITERAL = (
+          // A regular expression literal starts with a slash that is
+          // not followed by * or / so that it is not confused with
+          // comments.
+          '/(?=[^/*])'
+          // and then contains any number of raw characters,
+          + '(?:[^/\\x5B\\x5C]'
+          // escape sequences (\x5C),
+          +    '|\\x5C[\\s\\S]'
+          // or non-nesting character sets (\x5B\x5D);
+          +    '|\\x5B(?:[^\\x5C\\x5D]|\\x5C[\\s\\S])*(?:\\x5D|$))+'
+          // finally closed by a /.
+          + '/');
+      fallthroughStylePatterns.push(
+          ['lang-regex',
+           new RegExp('^' + REGEXP_PRECEDER_PATTERN + '(' + REGEX_LITERAL + ')')
+           ]);
+    }
+
+    var keywords = options['keywords'].replace(/^\s+|\s+$/g, '');
+    if (keywords.length) {
+      fallthroughStylePatterns.push(
+          [PR_KEYWORD,
+           new RegExp('^(?:' + keywords.replace(/\s+/g, '|') + ')\\b'), null]);
+    }
+
+    shortcutStylePatterns.push([PR_PLAIN,       /^\s+/, null, ' \r\n\t\xA0']);
+    fallthroughStylePatterns.push(
+        // TODO(mikesamuel): recognize non-latin letters and numerals in idents
+        [PR_LITERAL,     /^@[a-z_$][a-z_$@0-9]*/i, null],
+        [PR_TYPE,        /^@?[A-Z]+[a-z][A-Za-z_$@0-9]*/, null],
+        [PR_PLAIN,       /^[a-z_$][a-z_$@0-9]*/i, null],
+        [PR_LITERAL,
+         new RegExp(
+             '^(?:'
+             // A hex number
+             + '0x[a-f0-9]+'
+             // or an octal or decimal number,
+             + '|(?:\\d(?:_\\d+)*\\d*(?:\\.\\d*)?|\\.\\d\\+)'
+             // possibly in scientific notation
+             + '(?:e[+\\-]?\\d+)?'
+             + ')'
+             // with an optional modifier like UL for unsigned long
+             + '[a-z]*', 'i'),
+         null, '0123456789'],
+        [PR_PUNCTUATION, /^.[^\s\w\.$@\'\"\`\/\#]*/, null]);
+
+    return createSimpleLexer(shortcutStylePatterns, fallthroughStylePatterns);
+  }
+
+  var decorateSource = sourceDecorator({
+        'keywords': ALL_KEYWORDS,
+        'hashComments': true,
+        'cStyleComments': true,
+        'multiLineStrings': true,
+        'regexLiterals': true
+      });
+
+  /** Breaks {@code job.source} around style boundaries in
+    * {@code job.decorations} while re-interleaving {@code job.extractedTags},
+    * and leaves the result in {@code job.prettyPrintedHtml}.
+    * @param {Object} job like {
+    *    source: {string} source as plain text,
+    *    extractedTags: {Array.<number|string>} extractedTags chunks of raw
+    *                   html preceded by their position in {@code job.source}
+    *                   in order
+    *    decorations: {Array.<number|string} an array of style classes preceded
+    *                 by the position at which they start in job.source in order
+    * }
+    * @private
+    */
+  function recombineTagsAndDecorations(job) {
+    var sourceText = job.source;
+    var extractedTags = job.extractedTags;
+    var decorations = job.decorations;
+
+    var html = [];
+    // index past the last char in sourceText written to html
+    var outputIdx = 0;
+
+    var openDecoration = null;
+    var currentDecoration = null;
+    var tagPos = 0;  // index into extractedTags
+    var decPos = 0;  // index into decorations
+    var tabExpander = makeTabExpander(window['PR_TAB_WIDTH']);
+
+    var adjacentSpaceRe = /([\r\n ]) /g;
+    var startOrSpaceRe = /(^| ) /gm;
+    var newlineRe = /\r\n?|\n/g;
+    var trailingSpaceRe = /[ \r\n]$/;
+    var lastWasSpace = true;  // the last text chunk emitted ended with a space.
+
+    // See bug 71 and http://stackoverflow.com/questions/136443/why-doesnt-ie7-
+    var isIE678 = window['_pr_isIE6']();
+    var lineBreakHtml = (
+        isIE678
+        ? (job.sourceNode.tagName === 'PRE'
+           // Use line feeds instead of <br>s so that copying and pasting works
+           // on IE.
+           // Doing this on other browsers breaks lots of stuff since \r\n is
+           // treated as two newlines on Firefox.
+           ? (isIE678 === 6 ? '&#160;\r\n' :
+              isIE678 === 7 ? '&#160;<br>\r' : '&#160;\r')
+           // IE collapses multiple adjacent <br>s into 1 line break.
+           // Prefix every newline with '&#160;' to prevent such behavior.
+           // &nbsp; is the same as &#160; but works in XML as well as HTML.
+           : '&#160;<br />')
+        : '<br />');
+
+    // Look for a class like linenums or linenums:<n> where <n> is the 1-indexed
+    // number of the first line.
+    var numberLines = job.sourceNode.className.match(/\blinenums\b(?::(\d+))?/);
+    var lineBreaker;
+    if (numberLines) {
+      var lineBreaks = [];
+      for (var i = 0; i < 10; ++i) {
+        lineBreaks[i] = lineBreakHtml + '</li><li class="L' + i + '">';
+      }
+      var lineNum = numberLines[1] && numberLines[1].length 
+          ? numberLines[1] - 1 : 0;  // Lines are 1-indexed
+      html.push('<ol class="linenums"><li class="L', (lineNum) % 10, '"');
+      if (lineNum) {
+        html.push(' value="', lineNum + 1, '"');
+      }
+      html.push('>');
+      lineBreaker = function () {
+        var lb = lineBreaks[++lineNum % 10];
+        // If a decoration is open, we need to close it before closing a list-item
+        // and reopen it on the other side of the list item.
+        return openDecoration
+            ? ('</span>' + lb + '<span class="' + openDecoration + '">') : lb;
+      };
+    } else {
+      lineBreaker = lineBreakHtml;
+    }
+
+    // A helper function that is responsible for opening sections of decoration
+    // and outputing properly escaped chunks of source
+    function emitTextUpTo(sourceIdx) {
+      if (sourceIdx > outputIdx) {
+        if (openDecoration && openDecoration !== currentDecoration) {
+          // Close the current decoration
+          html.push('</span>');
+          openDecoration = null;
+        }
+        if (!openDecoration && currentDecoration) {
+          openDecoration = currentDecoration;
+          html.push('<span class="', openDecoration, '">');
+        }
+        // This interacts badly with some wikis which introduces paragraph tags
+        // into pre blocks for some strange reason.
+        // It's necessary for IE though which seems to lose the preformattedness
+        // of <pre> tags when their innerHTML is assigned.
+        // http://stud3.tuwien.ac.at/~e0226430/innerHtmlQuirk.html
+        // and it serves to undo the conversion of <br>s to newlines done in
+        // chunkify.
+        var htmlChunk = textToHtml(
+            tabExpander(sourceText.substring(outputIdx, sourceIdx)))
+            .replace(lastWasSpace
+                     ? startOrSpaceRe
+                     : adjacentSpaceRe, '$1&#160;');
+        // Keep track of whether we need to escape space at the beginning of the
+        // next chunk.
+        lastWasSpace = trailingSpaceRe.test(htmlChunk);
+        html.push(htmlChunk.replace(newlineRe, lineBreaker));
+        outputIdx = sourceIdx;
+      }
+    }
+
+    while (true) {
+      // Determine if we're going to consume a tag this time around.  Otherwise
+      // we consume a decoration or exit.
+      var outputTag;
+      if (tagPos < extractedTags.length) {
+        if (decPos < decorations.length) {
+          // Pick one giving preference to extractedTags since we shouldn't open
+          // a new style that we're going to have to immediately close in order
+          // to output a tag.
+          outputTag = extractedTags[tagPos] <= decorations[decPos];
+        } else {
+          outputTag = true;
+        }
+      } else {
+        outputTag = false;
+      }
+      // Consume either a decoration or a tag or exit.
+      if (outputTag) {
+        emitTextUpTo(extractedTags[tagPos]);
+        if (openDecoration) {
+          // Close the current decoration
+          html.push('</span>');
+          openDecoration = null;
+        }
+        html.push(extractedTags[tagPos + 1]);
+        tagPos += 2;
+      } else if (decPos < decorations.length) {
+        emitTextUpTo(decorations[decPos]);
+        currentDecoration = decorations[decPos + 1];
+        decPos += 2;
+      } else {
+        break;
+      }
+    }
+    emitTextUpTo(sourceText.length);
+    if (openDecoration) {
+      html.push('</span>');
+    }
+    if (numberLines) { html.push('</li></ol>'); }
+    job.prettyPrintedHtml = html.join('');
+  }
+
+  /** Maps language-specific file extensions to handlers. */
+  var langHandlerRegistry = {};
+  /** Register a language handler for the given file extensions.
+    * @param {function (Object)} handler a function from source code to a list
+    *      of decorations.  Takes a single argument job which describes the
+    *      state of the computation.   The single parameter has the form
+    *      {@code {
+    *        source: {string} as plain text.
+    *        decorations: {Array.<number|string>} an array of style classes
+    *                     preceded by the position at which they start in
+    *                     job.source in order.
+    *                     The language handler should assigned this field.
+    *        basePos: {int} the position of source in the larger source chunk.
+    *                 All positions in the output decorations array are relative
+    *                 to the larger source chunk.
+    *      } }
+    * @param {Array.<string>} fileExtensions
+    */
+  function registerLangHandler(handler, fileExtensions) {
+    for (var i = fileExtensions.length; --i >= 0;) {
+      var ext = fileExtensions[i];
+      if (!langHandlerRegistry.hasOwnProperty(ext)) {
+        langHandlerRegistry[ext] = handler;
+      } else if ('console' in window) {
+        console['warn']('cannot override language handler %s', ext);
+      }
+    }
+  }
+  function langHandlerForExtension(extension, source) {
+    if (!(extension && langHandlerRegistry.hasOwnProperty(extension))) {
+      // Treat it as markup if the first non whitespace character is a < and
+      // the last non-whitespace character is a >.
+      extension = /^\s*</.test(source)
+          ? 'default-markup'
+          : 'default-code';
+    }
+    return langHandlerRegistry[extension];
+  }
+  registerLangHandler(decorateSource, ['default-code']);
+  registerLangHandler(
+      createSimpleLexer(
+          [],
+          [
+           [PR_PLAIN,       /^[^<?]+/],
+           [PR_DECLARATION, /^<!\w[^>]*(?:>|$)/],
+           [PR_COMMENT,     /^<\!--[\s\S]*?(?:-\->|$)/],
+           // Unescaped content in an unknown language
+           ['lang-',        /^<\?([\s\S]+?)(?:\?>|$)/],
+           ['lang-',        /^<%([\s\S]+?)(?:%>|$)/],
+           [PR_PUNCTUATION, /^(?:<[%?]|[%?]>)/],
+           ['lang-',        /^<xmp\b[^>]*>([\s\S]+?)<\/xmp\b[^>]*>/i],
+           // Unescaped content in javascript.  (Or possibly vbscript).
+           ['lang-js',      /^<script\b[^>]*>([\s\S]*?)(<\/script\b[^>]*>)/i],
+           // Contains unescaped stylesheet content
+           ['lang-css',     /^<style\b[^>]*>([\s\S]*?)(<\/style\b[^>]*>)/i],
+           ['lang-in.tag',  /^(<\/?[a-z][^<>]*>)/i]
+          ]),
+      ['default-markup', 'htm', 'html', 'mxml', 'xhtml', 'xml', 'xsl']);
+  registerLangHandler(
+      createSimpleLexer(
+          [
+           [PR_PLAIN,        /^[\s]+/, null, ' \t\r\n'],
+           [PR_ATTRIB_VALUE, /^(?:\"[^\"]*\"?|\'[^\']*\'?)/, null, '\"\'']
+           ],
+          [
+           [PR_TAG,          /^^<\/?[a-z](?:[\w.:-]*\w)?|\/?>$/i],
+           [PR_ATTRIB_NAME,  /^(?!style[\s=]|on)[a-z](?:[\w:-]*\w)?/i],
+           ['lang-uq.val',   /^=\s*([^>\'\"\s]*(?:[^>\'\"\s\/]|\/(?=\s)))/],
+           [PR_PUNCTUATION,  /^[=<>\/]+/],
+           ['lang-js',       /^on\w+\s*=\s*\"([^\"]+)\"/i],
+           ['lang-js',       /^on\w+\s*=\s*\'([^\']+)\'/i],
+           ['lang-js',       /^on\w+\s*=\s*([^\"\'>\s]+)/i],
+           ['lang-css',      /^style\s*=\s*\"([^\"]+)\"/i],
+           ['lang-css',      /^style\s*=\s*\'([^\']+)\'/i],
+           ['lang-css',      /^style\s*=\s*([^\"\'>\s]+)/i]
+           ]),
+      ['in.tag']);
+  registerLangHandler(
+      createSimpleLexer([], [[PR_ATTRIB_VALUE, /^[\s\S]+/]]), ['uq.val']);
+  registerLangHandler(sourceDecorator({
+          'keywords': CPP_KEYWORDS,
+          'hashComments': true,
+          'cStyleComments': true
+        }), ['c', 'cc', 'cpp', 'cxx', 'cyc', 'm']);
+  registerLangHandler(sourceDecorator({
+          'keywords': 'null true false'
+        }), ['json']);
+  registerLangHandler(sourceDecorator({
+          'keywords': CSHARP_KEYWORDS,
+          'hashComments': true,
+          'cStyleComments': true,
+          'verbatimStrings': true
+        }), ['cs']);
+  registerLangHandler(sourceDecorator({
+          'keywords': JAVA_KEYWORDS,
+          'cStyleComments': true
+        }), ['java']);
+  registerLangHandler(sourceDecorator({
+          'keywords': SH_KEYWORDS,
+          'hashComments': true,
+          'multiLineStrings': true
+        }), ['bsh', 'csh', 'sh']);
+  registerLangHandler(sourceDecorator({
+          'keywords': PYTHON_KEYWORDS,
+          'hashComments': true,
+          'multiLineStrings': true,
+          'tripleQuotedStrings': true
+        }), ['cv', 'py']);
+  registerLangHandler(sourceDecorator({
+          'keywords': PERL_KEYWORDS,
+          'hashComments': true,
+          'multiLineStrings': true,
+          'regexLiterals': true
+        }), ['perl', 'pl', 'pm']);
+  registerLangHandler(sourceDecorator({
+          'keywords': RUBY_KEYWORDS,
+          'hashComments': true,
+          'multiLineStrings': true,
+          'regexLiterals': true
+        }), ['rb']);
+  registerLangHandler(sourceDecorator({
+          'keywords': JSCRIPT_KEYWORDS,
+          'cStyleComments': true,
+          'regexLiterals': true
+        }), ['js']);
+  registerLangHandler(
+      createSimpleLexer([], [[PR_STRING, /^[\s\S]+/]]), ['regex']);
+
+  function applyDecorator(job) {
+    var sourceCodeHtml = job.sourceCodeHtml;
+    var opt_langExtension = job.langExtension;
+
+    // Prepopulate output in case processing fails with an exception.
+    job.prettyPrintedHtml = sourceCodeHtml;
+
+    try {
+      // Extract tags, and convert the source code to plain text.
+      var sourceAndExtractedTags = extractTags(sourceCodeHtml);
+      /** Plain text. @type {string} */
+      var source = sourceAndExtractedTags.source;
+      job.source = source;
+      job.basePos = 0;
+
+      /** Even entries are positions in source in ascending order.  Odd entries
+        * are tags that were extracted at that position.
+        * @type {Array.<number|string>}
+        */
+      job.extractedTags = sourceAndExtractedTags.tags;
+
+      // Apply the appropriate language handler
+      langHandlerForExtension(opt_langExtension, source)(job);
+      // Integrate the decorations and tags back into the source code to produce
+      // a decorated html string which is left in job.prettyPrintedHtml.
+      recombineTagsAndDecorations(job);
+    } catch (e) {
+      if ('console' in window) {
+        console['log'](e && e['stack'] ? e['stack'] : e);
+      }
+    }
+  }
+
+  function prettyPrintOne(sourceCodeHtml, opt_langExtension) {
+    var job = {
+      sourceCodeHtml: sourceCodeHtml,
+      langExtension: opt_langExtension
+    };
+    applyDecorator(job);
+    return job.prettyPrintedHtml;
+  }
+
+  function prettyPrint(opt_whenDone) {
+    function byTagName(tn) { return document.getElementsByTagName(tn); }
+    // fetch a list of nodes to rewrite
+    var codeSegments = [byTagName('pre'), byTagName('code'), byTagName('xmp')];
+    var elements = [];
+    for (var i = 0; i < codeSegments.length; ++i) {
+      for (var j = 0, n = codeSegments[i].length; j < n; ++j) {
+        elements.push(codeSegments[i][j]);
+      }
+    }
+    codeSegments = null;
+
+    var clock = Date;
+    if (!clock['now']) {
+      clock = { 'now': function () { return (new Date).getTime(); } };
+    }
+
+    // The loop is broken into a series of continuations to make sure that we
+    // don't make the browser unresponsive when rewriting a large page.
+    var k = 0;
+    var prettyPrintingJob;
+
+    function doWork() {
+      var endTime = (window['PR_SHOULD_USE_CONTINUATION'] ?
+                     clock.now() + 250 /* ms */ :
+                     Infinity);
+      for (; k < elements.length && clock.now() < endTime; k++) {
+        var cs = elements[k];
+        if (cs.className && cs.className.indexOf('prettyprint') >= 0) {
+          // If the classes includes a language extensions, use it.
+          // Language extensions can be specified like
+          //     <pre class="prettyprint lang-cpp">
+          // the language extension "cpp" is used to find a language handler as
+          // passed to PR_registerLangHandler.
+          var langExtension = cs.className.match(/\blang-(\w+)\b/);
+          if (langExtension) { langExtension = langExtension[1]; }
+
+          // make sure this is not nested in an already prettified element
+          var nested = false;
+          for (var p = cs.parentNode; p; p = p.parentNode) {
+            if ((p.tagName === 'pre' || p.tagName === 'code' ||
+                 p.tagName === 'xmp') &&
+                p.className && p.className.indexOf('prettyprint') >= 0) {
+              nested = true;
+              break;
+            }
+          }
+          if (!nested) {
+            // fetch the content as a snippet of properly escaped HTML.
+            // Firefox adds newlines at the end.
+            var content = getInnerHtml(cs);
+            content = content.replace(/(?:\r\n?|\n)$/, '');
+
+            // do the pretty printing
+            prettyPrintingJob = {
+              sourceCodeHtml: content,
+              langExtension: langExtension,
+              sourceNode: cs
+            };
+            applyDecorator(prettyPrintingJob);
+            replaceWithPrettyPrintedHtml();
+          }
+        }
+      }
+      if (k < elements.length) {
+        // finish up in a continuation
+        setTimeout(doWork, 250);
+      } else if (opt_whenDone) {
+        opt_whenDone();
+      }
+    }
+
+    function replaceWithPrettyPrintedHtml() {
+      var newContent = prettyPrintingJob.prettyPrintedHtml;
+      if (!newContent) { return; }
+      var cs = prettyPrintingJob.sourceNode;
+
+      // push the prettified html back into the tag.
+      if (!isRawContent(cs)) {
+        // just replace the old html with the new
+        cs.innerHTML = newContent;
+      } else {
+        // we need to change the tag to a <pre> since <xmp>s do not allow
+        // embedded tags such as the span tags used to attach styles to
+        // sections of source code.
+        var pre = document.createElement('PRE');
+        for (var i = 0; i < cs.attributes.length; ++i) {
+          var a = cs.attributes[i];
+          if (a.specified) {
+            var aname = a.name.toLowerCase();
+            if (aname === 'class') {
+              pre.className = a.value;  // For IE 6
+            } else {
+              pre.setAttribute(a.name, a.value);
+            }
+          }
+        }
+        pre.innerHTML = newContent;
+
+        // remove the old
+        cs.parentNode.replaceChild(pre, cs);
+        cs = pre;
+      }
+    }
+
+    doWork();
+  }
+
+  window['PR_normalizedHtml'] = normalizedHtml;
+  window['prettyPrintOne'] = prettyPrintOne;
+  window['prettyPrint'] = prettyPrint;
+  window['PR'] = {
+        'combinePrefixPatterns': combinePrefixPatterns,
+        'createSimpleLexer': createSimpleLexer,
+        'registerLangHandler': registerLangHandler,
+        'sourceDecorator': sourceDecorator,
+        'PR_ATTRIB_NAME': PR_ATTRIB_NAME,
+        'PR_ATTRIB_VALUE': PR_ATTRIB_VALUE,
+        'PR_COMMENT': PR_COMMENT,
+        'PR_DECLARATION': PR_DECLARATION,
+        'PR_KEYWORD': PR_KEYWORD,
+        'PR_LITERAL': PR_LITERAL,
+        'PR_NOCODE': PR_NOCODE,
+        'PR_PLAIN': PR_PLAIN,
+        'PR_PUNCTUATION': PR_PUNCTUATION,
+        'PR_SOURCE': PR_SOURCE,
+        'PR_STRING': PR_STRING,
+        'PR_TAG': PR_TAG,
+        'PR_TYPE': PR_TYPE
+      };
+})();
+// Copyright (C) 2009 Onno Hommes.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for the AGC/AEA Assembly Language as described
+ * at http://virtualagc.googlecode.com
+ * <p>
+ * This file could be used by goodle code to allow syntax highlight for
+ * Virtual AGC SVN repository or if you don't want to commonize
+ * the header for the agc/aea html assembly listing.
+ *
+ * @author ohommes@alumni.cmu.edu
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // A line comment that starts with ;
+         [PR.PR_COMMENT,     /^#[^\r\n]*/, null, '#'],
+         // Whitespace
+         [PR.PR_PLAIN,       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
+         // A double quoted, possibly multi-line, string.
+         [PR.PR_STRING,      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"']
+        ],
+        [
+         [PR.PR_KEYWORD, /^(?:ADS|AD|AUG|BZF|BZMF|CAE|CAF|CA|CCS|COM|CS|DAS|DCA|DCOM|DCS|DDOUBL|DIM|DOUBLE|DTCB|DTCF|DV|DXCH|EDRUPT|EXTEND|INCR|INDEX|NDX|INHINT|LXCH|MASK|MSK|MP|MSU|NOOP|OVSK|QXCH|RAND|READ|RELINT|RESUME|RETURN|ROR|RXOR|SQUARE|SU|TCR|TCAA|OVSK|TCF|TC|TS|WAND|WOR|WRITE|XCH|XLQ|XXALQ|ZL|ZQ|ADD|ADZ|SUB|SUZ|MPY|MPR|MPZ|DVP|COM|ABS|CLA|CLZ|LDQ|STO|STQ|ALS|LLS|LRS|TRA|TSQ|TMI|TOV|AXT|TIX|DLY|INP|OUT)\s/,null],
+         [PR.PR_TYPE, /^(?:-?GENADR|=MINUS|2BCADR|VN|BOF|MM|-?2CADR|-?[1-6]DNADR|ADRES|BBCON|[SE]?BANK\=?|BLOCK|BNKSUM|E?CADR|COUNT\*?|2?DEC\*?|-?DNCHAN|-?DNPTR|EQUALS|ERASE|MEMORY|2?OCT|REMADR|SETLOC|SUBRO|ORG|BSS|BES|SYN|EQU|DEFINE|END)\s/,null],
+         // A single quote possibly followed by a word that optionally ends with
+         // = ! or ?.
+         [PR.PR_LITERAL,
+          /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
+         // Any word including labels that optionally ends with = ! or ?.
+         [PR.PR_PLAIN,
+          /^-*(?:[!-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
+         // A printable non-space non-special character
+         [PR.PR_PUNCTUATION, /^[^\w\t\n\r \xA0()\"\\\';]+/]
+        ]),
+    ['apollo', 'agc', 'aea']);
+// Copyright (C) 2009 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for CSS.
+ *
+ *
+ * To use, include prettify.js and this file in your HTML page.
+ * Then put your code in an HTML tag like
+ *      <pre class="prettyprint lang-css"></pre>
+ *
+ *
+ * http://www.w3.org/TR/CSS21/grammar.html Section G2 defines the lexical
+ * grammar.  This scheme does not recognize keywords containing escapes.
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // The space production <s>
+         [PR.PR_PLAIN,       /^[ \t\r\n\f]+/, null, ' \t\r\n\f']
+        ],
+        [
+         // Quoted strings.  <string1> and <string2>
+         [PR.PR_STRING,
+          /^\"(?:[^\n\r\f\\\"]|\\(?:\r\n?|\n|\f)|\\[\s\S])*\"/, null],
+         [PR.PR_STRING,
+          /^\'(?:[^\n\r\f\\\']|\\(?:\r\n?|\n|\f)|\\[\s\S])*\'/, null],
+         ['lang-css-str', /^url\(([^\)\"\']*)\)/i],
+         [PR.PR_KEYWORD,
+          /^(?:url|rgb|\!important|@import|@page|@media|@charset|inherit)(?=[^\-\w]|$)/i,
+          null],
+         // A property name -- an identifier followed by a colon.
+         ['lang-css-kw', /^(-?(?:[_a-z]|(?:\\[0-9a-f]+ ?))(?:[_a-z0-9\-]|\\(?:\\[0-9a-f]+ ?))*)\s*:/i],
+         // A C style block comment.  The <comment> production.
+         [PR.PR_COMMENT, /^\/\*[^*]*\*+(?:[^\/*][^*]*\*+)*\//],
+         // Escaping text spans
+         [PR.PR_COMMENT, /^(?:<!--|-->)/],
+         // A number possibly containing a suffix.
+         [PR.PR_LITERAL, /^(?:\d+|\d*\.\d+)(?:%|[a-z]+)?/i],
+         // A hex color
+         [PR.PR_LITERAL, /^#(?:[0-9a-f]{3}){1,2}/i],
+         // An identifier
+         [PR.PR_PLAIN,
+          /^-?(?:[_a-z]|(?:\\[\da-f]+ ?))(?:[_a-z\d\-]|\\(?:\\[\da-f]+ ?))*/i],
+         // A run of punctuation
+         [PR.PR_PUNCTUATION, /^[^\s\w\'\"]+/]
+        ]),
+    ['css']);
+PR.registerLangHandler(
+    PR.createSimpleLexer([],
+        [
+         [PR.PR_KEYWORD,
+          /^-?(?:[_a-z]|(?:\\[\da-f]+ ?))(?:[_a-z\d\-]|\\(?:\\[\da-f]+ ?))*/i]
+        ]),
+    ['css-kw']);
+PR.registerLangHandler(
+    PR.createSimpleLexer([],
+        [
+         [PR.PR_STRING, /^[^\)\"\']+/]
+        ]),
+    ['css-str']);
+// Copyright (C) 2009 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for Haskell.
+ *
+ *
+ * To use, include prettify.js and this file in your HTML page.
+ * Then put your code in an HTML tag like
+ *      <pre class="prettyprint lang-hs">(my lisp code)</pre>
+ * The lang-cl class identifies the language as common lisp.
+ * This file supports the following language extensions:
+ *     lang-cl - Common Lisp
+ *     lang-el - Emacs Lisp
+ *     lang-lisp - Lisp
+ *     lang-scm - Scheme
+ *
+ *
+ * I used http://www.informatik.uni-freiburg.de/~thiemann/haskell/haskell98-report-html/syntax-iso.html
+ * as the basis, but ignore the way the ncomment production nests since this
+ * makes the lexical grammar irregular.  It might be possible to support
+ * ncomments using the lookbehind filter.
+ *
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace
+         // whitechar    ->    newline | vertab | space | tab | uniWhite
+         // newline      ->    return linefeed | return | linefeed | formfeed
+         [PR.PR_PLAIN,       /^[\t\n\x0B\x0C\r ]+/, null, '\t\n\x0B\x0C\r '],
+         // Single line double and single-quoted strings.
+         // char         ->    ' (graphic<' | \> | space | escape<\&>) '
+         // string       ->    " {graphic<" | \> | space | escape | gap}"
+         // escape       ->    \ ( charesc | ascii | decimal | o octal
+         //                        | x hexadecimal )
+         // charesc      ->    a | b | f | n | r | t | v | \ | " | ' | &
+         [PR.PR_STRING,      /^\"(?:[^\"\\\n\x0C\r]|\\[\s\S])*(?:\"|$)/,
+          null, '"'],
+         [PR.PR_STRING,      /^\'(?:[^\'\\\n\x0C\r]|\\[^&])\'?/,
+          null, "'"],
+         // decimal      ->    digit{digit}
+         // octal        ->    octit{octit}
+         // hexadecimal  ->    hexit{hexit}
+         // integer      ->    decimal
+         //               |    0o octal | 0O octal
+         //               |    0x hexadecimal | 0X hexadecimal
+         // float        ->    decimal . decimal [exponent]
+         //               |    decimal exponent
+         // exponent     ->    (e | E) [+ | -] decimal
+         [PR.PR_LITERAL,
+          /^(?:0o[0-7]+|0x[\da-f]+|\d+(?:\.\d+)?(?:e[+\-]?\d+)?)/i,
+          null, '0123456789']
+        ],
+        [
+         // Haskell does not have a regular lexical grammar due to the nested
+         // ncomment.
+         // comment      ->    dashes [ any<symbol> {any}] newline
+         // ncomment     ->    opencom ANYseq {ncomment ANYseq}closecom
+         // dashes       ->    '--' {'-'}
+         // opencom      ->    '{-'
+         // closecom     ->    '-}'
+         [PR.PR_COMMENT,     /^(?:(?:--+(?:[^\r\n\x0C]*)?)|(?:\{-(?:[^-]|-+[^-\}])*-\}))/],
+         // reservedid   ->    case | class | data | default | deriving | do
+         //               |    else | if | import | in | infix | infixl | infixr
+         //               |    instance | let | module | newtype | of | then
+         //               |    type | where | _
+         [PR.PR_KEYWORD,     /^(?:case|class|data|default|deriving|do|else|if|import|in|infix|infixl|infixr|instance|let|module|newtype|of|then|type|where|_)(?=[^a-zA-Z0-9\']|$)/, null],
+         // qvarid       ->    [ modid . ] varid
+         // qconid       ->    [ modid . ] conid
+         // varid        ->    (small {small | large | digit | ' })<reservedid>
+         // conid        ->    large {small | large | digit | ' }
+         // modid        ->    conid
+         // small        ->    ascSmall | uniSmall | _
+         // ascSmall     ->    a | b | ... | z
+         // uniSmall     ->    any Unicode lowercase letter
+         // large        ->    ascLarge | uniLarge
+         // ascLarge     ->    A | B | ... | Z
+         // uniLarge     ->    any uppercase or titlecase Unicode letter
+         [PR.PR_PLAIN,  /^(?:[A-Z][\w\']*\.)*[a-zA-Z][\w\']*/],
+         // matches the symbol production
+         [PR.PR_PUNCTUATION, /^[^\t\n\x0B\x0C\r a-zA-Z0-9\'\"]+/]
+        ]),
+    ['hs']);
+// Copyright (C) 2008 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for Common Lisp and related languages.
+ *
+ *
+ * To use, include prettify.js and this file in your HTML page.
+ * Then put your code in an HTML tag like
+ *      <pre class="prettyprint lang-lisp">(my lisp code)</pre>
+ * The lang-cl class identifies the language as common lisp.
+ * This file supports the following language extensions:
+ *     lang-cl - Common Lisp
+ *     lang-el - Emacs Lisp
+ *     lang-lisp - Lisp
+ *     lang-scm - Scheme
+ *
+ *
+ * I used http://www.devincook.com/goldparser/doc/meta-language/grammar-LISP.htm
+ * as the basis, but added line comments that start with ; and changed the atom
+ * production to disallow unquoted semicolons.
+ *
+ * "Name"    = 'LISP'
+ * "Author"  = 'John McCarthy'
+ * "Version" = 'Minimal'
+ * "About"   = 'LISP is an abstract language that organizes ALL'
+ *           | 'data around "lists".'
+ *
+ * "Start Symbol" = [s-Expression]
+ *
+ * {Atom Char}   = {Printable} - {Whitespace} - [()"\'']
+ *
+ * Atom = ( {Atom Char} | '\'{Printable} )+
+ *
+ * [s-Expression] ::= [Quote] Atom
+ *                  | [Quote] '(' [Series] ')'
+ *                  | [Quote] '(' [s-Expression] '.' [s-Expression] ')'
+ *
+ * [Series] ::= [s-Expression] [Series]
+ *            |
+ *
+ * [Quote]  ::= ''      !Quote = do not evaluate
+ *            |
+ *
+ *
+ * I used <a href="http://gigamonkeys.com/book/">Practical Common Lisp</a> as
+ * the basis for the reserved word list.
+ *
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         ['opn',             /^\(/, null, '('],
+         ['clo',             /^\)/, null, ')'],
+         // A line comment that starts with ;
+         [PR.PR_COMMENT,     /^;[^\r\n]*/, null, ';'],
+         // Whitespace
+         [PR.PR_PLAIN,       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
+         // A double quoted, possibly multi-line, string.
+         [PR.PR_STRING,      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"']
+        ],
+        [
+         [PR.PR_KEYWORD,     /^(?:block|c[ad]+r|catch|con[ds]|def(?:ine|un)|do|eq|eql|equal|equalp|eval-when|flet|format|go|if|labels|lambda|let|load-time-value|locally|macrolet|multiple-value-call|nil|progn|progv|quote|require|return-from|setq|symbol-macrolet|t|tagbody|the|throw|unwind)\b/, null],
+         [PR.PR_LITERAL,
+          /^[+\-]?(?:0x[0-9a-f]+|\d+\/\d+|(?:\.\d+|\d+(?:\.\d*)?)(?:[ed][+\-]?\d+)?)/i],
+         // A single quote possibly followed by a word that optionally ends with
+         // = ! or ?.
+         [PR.PR_LITERAL,
+          /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
+         // A word that optionally ends with = ! or ?.
+         [PR.PR_PLAIN,
+          /^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
+         // A printable non-space non-special character
+         [PR.PR_PUNCTUATION, /^[^\w\t\n\r \xA0()\"\\\';]+/]
+        ]),
+    ['cl', 'el', 'lisp', 'scm']);
+// Copyright (C) 2008 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for Lua.
+ *
+ *
+ * To use, include prettify.js and this file in your HTML page.
+ * Then put your code in an HTML tag like
+ *      <pre class="prettyprint lang-lua">(my Lua code)</pre>
+ *
+ *
+ * I used http://www.lua.org/manual/5.1/manual.html#2.1
+ * Because of the long-bracket concept used in strings and comments, Lua does
+ * not have a regular lexical grammar, but luckily it fits within the space
+ * of irregular grammars supported by javascript regular expressions.
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace
+         [PR.PR_PLAIN,       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
+         // A double or single quoted, possibly multi-line, string.
+         [PR.PR_STRING,      /^(?:\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)|\'(?:[^\'\\]|\\[\s\S])*(?:\'|$))/, null, '"\'']
+        ],
+        [
+         // A comment is either a line comment that starts with two dashes, or
+         // two dashes preceding a long bracketed block.
+         [PR.PR_COMMENT, /^--(?:\[(=*)\[[\s\S]*?(?:\]\1\]|$)|[^\r\n]*)/],
+         // A long bracketed block not preceded by -- is a string.
+         [PR.PR_STRING,  /^\[(=*)\[[\s\S]*?(?:\]\1\]|$)/],
+         [PR.PR_KEYWORD, /^(?:and|break|do|else|elseif|end|false|for|function|if|in|local|nil|not|or|repeat|return|then|true|until|while)\b/, null],
+         // A number is a hex integer literal, a decimal real literal, or in
+         // scientific notation.
+         [PR.PR_LITERAL,
+          /^[+-]?(?:0x[\da-f]+|(?:(?:\.\d+|\d+(?:\.\d*)?)(?:e[+\-]?\d+)?))/i],
+         // An identifier
+         [PR.PR_PLAIN, /^[a-z_]\w*/i],
+         // A run of punctuation
+         [PR.PR_PUNCTUATION, /^[^\w\t\n\r \xA0][^\w\t\n\r \xA0\"\'\-\+=]*/]
+        ]),
+    ['lua']);
+// Copyright (C) 2008 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for OCaml, SML, F# and similar languages.
+ *
+ * Based on the lexical grammar at
+ * http://research.microsoft.com/fsharp/manual/spec2.aspx#_Toc202383715
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace is made up of spaces, tabs and newline characters.
+         [PR.PR_PLAIN,       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
+         // #if ident/#else/#endif directives delimit conditional compilation
+         // sections
+         [PR.PR_COMMENT,
+          /^#(?:if[\t\n\r \xA0]+(?:[a-z_$][\w\']*|``[^\r\n\t`]*(?:``|$))|else|endif|light)/i,
+          null, '#'],
+         // A double or single quoted, possibly multi-line, string.
+         // F# allows escaped newlines in strings.
+         [PR.PR_STRING,      /^(?:\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)|\'(?:[^\'\\]|\\[\s\S])*(?:\'|$))/, null, '"\'']
+        ],
+        [
+         // Block comments are delimited by (* and *) and may be
+         // nested. Single-line comments begin with // and extend to
+         // the end of a line.
+         // TODO: (*...*) comments can be nested.  This does not handle that.
+         [PR.PR_COMMENT,     /^(?:\/\/[^\r\n]*|\(\*[\s\S]*?\*\))/],
+         [PR.PR_KEYWORD,     /^(?:abstract|and|as|assert|begin|class|default|delegate|do|done|downcast|downto|elif|else|end|exception|extern|false|finally|for|fun|function|if|in|inherit|inline|interface|internal|lazy|let|match|member|module|mutable|namespace|new|null|of|open|or|override|private|public|rec|return|static|struct|then|to|true|try|type|upcast|use|val|void|when|while|with|yield|asr|land|lor|lsl|lsr|lxor|mod|sig|atomic|break|checked|component|const|constraint|constructor|continue|eager|event|external|fixed|functor|global|include|method|mixin|object|parallel|process|protected|pure|sealed|trait|virtual|volatile)\b/],
+         // A number is a hex integer literal, a decimal real literal, or in
+         // scientific notation.
+         [PR.PR_LITERAL,
+          /^[+\-]?(?:0x[\da-f]+|(?:(?:\.\d+|\d+(?:\.\d*)?)(?:e[+\-]?\d+)?))/i],
+         [PR.PR_PLAIN,       /^(?:[a-z_]\w*[!?#]?|``[^\r\n\t`]*(?:``|$))/i],
+         // A printable non-space non-special character
+         [PR.PR_PUNCTUATION, /^[^\t\n\r \xA0\"\'\w]+/]
+        ]),
+    ['fs', 'ml']);
+// Copyright (C) 2006 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for Protocol Buffers as described at
+ * http://code.google.com/p/protobuf/.
+ *
+ * Based on the lexical grammar at
+ * http://research.microsoft.com/fsharp/manual/spec2.aspx#_Toc202383715
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(PR.sourceDecorator({
+        keywords: (
+            'bool bytes default double enum extend extensions false fixed32 '
+            + 'fixed64 float group import int32 int64 max message option '
+            + 'optional package repeated required returns rpc service '
+            + 'sfixed32 sfixed64 sint32 sint64 string syntax to true uint32 '
+            + 'uint64'),
+        cStyleComments: true
+      }), ['proto']);
+// Copyright (C) 2010 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for Scala.
+ *
+ * Derived from http://lampsvn.epfl.ch/svn-repos/scala/scala-documentation/trunk/src/reference/SyntaxSummary.tex
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace
+         [PR.PR_PLAIN,       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
+         // A double or single quoted string 
+          // or a triple double-quoted multi-line string.
+         [PR.PR_STRING,
+          /^(?:"(?:(?:""(?:""?(?!")|[^\\"]|\\.)*"{0,3})|(?:[^"\r\n\\]|\\.)*"?))/,
+          null, '"'],
+         [PR.PR_LITERAL,     /^`(?:[^\r\n\\`]|\\.)*`?/, null, '`'],
+         [PR.PR_PUNCTUATION, /^[!#%&()*+,\-:;<=>?@\[\\\]^{|}~]+/, null,
+          '!#%&()*+,-:;<=>?@[\\]^{|}~']
+        ],
+        [
+         // A symbol literal is a single quote followed by an identifier with no
+         // single quote following
+         // A character literal has single quotes on either side
+         [PR.PR_STRING,      /^'(?:[^\r\n\\']|\\(?:'|[^\r\n']+))'/],
+         [PR.PR_LITERAL,     /^'[a-zA-Z_$][\w$]*(?!['$\w])/],
+         [PR.PR_KEYWORD,     /^(?:abstract|case|catch|class|def|do|else|extends|final|finally|for|forSome|if|implicit|import|lazy|match|new|object|override|package|private|protected|requires|return|sealed|super|throw|trait|try|type|val|var|while|with|yield)\b/],
+         [PR.PR_LITERAL,     /^(?:true|false|null|this)\b/],
+         [PR.PR_LITERAL,     /^(?:(?:0(?:[0-7]+|X[0-9A-F]+))L?|(?:(?:0|[1-9][0-9]*)(?:(?:\.[0-9]+)?(?:E[+\-]?[0-9]+)?F?|L?))|\\.[0-9]+(?:E[+\-]?[0-9]+)?F?)/i],
+         // Treat upper camel case identifiers as types.
+         [PR.PR_TYPE,        /^[$_]*[A-Z][_$A-Z0-9]*[a-z][\w$]*/],
+         [PR.PR_PLAIN,       /^[$a-zA-Z_][\w$]*/],
+         [PR.PR_COMMENT,     /^\/(?:\/.*|\*(?:\/|\**[^*/])*(?:\*+\/?)?)/],
+         [PR.PR_PUNCTUATION, /^(?:\.+|\/)/]
+        ]),
+    ['scala']);
+// Copyright (C) 2008 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for SQL.
+ *
+ *
+ * To use, include prettify.js and this file in your HTML page.
+ * Then put your code in an HTML tag like
+ *      <pre class="prettyprint lang-sql">(my SQL code)</pre>
+ *
+ *
+ * http://savage.net.au/SQL/sql-99.bnf.html is the basis for the grammar, and
+ * http://msdn.microsoft.com/en-us/library/aa238507(SQL.80).aspx as the basis
+ * for the keyword list.
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace
+         [PR.PR_PLAIN,       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
+         // A double or single quoted, possibly multi-line, string.
+         [PR.PR_STRING,      /^(?:"(?:[^\"\\]|\\.)*"|'(?:[^\'\\]|\\.)*')/, null,
+          '"\'']
+        ],
+        [
+         // A comment is either a line comment that starts with two dashes, or
+         // two dashes preceding a long bracketed block.
+         [PR.PR_COMMENT, /^(?:--[^\r\n]*|\/\*[\s\S]*?(?:\*\/|$))/],
+         [PR.PR_KEYWORD, /^(?:ADD|ALL|ALTER|AND|ANY|AS|ASC|AUTHORIZATION|BACKUP|BEGIN|BETWEEN|BREAK|BROWSE|BULK|BY|CASCADE|CASE|CHECK|CHECKPOINT|CLOSE|CLUSTERED|COALESCE|COLLATE|COLUMN|COMMIT|COMPUTE|CONSTRAINT|CONTAINS|CONTAINSTABLE|CONTINUE|CONVERT|CREATE|CROSS|CURRENT|CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|CURSOR|DATABASE|DBCC|DEALLOCATE|DECLARE|DEFAULT|DELETE|DENY|DESC|DISK|DISTINCT|DISTRIBUTED|DOUBLE|DROP|DUMMY|DUMP|ELSE|END|ERRLVL|ESCAPE|EXCEPT|EXEC|EXECUTE|EXISTS|EXIT|FETCH|FILE|FILLFACTOR|FOR|FOREIGN|FREETEXT|FREETEXTTABLE|FROM|FULL|FUNCTION|GOTO|GRANT|GROUP|HAVING|HOLDLOCK|IDENTITY|IDENTITYCOL|IDENTITY_INSERT|IF|IN|INDEX|INNER|INSERT|INTERSECT|INTO|IS|JOIN|KEY|KILL|LEFT|LIKE|LINENO|LOAD|NATIONAL|NOCHECK|NONCLUSTERED|NOT|NULL|NULLIF|OF|OFF|OFFSETS|ON|OPEN|OPENDATASOURCE|OPENQUERY|OPENROWSET|OPENXML|OPTION|OR|ORDER|OUTER|OVER|PERCENT|PLAN|PRECISION|PRIMARY|PRINT|PROC|PROCEDURE|PUBLIC|RAISERROR|READ|READTEXT|RECONFIGURE|REFERENCES|REPLICATION|RESTORE|RESTRICT|RETURN|REVOKE|RIGHT|ROLLBACK|ROWCOUNT|ROWGUIDCOL|RULE|SAVE|SCHEMA|SELECT|SESSION_USER|SET|SETUSER|SHUTDOWN|SOME|STATISTICS|SYSTEM_USER|TABLE|TEXTSIZE|THEN|TO|TOP|TRAN|TRANSACTION|TRIGGER|TRUNCATE|TSEQUAL|UNION|UNIQUE|UPDATE|UPDATETEXT|USE|USER|VALUES|VARYING|VIEW|WAITFOR|WHEN|WHERE|WHILE|WITH|WRITETEXT)(?=[^\w-]|$)/i, null],
+         // A number is a hex integer literal, a decimal real literal, or in
+         // scientific notation.
+         [PR.PR_LITERAL,
+          /^[+-]?(?:0x[\da-f]+|(?:(?:\.\d+|\d+(?:\.\d*)?)(?:e[+\-]?\d+)?))/i],
+         // An identifier
+         [PR.PR_PLAIN, /^[a-z_][\w-]*/i],
+         // A run of punctuation
+         [PR.PR_PUNCTUATION, /^[^\w\t\n\r \xA0\"\'][^\w\t\n\r \xA0+\-\"\']*/]
+        ]),
+    ['sql']);
+// Copyright (C) 2009 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for various flavors of basic.
+ *
+ *
+ * To use, include prettify.js and this file in your HTML page.
+ * Then put your code in an HTML tag like
+ *      <pre class="prettyprint lang-vb"></pre>
+ *
+ *
+ * http://msdn.microsoft.com/en-us/library/aa711638(VS.71).aspx defines the
+ * visual basic grammar lexical grammar.
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace
+         [PR.PR_PLAIN,       /^[\t\n\r \xA0\u2028\u2029]+/, null, '\t\n\r \xA0\u2028\u2029'],
+         // A double quoted string with quotes escaped by doubling them.
+         // A single character can be suffixed with C.
+         [PR.PR_STRING,      /^(?:[\"\u201C\u201D](?:[^\"\u201C\u201D]|[\"\u201C\u201D]{2})(?:[\"\u201C\u201D]c|$)|[\"\u201C\u201D](?:[^\"\u201C\u201D]|[\"\u201C\u201D]{2})*(?:[\"\u201C\u201D]|$))/i, null,
+          '"\u201C\u201D'],
+         // A comment starts with a single quote and runs until the end of the
+         // line.
+         [PR.PR_COMMENT,     /^[\'\u2018\u2019][^\r\n\u2028\u2029]*/, null, '\'\u2018\u2019']
+        ],
+        [
+         [PR.PR_KEYWORD, /^(?:AddHandler|AddressOf|Alias|And|AndAlso|Ansi|As|Assembly|Auto|Boolean|ByRef|Byte|ByVal|Call|Case|Catch|CBool|CByte|CChar|CDate|CDbl|CDec|Char|CInt|Class|CLng|CObj|Const|CShort|CSng|CStr|CType|Date|Decimal|Declare|Default|Delegate|Dim|DirectCast|Do|Double|Each|Else|ElseIf|End|EndIf|Enum|Erase|Error|Event|Exit|Finally|For|Friend|Function|Get|GetType|GoSub|GoTo|Handles|If|Implements|Imports|In|Inherits|Integer|Interface|Is|Let|Lib|Like|Long|Loop|Me|Mod|Module|MustInherit|MustOverride|MyBase|MyClass|Namespace|New|Next|Not|NotInheritable|NotOverridable|Object|On|Option|Optional|Or|OrElse|Overloads|Overridable|Overrides|ParamArray|Preserve|Private|Property|Protected|Public|RaiseEvent|ReadOnly|ReDim|RemoveHandler|Resume|Return|Select|Set|Shadows|Shared|Short|Single|Static|Step|Stop|String|Structure|Sub|SyncLock|Then|Throw|To|Try|TypeOf|Unicode|Until|Variant|Wend|When|While|With|WithEvents|WriteOnly|Xor|EndIf|GoSub|Let|Variant|Wend)\b/i, null],
+         // A second comment form
+         [PR.PR_COMMENT, /^REM[^\r\n\u2028\u2029]*/i],
+         // A boolean, numeric, or date literal.
+         [PR.PR_LITERAL,
+          /^(?:True\b|False\b|Nothing\b|\d+(?:E[+\-]?\d+[FRD]?|[FRDSIL])?|(?:&H[0-9A-F]+|&O[0-7]+)[SIL]?|\d*\.\d+(?:E[+\-]?\d+)?[FRD]?|#\s+(?:\d+[\-\/]\d+[\-\/]\d+(?:\s+\d+:\d+(?::\d+)?(\s*(?:AM|PM))?)?|\d+:\d+(?::\d+)?(\s*(?:AM|PM))?)\s+#)/i],
+         // An identifier?
+         [PR.PR_PLAIN, /^(?:(?:[a-z]|_\w)\w*|\[(?:[a-z]|_\w)\w*\])/i],
+         // A run of punctuation
+         [PR.PR_PUNCTUATION,
+          /^[^\w\t\n\r \"\'\[\]\xA0\u2018\u2019\u201C\u201D\u2028\u2029]+/],
+         // Square brackets
+         [PR.PR_PUNCTUATION, /^(?:\[|\])/]
+        ]),
+    ['vb', 'vbs']);
+/**
+ * @fileoverview
+ * Registers a language handler for VHDL '93.
+ *
+ * Based on the lexical grammar and keywords at
+ * http://www.iis.ee.ethz.ch/~zimmi/download/vhdl93_syntax.html
+ *
+ * @author benoit@ryder.fr
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace
+         [PR.PR_PLAIN, /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0']
+        ],
+        [
+         // String, character or bit string
+         [PR.PR_STRING, /^(?:[BOX]?"(?:[^\"]|"")*"|'.')/i],
+         // Comment, from two dashes until end of line.
+         [PR.PR_COMMENT, /^--[^\r\n]*/],
+         [PR.PR_KEYWORD, /^(?:abs|access|after|alias|all|and|architecture|array|assert|attribute|begin|block|body|buffer|bus|case|component|configuration|constant|disconnect|downto|else|elsif|end|entity|exit|file|for|function|generate|generic|group|guarded|if|impure|in|inertial|inout|is|label|library|linkage|literal|loop|map|mod|nand|new|next|nor|not|null|of|on|open|or|others|out|package|port|postponed|procedure|process|pure|range|record|register|reject|rem|report|return|rol|ror|select|severity|shared|signal|sla|sll|sra|srl|subtype|then|to|transport|type|unaffected|units|until|use|variable|wait|when|while|with|xnor|xor)(?=[^\w-]|$)/i, null],
+         // Type, predefined or standard
+         [PR.PR_TYPE, /^(?:bit|bit_vector|character|boolean|integer|real|time|string|severity_level|positive|natural|signed|unsigned|line|text|std_u?logic(?:_vector)?)(?=[^\w-]|$)/i, null],
+         // Predefined attributes
+         [PR.PR_TYPE, /^\'(?:ACTIVE|ASCENDING|BASE|DELAYED|DRIVING|DRIVING_VALUE|EVENT|HIGH|IMAGE|INSTANCE_NAME|LAST_ACTIVE|LAST_EVENT|LAST_VALUE|LEFT|LEFTOF|LENGTH|LOW|PATH_NAME|POS|PRED|QUIET|RANGE|REVERSE_RANGE|RIGHT|RIGHTOF|SIMPLE_NAME|STABLE|SUCC|TRANSACTION|VAL|VALUE)(?=[^\w-]|$)/i, null],
+         // Number, decimal or based literal
+         [PR.PR_LITERAL, /^\d+(?:_\d+)*(?:#[\w\\.]+#(?:[+\-]?\d+(?:_\d+)*)?|(?:\.\d+(?:_\d+)*)?(?:E[+\-]?\d+(?:_\d+)*)?)/i],
+         // Identifier, basic or extended
+         [PR.PR_PLAIN, /^(?:[a-z]\w*|\\[^\\]*\\)/i],
+         // Punctuation
+         [PR.PR_PUNCTUATION, /^[^\w\t\n\r \xA0\"\'][^\w\t\n\r \xA0\-\"\']*/]
+        ]),
+    ['vhdl', 'vhd']);
+// Copyright (C) 2009 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/**
+ * @fileoverview
+ * Registers a language handler for Wiki pages.
+ *
+ * Based on WikiSyntax at http://code.google.com/p/support/wiki/WikiSyntax
+ *
+ * @author mikesamuel@gmail.com
+ */
+
+PR.registerLangHandler(
+    PR.createSimpleLexer(
+        [
+         // Whitespace
+         [PR.PR_PLAIN,       /^[\t \xA0a-gi-z0-9]+/, null,
+          '\t \xA0abcdefgijklmnopqrstuvwxyz0123456789'],
+         // Wiki formatting
+         [PR.PR_PUNCTUATION, /^[=*~\^\[\]]+/, null, '=*~^[]']
+        ],
+        [
+         // Meta-info like #summary, #labels, etc.
+         ['lang-wiki.meta',  /(?:^^|\r\n?|\n)(#[a-z]+)\b/],
+         // A WikiWord
+         [PR.PR_LITERAL,     /^(?:[A-Z][a-z][a-z0-9]+[A-Z][a-z][a-zA-Z0-9]+)\b/
+          ],
+         // A preformatted block in an unknown language
+         ['lang-',           /^\{\{\{([\s\S]+?)\}\}\}/],
+         // A block of source code in an unknown language
+         ['lang-',           /^`([^\r\n`]+)`/],
+         // An inline URL.
+         [PR.PR_STRING,
+          /^https?:\/\/[^\/?#\s]*(?:\/[^?#\s]*)?(?:\?[^#\s]*)?(?:#\S*)?/i],
+         [PR.PR_PLAIN,       /^(?:\r\n|[\s\S])[^#=*~^A-Zh\{`\[\r\n]*/]
+        ]),
+    ['wiki']);
+
+PR.registerLangHandler(
+    PR.createSimpleLexer([[PR.PR_KEYWORD, /^#[a-z]+/i, null, '#']], []),
+    ['wiki.meta']);
+// Contributed by ribrdb @ code.google.com
+
+/**
+ * @fileoverview
+ * Registers a language handler for YAML.
+ *
+ * @author ribrdb
+ */
+
+PR.registerLangHandler(
+  PR.createSimpleLexer(
+    [
+      [PR.PR_PUNCTUATION, /^[:|>?]+/, null, ':|>?'],
+      [PR.PR_DECLARATION,  /^%(?:YAML|TAG)[^#\r\n]+/, null, '%'],
+      [PR.PR_TYPE, /^[&]\S+/, null, '&'],
+      [PR.PR_TYPE, /^!\S*/, null, '!'],
+      [PR.PR_STRING, /^"(?:[^\\"]|\\.)*(?:"|$)/, null, '"'],
+      [PR.PR_STRING, /^'(?:[^']|'')*(?:'|$)/, null, "'"],
+      [PR.PR_COMMENT, /^#[^\r\n]*/, null, '#'],
+      [PR.PR_PLAIN, /^\s+/, null, ' \t\r\n']
+    ],
+    [
+      [PR.PR_DECLARATION, /^(?:---|\.\.\.)(?:[\r\n]|$)/],
+      [PR.PR_PUNCTUATION, /^-/],
+      [PR.PR_KEYWORD, /^\w+:[ \r\n]/],
+      [PR.PR_PLAIN, /^\w+/]
+    ]), ['yaml', 'yml']);
+var scriptsIncluded=$$("script");var scriptsLength=scriptsIncluded.length;var modeviousScriptURL;var modeviousLocation;var pageLocation=location.href;for(var i=0;i<scriptsLength;i++){if(scriptsIncluded[i].src.include("modevious/library.js")){modeviousScriptURL=scriptsIncluded[i].src;modeviousLocation=modeviousScriptURL.sub(pageLocation,'/').sub("library.js",'');i=scriptsLength;}}
 if(modeviousLocation!=$c.config.modeviousLocation){$c.config.modeviousLocation=modeviousLocation;$c.config.jQueryUIThemeURL=modeviousLocation+"jquery-ui-1.8.5.custom.css";$c.config.libraryURL=modeviousLocation+"library.css";$c.config.soundManager.url=modeviousLocation+"swf";}
 $c.include($c.config.jQueryUIThemeURL);$c.include($c.config.libraryURL);soundManager.url=$c.config.soundManager.url;soundManager.flashVersion=$c.config.soundManager.flashVersion;var stack_topleft={"dir1":"down","dir2":"right","firstpos1":15,"firstpos2":15};var stack_bottomleft={"dir1":"up","dir2":"right","firstpos1":15,"firstpos2":15};var stack_bottomright={"dir1":"up","dir2":"left","firstpos1":15,"firstpos2":15};$c.onLoad(function(){$j("body").append(["<div id=\"console\">","<div id=\"console_top\">","<div id=\"minimize_console_button\"></div>","</div>","<div id=\"console_middle\">","<div id=\"console_text\"></div>","</div>","<div id=\"console_bottom\"></div>","</div>"].join(''));$j("#minimize_console_button").click($c.hideLog);if(document.addEventListener){document.addEventListener("keydown",function(event){$c.showLog(event);},false);}else{document.attachEvent("onkeydown",function(event){$c.showLog(event);});}
 $j("#console").draggable({handle:"#console_top, #console_bottom"});$c.trace("Starting Modevious...");$j(".tabs").tabs();$j(".accordion").accordion({header:"h3",autoHeight:false,collapsible:true});$j(":button").button();$j(".draggable").draggable();$j(".resizable").resizable();$c.trace("jQuery User Interface initialized.");$j(".expose").click(function(){$j(this).expose({api:true,closeOnEsc:false,zIndex:10001}).load();});$c.trace("Expose elements initialized.");$j(".mouse-over").autoMouseOver();$c.trace("AutoMouseOver elements initialized.");$j(".dumbCrossFade .dumbItem").dumbCrossFade({doHoverPause:false});$c.trace("DumbCrossFade elements initialized.");$c.showEmail();$c.trace("Email addressed de-obfuscated.");try{if($c.readCookie("style").length!==0){$c.setActiveStyleSheet($c.readCookie("style"));$c.trace("Style sheet cookie found, setting active style sheet.");}}catch(err){$c.trace("No cookie for style sheet found.");}
-$c.trace("Modevious started and running smoothly!");});
+prettyPrint();$c.trace("Initialized Google Code Prettify, your example or source code is now pretty!");$c.trace("Modevious started and running smoothly!");});
