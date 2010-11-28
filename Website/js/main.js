@@ -10,7 +10,7 @@ $c.onLoad(function () {
 				$c.trace("#download-container was hidden, now showing");
 				downloadContainer.show().css({
 					left: (document.viewport.getWidth() - downloadContainer.outerWidth(true)) / 2
-				}).draggable();
+				});
 			}
 			$c.trace("Moving #download-container");
 			$c.trace([
@@ -41,7 +41,7 @@ $c.onLoad(function () {
 				$c.trace("#contact-container was hidden, now showing");
 				contactContainer.show().css({
 					left: (document.viewport.getWidth() - contactContainer.outerWidth(true)) / 2
-				}).draggable();
+				});
 			}
 			$c.trace("Moving #contact-container");
 			$c.trace([

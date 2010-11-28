@@ -1,5 +1,5 @@
 /**
-*	Core v1.2.1
+*	Core v1.2.2
 *		Maintainer
 *			Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
 *		Description
@@ -28,8 +28,8 @@ location: true, navigator:true */
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
 	// private methods and variables
-	var version = 121;
-	var versionString = "v1.2.1";
+	var version = 122;
+	var versionString = "v1.2.2";
 	var config = {
 		warnings: false,
 		at: "(AT)",

@@ -16,11 +16,15 @@ copy /b tmp\library.js + Development\js\src\prototype.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\jquery-1.4.3%1.js tmp\library.js
 
 :: Core libary
+mkdir tmp\console
+copy Development\css\console\* tmp\console\
 copy /b tmp\library.css + Development\css\core%1.css tmp\library.css
 copy /b tmp\library.js + Development\js\src\core%1.js tmp\library.js
 
 :: jQuery User interface
-copy Development\css\jquery-ui-1.8.5.custom.css build
+mkdir tmp\images
+copy Development\css\images\* tmp\images\
+copy Development\css\jquery-ui-1.8.5.custom.css tmp\jquery-ui-1.8.5.custom.css
 copy /b tmp\library.js + Development\js\src\jquery-ui-1.8.5.min.js tmp\library.js
 
 :: jQuery Tools
@@ -34,12 +38,15 @@ copy /b tmp\library.css + Development\css\jquery.pnotify.default%1.css tmp\libra
 copy /b tmp\library.js + Development\js\src\jquery.pnotify%1.js tmp\library.js
 
 :: dumbCrossfade jQuery plugin
+mkdir tmp\dumbcrossfade
+copy Development\css\dumbcrossfade\* tmp\dumbcrossfade\
 copy /b tmp\library.css + Development\css\dumbcrossfade%1.css tmp\library.css
 copy /b tmp\library.js + Development\js\src\jquery.dumbcrossfade-2.0%1.js tmp\library.js
 
 :: SoundManager 2 component
+mkdir tmp\swf
 copy /b tmp\library.js + Development\js\src\soundmanager2-nodebug-jsmin.js tmp\library.js
-copy /b Development\swf\* tmp\swf
+copy /b Development\swf\* tmp\swf\
 
 :: Encryption components
 copy /b tmp\library.js + Development\js\src\md5%1.js tmp\library.js
@@ -67,21 +74,35 @@ copy /b tmp\library.js + Development\js\src\lang-vhdl.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\lang-wiki.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\lang-yaml.js tmp\library.js
 
-:: Right-click Context Menu
-copy /b tmp\library.js + Development\js\src\jquery.contextMenu.js tmp\library.js
-copy /b tmp\library.css + Development\css\jquery.contextMenu.css tmp\library.css
+:: Right-click jQuery Context Menu
+copy /b tmp\library.js + Development\js\src\jquery.contextMenu%1.js tmp\library.js
+copy /b tmp\library.css + Development\css\jquery.contextMenu%1.css tmp\library.css
 
 :: Startup script (init)
 copy /b tmp\library.js + Development\js\init%1.js tmp\library.js
 
 :: Modevious Update System (MUpS)
-copy /b Development\update\index.html Website\dev\modevious\update\index.html
+mkdir tmp\update
+touch tmp\update\index.html
+copy /b Development\update\index.html tmp\update\index.html
 
+:: copy licenses
+copy Development\licenses.txt tmp\licenses.txt
+
+:: This script can either compile or build based on parameters sent
+if .%2==.build goto build
+:compile
+echo Compiling...
 :: move temporary files to "dev"
-copy /y tmp\library.js Website\dev\modevious\library.js
-copy /y tmp\library.css Website\dev\modevious\library.css
-
+xcopy /y /e tmp\* Website\dev\modevious\
+goto endif
+:build
+echo Building...
+:: move temporary files to "build"
+if exist build rmdir /s /q build
+mkdir build
+xcopy /y /e tmp\* build\
+:endif
 :: purge temporary files
 rmdir /s /q tmp
-
 pause

@@ -28,9 +28,9 @@
 			<p>If you haven't already go ahead and <a class="download" href="/download/" title="Get the latest version!">download Modevious</a>.</p>
 			<p>Upload it to your web server, make sure you drop it in your project's root folder. This is an important step since I haven't yet figured out how to automatically find out where you stored the files. Until then make sure you've put Modevious in your root ('/') folder.</p>				
 			<p>To add it to your web site or application use this code:</p>
-			<p class="code">
-			&lt;script type="text/javascript" src="/modevious/library.js"&gt;&lt;/script&gt;
-			</p>
+<pre class="prettyprint code">
+&lt;script type="text/javascript" src="/modevious/library.js"&gt;&lt;/script&gt;
+</pre>
 			<p>Supposing you put its folder, and therefore all of its files, in your root ('/'), or home, directory this is the only file you'll need to remember where you've placed it. I'm currently finishing up work on Modevious figuring out where its located on your website and finding the files it needs to include in order for everything to work properly. I'm already using this technique to include Core CSS and our custom jQuery UI Theme included in our package. I'm planning on expanding this technique for use with other resources and adding it to the library so other developers can easily make use of it.</p>
 			<h2>Huh? That's it?</h2>
 			<p>Seriously, that's all you have to do to get started. Put in a file that's included on every page and you're good to go.</p>
@@ -44,8 +44,17 @@
 					<hr />
 					<p><a href="http://www.shadowbox-js.com">Shadowbox</a> is an online media viewer application that supports all of the	 web's <a href="http://shadowbox-js.com/support.html#media">most popular</a> media publishing formats. Shadowbox is written entirely in JavaScript	 and CSS and is <a href="http://shadowbox-js.com/options.html">highly	 customizable</a>. Using Shadowbox, website authors can showcase a wide	 assortment of media in <a href="http://shadowbox-js.com/support.html#browsers">all major browsers</a> without navigating users away from the linking page.</p>
 					<p>I appended the code</p>
-<pre class="code">
-Shadowbox.init({adapter:'base',players:['img','swf','flv','qt','wmp','iframe','html'],continuous:true});""Shadowbox.init({adapter:'base',players:['img','swf','flv','qt','wmp','iframe','html'],continuous:true});
+<pre class="prettyprint code">
+Shadowbox.init({
+	adapter:'base',
+	players:['img','swf','flv','qt','wmp','iframe','html'],
+	continuous:true
+});
+Shadowbox.init({
+	adapter:'base',
+	players:['img','swf','flv','qt','wmp','iframe','html'],
+	continuous:true
+});
 </pre> 
 					<p>to the minified version of Shadowbox.js to have it auto initialize once the script is loaded. I also changed /css/shadowbox.css by making the z-index rule for #sb-container be 10002 instead of 999. That way it overlays both PNotify and Expose. Other changes to the CSS include renaming the url for the navigation buttons to match putting Shadowbox in /js/lib/ and rewriting a rule for #sb-overlay to have it fixed and the size of the viewport only using basic CSS 2.1.</p>
 					<p>Shadowbox was is a wonderful tool, but isn't free for commercial usage. In order to use it for commercial purposes you need to purchase a license. It's not overly expensive, and I think it is worth the price, but for the reason that all tools packaged in Modevious come free I cannot include it. But looking at this page, wouldn't you agree that it's relatively simple adding it as an extra plugin? Just remember to purchase a license should you use it for commercial reasons.</p>
