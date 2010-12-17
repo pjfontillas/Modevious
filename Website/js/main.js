@@ -138,21 +138,22 @@ $c.onLoad(function () {
 	});
 	soundManager.onload = function () {
 		soundManager.createSound({
-			id: "testUI",
-			url: "/media/test-UI.mp3"
+			id: "click",
+			url: "/media/click.mp3"
 		});
 		soundManager.createSound({
 			id: "focus",
-			url: "/media/focus.mp3"
+			url: "/media/focus.mp3",
+			volume: 10
 		});
 		$$('#menu a').each(function (element) {
 			element.observe("mouseover", function () {
-				soundManager.play("testUI");
+				soundManager.play("focus");
 			});
 		});
 		$$('#splash-menu a').each(function (element) {
 			element.observe("click", function () {
-				soundManager.play("focus");
+				soundManager.play("click");
 			});
 		});
 	};
