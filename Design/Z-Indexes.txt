@@ -1,0 +1,9 @@
+-000001 .ui-pnotify .ui-pnotify-shadow, .ui-datepicker-cover
+ 000001 .ui-slider .ui-slider-range
+ 000002 .ui-slider .ui-slider-handle
+ 000100 .ui-selectable-helper
+ 009998 #exposeMask
+ 009999 .ui-pnotify
+ 010000 .ui-pnotify-history-container
+ 099999 .contextMenu, .ui-resizable-handle
+ 100000 #console
