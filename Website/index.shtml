@@ -68,6 +68,7 @@
 		</style>
 </head>
 <body>
+	<div id="top"></div>
 <!--#include virtual="/include/navigation.htm" -->
 	<div id="splash-tabs" class="no-padding">
 		<div id="what" class="splash-item">
