@@ -24,7 +24,7 @@
 			<p>Version 1.2 is another major step forward. I've introduced new features, new and updated components, and generally made all-around enhancements to the entire project.</p>
 			<p>I've added many components and made updates to information for them and using them with Modevious. We've got a pretty large set of tools from which we can make wonderful websites and applications out of!</p>
 			<ul>
-				<li><a href="/update" title="Update with AJAX">Modevious Update System</a> allows you to check for updates to	any plugins that make use of the system!</li>
+				<li><a href="/modevious/update" title="Update with AJAX">Modevious Update System</a> allows you to check for updates to	any plugins that make use of the system!</li>
 				<li><a href="/components/#jQuery-UI" title="What's jQuery UI?">jQuery UI</a> updated to version 1.8.5</li>
 				<li>Updated our custom build of <a href="/components/#jQuery-Tools" title="Tools!">jQuery Tools</a></li>
 				<li>Added <a href="/components/#SoundManager-2" title="Sound using JavaScript!">SoundManager 2</a></li>
@@ -49,7 +49,7 @@
 	<div class="one-third">
 		<div class="padded">
 			<h1 class="no-margins">Current version</h1>
-			<p><strong>1.2.1</strong> | <em>Latest build on Nov. 27th, 2010.</em><br />
+			<p><strong>1.2.2</strong> | <em>Latest build on Nov. 28th, 2010.</em><br />
 			<a href="http://github.com/pjfontillas/modevious/commits/master" title="Latest changes">View the changelog</a></p>
 			<p>HTTP downloads are available and the source code is openly	available should you access the scripts on this site or on <a href="http://github.com/pjfontillas/modevious" title="Modevious on GitHub">GitHub</a>.</p>
 			<form action="http://www.modevious.com/cache/modevious.1.2.1.zip">
