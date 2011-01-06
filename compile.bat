@@ -37,12 +37,6 @@ copy /b tmp\library.js + Development\js\src\jquery.autoMouseOver%1.js tmp\librar
 copy /b tmp\library.css + Development\css\jquery.pnotify.default%1.css tmp\library.css
 copy /b tmp\library.js + Development\js\src\jquery.pnotify%1.js tmp\library.js
 
-:: dumbCrossfade jQuery plugin
-mkdir tmp\dumbcrossfade
-copy Development\css\dumbcrossfade\* tmp\dumbcrossfade\
-copy /b tmp\library.css + Development\css\dumbcrossfade%1.css tmp\library.css
-copy /b tmp\library.js + Development\js\src\jquery.dumbcrossfade-2.0%1.js tmp\library.js
-
 :: SoundManager 2 component
 mkdir tmp\swf
 copy /b tmp\library.js + Development\js\src\soundmanager2-nodebug-jsmin.js tmp\library.js
