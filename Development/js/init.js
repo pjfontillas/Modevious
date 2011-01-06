@@ -96,12 +96,6 @@ $c.onLoad(function () {
 	$j(".mouse-over").autoMouseOver();
   $c.trace("AutoMouseOver elements initialized.");
 
-	// initialize DumbCrossFade elements
-	$j(".dumbCrossFade .dumbItem").dumbCrossFade({
-		doHoverPause: false 
-	});
-  $c.trace("DumbCrossFade elements initialized.");
-
 	// initialize email address de-obfuscation
 	$c.showEmail();
   $c.trace("Email addressed de-obfuscated.");
@@ -116,9 +110,5 @@ $c.onLoad(function () {
     $c.trace("No cookie for style sheet found.");
   }
 
-	// Initialize Google Code Prettify
-	prettyPrint();
-	$c.trace("Initialized Google Code Prettify, your example or source code is now pretty!");
-	
   $c.trace("Modevious started and running smoothly!");
 });
