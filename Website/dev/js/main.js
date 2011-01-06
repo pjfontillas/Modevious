@@ -1,6 +1,9 @@
 $c.include("/js/jquery.blockUI.js");
+$c.include("/Google_Prettify/prettify.css");
+$c.include("/Google_Prettify/prettify.min.js");
 $c.trace("Loaded jquery.blockUI.js");
 $c.onLoad(function () {
+  // Initialize download form
 	$$(".download").each(function (element) {
 		element.observe("click", function (event) {
 			$c.trace("Download link pressed, stopping default link behavior");
@@ -33,6 +36,8 @@ $c.onLoad(function () {
 		});
 	});
 	$c.trace("Finished configuring behavior for download links");
+  
+  // Initialize contact form
 	$$(".contact").each(function (element) {
 		element.observe("click", function (event) {
 			event.stop();
@@ -136,6 +141,8 @@ $c.onLoad(function () {
 			$j("#download-container").css("zIndex", 1001);
 		}
 	});
+  
+  // Initialize sounds
 	soundManager.onload = function () {
 		soundManager.createSound({
 			id: "testUI",
@@ -157,4 +164,8 @@ $c.onLoad(function () {
 		});
 	};
 	$c.trace("Sounds initialized");
+  
+  // Initialize Google Code Prettify
+-	prettyPrint();
+-	$c.trace("Initialized Google Code Prettify");
 });
