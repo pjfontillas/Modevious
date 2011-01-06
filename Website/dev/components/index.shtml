@@ -101,21 +101,6 @@
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- #Core-Library -->
-		<div id="dumbCrossFade" class="component">
-			<div class="icon">
-				<a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions"><img src="images/dumbcrossfade.jpg" width="320" height="240" alt="dumbCrossFade image" /></a>
-			</div>
-			<div class="name">
-				<h1><a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions">dumbCrossFade</a></h1>
-			</div>
-			<div class="version">
-				Version 2.0
-			</div>
-			<div class="description">
-				<p><a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions">jquery.dumbCrossFade is intended to be a light-weight slide transition that enables external manipulation. Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base tool.</a></p>
-			</div>
-			<div class="clear-float"></div>
-		</div><!-- #dumbCrossFade -->
 		<div id="Encryption" class="component">
 			<div class="icon">
 				<a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption"><img src="images/encryption.jpg" width="320" height="240" alt="Encryption image" /></a>
@@ -133,18 +118,6 @@
 			</div>
 			<div class="clear-float"></div>
 		</div><!-- #Encryption -->
-		<div class="component">
-			<div id="Prettify" class="icon">
-				<a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify"><img src="images/google_code_prettify.jpg" width="320" height="240" alt="Google Code Prettify image" /></a>
-			</div>
-			<div class="name">
-				<h1><a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify">Google Code Prettify</a></h1>
-			</div>
-			<div class="description">
-				<p><a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify">A Javascript module and CSS file that allows syntax highlighting of source code snippets in an html page.</a></p>
-			</div>
-			<div class="clear-float"></div>
-		</div><!-- #Prettify -->
 		<div class="component">
 			<div id="jQuery" class="icon">
 				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jquery.jpg" width="320" height="240" alt="jQuery image" /></a>
