@@ -49,17 +49,17 @@ $c.onLoad(function () {
   "</div>"
   ].join(''));
   // add close behavior to console close button
-  $j("#minimize_console_button").click($c.hideLog);
+  $j("#minimize_console_button").click($c.hideConsole);
   // create keypress listener for code to open console
   // Default: UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A
   // currently using an IE hack to detect keypresses
   if (document.addEventListener) {
     document.addEventListener("keydown", function(event) {
-      $c.showLog(event);
+      $c.checkConsoleCode(event);
     }, false);
   } else {
     document.attachEvent("onkeydown", function(event) {
-      $c.showLog(event);
+      $c.checkConsoleCode(event);
     });    
   }
   // allow for users to move the console
