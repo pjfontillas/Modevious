@@ -12302,7 +12302,7 @@ var $c = (function () {
       });
     },
     /**
-     *  showConsole
+     *  showConsole ()
      *    This function moves the console to just under the current vertical offset.
      */
      showConsole: function () {
