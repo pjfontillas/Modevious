@@ -78,6 +78,9 @@ copy /b tmp\library.js + Development\js\src\lang-yaml.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\jquery.contextMenu%1.js tmp\library.js
 copy /b tmp\library.css + Development\css\jquery.contextMenu%1.css tmp\library.css
 
+:: blockUI
+copy /b tmp\library.js + Development\js\src\jquery.blockUI.js tmp\library.js
+
 :: Startup script (init)
 copy /b tmp\library.js + Development\js\init%1.js tmp\library.js
 

@@ -1,7 +1,5 @@
-$c.include("/js/jquery.blockUI.js");
 $c.include("/Google_Prettify/prettify.css");
 $c.include("/Google_Prettify/prettify.min.js");
-$c.trace("Loaded jquery.blockUI.js");
 $c.onLoad(function () {
   // Initialize download form
 	$$(".download").each(function (element) {
