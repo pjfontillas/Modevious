@@ -13,7 +13,7 @@ type nul > tmp\library.css
 copy /b tmp\library.js + Development\js\src\prototype.js tmp\library.js
 
 :: jQuery
-copy /b tmp\library.js + Development\js\src\jquery-1.4.3%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\jquery-1.4.4%1.js tmp\library.js
 
 :: Core libary
 mkdir tmp\console
