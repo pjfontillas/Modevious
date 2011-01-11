@@ -1,12 +1,12 @@
 /**
-*  Core v1.2.2
+*  Core v1.3.0
 *    Maintainer
 *      Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
 *    Description
 *      Holds some of the most common ajax functions used.
 *    Dependencies
-*      Prototype v1.6.1 
-*      jQuery 1.4.3
+*      Prototype v1.7 
+*      jQuery 1.4.4
 *    Verified using JSLint.
 *    Module pattern.
 */
@@ -28,8 +28,8 @@ location: true, navigator:true */
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
   // private methods and variables
-  var version = 122;
-  var versionString = "v1.2.2";
+  var version = 130;
+  var versionString = "v1.3.0";
   var config = {
     warnings: false,
     at: "(AT)",
@@ -51,7 +51,7 @@ var $c = (function () {
       65
     ],
     modeviousLocation: "/modevious/",
-    jQueryUIThemeURL: "/modevious/jquery-ui-1.8.5.custom.css",
+    jQueryUIThemeURL: "/modevious/jquery-ui.css",
     libraryURL: "/modevious/library.css"
   };
   var loadedScripts = [];

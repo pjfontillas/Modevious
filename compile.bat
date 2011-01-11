@@ -13,7 +13,7 @@ type nul > tmp\library.css
 copy /b tmp\library.js + Development\js\src\prototype.js tmp\library.js
 
 :: jQuery
-copy /b tmp\library.js + Development\js\src\jquery-1.4.4%1.js tmp\library.js
+copy /b tmp\library.js + Development\js\src\jquery%1.js tmp\library.js
 
 :: Core libary
 mkdir tmp\console
@@ -24,8 +24,8 @@ copy /b tmp\library.js + Development\js\src\core%1.js tmp\library.js
 :: jQuery User interface
 mkdir tmp\images
 copy Development\css\images\* tmp\images\
-copy Development\css\jquery-ui-1.8.7.custom.css tmp\jquery-ui-1.8.7.custom.css
-copy /b tmp\library.js + Development\js\src\jquery-ui-1.8.7.min.js tmp\library.js
+copy Development\css\jquery-ui.css tmp\jquery-ui.css
+copy /b tmp\library.js + Development\js\src\jquery-ui.min.js tmp\library.js
 
 :: jQuery Tools
 copy /b tmp\library.js + Development\js\src\jquery.tools.min.js tmp\library.js
@@ -48,25 +48,6 @@ copy /b tmp\library.js + Development\js\src\ripemd160%1.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\sha1%1.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\sha256%1.js tmp\library.js
 copy /b tmp\library.js + Development\js\src\sha512%1.js tmp\library.js
-
-:: Google Code Prettify
-copy /b tmp\library.js + Development\js\src\prettify.js tmp\library.js
-copy /b tmp\library.css + Development\css\prettify%1.css tmp\library.css
-
-:: Google Code Prettify language extensions
-copy /b tmp\library.js + Development\js\src\lang-apollo.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-css.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-hs.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-lisp.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-lua.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-ml.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-proto.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-scala.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-sql.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-vb.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-vhdl.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-wiki.js tmp\library.js
-copy /b tmp\library.js + Development\js\src\lang-yaml.js tmp\library.js
 
 :: Right-click jQuery Context Menu
 copy /b tmp\library.js + Development\js\src\jquery.contextMenu%1.js tmp\library.js
