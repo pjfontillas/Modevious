@@ -108,7 +108,7 @@
 #console {
   position: fixed;
   z-index: 100000;
-  top: -500px;
+  top: -1000px;
 }
 #console_top {
   background: url(console/console_top.png);
