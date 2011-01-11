@@ -1,6 +1,7 @@
-$c.include("/js/jquery.blockUI.js");
-$c.trace("Loaded jquery.blockUI.js");
+$c.include("/Google_Prettify/prettify.css");
+$c.include("/Google_Prettify/prettify.min.js");
 $c.onLoad(function () {
+  // Initialize download form
 	$$(".download").each(function (element) {
 		element.observe("click", function (event) {
 			$c.trace("Download link pressed, stopping default link behavior");
@@ -33,6 +34,8 @@ $c.onLoad(function () {
 		});
 	});
 	$c.trace("Finished configuring behavior for download links");
+  
+  // Initialize contact form
 	$$(".contact").each(function (element) {
 		element.observe("click", function (event) {
 			event.stop();
@@ -136,26 +139,31 @@ $c.onLoad(function () {
 			$j("#download-container").css("zIndex", 1001);
 		}
 	});
+  
+  // Initialize sounds
 	soundManager.onload = function () {
 		soundManager.createSound({
-			id: "click",
-			url: "/media/click.mp3"
+			id: "testUI",
+			url: "/media/test-UI.mp3"
 		});
 		soundManager.createSound({
 			id: "focus",
-			url: "/media/focus.mp3",
-			volume: 10
+			url: "/media/focus.mp3"
 		});
 		$$('#menu a').each(function (element) {
 			element.observe("mouseover", function () {
-				soundManager.play("focus");
+				soundManager.play("testUI");
 			});
 		});
 		$$('#splash-menu a').each(function (element) {
 			element.observe("click", function () {
-				soundManager.play("click");
+				soundManager.play("focus");
 			});
 		});
 	};
 	$c.trace("Sounds initialized");
+  
+  // Initialize Google Code Prettify
+-	prettyPrint();
+-	$c.trace("Initialized Google Code Prettify");
 });

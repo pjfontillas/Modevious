@@ -41,7 +41,11 @@
 		color: #AAA;
 		font-size: 1.3em;
 	}
-	.description:hover {
+	.description a {
+		color: #aaa;
+		text-decoration: none;
+	}
+	.description a:hover {
 		color: #FFF;
 	}
 	</style>
@@ -60,11 +64,12 @@
 				Version 1.0
 			</div>
 			<div class="description">
-				<p>autoMouseOver is a jQuery plugin that automatically adds a mouseover effect to any selected images based on their naming structure.</p>
-				<p>With the default settings, any selected image that has "-out." in its src attribute (eg. home-out.png) will try to mouseover to the same image name but with "-over." instead (eg. home-over.png). The default settings can be changed when the plugin is called.</p>
+				<p><a href="http://www.m79.ca/automouseover/" title="Mouse over, and it changes">autoMouseOver is a jQuery plugin that automatically adds a mouseover effect to any selected images based on their naming structure.<br />
+				<br />
+				With the default settings, any selected image that has "-out." in its src attribute (eg. home-out.png) will try to mouseover to the same image name but with "-over." instead (eg. home-over.png). The default settings can be changed when the plugin is called.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of autoMouseOver -->
+		</div><!-- #autoMouseOver -->
 		<div id="Context-Menu" class="component">
 			<div class="icon">
 				<a href="http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/" title="jQuery Context Menu"><img src="images/context_menu.jpg" width="320" height="240" alt="Context Menu image" /></a>
@@ -76,11 +81,12 @@
 				Version 1.01
 			</div>
 			<div class="description">
-				<p>jQuery Context Menu is a context menu plugin for jQuery. It was designed to make implementing context menu functionality easy and requires minimal effort to configure.</p>
-				<p>Why reinvent the wheel? The goal of this plugin is to streamline the way actions are binded to menu items and to use 100% CSS for styling. Keyboard shortcuts were added for navigating the menu once it’s open, and there are five methods to allow you to control and clean-up context menus on the fly.</p>
+				<p><a href="http://abeautifulsite.net/blog/2008/09/jquery-context-menu-plugin/" title="jQuery Context Menu">jQuery Context Menu is a context menu plugin for jQuery. It was designed to make implementing context menu functionality easy and requires minimal effort to configure.<br />
+				<br />
+				Why reinvent the wheel? The goal of this plugin is to streamline the way actions are binded to menu items and to use 100% CSS for styling. Keyboard shortcuts were added for navigating the menu once it’s open, and there are five methods to allow you to control and clean-up context menus on the fly.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of Context Menu component -->
+		</div><!-- #Context-Menu -->
 		<div id="Core-Library" class="component">
 			<div class="icon">
 				<a href="core/" title="The Core library"><img src="images/core.jpg" width="320" height="240" alt="Core Library image" /></a>
@@ -89,27 +95,12 @@
 				<h1><a href="core/" title="The Core library">Core</a></h1>
 			</div>
 			<div class="description">
-				<p>Library built specifically for Modevious. The Core library holds some commonly used functions. A couple can be found in other libraries, while others are new ideas unique to Modevious.</p>
-				<p>The Core library has dependencies on both the Prototype JS and jQuery libraries, utilizing tools from both libraries to create new ones. It also borrows concepts and techniques from various other authors on the web.</p>
+				<p><a href="core/" title="The Core library">Library built specifically for Modevious. The Core library holds some commonly used functions. A couple can be found in other libraries, while others are new ideas unique to Modevious.<br />
+				<br />
+				The Core library has dependencies on both the Prototype JS and jQuery libraries, utilizing tools from both libraries to create new ones. It also borrows concepts and techniques from various other authors on the web.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of Core component -->
-		<div id="dumbCrossFade" class="component">
-			<div class="icon">
-				<a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions"><img src="images/dumbcrossfade.jpg" width="320" height="240" alt="dumbCrossFade image" /></a>
-			</div>
-			<div class="name">
-				<h1><a href="http://storage.sebringcreative.com.s3.amazonaws.com/jquery/dumbCrossFade.htm" title="Easy to use transitions">dumbCrossFade</a></h1>
-			</div>
-			<div class="version">
-				Version 2.0
-			</div>
-			<div class="description">
-				<p>jquery.dumbCrossFade is intended to be a light-weight slide transition that enables external manipulation.
-Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base tool.</p>
-			</div>
-			<div class="clear-float"></div>
-		</div><!-- END of dumbCrossFade component-->
+		</div><!-- #Core-Library -->
 		<div id="Encryption" class="component">
 			<div class="icon">
 				<a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption"><img src="images/encryption.jpg" width="320" height="240" alt="Encryption image" /></a>
@@ -121,23 +112,12 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				Version 2.2
 			</div>
 			<div class="description">
-				<p>MD5 is a secure hash algorithm. It takes a string as input, and produces a 128-bit number, the hash. The same string always produces the same hash, but given a hash, it is not generally possible to determine the original string. Secure hash algorithms are useful for protecting passwords and ensuring data integrity.</p>
-				<p>Their site has a JavaScript implementation of MD5, and some other secure hash algorithms. This allows web sites to perform simple cryptography on clients, enabling some useful applications.</p>
+				<p><a href="http://pajhome.org.uk/crypt/md5/" title="JavaScript encryption">MD5 is a secure hash algorithm. It takes a string as input, and produces a 128-bit number, the hash. The same string always produces the same hash, but given a hash, it is not generally possible to determine the original string. Secure hash algorithms are useful for protecting passwords and ensuring data integrity.<br />
+				<br />
+				Their site has a JavaScript implementation of MD5, and some other secure hash algorithms. This allows web sites to perform simple cryptography on clients, enabling some useful applications.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of Encryption component -->
-		<div class="component">
-			<div id="Prettify" class="icon">
-				<a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify"><img src="images/google_code_prettify.jpg" width="320" height="240" alt="Google Code Prettify image" /></a>
-			</div>
-			<div class="name">
-				<h1><a href="http://code.google.com/p/google-code-prettify/" title="Google Code Prettify">Google Code Prettify</a></h1>
-			</div>
-			<div class="description">
-				<p>A Javascript module and CSS file that allows syntax highlighting of source code snippets in an html page.</p>
-			</div>
-			<div class="clear-float"></div>
-		</div><!-- END of Google Code Prettify component -->
+		</div><!-- #Encryption -->
 		<div class="component">
 			<div id="jQuery" class="icon">
 				<a href="http://jquery.com/" title="The jQuery library"><img src="images/jquery.jpg" width="320" height="240" alt="jQuery image" /></a>
@@ -149,11 +129,12 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				Version 1.4.3
 			</div>
 			<div class="description">
-				<p>jQuery is a new kind of JavaScript Library.</p>
-				<p>jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.</p>
+				<p><a href="http://jquery.com/" title="The jQuery library">jQuery is a new kind of JavaScript Library.<br />
+				<br />
+				jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of jQuery component -->
+		</div><!-- #jQuery -->
 		<div id="jQuery-Tools" class="component">
 			<div class="icon">
 				<a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web"><img src="images/jquery_tools.jpg" width="320" height="240" alt="jQuery Tools image" /></a>
@@ -165,11 +146,12 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				Version 1.2.5
 			</div>
 			<div class="description">
-				<p>jQuery Tools is a collection of the most important user-interface components for modern websites. Used by large sites all over the world. And we've got a custom build you can use.</p>
-				<p>Our build contains tooltip, tooltip.slide, tooltip.dynamic, overlay, overlay.apple, dateinput, rangeinput, validator, toolbox.expose, and toolbox.mousewheel.</p>
+				<p><a href="http://flowplayer.org/tools/index.html" title="The missing UI library for the Web">jQuery Tools is a collection of the most important user-interface components for modern websites. Used by large sites all over the world. And we've got a custom build you can use.<br />
+				<br />
+				Our build contains tooltip, tooltip.slide, tooltip.dynamic, overlay, overlay.apple, dateinput, rangeinput, validator, toolbox.expose, and toolbox.mousewheel.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of jQuery Tools component -->
+		</div><!-- #jQuery-Tools -->
 		<div id="jQuery-UI" class="component">
 			<div class="icon">
 				<a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI"><img src="images/jquery_ui.jpg" width="320" height="240" alt="jQuery UI icon" /></a>
@@ -181,10 +163,22 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				Version 1.8.5
 			</div>
 			<div class="description">
-				<p>jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.</p>
+				<p><a href="http://ui.jquery.com/" title="Enhanced user experience using jQuery UI">jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of jQuery UI component -->
+		</div><!-- #jQuery-UI -->
+		<div id="Modevious-Update-System" class="component">
+			<div class="icon">
+				<a href="mups/" title="Modevious Update System"><img src="images/mups.jpg" width="320" height="240" alt="Modevious Update System" /></a>
+			</div>
+			<div class="name">
+				<h1><a href="mups/" title="Modevious Update System">MUpS</a></h1>
+			</div>
+			<div class="description">
+				<p><a href="mups/" title="Modevious Update System">Modevious comes with a system to easily keep your plugins updated. If you're an end-user you'll know which plugins are starting to get outdated, and as a developer you've got another outlet that you can use to inform your users of updates.</a></p>
+			</div>
+			<div class="clear-float"></div>
+		</div><!-- #Modevious-Update-System -->
 		<div id="Pines-Notify" class="component">
 			<div class="icon">
 				<a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em"><img src="images/pines_notify.jpg" width="320" height="240" alt="Pines Notify icon" /></a>
@@ -196,13 +190,14 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				Version 1.0.1
 			</div>
 			<div class="description">
-				<p>The Pines Notify is a jQuery plugin developed by Hunter Perrin as part of Pines.</p>
-				<p>It is a notification system that uses the jQuery UI CSS library for styling, which means it is fully and easily themeable.</p>
+				<p><a href="http://pines.sourceforge.net/pnotify/" title="Notify 'em">The Pines Notify is a jQuery plugin developed by Hunter Perrin as part of Pines.<br />
+				<br />
+				It is a notification system that uses the jQuery UI CSS library for styling, which means it is fully and easily themeable.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of Pines Notify -->
-		<div class="component">
-			<div id="Prototype" class="icon">
+		</div><!-- #Pines-Notify -->
+		<div id="Prototype" class="component">
+			<div class="icon">
 				<a href="http://www.prototypejs.org/" title="The Prototype JS library"><img src="images/prototype.jpg" width="320" height="240" alt="Prototype JS image" /></a>
 			</div>
 			<div class="name">
@@ -212,11 +207,12 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				Version 1.6.1
 			</div>
 			<div class="description">
-				<p>Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.</p>
-				<p>Featuring a unique, easy-to-use toolkit for class-driven development and the nicest Ajax library around, Prototype is quickly becoming the codebase of choice for web application developers everywhere.</p>
+				<p><a href="http://www.prototypejs.org/" title="The Prototype JS library">Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.<br />
+				<br />
+				Featuring a unique, easy-to-use toolkit for class-driven development and the nicest Ajax library around, Prototype is quickly becoming the codebase of choice for web application developers everywhere.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of Prototype JS component -->
+		</div><!-- #Prototype -->
 		<div id="SoundManager-2" class="component">
 			<div class="icon">
 				<a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript"><img src="images/soundmanager2.jpg" width="320" height="240" alt="SoundManager 2 image" /></a>
@@ -228,10 +224,10 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				Version 2.96a.20100624
 			</div>
 			<div class="description">
-				<p>SoundManager 2 makes it easier to play audio using JavaScript. By wrapping and extending HTML5 and Flash Audio APIs, SoundManager 2 brings reliable cross-platform audio to JavaScript.</p>
+				<p><a href="http://www.schillmania.com/projects/soundmanager2/" title="SoundManager 2 makes it easier to play audio using JavaScript">SoundManager 2 makes it easier to play audio using JavaScript. By wrapping and extending HTML5 and Flash Audio APIs, SoundManager 2 brings reliable cross-platform audio to JavaScript.</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of SoundManager 2 component -->
+		</div><!-- #SoundManager-2 -->
 		<div id="Style-Switcher" class="component">
 			<div class="icon">
 				<a href="http://www.alistapart.com/articles/alternate/" title="Alternative Style: Working With Alternate Style Sheets"><img src="images/style_switcher.jpg" width="320" height="240" alt="Style Switcher image" /></a>
@@ -240,12 +236,14 @@ Tested to work with jQuery 1.4 and used in over 200 ecommerce websites as a base
 				<h1><a href="http://www.alistapart.com/articles/alternate/" title="Alternative Style: Working With Alternate Style Sheets">Style Switcher</a></h1>
 			</div>
 			<div class="description">
-				<p>So you've got a web page. You’ve marked it up with structural XHTML. You’ve also been a good little web developer and used style sheets to control what your document looks like. You’ve even gone the extra mile and created several alternative style sheets to show how hardcore you are.</p>
-				<p>Great. But now you need a cross-browser way to dynamically switch between the style sheets.</p>
-				<p>Our Style Switcher originates from "A List <em>apart</em>", and has been directly integrated into the <a href="core/" title="Easy to use">Core library</a></p>
+				<p><a href="http://www.alistapart.com/articles/alternate/" title="Alternative Style: Working With Alternate Style Sheets">So you've got a web page. You’ve marked it up with structural XHTML. You’ve also been a good little web developer and used style sheets to control what your document looks like. You’ve even gone the extra mile and created several alternative style sheets to show how hardcore you are.<br />
+				<br />
+				Great. But now you need a cross-browser way to dynamically switch between the style sheets.<br />
+				<br />
+				Our Style Switcher originates from "A List <em>apart</em>", and has been directly integrated into the </a><a href="core/" title="Easy to use">Core library</a></p>
 			</div>
 			<div class="clear-float"></div>
-		</div><!-- END of Style Switcher component -->
+		</div><!-- #Style-Switcher -->
 	</div>
 <!--#include virtual="/include/footer.htm" -->
 </body>

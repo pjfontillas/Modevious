@@ -8,7 +8,39 @@
 					<div class="padded">
 						<h3>Modevious Update System (MUpS)</h3>
 						<p>MUpS is an Ajax-based tool that bypasses the Same Origin Policy and allows plugin authors to let their users know that an update is available by using a server-side script that feeds JSON data to this client-based application.</p>
+            <h1>For end-users of plugins and libraries</h1>
+            <p>End-users of plugins and libraries can <a href="/modevious/update/" alt="Access MUpS">check for updates using MUpS.</a> From there they can quickly review updates and download them or follow the links for more detailed information about each update.</p>
+            <p class="text-center"><a href="/modevious/update/" alt="Access MUpS"><img src="images/mups-cap.jpg" width="720" height="180" alt="MUpS screenshot" /></a></p>
+            <h1>For the developers</h1>
 						<p>Each plugin simply uses a normalized method of calling MUpS and giving it their update information. If a plugin doesn't use the system, no problem; we just don't check for updates for that certain plugin. If a plugin is written so that it supports the use of the system, but is used in a project where Modevious isn't included we still have no problem. The normalized method uses a technique where should a check for Modevious fail the error is simply caught and once again we simply don't check for updates (or in this case even register our update data)!</p>
+<pre class="prettyprint code">
+/**
+*	Update Mechanism
+*		I am going to encourage the use of this system for other plugins and
+*		libraries. However, I understand not everbody will want to do this
+*		and so provide this technique for attempting to update if Modevious's
+*		Update System is in place; if Modevious is not being used this will
+*		fail silently and cause no errors. So basically, if the system is there it
+*		will use it, otherwise nothing happens.
+*/
+try { // to update Modevious
+	$c.update("Modevious", $c.getVersion(), "http://modevious.com/js/update.php");
+} catch (e) {
+} // do nothing
+</pre>
+          <p>You can replace "$c.getVersion()" with a static version number if you don't create an object for your script that stores the version number so that you can call it later and use it to verify or check for specific features or compatibility with other plugins.</p>
+          <p>Now on your server you need to provide update information. Here's an example update file that you would update every time you update your script, plugin, or library.</p>
+<pre class="prettyprint code">
+&lt;?php echo($_GET['callback']); ?>({
+  "version": "122",
+  "versionString": "v1.2.2",
+  "description": "Version 1.2.2 adds Google Code Prettify and jQuery Context Menu support and enhances automatically created draggables by the use of the draggables class.",
+  "url": "http://modevious.com/cache/modevious.1.2.2.zip",
+  "changelog": "http://github.com/pjfontillas/modevious/commits/master",
+  "type": "Normal"
+});
+</pre>
+          <p>The attributes are self-explanatory, except for "url" which points to the download file and "type" which can be "Normal" or "Critical". Please use these appropriately. Critical updates are styled differently than normal updates and although they may stand out compared to normally styled updates if users constantly see your updates as critical they may be re-consider using your stuff if there seems to be so many "Critical" issues with it. This "rule" isn't going to be enforced, instead it will simply be encouraged.</p>
 					</div>
 		</div>	 
 		<div class="clear-float"></div>						
