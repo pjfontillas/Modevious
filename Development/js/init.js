@@ -22,7 +22,7 @@ for (var i = 0; i < scriptsLength; i++) {
 // 4. Use new URL as Modevious location and read in its other files
 if (modeviousLocation != $c.config.modeviousLocation) {
 	$c.config.modeviousLocation = modeviousLocation;
-	$c.config.jQueryUIThemeURL = modeviousLocation + "jquery-ui-1.8.5.custom.css";
+	$c.config.jQueryUIThemeURL = modeviousLocation + "jquery-ui-1.8.7.custom.css";
 	$c.config.libraryURL = modeviousLocation + "library.css";
 	$c.config.soundManager.url = modeviousLocation + "swf";
 }

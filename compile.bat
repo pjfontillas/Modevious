@@ -24,8 +24,8 @@ copy /b tmp\library.js + Development\js\src\core%1.js tmp\library.js
 :: jQuery User interface
 mkdir tmp\images
 copy Development\css\images\* tmp\images\
-copy Development\css\jquery-ui-1.8.5.custom.css tmp\jquery-ui-1.8.5.custom.css
-copy /b tmp\library.js + Development\js\src\jquery-ui-1.8.5.min.js tmp\library.js
+copy Development\css\jquery-ui-1.8.7.custom.css tmp\jquery-ui-1.8.7.custom.css
+copy /b tmp\library.js + Development\js\src\jquery-ui-1.8.7.min.js tmp\library.js
 
 :: jQuery Tools
 copy /b tmp\library.js + Development\js\src\jquery.tools.min.js tmp\library.js
