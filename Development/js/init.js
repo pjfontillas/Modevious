@@ -36,36 +36,36 @@ var stack_bottomleft = {"dir1": "up", "dir2": "right", "firstpos1": 15, "firstpo
 var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpos2": 15};
 
 $c.onLoad(function () {	
-  // initialize console 
-  $j("body").append([
-  "<div id=\"console\">",
-    "<div id=\"console_top\">",
-      "<div id=\"minimize_console_button\"></div>",
-    "</div>",
-    "<div id=\"console_middle\">",
-      "<div id=\"console_text\"></div>",
-    "</div>",
-    "<div id=\"console_bottom\"></div>",
-  "</div>"
-  ].join(''));
-  // add close behavior to console close button
-  $j("#minimize_console_button").click($c.hideConsole);
-  // create keypress listener for code to open console
-  // Default: UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A
-  // currently using an IE hack to detect keypresses
-  if (document.addEventListener) {
-    document.addEventListener("keydown", function(event) {
-      $c.checkConsoleCode(event);
-    }, false);
-  } else {
-    document.attachEvent("onkeydown", function(event) {
-      $c.checkConsoleCode(event);
-    });    
-  }
-  // allow for users to move the console
-  $j("#console").draggable({ handle: "#console_top, #console_bottom"});
+	// initialize console 
+	$j("body").append([
+	"<div id=\"console\">",
+		"<div id=\"console_top\">",
+			"<div id=\"minimize_console_button\"></div>",
+		"</div>",
+		"<div id=\"console_middle\">",
+			"<div id=\"console_text\"></div>",
+		"</div>",
+		"<div id=\"console_bottom\"></div>",
+	"</div>"
+	].join(''));
+	// add close behavior to console close button
+	$j("#minimize_console_button").click($c.hideConsole);
+	// create keypress listener for code to open console
+	// Default: UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A
+	// currently using an IE hack to detect keypresses
+	if (document.addEventListener) {
+		document.addEventListener("keydown", function(event) {
+			$c.checkConsoleCode(event);
+		}, false);
+	} else {
+		document.attachEvent("onkeydown", function(event) {
+			$c.checkConsoleCode(event);
+		});		
+	}
+	// allow for users to move the console
+	$j("#console").draggable({ handle: "#console_top, #console_bottom"});
 
-  $c.trace("Starting Modevious...");
+	$c.trace("Starting Modevious...");
 	// initialize jQuery UI
 	$j(".tabs").tabs();
 	$j(".accordion").accordion({ 
@@ -80,7 +80,7 @@ $c.onLoad(function () {
 		delay: 500
 	});
 	$j(".resizable").resizable();
-  $c.trace("jQuery User Interface initialized.");
+	$c.trace("jQuery User Interface initialized.");
 
 	// initialize Expose elements
 	$j(".expose").click(function(){
@@ -90,25 +90,25 @@ $c.onLoad(function () {
 			zIndex: 10001
 		}).load();
 	});
-  $c.trace("Expose elements initialized.");
+	$c.trace("Expose elements initialized.");
 
 	// initialize AutoMouseOver elements
 	$j(".mouse-over").autoMouseOver();
-  $c.trace("AutoMouseOver elements initialized.");
+	$c.trace("AutoMouseOver elements initialized.");
 
 	// initialize email address de-obfuscation
 	$c.showEmail();
-  $c.trace("Email addressed de-obfuscated.");
+	$c.trace("Email addressed de-obfuscated.");
 	
 	// set preferred style sheet from cookie if possible
-  try {
-    if ($c.readCookie("style").length !== 0) {
-      $c.setActiveStyleSheet($c.readCookie("style"));
-      $c.trace("Style sheet cookie found, setting active style sheet.");
-    }
-  } catch (err) {
-    $c.trace("No cookie for style sheet found.");
-  }
+	try {
+		if ($c.readCookie("style").length !== 0) {
+			$c.setActiveStyleSheet($c.readCookie("style"));
+			$c.trace("Style sheet cookie found, setting active style sheet.");
+		}
+	} catch (err) {
+		$c.trace("No cookie for style sheet found.");
+	}
 
-  $c.trace("Modevious started and running smoothly!");
+	$c.trace("Modevious started and running smoothly!");
 });

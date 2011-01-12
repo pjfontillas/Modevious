@@ -106,49 +106,49 @@
 	width: 100% !important;
 }
 #console {
-  position: fixed;
-  z-index: 100000;
-  top: -1000px;
+	position: fixed;
+	z-index: 100000;
+	top: -1000px;
 }
 #console_top {
-  background: url(console/console_top.png);
-  width: 600px;
-  height: 50px;
-  padding: 0px 20px;
-  cursor: move;
-  margin: 0px;
+	background: url(console/console_top.png);
+	width: 600px;
+	height: 50px;
+	padding: 0px 20px;
+	cursor: move;
+	margin: 0px;
 }
 #console_middle {
-  background: url(console/console_middle.png);
-  width: 580px;
-  height: 325px;
-  padding: 0px 30px;
-  margin: 0px;
+	background: url(console/console_middle.png);
+	width: 580px;
+	height: 325px;
+	padding: 0px 30px;
+	margin: 0px;
 }
 #console_text {
-  width: 568px;
-  height: 313px;
-  padding: 5px;
-  border: 1px solid #AAA;
-  background: #000;
-  color: #FFF;
-  overflow: auto;
-  font-family: Arial, Helvetica, sans-serif;
+	width: 568px;
+	height: 313px;
+	padding: 5px;
+	border: 1px solid #AAA;
+	background: #000;
+	color: #FFF;
+	overflow: auto;
+	font-family: Arial, Helvetica, sans-serif;
 }
  #console_bottom {
-  background: url(console/console_bottom.png);
-  width: 640px;
-  height: 25px;
-  margin: 0px;
-  cursor: move;
+	background: url(console/console_bottom.png);
+	width: 640px;
+	height: 25px;
+	margin: 0px;
+	cursor: move;
 }
 #minimize_console_button {
-  cursor: pointer;
-  width: 27px;
-  height: 27px;
-  margin: 15px 0px 8px 0px;
-  float: right;
-  background: url(console/minimize.png) no-repeat;
+	cursor: pointer;
+	width: 27px;
+	height: 27px;
+	margin: 15px 0px 8px 0px;
+	float: right;
+	background: url(console/minimize.png) no-repeat;
 }
 .ui-pnotify.stack-bottomright, .ui-pnotify.stack-bottomleft {
 	right: auto;
