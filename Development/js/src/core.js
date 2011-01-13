@@ -506,6 +506,7 @@ var $c = (function () {
 		 *		or send it via email.
 		 */
 		trace: function (message) {
+			var args = Array.prototype.slice.call(arguments);
 			// log and debug support
 			$c.log[$c.log.length] = [
 				$c.getTime(),
@@ -518,6 +519,67 @@ var $c = (function () {
 				"</p>"
 			].join(''));
 			return message; // chains message for possible use with other utilities
+		},
+		/**
+		 *	Emulates part of the Firebug console and native console
+		 *	found in Chrome and Safari. Acts as a wrapper for 
+		 *	several console functions. The message will eventually
+		 *	make it the real console if they are available but is
+		 *	also stored elsewhere so that it can be sent via email
+		 *	to the site admin.
+		 */
+		console: {
+			/**
+			 *	Emulates string substitution found in Firebug.
+			 *	Returns parsed string.
+			 */
+			parse: function (args) {
+				var currentArg = 1;
+				var parsedString = args[0];
+				while (currentArg < args.length) {
+					var subPosition = parsedString.indexOf('%');
+					if  (subPosition == -1) {
+						// simply concactenate everything
+						while (currentArg < args.length) {
+							parsedString += ' ' + args[currentArg];
+							currentArg++;
+						}
+					} else {
+						var subType = parsedString.charAt(subPosition + 1);
+						switch (subType) {
+							case 's':
+							case 'o':
+								parsedString = parsedString.sub('%' + subType, String(args[currentArg]));
+								break;
+							case 'd':
+							case 'i':
+							case 'f':
+								if (isNaN(args[currentArg])) {
+									args[currentArg] = 0;
+								}
+								parsedString = parsedString.sub('%' + subType, Number(args[currentArg]));
+								break;
+							case 'c':
+								// not currently supported
+								break;
+							default:
+								// invalid substitution code
+						}
+						currentArg++;
+					}
+				}
+				return parsedString;
+			},
+			log: function () {
+				var args = Array.prototype.slice.call(arguments); 
+				var output = $c.console.parse(args);
+				if (window.console) {
+					// send to native console
+					console.log(output);
+				}
+				// send to our console for storage
+				$c.trace(output);
+			}
 		},
 		/**
 		 *	checkConsoleCode (event)
