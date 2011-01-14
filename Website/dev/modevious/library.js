@@ -13275,7 +13275,6 @@ jQuery.each([ "Height", "Width" ], function( i, name ) {
 /*global window: true, document: true, XMLHttpRequest: true, Event: true, 
 ActiveXObject: true, alert: true, $$: true, jQuery: true, window.$config: true,
 location: true, navigator:true */
-
 /**
 *		Implied global variables:
 *			var window; // Is it safe to declare this?
@@ -13834,12 +13833,72 @@ var $c = (function () {
 			log: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (window.console) {
+				if (typeof(window.console.log) != "undefined") {
 					// send to native console
 					console.log(output);
 				}
 				// send to our console for storage
-				$c.trace(output);
+				$c.trace("Log: " + output);
+			},
+			debug: function () {
+				var args = Array.prototype.slice.call(arguments); 
+				var output = $c.console.parse(args);
+				if (typeof(window.console.debug) != "undefined") {
+					// send to native console
+					console.debug(output);
+				}
+				// send to our console for storage
+				$c.trace("Debug: " + output);
+			},
+			info: function () {
+				var args = Array.prototype.slice.call(arguments); 
+				var output = $c.console.parse(args);
+				if (typeof(window.console.info) != "undefined") {
+					// send to native console
+					console.info(output);
+				}
+				// send to our console for storage
+				$c.trace("Info:" + output);
+			},
+			warn: function () {
+				var args = Array.prototype.slice.call(arguments); 
+				var output = $c.console.parse(args);
+				if (typeof(window.console.warn) != "undefined") {
+					// send to native console
+					console.warn(output);
+				}
+				// send to our console for storage
+				$c.trace("Warning: " + output);
+			},
+			error: function () {
+				var args = Array.prototype.slice.call(arguments); 
+				var output = $c.console.parse(args);
+				if (typeof(window.console.error) != "undefined") {
+					// send to native console
+					console.error(output);
+				}
+				// send to our console for storage
+				$c.trace("Error: " + output);
+			},
+			assert: function () {
+				var args = Array.prototype.slice.call(arguments);
+				var output;
+				if (!args[0]) {
+					args.shift();
+					output = $c.console.parse(args);
+					if (typeof(window.console.assert) != "undefined") {
+						// send to native console
+						console.assert(false, output);
+					}
+					// send to our console for storage
+					$c.trace("Assertion failed: " + output);
+				}
+			},
+			clear: function () {
+				if (typeof(window.console.clear) != "undefined") {
+					console.clear();
+				}
+				$j("#console_text").html('');
 			}
 		},
 		/**
