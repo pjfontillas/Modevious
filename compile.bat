@@ -64,6 +64,9 @@ mkdir tmp\update
 touch tmp\update\index.html
 copy /b Development\update\index.html tmp\update\index.html
 
+:: Send Console script
+copy /b Development\send_log.php tmp\send_log.php
+
 :: copy licenses
 copy Development\licenses.txt tmp\licenses.txt
 
