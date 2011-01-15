@@ -13858,7 +13858,7 @@ var $c = (function () {
 					console.info(output);
 				}
 				// send to our console for storage
-				$c.trace("Info:" + output);
+				$c.trace("Info: " + output);
 			},
 			warn: function () {
 				var args = Array.prototype.slice.call(arguments); 

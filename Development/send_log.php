@@ -9,7 +9,7 @@
 	$url = $_POST['url'];
 	
 	$headers = "From: $from <$fromEmail>";
-	$content = "Log for: $url\nIP: $ip\n\n" . $log;
+	$content = "<html><body><p>Log for: $url<br />IP: $ip</p><p>" . $log . "</p></body></html>";
 	
 	if(mail($admin,$subject,$content,$headers)) {
 		echo "Log successfully sent.";
