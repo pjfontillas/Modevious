@@ -88,7 +88,7 @@ if ($ajax != 1) {
 		<div class="clear-float"></div>      
 	</div><!-- #contact_form -->
 	';
-	require_once($_SERVER['DOCUMENT_ROOT'] . '/include/footer.htm');
+	require_once($_SERVER['DOCUMENT_ROOT'] . '/include/footer-no-js.htm');
 	echo '
 			</body>
 		</html>

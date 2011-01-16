@@ -36,7 +36,7 @@
 			<p>Seriously, that's all you have to do to get started. Put in a file that's included on every page and you're good to go.</p>
 		</div><!-- #Include-and-configuration -->
 		<div id="plugin-example">
-			<img id="shadowbox-image" src="images/shadowbox.jpg" alt="Shadowbox" width="920" height="360" longdesc="http://www.shadowbox-js.com" />
+			<img id="shadowbox-image" src="images/shadowbox.jpg" alt="Shadowbox" width="920" height="360" />
 			<div class="half">
 				<div class="padded">
 					<p>With both the Prototype JS and jQuery libraries you have a plethora of plugins and widgets available.</p>
@@ -58,7 +58,7 @@ Shadowbox.init({
 </pre> 
 					<p>to the minified version of Shadowbox.js to have it auto initialize once the script is loaded. I also changed /css/shadowbox.css by making the z-index rule for #sb-container be 10002 instead of 999. That way it overlays both PNotify and Expose. Other changes to the CSS include renaming the url for the navigation buttons to match putting Shadowbox in /js/lib/ and rewriting a rule for #sb-overlay to have it fixed and the size of the viewport only using basic CSS 2.1.</p>
 					<p>Shadowbox was is a wonderful tool, but isn't free for commercial usage. In order to use it for commercial purposes you need to purchase a license. It's not overly expensive, and I think it is worth the price, but for the reason that all tools packaged in Modevious come free I cannot include it. But looking at this page, wouldn't you agree that it's relatively simple adding it as an extra plugin? Just remember to purchase a license should you use it for commercial reasons.</p>
-					<p>One more gripe I have about using Shadowbox is its use of the rel attribute. Although ingenious, this method it employs <a href="http://validator.w3.org/check?uri=referer" alt="Check for yourself">doesn't validate as XHTML 1.1</a>. A small and minor setback, but one nonetheless. One could get around that, however, by setting up the related images using JS rather than placing it in a group using the rel attribute.</p>
+					<p>One more gripe I have about using Shadowbox is its use of the rel attribute. Although ingenious, this method it employs <a href="http://validator.w3.org/check?uri=referer" title="Check for yourself">doesn't validate as XHTML 1.1</a>. A small and minor setback, but one nonetheless. One could get around that, however, by setting up the related images using JS rather than placing it in a group using the rel attribute.</p>
 				</div>
 			</div>		
 			<div class="half">
@@ -70,7 +70,7 @@ Shadowbox.init({
 					</ul>
 					<div id="images">
 						<p>The simplest way to use Shadowbox is to display a single piece of	 content, with a thumbnail link on the page. When the user clicks on the	 thumbnail, Shadowbox will open to display a larger version of the image.</p>
-						<table border="0" cellpadding="0" cellspacing="10">
+						<table>
 							<tbody>
 							<tr>
 								<td><a rel="shadowbox" href="http://shadowbox-js.com/gallery/tiger.jpg"><img alt="Tiger" src="http://shadowbox-js.com/gallery/tiger-thumb.jpg" /></a></td>
@@ -80,7 +80,7 @@ Shadowbox.init({
 						</table>
 						<h3>Thumb Gallery</h3>
 						<p>Unlike the previous image gallery, this one is triggered	 by thumbnail links. It also uses a <a href="http://shadowbox-js.com/options.html#countertype">skip counter</a>, <a href="http://shadowbox-js.com/options.html#animsequence">synchronous</a> animations, and is <a href="http://shadowbox-js.com/options.html#continuous">continuous</a>.</p>
-						<table border="0" cellpadding="0" cellspacing="10">
+						<table>
 						<tbody>
 						<tr>
 							<td><a rel="shadowbox[MustangThumbs];options={counterType:'skip',continuous:true,animSequence:'sync'}" href="http://shadowbox-js.com/gallery/mustang/red.jpg"><img src="http://shadowbox-js.com/gallery/mustang/red-thumb.jpg" alt="Red" id="red-mustang" /></a></td>
@@ -93,7 +93,7 @@ Shadowbox.init({
 					<div id="flash">
 						<h3>Flash</h3>
 						<p>Shadowbox is able to display Flash through the use of the	 Flash <a href="http://shadowbox-js.com/options.html#players">player</a>.	 Flash video is also supported.</p>
-						<table border="0" cellpadding="0" cellspacing="10">
+						<table>
 							<tbody>
 								<tr>
 									<td><a rel="shadowbox;width=400;height=300" title="Girl Skipping" href="http://shadowbox-js.com/gallery/skip.swf"><img src="http://shadowbox-js.com/gallery/skip-thumb.gif" alt="Skip" /></a></td>
@@ -109,7 +109,7 @@ Shadowbox.init({
 					<div id="movies">
 						<h3>Movies</h3>
 						<p>Shadowbox supports all of the web's most popular movie	 formats including QuickTime, Flash video, and Windows Media Player.</p>
-						<table border="0" cellpadding="0" cellspacing="10">
+						<table>
 							<tbody>
 							<tr>
 								<td><a rel="shadowbox;width=405;height=340;player=swf" title="Ebon Coast" href="http://www.youtube.com/v/lSnWhsmlGec&amp;hl=en&amp;fs=1&amp;rel=0&amp;autoplay=1"><img src="http://shadowbox-js.com/gallery/mckee-thumb.jpg" alt="Mckee" /></a></td>
@@ -123,7 +123,7 @@ Shadowbox.init({
 							</tr>
 							</tbody>
 						</table>
-						<table border="0" cellpadding="0" cellspacing="10">
+						<table>
 							<tbody>
 							<tr>
 								<td><a rel="shadowbox;width=400;height=225;options={flashVars:{clip_id:1893986,autoplay:'true'}}" title="The Last Eggtion Hero" href="http://vimeo.com/moogaloop.swf"><img src="http://shadowbox-js.com/gallery/eggtion-thumb.jpg" alt="Eggtion" /></a></td>

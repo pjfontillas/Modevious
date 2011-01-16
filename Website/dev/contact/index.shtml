@@ -24,6 +24,6 @@
     </div>
   </div>
   <div class="clear-float"></div>          
-<!--#include virtual="/include/footer.htm" -->
+<!--#include virtual="/include/footer-no-js.htm" -->
 </body>
 </html>

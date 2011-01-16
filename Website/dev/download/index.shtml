@@ -6,7 +6,6 @@
   <div id="core">
 	<div class="full">
 		<div class="padded">
-			<div id="hide-download">hide</div>
 			<div class="ui-widget">
 				<div class="ui-state-error padded">
 					<p class="text-center">
@@ -45,7 +44,7 @@
 			<a href="http://github.com/pjfontillas/modevious/commits/master" title="Latest changes">View the changelog</a></p>
 			<p>HTTP downloads are available and the source code is openly	available should you access the scripts on this site or on <a href="http://github.com/pjfontillas/modevious" title="Modevious on GitHub">GitHub</a>.</p>
 			<form action="http://www.modevious.com/cache/modevious.1.3.0.zip">
-				<div><a href="http://www.modevious.com/cache/modevious.1.3.0.zip" title="Download the latest release"><button>Download Modevious</button></a></div>
+				<div><button>Download Modevious</button></div>
 			</form>
 			<p>Older versions can be <a href="http://www.modevious.com/cache/" title="A public directory">fetched from the cache via HTTP</a>.</p>
 			<p><a href="http://github.com/pjfontillas/modevious/downloads" title="You can download them from here too">Mirrors provided by GitHub</a></p>
