@@ -76,8 +76,7 @@ $c.onLoad(function () {
 	$j(":button").button();
 	$j(".draggable").draggable({
 		cursor: "move",
-		cancel: "p, img, h1, h2, h3, h4, h5, a",
-		delay: 500
+		cancel: "p, img, h1, h2, h3, h4, h5, a"
 	});
 	$j(".resizable").resizable();
 	$c.trace("jQuery User Interface initialized.");
