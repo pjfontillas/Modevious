@@ -649,7 +649,7 @@ var $c = (function () {
 					parameters: {
 						method: "post",
 						log: log,
-						url: window.document.location
+						url: window.document.location.href
 					},
 					onSuccess: function (transport) {
 						$c.console.info(transport.responseText);
