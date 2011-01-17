@@ -57,23 +57,15 @@
 	</div>
 	<div class="clear-float"></div>
 </div><!-- #download-container -->
-<div id="contact-container" class="draggable">
-	<h1 class="text-center">Need to talk to me?</h1>
-	<div class="half">
-		<form id="contact-form" method="post" action="ed/">
-			<p>You can send an email to <a class="email" href="mailto:me(AT)pjfontillas(DOT)com">me(AT)pjfontillas(DOT)com</a>.</p>
-			<p>Or simply use this form. Whatcha got to say?</p>
-			<p><textarea rows="5" cols="40" name="contact-message" id="contact-message"></textarea></p>
-			<p><label>Your name: </label><input name="contact-name" id="contact-name" type="text" /></p>
-			<p><label>Your email: </label><input name="contact-email" id="contact-email" type="text" /></p>
-			<p><button type="submit" id="submit-contact-form">Send it!</button><button type="submit" id="cancel-contact-form">Cancel</button></p>
-		</form><!-- #contact-form -->
-	</div>
-	<div id="address" class="half">
-		<p>Patrick James Fontillas</p>
-		<hr />
-		<p>123 Cyber Lane</p>
-		<hr />
-		<p>The Internet, Planet Earth</p>
-	</div><!-- #address -->
-</div><!-- #contact-container -->
+<div id="contact_container" class="draggable">
+	<form id="contact_form" method="post" action="">
+		<fieldset>
+			<legend>Talk to me</legend>
+			<p>You can send an email to <a class="enc_email" href="mailto:me(AT)pjfontillas(DOT)com">me(AT)pjfontillas(DOT)com</a>.</p>
+			<p><label for="contact_form_message">Or simply use this form. Whatcha got to say?</label><br /><textarea rows="5" cols="40" name="contact_form_message" id="contact_form_message" class="required"></textarea></p>
+			<p><label for="contact_form_name">Your name: </label><input name="contact_form_name" id="contact_form_name" type="text"  class="required" /></p>
+			<p><label for="contact_form_email">Your email: </label><input name="contact_form_email" id="contact_form_email" type="text"  class="required" /></p>
+			<p><button type="submit" id="contact_form_submit">Send it!</button><button type="submit" id="contact_form_cancel">Cancel</button></p>
+		</fieldset>
+	</form><!-- #contact_form -->
+</div><!-- #contact_container -->

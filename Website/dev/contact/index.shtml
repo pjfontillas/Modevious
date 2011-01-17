@@ -7,7 +7,7 @@
     <h1 class="text-center" >Need to talk to me?</h1>
     <div class="half">
       <form method="post" action="ed/">
-				<p>You can send an email to <a class="email" href="mailto:me(AT)pjfontillas(DOT)com">me(AT)pjfontillas(DOT)com</a>.</p>
+				<p>You can send an email to <a class="enc-email" href="mailto:me(AT)pjfontillas(DOT)com">me(AT)pjfontillas(DOT)com</a>.</p>
 				<p>Or simply use this form. Whatcha got to say?</p>
 				<p><textarea rows="5" cols="40" name="message"></textarea></p>
 				<p><label>Your name: </label><input name="name" type="text" /></p>

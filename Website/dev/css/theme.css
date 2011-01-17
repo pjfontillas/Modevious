@@ -123,14 +123,6 @@ a:visited {
 button {
 	outline: none !important;
 }
-#contact_form {
-	background: url(theme/contact_card.png);
-	width: 759px;
-	height: 389px;
-	padding: 30px;
-	margin: 0px auto;
-	color: #000;
-}
 #address {
 	padding: 100px 0px 0px 0px;
 	text-align: right;
@@ -147,7 +139,7 @@ button {
 	display: none;
 	cursor: move;
 }
-#hide-download, #hide-contact {
+#hide-download {
 	width: 100%;
 	padding: 10px 0px;
 	background: #000;
@@ -155,21 +147,21 @@ button {
 	text-align: center;
 	margin: 10px 0px;
 }
-#hide-download:hover, #hide-contact:hover {
+#hide-download:hoverr {
 	color: #FFF;
 	cursor: pointer;
 }
-#contact-container {
+#contact_container {
 	position: absolute;
 	top: -1000px;
 	z-index: 1001;
 	cursor: move;
-	width: 759px;
+	width: auto;
 	height: auto;
 	border: 1px solid #AAA;
 	padding: 30px;
 	margin: 0px auto;
-	background: url(theme/contact_card_bg.jpg) no-repeat #FFF;
+	background: url(theme/contact_card_bg.jpg) repeat-x #eee;
 	color: #000;
 	display: none;
 }
@@ -184,3 +176,4 @@ button {
 #back-to-top:hover {
 	background: #000;
 }
+label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }

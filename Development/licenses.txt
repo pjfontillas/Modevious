@@ -1,6 +1,6 @@
 ===============
 MIT License
-Modevious, Prototype, jQuery, jQuery UI, jQuery Context Menu
+Modevious, Prototype, jQuery, jQuery UI, jQuery Context Menu, jQuery.Validate
 
 Copyright (c) 2005-2007 Sam Stephenson
 
@@ -577,7 +577,7 @@ Prototype: http://creativecommons.org/licenses/by-sa/3.0/
 
 ===============
 GPLv3
-autoMouseOver, jQuery Context Menu
+autoMouseOver, jQuery Context Menu, jQuery.Validate
 
                    GNU LESSER GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007

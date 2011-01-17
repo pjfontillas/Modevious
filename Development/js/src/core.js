@@ -285,7 +285,7 @@ var $c = (function () {
 		 */
 		showEmail: function () {
 			var url;
-			$$(".email").each(function (a) {
+			$$(".enc_email").each(function (a) {
 				url = a.href.replace($c.config.at, '@');
 				url = url.replace($c.config.dot, '.');
 				a.href = url;
