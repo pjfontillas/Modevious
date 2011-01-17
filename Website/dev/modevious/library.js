@@ -18342,7 +18342,7 @@ $c.onLoad(function () {
 	// allow for users to move the console
 	$j("#console").draggable({ handle: "#console_top, #console_bottom"});
 
-	$c.trace("Starting Modevious...");
+	$c.console.log("Starting Modevious...");
 	// initialize jQuery UI
 	$j(".tabs").tabs();
 	$j(".accordion").accordion({ 
@@ -18357,7 +18357,7 @@ $c.onLoad(function () {
 		delay: 500
 	});
 	$j(".resizable").resizable();
-	$c.trace("jQuery User Interface initialized.");
+	$c.console.log("jQuery User Interface initialized.");
 
 	// initialize Expose elements
 	$j(".expose").click(function(){
@@ -18367,25 +18367,25 @@ $c.onLoad(function () {
 			zIndex: 10001
 		}).load();
 	});
-	$c.trace("Expose elements initialized.");
+	$c.console.log("Expose elements initialized.");
 
 	// initialize AutoMouseOver elements
 	$j(".mouse-over").autoMouseOver();
-	$c.trace("AutoMouseOver elements initialized.");
+	$c.console.log("AutoMouseOver elements initialized.");
 
 	// initialize email address de-obfuscation
 	$c.showEmail();
-	$c.trace("Email addressed de-obfuscated.");
+	$c.console.log("Email addressed de-obfuscated.");
 	
 	// set preferred style sheet from cookie if possible
 	try {
 		if ($c.readCookie("style").length !== 0) {
 			$c.setActiveStyleSheet($c.readCookie("style"));
-			$c.trace("Style sheet cookie found, setting active style sheet.");
+			$c.console.log("Style sheet cookie found, setting active style sheet.");
 		}
 	} catch (err) {
-		$c.trace("No cookie for style sheet found.");
+		$c.console.log("No cookie for style sheet found.");
 	}
 
-	$c.trace("Modevious started and running smoothly!");
+	$c.console.log("Modevious started and running smoothly!");
 });

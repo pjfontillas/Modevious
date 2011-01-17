@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE HTML>
+<html>
 <head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<title>Modevious</title> 
@@ -29,10 +28,11 @@
 		#menu a:hover {
 			text-decoration: underline;
 		}
-		#update-manager {
-			width: 960px;
+		#update_manager {
+			width: 100%;
+		}
+		#update_manager_container {
 			padding: 10px;
-			margin: 0px auto;
 		}
 		.update {
 			padding: 0px 10px;
@@ -51,15 +51,17 @@
 		<a id="exit" href="/" title="Finish">Back to website</a>
 		<a id="mups"><strong>Modevious Update System</strong></a>
 	</div>
-	<div id="update-manager">
-		<h1 id="progress">Checking for updates...</h1>
-	</div><!-- END #update-manager -->
+	<div id="update_manager">
+		<div class="update_manager_container">
+			<h1 id="progress">Checking for updates...</h1>
+		</div><!-- #update_manager_container -->
+	</div><!-- #update_manager -->
 	<script type="text/javascript">
 		$c.onLoad(function () {
 			var data, updateType;
 			$j("body").css("cursor", "progress"); // show that page is busy
 			function mups() {
-				$c.trace([
+				$c.console.log([
 					"Fetching updates for: ",
 					$c.updateName[$c.updateCounter],
 				].join(''));
@@ -76,7 +78,7 @@
 						}
 						// use .sub('<', '&lt;').sub('>', '&gt;') to strip characters from data
 						// received from external sources.
-						$j("#update-manager").append([
+						$j("#update_manager_container").append([
 						"<div class=\"update ",
 						updateType.sub('<', '&lt;').sub('>', '&gt;'),
 						"\">",
@@ -97,12 +99,12 @@
 						"</div>"
 						].join(''));
 						$c.updateFound = true;
-						$c.trace([
+						$c.console.log([
 							"Found an update for: ",
 							$c.updateName[$c.updateCounter]
 						].join(''));
 					} else {
-						$c.trace([
+						$c.console.log([
 							"No update found for: ",
 							$c.updateName[$c.updateCounter]
 						].join(''));
