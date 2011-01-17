@@ -27,8 +27,8 @@ location: true, navigator:true */
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
 	// private methods and variables
-	var version = 130;
-	var versionString = "v1.3.0";
+	var version = 131;
+	var versionString = "v1.3.1";
 	var config = {
 		warnings: false,
 		at: "(AT)",
@@ -512,7 +512,7 @@ var $c = (function () {
 				": ",
 				message
 			].join('');
-			$j("#console_text").append([
+			$j("#modevious_console_text").append([
 				"<p>",
 				$c.log[$c.log.length - 1],
 				"</p>"
@@ -597,7 +597,7 @@ var $c = (function () {
 					console.info(output);
 				}
 				// send to our console for storage
-				$c.trace("Info:" + output);
+				$c.trace("Info: " + output);
 			},
 			warn: function () {
 				var args = Array.prototype.slice.call(arguments); 
@@ -637,7 +637,31 @@ var $c = (function () {
 				if (typeof(window.console.clear) != "undefined") {
 					console.clear();
 				}
-				$j("#console_text").html('');
+				$j("#modevious_console_text").html('');
+			},
+			send: function () {
+				var url = [
+					$c.config.modeviousLocation,
+					"send_log.php"
+				].join('');
+				var log = $j("#modevious_console_text").html();
+				var ajaxRequest = new Ajax.Request(url, {
+					parameters: {
+						method: "post",
+						log: log,
+						url: window.document.location.href
+					},
+					onSuccess: function (transport) {
+						$c.console.info(transport.responseText);
+					},
+					onFailure: function (transport) {
+						$c.console.warn([
+							"There was a problem sending the log. Here is the response:",
+							transport.status,
+							transport.statusText
+						].join(' '));
+					}
+				});
 			}
 		},
 		/**
@@ -660,8 +684,8 @@ var $c = (function () {
 		 *		Moves the log to its height + 500px above the page, effectively hiding it.
 		 */
 		hideConsole: function () {
-			$j("#console").animate({
-				top: (($j("#console").height() + 500) * -1) + "px"
+			$j("#modevious_console").animate({
+				top: (($j("#modevious_console").height() + 500) * -1) + "px"
 			});
 		},
 		/**
@@ -669,7 +693,7 @@ var $c = (function () {
 		 *		This function moves the console to just under the current vertical offset.
 		 */
 		 showConsole: function () {
-			$j("#console").animate({
+			$j("#modevious_console").animate({
 					top: 0
 			});
 		 },

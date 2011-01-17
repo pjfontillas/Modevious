@@ -38,18 +38,18 @@ var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpo
 $c.onLoad(function () {	
 	// initialize console 
 	$j("body").append([
-	"<div id=\"console\">",
-		"<div id=\"console_top\">",
-			"<div id=\"minimize_console_button\"></div>",
+	"<div id=\"modevious_console\">",
+		"<div id=\"modevious_console_top\">",
+			"<div id=\"modevious_minimize_console_button\"></div>",
 		"</div>",
-		"<div id=\"console_middle\">",
-			"<div id=\"console_text\"></div>",
+		"<div id=\"modevious_console_middle\">",
+			"<div id=\"modevious_console_text\"></div>",
 		"</div>",
-		"<div id=\"console_bottom\"></div>",
+		"<div id=\"modevious_console_bottom\"></div>",
 	"</div>"
 	].join(''));
 	// add close behavior to console close button
-	$j("#minimize_console_button").click($c.hideConsole);
+	$j("#modevious_minimize_console_button").click($c.hideConsole);
 	// create keypress listener for code to open console
 	// Default: UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A
 	// currently using an IE hack to detect keypresses
@@ -63,7 +63,7 @@ $c.onLoad(function () {
 		});		
 	}
 	// allow for users to move the console
-	$j("#console").draggable({ handle: "#console_top, #console_bottom"});
+	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"});
 
 	$c.console.log("Starting Modevious...");
 	// initialize jQuery UI
@@ -76,8 +76,7 @@ $c.onLoad(function () {
 	$j(":button").button();
 	$j(".draggable").draggable({
 		cursor: "move",
-		cancel: "p, img, h1, h2, h3, h4, h5, a",
-		delay: 500
+		cancel: "p, img, h1, h2, h3, h4, h5, a"
 	});
 	$j(".resizable").resizable();
 	$c.console.log("jQuery User Interface initialized.");

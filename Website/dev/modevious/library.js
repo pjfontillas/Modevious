@@ -13288,8 +13288,8 @@ location: true, navigator:true */
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
 	// private methods and variables
-	var version = 130;
-	var versionString = "v1.3.0";
+	var version = 131;
+	var versionString = "v1.3.1";
 	var config = {
 		warnings: false,
 		at: "(AT)",
@@ -13773,7 +13773,7 @@ var $c = (function () {
 				": ",
 				message
 			].join('');
-			$j("#console_text").append([
+			$j("#modevious_console_text").append([
 				"<p>",
 				$c.log[$c.log.length - 1],
 				"</p>"
@@ -13858,7 +13858,7 @@ var $c = (function () {
 					console.info(output);
 				}
 				// send to our console for storage
-				$c.trace("Info:" + output);
+				$c.trace("Info: " + output);
 			},
 			warn: function () {
 				var args = Array.prototype.slice.call(arguments); 
@@ -13898,7 +13898,31 @@ var $c = (function () {
 				if (typeof(window.console.clear) != "undefined") {
 					console.clear();
 				}
-				$j("#console_text").html('');
+				$j("#modevious_console_text").html('');
+			},
+			send: function () {
+				var url = [
+					$c.config.modeviousLocation,
+					"send_log.php"
+				].join('');
+				var log = $j("#modevious_console_text").html();
+				var ajaxRequest = new Ajax.Request(url, {
+					parameters: {
+						method: "post",
+						log: log,
+						url: window.document.location.href
+					},
+					onSuccess: function (transport) {
+						$c.console.info(transport.responseText);
+					},
+					onFailure: function (transport) {
+						$c.console.warn([
+							"There was a problem sending the log. Here is the response:",
+							transport.status,
+							transport.statusText
+						].join(' '));
+					}
+				});
 			}
 		},
 		/**
@@ -13921,8 +13945,8 @@ var $c = (function () {
 		 *		Moves the log to its height + 500px above the page, effectively hiding it.
 		 */
 		hideConsole: function () {
-			$j("#console").animate({
-				top: (($j("#console").height() + 500) * -1) + "px"
+			$j("#modevious_console").animate({
+				top: (($j("#modevious_console").height() + 500) * -1) + "px"
 			});
 		},
 		/**
@@ -13930,7 +13954,7 @@ var $c = (function () {
 		 *		This function moves the console to just under the current vertical offset.
 		 */
 		 showConsole: function () {
-			$j("#console").animate({
+			$j("#modevious_console").animate({
 					top: 0
 			});
 		 },
@@ -18315,18 +18339,18 @@ var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpo
 $c.onLoad(function () {	
 	// initialize console 
 	$j("body").append([
-	"<div id=\"console\">",
-		"<div id=\"console_top\">",
-			"<div id=\"minimize_console_button\"></div>",
+	"<div id=\"modevious_console\">",
+		"<div id=\"modevious_console_top\">",
+			"<div id=\"modevious_minimize_console_button\"></div>",
 		"</div>",
-		"<div id=\"console_middle\">",
-			"<div id=\"console_text\"></div>",
+		"<div id=\"modevious_console_middle\">",
+			"<div id=\"modevious_console_text\"></div>",
 		"</div>",
-		"<div id=\"console_bottom\"></div>",
+		"<div id=\"modevious_console_bottom\"></div>",
 	"</div>"
 	].join(''));
 	// add close behavior to console close button
-	$j("#minimize_console_button").click($c.hideConsole);
+	$j("#modevious_minimize_console_button").click($c.hideConsole);
 	// create keypress listener for code to open console
 	// Default: UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A
 	// currently using an IE hack to detect keypresses
@@ -18340,7 +18364,7 @@ $c.onLoad(function () {
 		});		
 	}
 	// allow for users to move the console
-	$j("#console").draggable({ handle: "#console_top, #console_bottom"});
+	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"});
 
 	$c.console.log("Starting Modevious...");
 	// initialize jQuery UI
@@ -18353,8 +18377,7 @@ $c.onLoad(function () {
 	$j(":button").button();
 	$j(".draggable").draggable({
 		cursor: "move",
-		cancel: "p, img, h1, h2, h3, h4, h5, a",
-		delay: 500
+		cancel: "p, img, h1, h2, h3, h4, h5, a"
 	});
 	$j(".resizable").resizable();
 	$c.console.log("jQuery User Interface initialized.");
