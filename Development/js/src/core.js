@@ -1,29 +1,19 @@
 /**
-*	Core v1.3.0
-*		Maintainer
-*			Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
-*		Description
-*			Holds some of the most common ajax functions used.
-*		Dependencies
-*			Prototype v1.7 
-*			jQuery 1.4.4
-*		Verified using JSLint.
-*		Module pattern.
-*/
+ * Core Library
+ * http://Modevious.com/
+ *
+ * Bridges the Prototype and jQuery libraries and also contains
+ * commonly found functions.
+ *
+ * Copyright 2010, Patrick James Fontillas
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://modevious.com/modevious/licenses.txt
+ *
+ */
 /*jslint evil: true */
 /*global window: true, document: true, XMLHttpRequest: true, Event: true, 
 ActiveXObject: true, alert: true, $$: true, jQuery: true, window.$config: true,
 location: true, navigator:true */
-/**
-*		Implied global variables:
-*			var window; // Is it safe to declare this?
-*			var document; // Is it safe to declare this?
-*			var XMLHttpRequest; // Will be depreciated next release
-*			var ActiveXObject; // Will be depreciated next release
-*			var alert; // What? How?
-*			var $$; // from Prototype
-*			var jQuery; // from jQuery
-*/
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
 	// private methods and variables
