@@ -572,52 +572,32 @@ var $c = (function () {
 			log: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.log) != "undefined") {
-					// send to native console
-					console.log(output);
-				}
-				// send to our console for storage
 				$c.trace("Log: " + output);
+				return output;
 			},
 			debug: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.debug) != "undefined") {
-					// send to native console
-					console.debug(output);
-				}
-				// send to our console for storage
 				$c.trace("Debug: " + output);
+				return output;
 			},
 			info: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.info) != "undefined") {
-					// send to native console
-					console.info(output);
-				}
-				// send to our console for storage
 				$c.trace("Info: " + output);
+				return output;
 			},
 			warn: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.warn) != "undefined") {
-					// send to native console
-					console.warn(output);
-				}
-				// send to our console for storage
 				$c.trace("Warning: " + output);
+				return output;
 			},
 			error: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.error) != "undefined") {
-					// send to native console
-					console.error(output);
-				}
-				// send to our console for storage
 				$c.trace("Error: " + output);
+				return output;
 			},
 			assert: function () {
 				var args = Array.prototype.slice.call(arguments);
@@ -625,13 +605,9 @@ var $c = (function () {
 				if (!args[0]) {
 					args.shift();
 					output = $c.console.parse(args);
-					if (typeof(window.console.assert) != "undefined") {
-						// send to native console
-						console.assert(false, output);
-					}
-					// send to our console for storage
 					$c.trace("Assertion failed: " + output);
 				}
+				return arguments;
 			},
 			clear: function () {
 				if (typeof(window.console.clear) != "undefined") {
@@ -652,9 +628,19 @@ var $c = (function () {
 						url: window.document.location.href
 					},
 					onSuccess: function (transport) {
+						if (window.console) {
+							console.info(transport.responseText);
+						}
 						$c.console.info(transport.responseText);
 					},
 					onFailure: function (transport) {
+						if (window.console) {
+							console.warn([
+								"There was a problem sending the log. Here is the response:",
+								transport.status,
+								transport.statusText
+							].join(' '));
+						}
 						$c.console.warn([
 							"There was a problem sending the log. Here is the response:",
 							transport.status,

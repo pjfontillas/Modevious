@@ -13833,52 +13833,32 @@ var $c = (function () {
 			log: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.log) != "undefined") {
-					// send to native console
-					console.log(output);
-				}
-				// send to our console for storage
 				$c.trace("Log: " + output);
+				return output;
 			},
 			debug: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.debug) != "undefined") {
-					// send to native console
-					console.debug(output);
-				}
-				// send to our console for storage
 				$c.trace("Debug: " + output);
+				return output;
 			},
 			info: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.info) != "undefined") {
-					// send to native console
-					console.info(output);
-				}
-				// send to our console for storage
 				$c.trace("Info: " + output);
+				return output;
 			},
 			warn: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.warn) != "undefined") {
-					// send to native console
-					console.warn(output);
-				}
-				// send to our console for storage
 				$c.trace("Warning: " + output);
+				return output;
 			},
 			error: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.error) != "undefined") {
-					// send to native console
-					console.error(output);
-				}
-				// send to our console for storage
 				$c.trace("Error: " + output);
+				return output;
 			},
 			assert: function () {
 				var args = Array.prototype.slice.call(arguments);
@@ -13886,13 +13866,9 @@ var $c = (function () {
 				if (!args[0]) {
 					args.shift();
 					output = $c.console.parse(args);
-					if (typeof(window.console.assert) != "undefined") {
-						// send to native console
-						console.assert(false, output);
-					}
-					// send to our console for storage
 					$c.trace("Assertion failed: " + output);
 				}
+				return arguments;
 			},
 			clear: function () {
 				if (typeof(window.console.clear) != "undefined") {
@@ -13913,9 +13889,19 @@ var $c = (function () {
 						url: window.document.location.href
 					},
 					onSuccess: function (transport) {
+						if (window.console) {
+							console.info(transport.responseText);
+						}
 						$c.console.info(transport.responseText);
 					},
 					onFailure: function (transport) {
+						if (window.console) {
+							console.warn([
+								"There was a problem sending the log. Here is the response:",
+								transport.status,
+								transport.statusText
+							].join(' '));
+						}
 						$c.console.warn([
 							"There was a problem sending the log. Here is the response:",
 							transport.status,
@@ -19512,6 +19498,9 @@ $c.onLoad(function () {
 	// allow for users to move the console
 	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"});
 
+	if (window.console) {
+		console.log("Starting Modevious...");
+	}
 	$c.console.log("Starting Modevious...");
 	// initialize jQuery UI
 	$j(".tabs").tabs();
@@ -19526,6 +19515,10 @@ $c.onLoad(function () {
 		cancel: "p, img, h1, h2, h3, h4, h5, a"
 	});
 	$j(".resizable").resizable();
+
+	if (window.console) {
+		console.log("jQuery User Interface initialized.");
+	}
 	$c.console.log("jQuery User Interface initialized.");
 
 	// initialize Expose elements
@@ -19536,25 +19529,42 @@ $c.onLoad(function () {
 			zIndex: 10001
 		}).load();
 	});
+	if (window.console) {
+		console.log("Expose elements initialized.");
+	}
 	$c.console.log("Expose elements initialized.");
 
 	// initialize AutoMouseOver elements
 	$j(".mouse-over").autoMouseOver();
+	if (window.console) {
+		console.log("AutoMouseOver elements initialized.");
+	}
 	$c.console.log("AutoMouseOver elements initialized.");
 
 	// initialize email address de-obfuscation
 	$c.showEmail();
+	if (window.console) {
+		console.log("Email addressed de-obfuscated.");
+	}
 	$c.console.log("Email addressed de-obfuscated.");
 	
 	// set preferred style sheet from cookie if possible
 	try {
 		if ($c.readCookie("style").length !== 0) {
 			$c.setActiveStyleSheet($c.readCookie("style"));
+			if (window.console) {
+				console.log("Style sheet cookie found, setting active style sheet.");
+			}
 			$c.console.log("Style sheet cookie found, setting active style sheet.");
 		}
 	} catch (err) {
+		if (window.console) {
+			console.log("No cookie for style sheet found.");
+		}
 		$c.console.log("No cookie for style sheet found.");
 	}
-
+	if (window.console) {
+		console.log("Modevious started and running smoothly!");
+	}
 	$c.console.log("Modevious started and running smoothly!");
 });

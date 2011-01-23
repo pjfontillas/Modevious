@@ -1,22 +1,57 @@
 $c.include("/Google_Prettify/prettify.css");
 $c.include("/Google_Prettify/prettify.min.js");
+if (!window.console) {
+	window.console = {
+		log: '',
+		debug: '',
+		info: '',
+		warn: '',
+		error: '',
+		assert: '',
+		clear: '',
+		dir: '',
+		dirxml: '',
+		trace: '',
+		group: '',
+		groupCollapsedObject: '',
+		groundEnd: '',
+		time: '',
+		timeEnd: '',
+		profile: '',
+		profileEnd: '',
+		count: '',
+		exception: '',
+		table: ''
+	};
+}
 $j(document).ready(function () {
 	// Initialize download form
 	$$(".download").each(function (element) {
 		element.observe("click", function (event) {
+			console.log("Download link pressed, stopping default link behavior");
 			$c.console.log("Download link pressed, stopping default link behavior");
 			event.stop();
 			var downloadContainer = $j("#download-container");
 			if (downloadContainer.is(":hidden")) {
+				console.log("#download-container was hidden, now showing");
 				$c.console.log("#download-container was hidden, now showing");
 				downloadContainer.show().css({
 					left: (document.viewport.getWidth() - downloadContainer.outerWidth(true)) / 2
 				});
 			}
+			console.log("Moving #download-container");
 			$c.console.log("Moving #download-container");
+			console.log([
+				"document.viewport.getWidth(): ",
+				document.viewport.getWidth()
+			].join(''));
 			$c.console.log([
 				"document.viewport.getWidth(): ",
 				document.viewport.getWidth()
+			].join(''));
+			console.log([
+				"downloadContainer.outerWidth(true): ",
+				downloadContainer.outerWidth(true)
 			].join(''));
 			$c.console.log([
 				"downloadContainer.outerWidth(true): ",
@@ -27,12 +62,14 @@ $j(document).ready(function () {
 			});
 		});
 		$("hide-download").observe("click", function () {
+				console.log("Hiding #download-container");
 				$c.console.log("Hiding #download-container");
 				$j("#download-container").animate({
 					top: -1000
 				});
 		});
 	});
+	console.log("Finished configuring behavior for download links");
 	$c.console.log("Finished configuring behavior for download links");
   
 	// Initialize contact form
@@ -41,15 +78,25 @@ $j(document).ready(function () {
 			event.stop();
 			var contactContainer = $j("#contact_container");
 			if (contactContainer.is(":hidden")) {
+				console.log("#contact_container was hidden, now showing");
 				$c.console.log("#contact_container was hidden, now showing");
 				contactContainer.show().css({
 					left: (document.viewport.getWidth() - contactContainer.outerWidth(true)) / 2
 				});
 			}
+			console.log("Moving #contact_container");
 			$c.console.log("Moving #contact_container");
+			console.log([
+				"document.viewport.getWidth(): ",
+				document.viewport.getWidth()
+			].join(''));
 			$c.console.log([
 				"document.viewport.getWidth(): ",
 				document.viewport.getWidth()
+			].join(''));
+			console.log([
+				"contactContainer.outerWidth(true): ",
+				contactContainer.outerWidth(true)
 			].join(''));
 			$c.console.log([
 				"contactContainer.outerWidth(true): ",
@@ -75,7 +122,9 @@ $j(document).ready(function () {
 				onSuccess: function (transport) {
 					var fn;
 					var data = transport.responseText.evalJSON();
+					console.log("Ajax Request response: " + data);
 					$c.console.log("Ajax Request response: " + data);
+					console.log("Ajax Request response.status: " + data.status);
 					$c.console.log("Ajax Request response.status: " + data.status);
 					if (data.status == "success") {
 						$j(".blockMsg").html("<p>Message sent!</p>");
@@ -105,16 +154,19 @@ $j(document).ready(function () {
 					setTimeout(fn, 3000);
 				},
 				onFailure: function (transport) {
+					console.log("There was a problem with the Ajax Request, here is the response status: " + transport.status);
 					$c.console.log("There was a problem with the Ajax Request, here is the response status: " + transport.status);
 				}
 			});
 		},
 		invalidHandler: function (form, validator) {
+			console.log("Contact form validation failed.");
 			$c.console.log("Contact form validation failed.");
 		}
 	});
 	$("contact_form_cancel").observe("click", function (event) {
 		event.stop();
+		console.log("Contact form was cancelled");
 		$c.console.log("Contact form was cancelled");
 		$j("#contact_container").animate({
 			top: -1000
@@ -123,6 +175,7 @@ $j(document).ready(function () {
 		$("contact_form_message").value = '';
 		$("contact_form_email").value = '';
 	});
+	console.log("Finished configuring behavior for contact form");
 	$c.console.log("Finished configuring behavior for contact form");
 	$j("#download-container").click(function () {
 		if ($j("#contact_container").is(":visible")) {
@@ -158,9 +211,11 @@ $j(document).ready(function () {
 			});
 		});
 	};
+	console.log("Sounds initialized");
 	$c.console.log("Sounds initialized");
   
 	// Initialize Google Code Prettify
 	prettyPrint();
+	console.log("Initialized Google Code Prettify");
 	$c.console.log("Initialized Google Code Prettify");
 });
