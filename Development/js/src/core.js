@@ -618,13 +618,13 @@ var $c = (function () {
 						url: window.document.location.href
 					},
 					onSuccess: function (transport) {
-						if (window.console) {
+						if (typeof(window.console) != "undefined") {
 							console.info(transport.responseText);
 						}
 						$c.console.info(transport.responseText);
 					},
 					onFailure: function (transport) {
-						if (window.console) {
+						if (typeof(window.console) != "undefined") {
 							console.warn([
 								"There was a problem sending the log. Here is the response:",
 								transport.status,

@@ -65,7 +65,7 @@ $c.onLoad(function () {
 	// allow for users to move the console
 	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"});
 
-	if (window.console) {
+	if (typeof(window.console) != "undefined") {
 		console.log("Starting Modevious...");
 	}
 	$c.console.log("Starting Modevious...");
@@ -83,7 +83,7 @@ $c.onLoad(function () {
 	});
 	$j(".resizable").resizable();
 
-	if (window.console) {
+	if (typeof(window.console) != "undefined") {
 		console.log("jQuery User Interface initialized.");
 	}
 	$c.console.log("jQuery User Interface initialized.");
@@ -96,21 +96,21 @@ $c.onLoad(function () {
 			zIndex: 10001
 		}).load();
 	});
-	if (window.console) {
+	if (typeof(window.console) != "undefined") {
 		console.log("Expose elements initialized.");
 	}
 	$c.console.log("Expose elements initialized.");
 
 	// initialize AutoMouseOver elements
 	$j(".mouse-over").autoMouseOver();
-	if (window.console) {
+	if (typeof(window.console) != "undefined") {
 		console.log("AutoMouseOver elements initialized.");
 	}
 	$c.console.log("AutoMouseOver elements initialized.");
 
 	// initialize email address de-obfuscation
 	$c.showEmail();
-	if (window.console) {
+	if (typeof(window.console) != "undefined") {
 		console.log("Email addressed de-obfuscated.");
 	}
 	$c.console.log("Email addressed de-obfuscated.");
@@ -119,18 +119,18 @@ $c.onLoad(function () {
 	try {
 		if ($c.readCookie("style").length !== 0) {
 			$c.setActiveStyleSheet($c.readCookie("style"));
-			if (window.console) {
+			if (typeof(window.console) != "undefined") {
 				console.log("Style sheet cookie found, setting active style sheet.");
 			}
 			$c.console.log("Style sheet cookie found, setting active style sheet.");
 		}
 	} catch (err) {
-		if (window.console) {
+		if (typeof(window.console) != "undefined") {
 			console.log("No cookie for style sheet found.");
 		}
 		$c.console.log("No cookie for style sheet found.");
 	}
-	if (window.console) {
+	if (typeof(window.console) != "undefined") {
 		console.log("Modevious started and running smoothly!");
 	}
 	$c.console.log("Modevious started and running smoothly!");

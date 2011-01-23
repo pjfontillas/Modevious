@@ -1,24 +1,59 @@
 $c.include("/Google_Prettify/prettify.css");
 $c.include("/Google_Prettify/prettify.min.js");
-$c.onLoad(function () {
-  // Initialize download form
+if (typeof(window.console) == "undefined") {
+	window.console = {
+		log: function(){},
+		debug: function(){},
+		info: function(){},
+		warn: function(){},
+		error: function(){},
+		assert: function(){},
+		clear: function(){},
+		dir: function(){},
+		dirxml: function(){},
+		trace: function(){},
+		group: function(){},
+		groupCollapsedObject: function(){},
+		groundEnd: function(){},
+		time: function(){},
+		timeEnd: function(){},
+		profile: function(){},
+		profileEnd: function(){},
+		count: function(){},
+		exception: function(){},
+		table: function(){}
+	};
+}
+$j(document).ready(function () {
+	// Initialize download form
 	$$(".download").each(function (element) {
 		element.observe("click", function (event) {
-			$c.trace("Download link pressed, stopping default link behavior");
+			console.log("Download link pressed, stopping default link behavior");
+			$c.console.log("Download link pressed, stopping default link behavior");
 			event.stop();
 			var downloadContainer = $j("#download-container");
 			if (downloadContainer.is(":hidden")) {
-				$c.trace("#download-container was hidden, now showing");
+				console.log("#download-container was hidden, now showing");
+				$c.console.log("#download-container was hidden, now showing");
 				downloadContainer.show().css({
 					left: (document.viewport.getWidth() - downloadContainer.outerWidth(true)) / 2
 				});
 			}
-			$c.trace("Moving #download-container");
-			$c.trace([
+			console.log("Moving #download-container");
+			$c.console.log("Moving #download-container");
+			console.log([
 				"document.viewport.getWidth(): ",
 				document.viewport.getWidth()
 			].join(''));
-			$c.trace([
+			$c.console.log([
+				"document.viewport.getWidth(): ",
+				document.viewport.getWidth()
+			].join(''));
+			console.log([
+				"downloadContainer.outerWidth(true): ",
+				downloadContainer.outerWidth(true)
+			].join(''));
+			$c.console.log([
 				"downloadContainer.outerWidth(true): ",
 				downloadContainer.outerWidth(true)
 			].join(''));
@@ -27,31 +62,43 @@ $c.onLoad(function () {
 			});
 		});
 		$("hide-download").observe("click", function () {
-				$c.trace("Hiding #download-container");
+				console.log("Hiding #download-container");
+				$c.console.log("Hiding #download-container");
 				$j("#download-container").animate({
 					top: -1000
 				});
 		});
 	});
-	$c.trace("Finished configuring behavior for download links");
+	console.log("Finished configuring behavior for download links");
+	$c.console.log("Finished configuring behavior for download links");
   
-  // Initialize contact form
+	// Initialize contact form
 	$$(".contact").each(function (element) {
 		element.observe("click", function (event) {
 			event.stop();
-			var contactContainer = $j("#contact-container");
+			var contactContainer = $j("#contact_container");
 			if (contactContainer.is(":hidden")) {
-				$c.trace("#contact-container was hidden, now showing");
+				console.log("#contact_container was hidden, now showing");
+				$c.console.log("#contact_container was hidden, now showing");
 				contactContainer.show().css({
 					left: (document.viewport.getWidth() - contactContainer.outerWidth(true)) / 2
 				});
 			}
-			$c.trace("Moving #contact-container");
-			$c.trace([
+			console.log("Moving #contact_container");
+			$c.console.log("Moving #contact_container");
+			console.log([
 				"document.viewport.getWidth(): ",
 				document.viewport.getWidth()
 			].join(''));
-			$c.trace([
+			$c.console.log([
+				"document.viewport.getWidth(): ",
+				document.viewport.getWidth()
+			].join(''));
+			console.log([
+				"contactContainer.outerWidth(true): ",
+				contactContainer.outerWidth(true)
+			].join(''));
+			$c.console.log([
 				"contactContainer.outerWidth(true): ",
 				contactContainer.outerWidth(true)
 			].join(''));
@@ -60,87 +107,90 @@ $c.onLoad(function () {
 			});
 		});
 	});
-	$("submit-contact-form").observe("click", function (event) {
-		event.stop();
-		$c.trace("Contact form was submitted");
-		$j("#contact-container").block({
-			message: "<p>Sending message...</p>"
-		});
-		var ajaxRequest = new Ajax.Request("/contact/ed/", {
-			parameters: {
-				name: $F("contact-name"),
-				message: $F("contact-message"),
-				email: $F("contact-email"),
-				ajax: "true"
-			},
-			onSuccess: function (transport) {
-				var fn;
-				var data = transport.responseText.evalJSON();
-				$c.trace("Ajax Request response: " + data);
-				$c.trace("Ajax Request response.status: " + data.status);
-				if (data.status == "success") {
-					$j("#contact-container").block({
-						message: "<p>Message sent!</p>"
-					});
-					fn = function () {
-						$j("#contact-container").unblock().animate({
-							top: -1000
-						});
-						$("contact-name").value = '';
-						$("contact-message").value = '';
-						$("contact-email").value = '';
-					};
-				} else {
-					if (data.status == "rejected") {
-						$j("#contact-container").block({
-							message: "<p>Please check what you entered</p>"
-						});
+	$j("#contact_form").validate({
+		submitHandler: function (form) {
+			$j("#contact_container").block({
+				message: "<p>Sending message...</p>"
+			});
+			var ajaxRequest = new Ajax.Request("/contact/ed/", {
+				parameters: {
+					name: $F("contact_form_name"),
+					message: $F("contact_form_message"),
+					email: $F("contact_form_email"),
+					ajax: "true"
+				},
+				onSuccess: function (transport) {
+					var fn;
+					var data = transport.responseText.evalJSON();
+					console.log("Ajax Request response: " + data);
+					$c.console.log("Ajax Request response: " + data);
+					console.log("Ajax Request response.status: " + data.status);
+					$c.console.log("Ajax Request response.status: " + data.status);
+					if (data.status == "success") {
+						$j(".blockMsg").html("<p>Message sent!</p>");
 						fn = function () {
-							$j("#contact-container").unblock();
+							$j("#contact_container").unblock().animate({
+								top: -1000
+							});
+							$("contact_form_name").value = '';
+							$("contact_form_message").value = '';
+							$("contact_form_email").value = '';
 						};
 					} else {
-						if (data.status == "failure") {
-							$j("#contact-container").block({
-								message: "<p>Something went wrong, please try again or wait a while before resubmitting through this form!</p>"
-							});
+						if (data.status == "rejected") {
+							$j(".blockMsg").html("<p>Please check what you entered</p>");
 							fn = function () {
-								$j("#contact-container").unblock();
+								$j("#contact_container").unblock();
 							};
+						} else {
+							if (data.status == "failure") {
+								$j(".blockMsg").html("<p>Something went wrong, please try again or wait a while before resubmitting through this form!</p>");
+								fn = function () {
+									$j("#contact_container").unblock();
+								};
+							}
 						}
 					}
+					setTimeout(fn, 3000);
+				},
+				onFailure: function (transport) {
+					console.log("There was a problem with the Ajax Request, here is the response status: " + transport.status);
+					$c.console.log("There was a problem with the Ajax Request, here is the response status: " + transport.status);
 				}
-				setTimeout(fn, 3000);
-			},
-			onFailure: function (transport) {
-				$c.trace("There was a problem with the Ajax Request, here is the response status: " + transport.status);
-			}
-		});
-	});
-	$("cancel-contact-form").observe("click", function (event) {
-		event.stop();
-		$c.trace("Contact form was cancelled");
-		$j("#contact-container").animate({
-			top: -1000
-		});
-		$("contact-name").value = '';
-		$("contact-message").value = '';
-		$("contact-email").value = '';
-	});
-	$c.trace("Finished configuring behavior for contact form");
-	$j("#download-container").click(function () {
-		if ($j("#contact-container").is(":visible")) {
-			$j("#download-container").css("zIndex", 1002);
-			$j("#contact-container").css("zIndex", 1001);
+			});
+		},
+		invalidHandler: function (form, validator) {
+			console.log("Contact form validation failed.");
+			$c.console.log("Contact form validation failed.");
 		}
 	});
-	$j("#contact-container").click(function () {
+	$("contact_form_cancel").observe("click", function (event) {
+		event.stop();
+		console.log("Contact form was cancelled");
+		$c.console.log("Contact form was cancelled");
+		$j("#contact_container").animate({
+			top: -1000
+		});
+		$("contact_form_name").value = '';
+		$("contact_form_message").value = '';
+		$("contact_form_email").value = '';
+	});
+	console.log("Finished configuring behavior for contact form");
+	$c.console.log("Finished configuring behavior for contact form");
+	$j("#download-container").click(function () {
+		if ($j("#contact_container").is(":visible")) {
+			$j("#download-container").css("zIndex", 1002);
+			$j("#contact_container").css("zIndex", 1001);
+		}
+	});
+	$j("#contact_container").click(function () {
 		if ($j("#download-container").is(":visible")) {
-			$j("#contact-container").css("zIndex", 1002);
+			$j("#contact_container").css("zIndex", 1002);
 			$j("#download-container").css("zIndex", 1001);
 		}
 	});
   
-  // Initialize sounds
+	// Initialize sounds
 	soundManager.onload = function () {
 		soundManager.createSound({
 			id: "testUI",
@@ -161,9 +211,11 @@ $c.onLoad(function () {
 			});
 		});
 	};
-	$c.trace("Sounds initialized");
+	console.log("Sounds initialized");
+	$c.console.log("Sounds initialized");
   
-  // Initialize Google Code Prettify
--	prettyPrint();
--	$c.trace("Initialized Google Code Prettify");
+	// Initialize Google Code Prettify
+	prettyPrint();
+	console.log("Initialized Google Code Prettify");
+	$c.console.log("Initialized Google Code Prettify");
 });

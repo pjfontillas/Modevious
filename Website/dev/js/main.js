@@ -1,27 +1,27 @@
 $c.include("/Google_Prettify/prettify.css");
 $c.include("/Google_Prettify/prettify.min.js");
-if (!window.console) {
+if (typeof(window.console) == "undefined") {
 	window.console = {
-		log: '',
-		debug: '',
-		info: '',
-		warn: '',
-		error: '',
-		assert: '',
-		clear: '',
-		dir: '',
-		dirxml: '',
-		trace: '',
-		group: '',
-		groupCollapsedObject: '',
-		groundEnd: '',
-		time: '',
-		timeEnd: '',
-		profile: '',
-		profileEnd: '',
-		count: '',
-		exception: '',
-		table: ''
+		log: function(){},
+		debug: function(){},
+		info: function(){},
+		warn: function(){},
+		error: function(){},
+		assert: function(){},
+		clear: function(){},
+		dir: function(){},
+		dirxml: function(){},
+		trace: function(){},
+		group: function(){},
+		groupCollapsedObject: function(){},
+		groundEnd: function(){},
+		time: function(){},
+		timeEnd: function(){},
+		profile: function(){},
+		profileEnd: function(){},
+		count: function(){},
+		exception: function(){},
+		table: function(){}
 	};
 }
 $j(document).ready(function () {
