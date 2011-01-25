@@ -19453,20 +19453,18 @@ var scriptsIncluded = $$("script");
 var scriptsLength = scriptsIncluded.length;
 var modeviousScriptURL;
 var modeviousLocation;
-// 2. Get page location
-var pageLocation = location.href;
-// 3. Use for loop to go through document.getElementsByTagName("script")[i].src or $$
+// 2. Use for loop to go through document.getElementsByTagName("script")[i].src or $$
 for (var i = 0; i < scriptsLength; i++) {
-	// 3.1 Look for "modevious/library.js" script
+	// 2.1 Look for "modevious/library.js" script
 	if (scriptsIncluded[i].src.include("modevious/library.js")) {
-		// 3.1.1 Read and store URL of that script
+		// 2.1.1 Read and store URL of that script
 		modeviousScriptURL = scriptsIncluded[i].src;
-		// 3.1.2 Remove similar parts in both URLs and remove the last part "library.js"
-		modeviousLocation = modeviousScriptURL.sub(pageLocation, '/').sub("library.js", '');
+		// 2.1.2 Remove similar parts in both URLs and remove the last part "library.js"
+		modeviousLocation = modeviousScriptURL.sub("library.js", '');
 		i = scriptsLength;
 	}
 }
-// 4. Use new URL as Modevious location and read in its other files
+// 3. Use new URL as Modevious location and read in its other files
 if (modeviousLocation != $c.config.modeviousLocation) {
 	$c.config.modeviousLocation = modeviousLocation;
 	$c.config.jQueryUIThemeURL = modeviousLocation + "jquery-ui.css";
