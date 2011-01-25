@@ -1,29 +1,19 @@
 /**
-*	Core v1.3.0
-*		Maintainer
-*			Patrick James Fontillas (me@pjfontillas.com) or (pjfontillas@gmail.com)
-*		Description
-*			Holds some of the most common ajax functions used.
-*		Dependencies
-*			Prototype v1.7 
-*			jQuery 1.4.4
-*		Verified using JSLint.
-*		Module pattern.
-*/
+ * Core Library
+ * http://Modevious.com/
+ *
+ * Bridges the Prototype and jQuery libraries and also contains
+ * commonly found functions.
+ *
+ * Copyright 2010, Patrick James Fontillas
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://modevious.com/modevious/licenses.txt
+ *
+ */
 /*jslint evil: true */
 /*global window: true, document: true, XMLHttpRequest: true, Event: true, 
 ActiveXObject: true, alert: true, $$: true, jQuery: true, window.$config: true,
 location: true, navigator:true */
-/**
-*		Implied global variables:
-*			var window; // Is it safe to declare this?
-*			var document; // Is it safe to declare this?
-*			var XMLHttpRequest; // Will be depreciated next release
-*			var ActiveXObject; // Will be depreciated next release
-*			var alert; // What? How?
-*			var $$; // from Prototype
-*			var jQuery; // from jQuery
-*/
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
 	// private methods and variables
@@ -572,52 +562,32 @@ var $c = (function () {
 			log: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.log) != "undefined") {
-					// send to native console
-					console.log(output);
-				}
-				// send to our console for storage
 				$c.trace("Log: " + output);
+				return output;
 			},
 			debug: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.debug) != "undefined") {
-					// send to native console
-					console.debug(output);
-				}
-				// send to our console for storage
 				$c.trace("Debug: " + output);
+				return output;
 			},
 			info: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.info) != "undefined") {
-					// send to native console
-					console.info(output);
-				}
-				// send to our console for storage
 				$c.trace("Info: " + output);
+				return output;
 			},
 			warn: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.warn) != "undefined") {
-					// send to native console
-					console.warn(output);
-				}
-				// send to our console for storage
 				$c.trace("Warning: " + output);
+				return output;
 			},
 			error: function () {
 				var args = Array.prototype.slice.call(arguments); 
 				var output = $c.console.parse(args);
-				if (typeof(window.console.error) != "undefined") {
-					// send to native console
-					console.error(output);
-				}
-				// send to our console for storage
 				$c.trace("Error: " + output);
+				return output;
 			},
 			assert: function () {
 				var args = Array.prototype.slice.call(arguments);
@@ -625,13 +595,9 @@ var $c = (function () {
 				if (!args[0]) {
 					args.shift();
 					output = $c.console.parse(args);
-					if (typeof(window.console.assert) != "undefined") {
-						// send to native console
-						console.assert(false, output);
-					}
-					// send to our console for storage
 					$c.trace("Assertion failed: " + output);
 				}
+				return arguments;
 			},
 			clear: function () {
 				if (typeof(window.console.clear) != "undefined") {
@@ -652,9 +618,19 @@ var $c = (function () {
 						url: window.document.location.href
 					},
 					onSuccess: function (transport) {
+						if (typeof(window.console) != "undefined") {
+							console.info(transport.responseText);
+						}
 						$c.console.info(transport.responseText);
 					},
 					onFailure: function (transport) {
+						if (typeof(window.console) != "undefined") {
+							console.warn([
+								"There was a problem sending the log. Here is the response:",
+								transport.status,
+								transport.statusText
+							].join(' '));
+						}
 						$c.console.warn([
 							"There was a problem sending the log. Here is the response:",
 							transport.status,

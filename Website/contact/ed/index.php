@@ -64,7 +64,7 @@ if ($valid) {
 				<h1 class=\"text-center\">Please check what you entered</h1>
 				<div class=\"half\">
 					<form id=\"contact-form\" method=\"post\" action=\"/contact/ed/\">
-						<p>You can send an email to <a class=\"email\" href=\"mailto:me@pjfontillas.com\">me@pjfontillas.com</a>.</p>
+						<p>You can send an email to <a class=\"enc-email\" href=\"mailto:me@pjfontillas.com\">me@pjfontillas.com</a>.</p>
 						<p>Or simply use this form. Whatcha got to say?</p>
 						<p><textarea rows=\"5\" cols=\"40\" name=\"contact-message\" id=\"contact-message\">$fromMessage</textarea></p>
 						<p><label>Your name: </label><input name=\"contact-name\" id=\"contact-name\" type=\"text\" value=\"$from\"></p>
@@ -88,7 +88,7 @@ if ($ajax != 1) {
 		<div class="clear-float"></div>      
 	</div><!-- #contact_form -->
 	';
-	require_once($_SERVER['DOCUMENT_ROOT'] . '/include/footer.htm');
+	require_once($_SERVER['DOCUMENT_ROOT'] . '/include/footer-no-js.htm');
 	echo '
 			</body>
 		</html>
