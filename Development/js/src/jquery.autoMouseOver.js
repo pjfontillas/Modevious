@@ -10,7 +10,6 @@
  * This function automatically adds mouseover effects to any image ending in "-out."
  * ---------------------------------------------------------------------------------
  */
-
 (function($) {
 
     $.fn.autoMouseOver = function(settings) {
