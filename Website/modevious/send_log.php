@@ -18,4 +18,4 @@
 	} else {
 		echo "There was a problem sending the log.";
 	}
-?>
+?>
