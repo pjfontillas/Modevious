@@ -53,12 +53,12 @@ $c.onLoad(function () {
 	// currently using an IE hack to detect keypresses
 	if (document.addEventListener) {
 		document.addEventListener("keydown", function(event) {
-			$c.checkConsoleCode(event);
+			$c.console.checkCode(event);
 		}, false);
 	} else {
 		document.attachEvent("onkeydown", function(event) {
-			$c.checkConsoleCode(event);
-		});		
+			$c.console.checkCode(event);
+		});
 	}
 	// allow for users to move the console
 	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"});

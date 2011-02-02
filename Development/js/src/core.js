@@ -638,41 +638,44 @@ var $c = (function () {
 						].join(' '));
 					}
 				});
-			}
-		},
-		/**
-		 *	checkConsoleCode (event)
-		 *		If key presses are done in the correct order this calls the function
-		 *		that shows the console.
-		 */
-		checkConsoleCode: function (event)	{
-			if (event.keyCode == $c.config.consoleCode[$c.consoleCounter]) {
-				$c.consoleCounter++;
-			} else {
-				$c.consoleCounter = 0;
-			}
-			if ($c.consoleCounter == $c.config.consoleCode.length) {
-				$c.showConsole();
-			}
-		},
-		/**
-		 *	hideConsole ()
-		 *		Moves the log to its height + 500px above the page, effectively hiding it.
-		 */
-		hideConsole: function () {
-			$j("#modevious_console").animate({
-				top: (($j("#modevious_console").height() + 500) * -1) + "px"
-			});
-		},
-		/**
-		 *	showConsole ()
-		 *		This function moves the console to just under the current vertical offset.
-		 */
-		 showConsole: function () {
-			$j("#modevious_console").animate({
+			},
+			/**
+			 *	show ()
+			 *		This function moves the console to just under the current vertical offset.
+			 */
+			show: function () {
+				$j("#modevious_console").css({
+					position: "fixed"
+				}).animate({
 					top: 0
-			});
-		 },
+				});
+			},
+			/**
+			 *	hide ()
+			 *		Moves the log to its height + 500px above the page, effectively hiding it.
+			 */
+			hide: function () {
+				$j("#modevious_console").animate({
+					top: (($j("#modevious_console").height() + 500) * -1) + "px"
+				});
+			},
+			/**
+			 *	checkCode (event)
+			 *		If key presses are done in the correct order this calls the function
+			 *		If key presses are done in the correct order this calls the function
+			 *		that shows the console.
+			 */
+			checkCode: function (event) {
+				if (event.keyCode == $c.config.consoleCode[$c.consoleCounter]) {
+					$c.consoleCounter++;
+				} else {
+					$c.consoleCounter = 0;
+				}
+				if ($c.consoleCounter == $c.config.consoleCode.length) {
+					$c.console.show();
+				}
+			}
+		},
 		/**
 		 *	getFlashMovie (movieName)
 		 *		Returns element of Flash object requested via <movieName>.
