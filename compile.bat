@@ -58,7 +58,6 @@ copy /b tmp\library.js + Development\js\src\jquery.blockUI.js tmp\library.js
 
 :: jQuery.Validate
 copy /b tmp\library.js + Development\js\src\jquery.validate%1.js tmp\library.js
-copy /b Development\css\jquery.validate\* tmp\jquery.validate\
 
 :: Startup script (init)
 copy /b tmp\library.js + Development\js\init%1.js tmp\library.js
