@@ -17,8 +17,8 @@ location: true, navigator:true */
 var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
 var $c = (function () {
 	// private methods and variables
-	var version = 132;
-	var versionString = "v1.3.2";
+	var version = 133;
+	var versionString = "v1.3.3";
 	var config = {
 		warnings: false,
 		at: "(AT)",

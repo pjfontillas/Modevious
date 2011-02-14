@@ -47,7 +47,7 @@ $c.onLoad(function () {
 	"</div>"
 	].join(''));
 	// add close behavior to console close button
-	$j("#modevious_minimize_console_button").click($c.hideConsole);
+	$j("#modevious_minimize_console_button").click($c.console.hide);
 	// create keypress listener for code to open console
 	// Default: UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A
 	// currently using an IE hack to detect keypresses
@@ -61,12 +61,8 @@ $c.onLoad(function () {
 		});
 	}
 	// allow for users to move the console
-	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"});
+	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"}).css("position", "fixed");
 
-	if (typeof(window.console) != "undefined") {
-		console.log("Starting Modevious...");
-	}
-	$c.console.log("Starting Modevious...");
 	// initialize jQuery UI
 	$j(".tabs").tabs();
 	$j(".accordion").accordion({ 
