@@ -28,7 +28,7 @@ cat Development/js/src/core${1}.js >> tmp/library.js
 # jQuery User interface
 mkdir tmp/images
 cp Development/css/images/* tmp/images/
-cp Development/css/jquery-ui${1}.css tmp/jquery-ui.css
+cp Development/css/jquery-ui.css tmp/jquery-ui.css
 cat Development/js/src/jquery-ui.min.js >> tmp/library.js
 
 # jQuery Tools
