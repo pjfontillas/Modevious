@@ -70,7 +70,8 @@ $c.onLoad(function () {
 		autoHeight: false, 
 		collapsible: true 
 	});
-	$j(":button").button();
+	$j(":button, .button").button();
+	$j(".buttonset").buttonset();
 	$j(".draggable").draggable({
 		cursor: "move",
 		cancel: "p, img, h1, h2, h3, h4, h5, a"
