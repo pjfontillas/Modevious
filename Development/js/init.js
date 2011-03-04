@@ -129,4 +129,18 @@ $c.onLoad(function () {
 		console.log("Modevious started and running smoothly!");
 	}
 	$c.console.log("Modevious started and running smoothly!");
+	
+	// Automatically initialize $c.vAlign
+	var fn = function () {
+		if (typeof(window.console) != "undefined") {
+			console.log("Window has been resized");
+		}
+		$c.console.log("Window has been resized");
+		$j(window).unbind("resize");
+		$c.vAlign();
+		setTimeout(function () {
+			$j(window).bind("resize", fn);
+		}, 250); // 250 ms
+	}
+	$j(window).bind("resize", fn);
 });
