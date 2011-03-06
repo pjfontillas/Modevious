@@ -143,4 +143,32 @@ $c.onLoad(function () {
 		}, 250); // 250 ms
 	}
 	$j(window).bind("resize", fn);
+	
+	// After 5 seconds check for Sound Manager, if it fails notify the user and check again in 10 seconds
+	setTimeout(function () {
+		if (!soundManager.ok()) {
+			$j.pnotify({
+				pnotify_title: "Sound Manager",
+				pnotify_text: "Failed to load. Please check that you have Flash installed and that it is not being blocked by a plugin."
+			});
+			console.log("Sound Manager check after 5 seconds has returned false.");
+			$c.console.log("Sound Manager check after 5 seconds has returned false.");
+			setTimeout(function () {
+				if (soundManager.ok()) { // false alarm, let the user know that Sound Manager did load correctly
+					$j.pnotify({
+						pnotify_title: "Sound Manager",
+						pnotify_text: "False alarm. We apologize, but everything is fine! Carry on."
+					});
+					console.log("Sound Manager check after 15 seconds has returned true.");
+					$c.console.log("Sound Manager check after 15 seconds has returned true.");
+				} else {
+					console.log("Sound Manager check after 15 seconds has returned false.");
+					$c.console.log("Sound Manager check after 15 seconds has returned false.");			
+				}
+			}, 10000);
+		} else {
+			console.log("Sound Manager check after 5 seconds has returned true.");
+			$c.console.log("Sound Manager check after 5 seconds has returned true.");
+		}
+	}, 5000);
 });
