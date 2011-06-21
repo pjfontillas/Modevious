@@ -1,57 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://dev.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://www.modevious.com/</loc>
+<loc>http://dev.modevious.com/</loc>
 <lastmod>2010-10-02</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1.0</priority>
 </url>
 
 <url>
-<loc>http://www.modevious.com/cache/</loc>
+<loc>http://dev.modevious.com/components/</loc>
 <lastmod>2010-10-02</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>http://www.modevious.com/components/</loc>
-<lastmod>2010-10-02</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-
-<url>
-<loc>http://www.modevious.com/components/core/</loc>
+<loc>http://dev.modevious.com/components/core/</loc>
 <lastmod>2010-10-02</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
-<loc>http://www.modevious.com/components/mups/</loc>
+<loc>http://dev.modevious.com/components/mups/</loc>
 <lastmod>2010-10-02</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
-<loc>http://www.modevious.com/contact/</loc>
+<loc>http://dev.modevious.com/contact/</loc>
 <lastmod>2010-10-02</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>http://www.modevious.com/download/</loc>
+<loc>http://dev.modevious.com/download/</loc>
 <lastmod>2010-10-02</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>http://www.modevious.com/usage/</loc>
+<loc>http://dev.modevious.com/usage/</loc>
 <lastmod>2010-10-02</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>

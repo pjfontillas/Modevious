@@ -1,5 +1,5 @@
 body {
-	padding: 40px 0px 20px 0px;
+	padding: 0px 0px 10px 0px;
 	margin: 0px;
 	font-family: Cambria, Georgia, Arial;
 	background: #000;
@@ -31,19 +31,17 @@ a:visited {
 	content:	"\2713 ";
 }
 #menu {
-	position: fixed;
+	position: relative;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 960px;
 	height: 32px;
 	margin: 0px auto;
-	overflow: hidden;
 	padding: 0px;
 	z-index: 1000;
-	background: url(theme/menu_bg.png);
-	color: #EEE;
+	color: #eee;
 	font-weight: bold;
-	font-family: georgia;
+	font-family: Georgia, Verdana, Arial;
 }
 #menu:hover {
 	background: #000;
@@ -164,16 +162,5 @@ button {
 	background: url(theme/contact_card_bg.jpg) repeat-x #eee;
 	color: #000;
 	display: none;
-}
-#back-to-top {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	padding: 5px;
-	background: url(theme/menu_bg.png);
-	color: #69F;
-}
-#back-to-top:hover {
-	background: #000;
 }
 label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
