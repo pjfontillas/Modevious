@@ -19,30 +19,6 @@ var $c = (function () {
 	// private methods and variables
 	var version = 133;
 	var versionString = "v1.3.3";
-	var config = {
-		warnings: false,
-		at: "(AT)",
-		dot: "(DOT)",
-		soundManager: {
-			url: "/modevious/swf",
-			flashVersion: 9
-		},
-		consoleCode: [ // Konami Code
-			Event.KEY_UP,
-			Event.KEY_UP,
-			Event.KEY_DOWN,
-			Event.KEY_DOWN,
-			Event.KEY_LEFT,
-			Event.KEY_RIGHT,
-			Event.KEY_LEFT,
-			Event.KEY_RIGHT,
-			66,
-			65
-		],
-		modeviousLocation: "/modevious/",
-		jQueryUIThemeURL: "/modevious/jquery-ui.css",
-		libraryURL: "/modevious/library.css"
-	};
 	var loadedScripts = [];
 	var log = [];
 	var updateName = [];
@@ -51,7 +27,6 @@ var $c = (function () {
 	var updateCounter = 0;
 	var consoleCounter = 0;
 	return { // public methods and variables
-		config: config,
 		loadedScripts: loadedScripts,
 		log: log,
 		consoleCounter: consoleCounter,
@@ -59,6 +34,30 @@ var $c = (function () {
 		updateVersion: updateVersion,
 		updateURL: updateURL,
 		updateCounter: updateCounter,
+		config: {
+			warnings: false,
+			at: "(AT)",
+			dot: "(DOT)",
+			soundManager: {
+				url: "/modevious/swf",
+				flashVersion: 9
+			},
+			consoleCode: [ // Konami Code
+				Event.KEY_UP,
+				Event.KEY_UP,
+				Event.KEY_DOWN,
+				Event.KEY_DOWN,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				66,
+				65
+			],
+			modeviousLocation: "/modevious/",
+			jQueryUIThemeURL: "/modevious/jquery-ui.css",
+			libraryURL: "/modevious/library.css"
+		},
 		updateFound: false,
 		/**
 		 *	init ()
@@ -66,33 +65,33 @@ var $c = (function () {
 		 *		other components but for now only does configuration.
 		 */
 		init: function () {
-			if (window.$config !== undefined) {
-				if (window.$config.warnings !== undefined) {
-					$c.config.warnings = window.$config.warnings;
+			if (typeof(window.$config) !== "undefined") {
+				if (typeof(window.$config.warnings) !== "undefined") {
+					this.config.warnings = window.$config.warnings;
 				}
-				if (window.$config.at !== undefined) {
-					$c.config.at = window.$config.at;
+				if (typeof(window.$config.at) !== "undefined") {
+					this.config.at = window.$config.at;
 				}
-				if (window.$config.dot !== undefined) {
-					$c.config.dot = window.$config.dot;
+				if (typeof(window.$config.dot) !== "undefined") {
+					this.config.dot = window.$config.dot;
 				}
-				if (window.$config.soundManager.url !== undefined) {
-					$c.config.soundManager.url = window.$config.soundManager.url;
+				if (typeof(window.$config.soundManager.url) !== "undefined") {
+					this.config.soundManager.url = window.$config.soundManager.url;
 				}
-				if (window.$config.soundManager.flashVersion !== undefined) {
-					$c.config.soundManager.flashVersion = window.$config.soundManager.flashVersion;
+				if (typeof(window.$config.soundManager.flashVersion) !== "undefined") {
+					this.config.soundManager.flashVersion = window.$config.soundManager.flashVersion;
 				}
-				if (window.$config.consoleCode !== undefined) {
-					$c.config.consoleCode = window.$config.consoleCode;
+				if (typeof(window.$config.consoleCode) !== "undefined") {
+					this.config.consoleCode = window.$config.consoleCode;
 				}
-				if (window.$config.modeviousLocation !== undefined) {
-					$c.config.modeviousLocation = window.$config.modeviousLocation;
+				if (typeof(window.$config.modeviousLocation) !== "undefined") {
+					this.config.modeviousLocation = window.$config.modeviousLocation;
 				}
-				if (window.$config.jQueryUIThemeURL !== undefined) {
-					$c.config.jQueryUIThemeURL = window.$config.jQueryUIThemeURL;
+				if (typeof(window.$config.jQueryUIThemeURL) !== "undefined") {
+					this.config.jQueryUIThemeURL = window.$config.jQueryUIThemeURL;
 				}
-				if (window.$config.libraryURL !== undefined) {
-					$c.config.libraryURL = window.$config.libraryURL;
+				if (typeof(window.$config.libraryURL) !== "undefined") {
+					this.config.libraryURL = window.$config.libraryURL;
 				}
 			}
 		},
@@ -211,7 +210,7 @@ var $c = (function () {
 					loaded = true;
 					// Optional, if <warnings> is true throw an alert when 
 					// a page tries to load the same script multiple times.
-					if ($c.config.warnings) {
+					if (this.config.warnings) {
 						alert([
 							"This page attempted to load: <",
 							scriptID,
