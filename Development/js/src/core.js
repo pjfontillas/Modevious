@@ -5,8 +5,8 @@
  * Bridges the Prototype and jQuery libraries and also contains
  * commonly found functions.
  *
- * Copyright 2010, Patrick James Fontillas
- * Dual licensed under the MIT or GPL Version 2 licenses.
+ * Copyright 2011, Patrick James Fontillas
+ * Dual licensed under the MIT and GPL Version 2 licenses.
  * http://modevious.com/modevious/licenses.txt
  *
  */
@@ -14,26 +14,11 @@
 /*global window: true, document: true, XMLHttpRequest: true, Event: true, 
 ActiveXObject: true, alert: true, $$: true, jQuery: true, window.$config: true,
 location: true, navigator:true */
-var $j = jQuery.noConflict(); // Bridge Prototype and jQuery.
-var $c = (function () {
+var Modevious = (function () {
 	// private methods and variables
-	var version = 133;
-	var versionString = "v1.3.3";
-	var loadedScripts = [];
-	var log = [];
-	var updateName = [];
-	var updateVersion = [];
-	var updateURL = [];
-	var updateCounter = 0;
-	var consoleCounter = 0;
+	var version = 200;
+	var versionString = "v2.0.0";
 	return { // public methods and variables
-		loadedScripts: loadedScripts,
-		log: log,
-		consoleCounter: consoleCounter,
-		updateName: updateName,
-		updateVersion: updateVersion,
-		updateURL: updateURL,
-		updateCounter: updateCounter,
 		config: {
 			warnings: false,
 			at: "(AT)",
@@ -42,22 +27,16 @@ var $c = (function () {
 				url: "/modevious/swf",
 				flashVersion: 9
 			},
-			consoleCode: [ // Konami Code
-				Event.KEY_UP,
-				Event.KEY_UP,
-				Event.KEY_DOWN,
-				Event.KEY_DOWN,
-				Event.KEY_LEFT,
-				Event.KEY_RIGHT,
-				Event.KEY_LEFT,
-				Event.KEY_RIGHT,
-				66,
-				65
-			],
 			modeviousLocation: "/modevious/",
-			jQueryUIThemeURL: "/modevious/jquery-ui.css",
-			libraryURL: "/modevious/library.css"
+			jQueryUIThemeURL: modeviousLocation + "jquery-ui.css",
+			libraryURL: modeviousLocation + "library.css",
+			debug: false
 		},
+		loadedScripts: [],
+		updateName: [],
+		updateVersion: [],
+		updateURL: [],
+		updateCounter: 0,
 		updateFound: false,
 		/**
 		 *	init ()
@@ -114,7 +93,7 @@ var $c = (function () {
 		 *		Updates <objectID>'s innerHTML with content from <pageName>.
 		 */
 		changePage: function (pageName, objectID) {
-			$c.fetchData(pageName, null, objectID);
+			this.fetchData(pageName, null, objectID);
 		},
 		/**
 		 *	createCookie (String, String, Int)
@@ -149,12 +128,18 @@ var $c = (function () {
 			}
 			return null;
 		},
+		getCookie: function (name) {
+			readCookie(name);
+		},
 		/**
 		 *	eraseCookie (String)
 		 *		Deletes a cookie by assigning its days to a negative value.
 		 */
 		eraseCookie: function (name) {
-			$c.createCookie(name, '', -1);
+			this.createCookie(name, '', -1);
+		},
+		deleteCookie: function (name) {
+			this.eraseCookie(name);
 		},
 		/**
 		 *	onLoad(Function) 
@@ -165,7 +150,7 @@ var $c = (function () {
 			$j("document").ready(func);
 		},
 		onLoad: function (func) {
-			$c.addLoadEvent(func);
+			this.addLoadEvent(func);
 		},
 		/**
 		 *	getUrlVariable (String)
@@ -177,7 +162,7 @@ var $c = (function () {
 			var urlArray = [];
 			var tempUrlArray = [];
 			tempUrlArray = location.href.split('?');
-			tempUrlArray[1].replace("&amp;", '&'); // replace &amp; with &
+			tempUrlArray[1].replace(/&amp;/gi, '&'); // replace &amp; with &
 			urlArray = tempUrlArray[1].split('&'); // split using &
 			for (var arrayPos = 0;arrayPos < urlArray.length;arrayPos++) {
 				tempUrlArray = urlArray[arrayPos].split('=');
@@ -186,6 +171,9 @@ var $c = (function () {
 				}
 			}
 			return null;
+		},
+		getURLVariable: function (URLVariable) {
+			this.getUrlVariable(URLVariable);
 		},
 		/**
 		 *	include (String)
@@ -204,18 +192,18 @@ var $c = (function () {
 		 */
 		include: function (scriptID) {
 			var loaded = false; // flag indicating if a script is loaded.
-			for (var i = 0;i < $c.loadedScripts.length;i++) {
-				if ($c.loadedScripts[i].indexOf(scriptID) !== -1) {
-					//set flag to true, meaning a script is already loaded.
+			for (var i = 0;i < this.loadedScripts.length;i++) {
+				if (this.loadedScripts[i].indexOf(scriptID) !== -1) {
+					// set flag to true, meaning a script is already loaded.
 					loaded = true;
-					// Optional, if <warnings> is true throw an alert when 
+					// Optional, if <warnings> is true log when 
 					// a page tries to load the same script multiple times.
 					if (this.config.warnings) {
-						alert([
+						console.log([
 							"This page attempted to load: <",
 							scriptID,
 							"> multiple times.",
-							"Please contact the webmaster to correct $c."
+							"Please contact the webmaster to correct this."
 						].join(''));
 					}
 				}
@@ -224,7 +212,7 @@ var $c = (function () {
 				// if the script has not been loaded yet add it to the array, the 
 				// array.length returns size, so a size of 0 would put the ID in the 
 				// first cell, 1 would be the next cell, which is the array.length
-				$c.loadedScripts[$c.loadedScripts.length] = scriptID;
+				this.loadedScripts[this.loadedScripts.length] = scriptID;
 				var ext = scriptID.substr((scriptID.lastIndexOf('.') + 1),
 					scriptID.length).toLowerCase();
 				switch (ext) {
@@ -247,7 +235,7 @@ var $c = (function () {
 					].join(''));
 					break;
 				default:
-					alert(["Unsupported filetype: .", ext].join(''));		
+					console.log(["Unsupported filetype: .", ext].join(''));		
 				}
 			}
 		},
@@ -262,10 +250,10 @@ var $c = (function () {
 		add2Lib: function (scriptID) {
 			// add to array without loading the script, used for scripts that are
 			// already loaded without the use of Core's include().
-			$c.loadedScripts[$c.loadedScripts.length] = scriptID;
+			this.loadedScripts[this.loadedScripts.length] = scriptID;
 		},
 		exclude: function (scriptID) {
-			$c.add2Lib(scriptID);
+			this.add2Lib(scriptID);
 		},
 		/**
 		 *	showEmail ()
@@ -275,8 +263,8 @@ var $c = (function () {
 		showEmail: function () {
 			var url;
 			$$(".enc_email").each(function (a) {
-				url = a.href.replace($c.config.at, '@');
-				url = url.replace($c.config.dot, '.');
+				url = a.href.replace(this.config.at, '@');
+				url = url.replace(this.config.dot, '.');
 				a.href = url;
 				url = url.replace("mailto:", '');
 				a.update(url);			 
@@ -306,8 +294,18 @@ var $c = (function () {
 				curr_min,
 				''
 			].join('');
-			if (curr_min.length === 1) {
-				curr_min = ['0', curr_min].join('');
+			if (curr_min < 10) {
+				curr_min = [
+					'0',
+					curr_min
+				].join('');
+			}
+			var curr_s = d.getSeconds();
+			if (curr_s < 10) {
+				curr_s = [
+					'0',
+					curr_s
+				].join('');
 			}
 			var curr_ms = d.getMilliseconds();
 			if (curr_ms < 100) {
@@ -318,12 +316,14 @@ var $c = (function () {
 			}
 			return [
 				curr_hour,
-				":",
+				':',
 				curr_min,
-				":",
+				':',
+				curr_s,
+				':',
 				curr_ms,
 				a_p
-			].join(' ');
+			].join('');
 		},
 		/**
 		 *	getFileType (String)
@@ -470,7 +470,7 @@ var $c = (function () {
 					}
 				}
 			}
-			$c.createCookie("style", title, 365);
+			this.createCookie("style", title, 365);
 		},
 		/**
 		 *	getActiveStyleSheet ()
@@ -487,195 +487,6 @@ var $c = (function () {
 			return null;
 		},
 		/**
-		 *	trace (message)
-		 *		Stores <message> in a log to serve for debugging regardless of
-		 *		browser used for testing. Can be sent to a server side 
-		 *		script (PHP, ASP, etc.) that can then store the log in a database
-		 *		or send it via email.
-		 */
-		trace: function (message) {
-			var args = Array.prototype.slice.call(arguments);
-			// log and debug support
-			$c.log[$c.log.length] = [
-				$c.getTime(),
-				": ",
-				message
-			].join('');
-			$j("#modevious_console_text").append([
-				"<p>",
-				$c.log[$c.log.length - 1],
-				"</p>"
-			].join(''));
-			return message; // chains message for possible use with other utilities
-		},
-		/**
-		 *	Emulates part of the Firebug console and native console
-		 *	found in Chrome and Safari. Acts as a wrapper for 
-		 *	several console functions. The message will eventually
-		 *	make it the real console if they are available but is
-		 *	also stored elsewhere so that it can be sent via email
-		 *	to the site admin.
-		 */
-		console: {
-			/**
-			 *	Emulates string substitution found in Firebug.
-			 *	Returns parsed string.
-			 */
-			parse: function (args) {
-				var currentArg = 1;
-				var parsedString = args[0];
-				while (currentArg < args.length) {
-					var subPosition = parsedString.indexOf('%');
-					if  (subPosition == -1) {
-						// simply concactenate everything
-						while (currentArg < args.length) {
-							parsedString += ' ' + args[currentArg];
-							currentArg++;
-						}
-					} else {
-						var subType = parsedString.charAt(subPosition + 1);
-						switch (subType) {
-							case 's':
-							case 'o':
-								parsedString = parsedString.sub('%' + subType, String(args[currentArg]));
-								break;
-							case 'd':
-							case 'i':
-							case 'f':
-								if (isNaN(args[currentArg])) {
-									args[currentArg] = 0;
-								}
-								parsedString = parsedString.sub('%' + subType, Number(args[currentArg]));
-								break;
-							case 'c':
-								// not currently supported
-								break;
-							default:
-								// invalid substitution code
-						}
-						currentArg++;
-					}
-				}
-				return parsedString;
-			},
-			log: function () {
-				var args = Array.prototype.slice.call(arguments); 
-				var output = $c.console.parse(args);
-				$c.trace("Log: " + output);
-				return output;
-			},
-			debug: function () {
-				var args = Array.prototype.slice.call(arguments); 
-				var output = $c.console.parse(args);
-				$c.trace("Debug: " + output);
-				return output;
-			},
-			info: function () {
-				var args = Array.prototype.slice.call(arguments); 
-				var output = $c.console.parse(args);
-				$c.trace("Info: " + output);
-				return output;
-			},
-			warn: function () {
-				var args = Array.prototype.slice.call(arguments); 
-				var output = $c.console.parse(args);
-				$c.trace("Warning: " + output);
-				return output;
-			},
-			error: function () {
-				var args = Array.prototype.slice.call(arguments); 
-				var output = $c.console.parse(args);
-				$c.trace("Error: " + output);
-				return output;
-			},
-			assert: function () {
-				var args = Array.prototype.slice.call(arguments);
-				var output;
-				if (!args[0]) {
-					args.shift();
-					output = $c.console.parse(args);
-					$c.trace("Assertion failed: " + output);
-				}
-				return arguments;
-			},
-			clear: function () {
-				if (typeof(window.console.clear) != "undefined") {
-					console.clear();
-				}
-				$j("#modevious_console_text").html('');
-			},
-			send: function () {
-				var url = [
-					$c.config.modeviousLocation,
-					"send_log.php"
-				].join('');
-				var log = $j("#modevious_console_text").html();
-				var ajaxRequest = new Ajax.Request(url, {
-					parameters: {
-						method: "post",
-						log: log,
-						url: window.document.location.href
-					},
-					onSuccess: function (transport) {
-						if (typeof(window.console) != "undefined") {
-							console.info(transport.responseText);
-						}
-						$c.console.info(transport.responseText);
-					},
-					onFailure: function (transport) {
-						if (typeof(window.console) != "undefined") {
-							console.warn([
-								"There was a problem sending the log. Here is the response:",
-								transport.status,
-								transport.statusText
-							].join(' '));
-						}
-						$c.console.warn([
-							"There was a problem sending the log. Here is the response:",
-							transport.status,
-							transport.statusText
-						].join(' '));
-					}
-				});
-			},
-			/**
-			 *	show ()
-			 *		This function moves the console to just under the current vertical offset.
-			 */
-			show: function () {
-				$j("#modevious_console").css({
-					position: "fixed"
-				}).animate({
-					top: 0
-				});
-			},
-			/**
-			 *	hide ()
-			 *		Moves the log to its height + 500px above the page, effectively hiding it.
-			 */
-			hide: function () {
-				$j("#modevious_console").animate({
-					top: (($j("#modevious_console").height() + 500) * -1) + "px"
-				});
-			},
-			/**
-			 *	checkCode (event)
-			 *		If key presses are done in the correct order this calls the function
-			 *		If key presses are done in the correct order this calls the function
-			 *		that shows the console.
-			 */
-			checkCode: function (event) {
-				if (event.keyCode == $c.config.consoleCode[$c.consoleCounter]) {
-					$c.consoleCounter++;
-				} else {
-					$c.consoleCounter = 0;
-				}
-				if ($c.consoleCounter == $c.config.consoleCode.length) {
-					$c.console.show();
-				}
-			}
-		},
-		/**
 		 *	getFlashMovie (movieName)
 		 *		Returns element of Flash object requested via <movieName>.
 		 *		IE, as usual, behaves differently than other browsers.
@@ -690,13 +501,247 @@ var $c = (function () {
 		 *		Only runs if config.update is set to true.
 		 */
 		update: function (name, version, url) {
-			$c.updateName[updateName.length] = name;
-			$c.updateVersion[updateVersion.length] = version;
-			$c.updateURL[updateURL.length] = url;
+			this.updateName[updateName.length] = name;
+			this.updateVersion[updateVersion.length] = version;
+			this.updateURL[updateURL.length] = url;
 		}
 	};
 }());
-$c.init(); // sets config
+var $c = Modevious;
+var $m = Modevious;
+$m.init(); // sets config
+
+/**
+ *	Emulates part of the Firebug console and native console
+ *	found in Chrome and Safari. Acts as a wrapper for 
+ *	several console functions. Can be used as a rudimentary console
+ *	if the other options aren't available. Can also be used in a
+ *	"debug" mode that captures console logs so they can be sent
+ *	via email instead.
+ */
+if (typeof(console) === "undefined" || $m.config.debug) {
+	console: {
+		content: [],
+		counter: 0,
+		config: {
+			code: [ // Konami Code
+				Event.KEY_UP,
+				Event.KEY_UP,
+				Event.KEY_DOWN,
+				Event.KEY_DOWN,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				Event.KEY_LEFT,
+				Event.KEY_RIGHT,
+				66,
+				65
+			]
+		}
+		/**
+		 *	Emulates string substitution found in Firebug.
+		 *	Returns parsed string.
+		 */
+		parse: function (args) {
+			var currentArg = 1;
+			var parsedString = args[0];
+			while (currentArg < args.length) {
+				var subPosition = parsedString.indexOf('%');
+				if  (subPosition == -1) {
+					// simply concactenate everything
+					while (currentArg < args.length) {
+						parsedString += ' ' + args[currentArg];
+						currentArg++;
+					}
+				} else {
+					var subType = parsedString.charAt(subPosition + 1);
+					switch (subType) {
+						case 's':
+						case 'o':
+							parsedString = parsedString.sub('%' + subType, String(args[currentArg]));
+							break;
+						case 'd':
+						case 'i':
+						case 'f':
+							if (isNaN(args[currentArg])) {
+								args[currentArg] = 0;
+							}
+							parsedString = parsedString.sub('%' + subType, Number(args[currentArg]));
+							break;
+						case 'c':
+							// not currently supported
+							break;
+						default:
+							// invalid substitution code
+					}
+					currentArg++;
+				}
+			}
+			return parsedString;
+		},
+		log: function () {
+			var args = Array.prototype.slice.call(arguments); 
+			var output = this.parse(args);
+			this.write("Log: " + output);
+			return output;
+		},
+		debug: function () {
+			var args = Array.prototype.slice.call(arguments); 
+			var output = this.parse(args);
+			this.write("Debug: " + output);
+			return output;
+		},
+		info: function () {
+			var args = Array.prototype.slice.call(arguments); 
+			var output = this.parse(args);
+			this.write("Info: " + output);
+			return output;
+		},
+		warn: function () {
+			var args = Array.prototype.slice.call(arguments); 
+			var output = this.parse(args);
+			this.write("Warning: " + output);
+			return output;
+		},
+		error: function () {
+			var args = Array.prototype.slice.call(arguments); 
+			var output = this.parse(args);
+			this.write("Error: " + output);
+			return output;
+		},
+		assert: function () {
+			var args = Array.prototype.slice.call(arguments);
+			var output;
+			if (!args[0]) {
+				args.shift();
+				output = this.parse(args);
+				this.write("Assertion failed: " + output);
+			}
+			return arguments;
+		},
+		clear: function () {
+			$j("#modevious_console_text").html('');
+		},
+		send: function () {
+			var url = [
+				$m.config.modeviousLocation,
+				"send_log.php"
+			].join('');
+			var log = $j("#modevious_console_text").html();
+			var ajaxRequest = new Ajax.Request(url, {
+				parameters: {
+					method: "post",
+					log: log,
+					url: window.document.location.href
+				},
+				onSuccess: function (transport) {
+					this.info(transport.responseText);
+				},
+				onFailure: function (transport) {
+					this.warn([
+						"There was a problem sending the log. Here is the response:",
+						transport.status,
+						transport.statusText
+					].join(' '));
+				}
+			});
+		},
+		/**
+		 *	show ()
+		 *		This function moves the console to just under the current vertical offset.
+		 */
+		show: function () {
+			if (typeof(jQuery) === "undefined") {
+				$j("#modevious_console").css({
+					position: "fixed"
+				}).animate({
+					top: 0
+				});
+			} else {
+				$j("#modevious_console").dialog("open");
+			}
+		},
+		/**
+		 *	hide ()
+		 *		Moves the log to its height + 500px above the page, effectively hiding it.
+		 */
+		hide: function () {
+			if (typeof(jQuery) === "undefined") {
+				$j("#modevious_console").animate({
+					top: (($j("#modevious_console").height() + 500) * -1) + "px"
+				});
+			} else {
+				$j("#modevious_console").dialog("hide");
+			}
+		},
+		/**
+		 *	checkCode (event)
+		 *		If key presses are done in the correct order this calls the function
+		 *		that shows the console.
+		 */
+		checkCode: function (event) {
+			if (event.keyCode == this.code[this.counter]) {
+				this.counter++;
+			} else {
+				this.counter = 0;
+			}
+			if (this.counter == this.config.code.length) {
+				this.show();
+			}
+		},
+		/**
+		 *	write (message)
+		 *		Stores <message> in a log to serve for debugging regardless of
+		 *		browser used for testing. Can be sent to a server side 
+		 *		script (PHP, ASP, etc.) that can then store the log in a database
+		 *		or send it via email.
+		 */
+		write: function (message) {
+			var args = Array.prototype.slice.call(arguments);
+			// log and debug support
+			this.content[this.console.length] = [
+				$m.getTime(),
+				": ",
+				message
+			].join('');
+			$j("#modevious_console_text").append([
+				"<p>",
+				this.content[this.log.length - 1],
+				"</p>"
+			].join(''));
+			return message; // chains message for possible use with other utilities
+		}
+	}
+}
+
+// jQuery and Prototype are required
+var $j = '';
+(function () {
+	var scriptURL = '';
+	if (typeof(jQuery) === "undefined") {
+		// load jQuery from CDN
+		if (typeof(window.$config.debug) !== "undefined" && window.$config.debug) {
+			scriptURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js';
+		} else {
+			scriptURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js';	
+		}
+		document.write([
+			'<script type="text/javascript" src="',
+			scriptURL,
+			'"></script>'
+		].join(''));
+		// once loaded 
+		$j = jQuery.noConflict(); // Bridge Prototype and jQuery
+	}
+	if (typeof(Prototype) === "undefined") {
+		// load Prototype from CDN
+		scriptURL = 'https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js';
+		document.write([
+			'<script type="text/javascript" src="',
+			scriptURL,
+			'"></script>'
+		].join(''));
+	}
+)();
 /**
 *	Update Mechanism
 *		I am going to encourage the use of this system for other plugins and
@@ -707,6 +752,6 @@ $c.init(); // sets config
 *		will use it, otherwise nothing happens.
 */
 try { // to update Modevious
-	$c.update("Modevious", $c.getVersion(), "http://modevious.com/js/update.php");
+	this.update("Modevious", $m.getVersion(), "http://modevious.com/js/update.php");
 } catch (e) {
 } // do nothing
