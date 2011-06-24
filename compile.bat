@@ -10,10 +10,10 @@ type nul > tmp\library.js
 type nul > tmp\library.css
 
 :: Prototype JS
-copy /b tmp\library.js + Development\js\src\prototype.js tmp\library.js
+::copy /b tmp\library.js + Development\js\src\prototype.js tmp\library.js
 
 :: jQuery
-copy /b tmp\library.js + Development\js\src\jquery%1.js tmp\library.js
+::copy /b tmp\library.js + Development\js\src\jquery%1.js tmp\library.js
 
 :: Core libary
 mkdir tmp\console

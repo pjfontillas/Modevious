@@ -1,67 +1,88 @@
-/*global $c: true, $$: true, document: true, $j: true, soundManager: true,
+/*global $m: true, $$: true, document: true, $j: true, soundManager: true,
 location: true */
-/** Find Modevious location */
-// 1. Store length of array document.getElementsByTagName("script") or $$
-var scriptsIncluded = $$("script");
-var scriptsLength = scriptsIncluded.length;
-var modeviousScriptURL;
-var modeviousLocation;
-// 2. Use for loop to go through document.getElementsByTagName("script")[i].src or $$
-for (var i = 0; i < scriptsLength; i++) {
-	// 2.1 Look for "modevious/library.js" script
-	if (scriptsIncluded[i].src.include("modevious/library.js")) {
-		// 2.1.1 Read and store URL of that script
-		modeviousScriptURL = scriptsIncluded[i].src;
-		// 2.1.2 Remove similar parts in both URLs and remove the last part "library.js"
-		modeviousLocation = modeviousScriptURL.sub("library.js", '');
-		i = scriptsLength;
+(function () {
+	/** Find Modevious location */
+	// 1. Store length of array document.getElementsByTagName("script") or $$
+	var scriptsIncluded = $$("script");
+	var scriptsLength = scriptsIncluded.length;
+	var modeviousScriptURL;
+	var modeviousLocation;
+	// 2. Use for loop to go through document.getElementsByTagName("script")[i].src or $$
+	for (var i = 0; i < scriptsLength; i++) {
+		// 2.1 Look for "modevious/library.js" script
+		if (scriptsIncluded[i].src.include("modevious/library.js")) {
+			// 2.1.1 Read and store URL of that script
+			modeviousScriptURL = scriptsIncluded[i].src;
+			// 2.1.2 Remove similar parts in both URLs and remove the last part "library.js"
+			modeviousLocation = modeviousScriptURL.sub("library.js", '');
+			i = scriptsLength;
+		}
 	}
-}
-// 3. Use new URL as Modevious location and read in its other files
-if (modeviousLocation != $c.config.modeviousLocation) {
-	$c.config.modeviousLocation = modeviousLocation;
-	$c.config.jQueryUIThemeURL = modeviousLocation + "jquery-ui.css";
-	$c.config.libraryURL = modeviousLocation + "library.css";
-	$c.config.soundManager.url = modeviousLocation + "swf";
-}
-$c.include($c.config.jQueryUIThemeURL);
-$c.include($c.config.libraryURL);	
-soundManager.url = $c.config.soundManager.url;
-soundManager.flashVersion = $c.config.soundManager.flashVersion;
+	// 3. Use new URL as Modevious location and read in its other files
+	if (modeviousLocation !== $m.config.location) {
+		$m.config.location = modeviousLocation;
+		if (typeof(window.$config.jQuery.ui.theme.url) === "undefined") {
+			$m.config.jQuery.ui.theme.url = modeviousLocation + "jquery-ui.css";
+		}
+		if (typeof(window.$config.soundManager.url) === "undefined") {
+			$m.config.soundManager.url = modeviousLocation + "swf";
+		}
+	}
+	$m.include($m.config.jQuery.ui.theme.url);
+	$m.include($m.config.location + "library.css");	
+	soundManager.url = $m.config.soundManager.url;
+	soundManager.flashVersion = $m.config.soundManager.flashVersion;
+})();
 
 var stack_topleft = {"dir1": "down", "dir2": "right", "firstpos1": 15, "firstpos2": 15};
 var stack_bottomleft = {"dir1": "up", "dir2": "right", "firstpos1": 15, "firstpos2": 15};
 var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpos2": 15};
 
-$c.onLoad(function () {	
+$j(document).ready(function() {
 	// initialize console 
-	$j("body").append([
-	"<div id=\"modevious_console\">",
-		"<div id=\"modevious_console_top\">",
-			"<div id=\"modevious_minimize_console_button\"></div>",
-		"</div>",
-		"<div id=\"modevious_console_middle\">",
-			"<div id=\"modevious_console_text\"></div>",
-		"</div>",
-		"<div id=\"modevious_console_bottom\"></div>",
-	"</div>"
-	].join(''));
-	// add close behavior to console close button
-	$j("#modevious_minimize_console_button").click($c.console.hide);
+	// if jQuery Dialog is available we will use that
+	var theBody = $j("body");
+	if (typeof(jQuery.dialog) === "undefined") {
+		theBody.append([
+		"<div id=\"modevious_console\">",
+			"<div id=\"modevious_console_top\">",
+				"<div id=\"modevious_minimize_console_button\"></div>",
+			"</div>",
+			"<div id=\"modevious_console_middle\">"
+		].join(''));
+	}
+	theBody.append("<div id=\"modevious_console_text\"></div>");
+	if (typeof(jQuery.dialog) === "undefined") {
+		theBody.append([
+			"</div>",
+			"<div id=\"modevious_console_bottom\"></div>",
+		"</div>"
+		].join(''));
+		// add close behavior to console close button
+		$j("#modevious_minimize_console_button").click($m.console.hide);
+		// allow for users to move the console
+		$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"}).css("position", "fixed");
+	} else {
+		theWindow = $(window);
+		theBody.dialog({
+			autoOpen: false,
+			width: theWindow.width() * 0.8,
+			height: theWindow.height() * 0.8,
+			maxWidth: theWindow.width(),
+			maxHeight: theWindow.height()
+		});
+	}
+
 	// create keypress listener for code to open console
-	// Default: UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A
-	// currently using an IE hack to detect keypresses
 	if (document.addEventListener) {
 		document.addEventListener("keydown", function(event) {
-			$c.console.checkCode(event);
+			console.checkCode(event);
 		}, false);
 	} else {
 		document.attachEvent("onkeydown", function(event) {
-			$c.console.checkCode(event);
+			console.checkCode(event);
 		});
 	}
-	// allow for users to move the console
-	$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"}).css("position", "fixed");
 
 	// initialize jQuery UI
 	$j(".tabs").tabs();
@@ -77,11 +98,7 @@ $c.onLoad(function () {
 		cancel: "p, img, h1, h2, h3, h4, h5, a"
 	});
 	$j(".resizable").resizable();
-
-	if (typeof(window.console) != "undefined") {
-		console.log("jQuery User Interface initialized.");
-	}
-	$c.console.log("jQuery User Interface initialized.");
+	console.log("jQuery User Interface initialized.");
 
 	// initialize Expose elements
 	$j(".expose").click(function(){
@@ -91,55 +108,35 @@ $c.onLoad(function () {
 			zIndex: 10001
 		}).load();
 	});
-	if (typeof(window.console) != "undefined") {
-		console.log("Expose elements initialized.");
-	}
-	$c.console.log("Expose elements initialized.");
+	console.log("Expose elements initialized.");
 
 	// initialize AutoMouseOver elements
 	$j(".mouse-over").autoMouseOver();
-	if (typeof(window.console) != "undefined") {
-		console.log("AutoMouseOver elements initialized.");
-	}
-	$c.console.log("AutoMouseOver elements initialized.");
+	console.log("AutoMouseOver elements initialized.");
 
 	// initialize email address de-obfuscation
-	$c.showEmail();
-	if (typeof(window.console) != "undefined") {
-		console.log("Email addressed de-obfuscated.");
-	}
-	$c.console.log("Email addressed de-obfuscated.");
+	$m.showEmail();
+	console.log("Email addressed de-obfuscated.");
 	
 	// set preferred style sheet from cookie if possible
 	try {
-		if ($c.readCookie("style").length !== 0) {
-			$c.setActiveStyleSheet($c.readCookie("style"));
-			if (typeof(window.console) != "undefined") {
-				console.log("Style sheet cookie found, setting active style sheet.");
-			}
-			$c.console.log("Style sheet cookie found, setting active style sheet.");
+		if ($m.readCookie("style").length !== 0) {
+			$m.setActiveStyleSheet($m.readCookie("style"));
+			console.log("Style sheet cookie found, setting active style sheet.");
 		}
 	} catch (err) {
-		if (typeof(window.console) != "undefined") {
-			console.log("No cookie for style sheet found.");
-		}
-		$c.console.log("No cookie for style sheet found.");
+		console.log("No cookie for style sheet found.");
 	}
-	if (typeof(window.console) != "undefined") {
-		console.log("Modevious started and running smoothly!");
-	}
-	$c.console.log("Modevious started and running smoothly!");
+	console.log("Modevious started and running smoothly!");
 	
-	// Automatically initialize $c.vAlign
+	// Automatically initialize $m.vAlign
 	var fn = function () {
-		if (typeof(window.console) != "undefined") {
-			console.log("Window has been resized");
-		}
-		$c.console.log("Window has been resized");
+		console.log("Window has been resized");
 		$j(window).unbind("resize");
-		$c.vAlign();
+		$m.vAlign();
 		setTimeout(function () {
 			$j(window).bind("resize", fn);
+			$m.vAlign();
 		}, 250); // 250 ms
 	}
 	$j(window).bind("resize", fn);
@@ -152,7 +149,6 @@ $c.onLoad(function () {
 				pnotify_text: "Failed to load. Please check that you have Flash installed and that it is not being blocked by a plugin."
 			});
 			console.log("Sound Manager check after 5 seconds has returned false.");
-			$c.console.log("Sound Manager check after 5 seconds has returned false.");
 			setTimeout(function () {
 				if (soundManager.ok()) { // false alarm, let the user know that Sound Manager did load correctly
 					$j.pnotify({
@@ -160,15 +156,12 @@ $c.onLoad(function () {
 						pnotify_text: "False alarm. We apologize, but everything is fine! Carry on."
 					});
 					console.log("Sound Manager check after 15 seconds has returned true.");
-					$c.console.log("Sound Manager check after 15 seconds has returned true.");
 				} else {
 					console.log("Sound Manager check after 15 seconds has returned false.");
-					$c.console.log("Sound Manager check after 15 seconds has returned false.");			
 				}
 			}, 10000);
 		} else {
 			console.log("Sound Manager check after 5 seconds has returned true.");
-			$c.console.log("Sound Manager check after 5 seconds has returned true.");
 		}
 	}, 5000);
 });

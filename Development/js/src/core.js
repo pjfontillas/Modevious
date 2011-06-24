@@ -27,9 +27,8 @@ var Modevious = (function () {
 				url: "/modevious/swf",
 				flashVersion: 9
 			},
-			modeviousLocation: "/modevious/",
-			jQueryUIThemeURL: modeviousLocation + "jquery-ui.css",
-			libraryURL: modeviousLocation + "library.css",
+			location: "/modevious/",
+			jQueryUIThemeURL: "/modevious/jquery-ui.css",
 			debug: false
 		},
 		loadedScripts: [],
@@ -60,17 +59,11 @@ var Modevious = (function () {
 				if (typeof(window.$config.soundManager.flashVersion) !== "undefined") {
 					this.config.soundManager.flashVersion = window.$config.soundManager.flashVersion;
 				}
-				if (typeof(window.$config.consoleCode) !== "undefined") {
-					this.config.consoleCode = window.$config.consoleCode;
+				if (typeof(window.$config.modevious.location) !== "undefined") {
+					this.config.location = window.$config.modevious.location;
 				}
-				if (typeof(window.$config.modeviousLocation) !== "undefined") {
-					this.config.modeviousLocation = window.$config.modeviousLocation;
-				}
-				if (typeof(window.$config.jQueryUIThemeURL) !== "undefined") {
-					this.config.jQueryUIThemeURL = window.$config.jQueryUIThemeURL;
-				}
-				if (typeof(window.$config.libraryURL) !== "undefined") {
-					this.config.libraryURL = window.$config.libraryURL;
+				if (typeof(window.$config.jQuery.ui.theme.url) !== "undefined") {
+					this.config.jQuery.ui.theme.url = window.$config.jQuery.ui.theme.url;
 				}
 			}
 		},
@@ -520,7 +513,7 @@ $m.init(); // sets config
  *	via email instead.
  */
 if (typeof(console) === "undefined" || $m.config.debug) {
-	console: {
+	console = {
 		content: [],
 		counter: 0,
 		config: {
@@ -536,7 +529,7 @@ if (typeof(console) === "undefined" || $m.config.debug) {
 				66,
 				65
 			]
-		}
+		},
 		/**
 		 *	Emulates string substitution found in Firebug.
 		 *	Returns parsed string.
@@ -711,6 +704,9 @@ if (typeof(console) === "undefined" || $m.config.debug) {
 			return message; // chains message for possible use with other utilities
 		}
 	}
+	if (typeof(window.$config.console.code) !== "undefined") {
+		this.config.code = window.$config.console.code;
+	}
 }
 
 // jQuery and Prototype are required
@@ -719,8 +715,10 @@ var $j = '';
 	var scriptURL = '';
 	if (typeof(jQuery) === "undefined") {
 		// load jQuery from CDN
-		if (typeof(window.$config.debug) !== "undefined" && window.$config.debug) {
-			scriptURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js';
+		if (typeof(window.$config) !== "undefined") {
+			if (window.$config.debug) {
+				scriptURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js';
+			}
 		} else {
 			scriptURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js';	
 		}
@@ -729,8 +727,14 @@ var $j = '';
 			scriptURL,
 			'"></script>'
 		].join(''));
-		// once loaded 
-		$j = jQuery.noConflict(); // Bridge Prototype and jQuery
+		// once loaded
+		function jQueryLoaded() {
+			if (typeof(jQuery) !== "undefined") {
+				$j = jQuery.noConflict(); // Bridge Prototype and jQuery
+			} else {
+				setTimeout(jQueryLoaded, 100);
+			}
+		}
 	}
 	if (typeof(Prototype) === "undefined") {
 		// load Prototype from CDN
@@ -741,7 +745,7 @@ var $j = '';
 			'"></script>'
 		].join(''));
 	}
-)();
+})();
 /**
 *	Update Mechanism
 *		I am going to encourage the use of this system for other plugins and
