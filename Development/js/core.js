@@ -10,10 +10,15 @@
  * http://modevious.com/modevious/licenses.txt
  *
  */
+
 /*jslint evil: true */
 /*global window: true, document: true, XMLHttpRequest: true, Event: true, 
 ActiveXObject: true, alert: true, $$: true, jQuery: true, window.$config: true,
 location: true, navigator:true */
+
+// Bridge Prototype and jQuery
+var $j = jQuery.noConflict();
+
 var Modevious = (function () {
 	// private methods and variables
 	var version = 200;
@@ -500,6 +505,7 @@ var Modevious = (function () {
 		}
 	};
 }());
+
 var $c = Modevious;
 var $m = Modevious;
 $m.init(); // sets config
@@ -709,43 +715,6 @@ if (typeof(console) === "undefined" || $m.config.debug) {
 	}
 }
 
-// jQuery and Prototype are required
-var $j = '';
-(function () {
-	var scriptURL = '';
-	if (typeof(jQuery) === "undefined") {
-		// load jQuery from CDN
-		if (typeof(window.$config) !== "undefined") {
-			if (window.$config.debug) {
-				scriptURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js';
-			}
-		} else {
-			scriptURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js';	
-		}
-		document.write([
-			'<script type="text/javascript" src="',
-			scriptURL,
-			'"></script>'
-		].join(''));
-		// once loaded
-		function jQueryLoaded() {
-			if (typeof(jQuery) !== "undefined") {
-				$j = jQuery.noConflict(); // Bridge Prototype and jQuery
-			} else {
-				setTimeout(jQueryLoaded, 100);
-			}
-		}
-	}
-	if (typeof(Prototype) === "undefined") {
-		// load Prototype from CDN
-		scriptURL = 'https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js';
-		document.write([
-			'<script type="text/javascript" src="',
-			scriptURL,
-			'"></script>'
-		].join(''));
-	}
-})();
 /**
 *	Update Mechanism
 *		I am going to encourage the use of this system for other plugins and
@@ -756,6 +725,5 @@ var $j = '';
 *		will use it, otherwise nothing happens.
 */
 try { // to update Modevious
-	this.update("Modevious", $m.getVersion(), "http://modevious.com/js/update.php");
-} catch (e) {
-} // do nothing
+	$m.update("Modevious", $m.getVersion(), "http://modevious.com/js/update.php");
+} catch (e) {} // do nothing
