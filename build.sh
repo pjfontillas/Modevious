@@ -12,7 +12,7 @@ cd tmp
 # start by including jQuery in the library
 cat js/jquery$BUILDTYPE.js >> library.js
 rm -f js/jquery.js
-rm -f js/jquery.min
+rm -f js/jquery.min.js
 
 # add the Core library
 cat js/core$BUILDTYPE.js >> library.js
@@ -30,16 +30,32 @@ if [ "$1" = "-m" ]
 	then
 		# remove non-minified files		
 		# first _hide_ minified files in another tmp directory
-		mv js/*.min.js js/tmp
-		mv css/*.min.css css/tmp
+		mkdir js/tmp
+		for file in js/*.min.js; do
+			mv $file js/tmp/
+		done
+
+		mkdir css/tmp
+		for file in css/*.min.css; do
+			mv $file css/tmp/
+		done
 		
 		# then delete remaining files
 		rm -f js/*.js
 		rm -f css/*.js
 		
 		# move files back
-		mv js/tmp/*.js js
-		mv css/tmp/*.css css
+		for file in js/tmp/*.min.js; do
+			mv $file js/
+		done
+
+		for file in css/tmp/*.min.css; do
+			mv $file css/
+		done
+
+		# clean up tmp
+		rm -rf js/tmp
+		rm -rf css/tmp
 	else
 		# remove minified files, we can straight delete them without
 		# having to move stuff around like above
@@ -47,8 +63,17 @@ if [ "$1" = "-m" ]
 		rm -f css/*.min.css
 fi
 
+# move init script to temporary location for later processing
+# note that there will only be one init file, the next line grabs either
+# js/init.js or js/init.min.js
+mkdir js/tmp
+mv js/init*.js js/tmp/init.js
+
 # concat all the rest of the JavaScript files
 cat js/*.js >> library.js
+
+# now add the init script to the library
+cat js/tmp/init.js >> library.js
 rm -rf js
 
 # concat all the rest of the CSS files
@@ -56,7 +81,7 @@ cat css/*.css >> library.css
 rm -f css/*.css
 
 # copy remaining files, which should be images
-mv css/* ../tmp
+mv css/* ../tmp/
 rm -rf css/
 
 # at this point everything should be ready to deploy

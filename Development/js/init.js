@@ -61,7 +61,9 @@ $j(document).ready(function() {
 		"</div>"
 		].join(''));
 		// add close behavior to console close button
-		$j("#modevious_minimize_console_button").click($m.console.hide);
+		$j("#modevious_minimize_console_button").click(function () {
+			$j("#modevious_console").hide();
+		});
 		// allow for users to move the console
 		$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"}).css("position", "fixed");
 	} else {
