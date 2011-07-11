@@ -1,5 +1,8 @@
 #!/bin/bash
-# move files to website dev section
+# run build script to test
+./build.sh $1
+
+# move build files to website dev section
 rm -rf Website/dev/modevious
 cp -R tmp/ Website/dev/modevious/
 
@@ -7,5 +10,5 @@ cp -R tmp/ Website/dev/modevious/
 rm -rf tmp
 
 # files should be ready to be sent via FTP
-echo -e "\nFiles moved to website dev section. Ready for FTP."
+echo "Files moved to website dev section. Ready for FTP."
 exit 0

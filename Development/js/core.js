@@ -33,7 +33,13 @@ var Modevious = (function () {
 				flashVersion: 9
 			},
 			location: "/modevious/",
-			jQueryUIThemeURL: "/modevious/jquery-ui.css",
+			jQuery: {
+				ui: {
+					theme: {
+						url: "/modevious/jquery-ui.css"
+					}
+				}
+			},
 			debug: false
 		},
 		loadedScripts: [],

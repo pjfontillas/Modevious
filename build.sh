@@ -1,4 +1,6 @@
 #!/bin/bash
+# used by deploy script, can be used by itself to test build
+
 # prep
 rm -rf tmp
 mkdir tmp
@@ -6,18 +8,6 @@ mkdir tmp
 # copy all files into tmp for processing
 cp -R Development/ tmp/
 cd tmp
-
-# check first parameter for build type
-if [ "$1" = "-m" ]
-	then
-		# using minified files when available
-		BUILDTYPE=.min
-	else
-		# using source files when available
-		BUILDTYPE=""
-fi
-
-#echo -e "type: "$type
 
 # start by including jQuery in the library
 cat js/jquery$BUILDTYPE.js >> library.js
@@ -32,12 +22,37 @@ rm -f js/core*.js
 cat js/prototype.js >> library.js
 rm -f js/prototype.js
 
+# move jQuery UI CSS, which is exempt from concat similar to Prototype JS
+mv css/jquery-ui.css jquery-ui.css
+
+# check first parameter for build type
+if [ "$1" = "-m" ]
+	then
+		# remove non-minified files		
+		# first _hide_ minified files in another tmp directory
+		mv js/*.min.js js/tmp
+		mv css/*.min.css css/tmp
+		
+		# then delete remaining files
+		rm -f js/*.js
+		rm -f css/*.js
+		
+		# move files back
+		mv js/tmp/*.js js
+		mv css/tmp/*.css css
+	else
+		# remove minified files, we can straight delete them without
+		# having to move stuff around like above
+		rm -f js/*.min.js
+		rm -f css/*.min.css
+fi
+
 # concat all the rest of the JavaScript files
-cat js/*$BUILDTYPE.js >> library.js
+cat js/*.js >> library.js
 rm -rf js
 
 # concat all the rest of the CSS files
-cat css/*$BUILDTYPE.css >> library.css
+cat css/*.css >> library.css
 rm -f css/*.css
 
 # copy remaining files, which should be images
@@ -45,5 +60,6 @@ mv css/* ../tmp
 rm -rf css/
 
 # at this point everything should be ready to deploy
-echo -e "\nFiles processed. Build completed. Ready to deploy."
+echo "Files processed. Build completed. Ready to deploy."
+cd ../
 exit 0

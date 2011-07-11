@@ -21,11 +21,13 @@ location: true */
 	// 3. Use new URL as Modevious location and read in its other files
 	if (modeviousLocation !== $m.config.location) {
 		$m.config.location = modeviousLocation;
-		if (typeof(window.$config.jQuery.ui.theme.url) === "undefined") {
-			$m.config.jQuery.ui.theme.url = modeviousLocation + "jquery-ui.css";
-		}
-		if (typeof(window.$config.soundManager.url) === "undefined") {
-			$m.config.soundManager.url = modeviousLocation + "swf";
+		if (typeof(window.$config) !== "undefined") {
+			if (typeof(window.$config.jQuery.ui.theme.url) === "undefined") {
+				$m.config.jQuery.ui.theme.url = modeviousLocation + "jquery-ui.css";
+			}
+			if (typeof(window.$config.soundManager.url) === "undefined") {
+				$m.config.soundManager.url = modeviousLocation + "swf";
+			}
 		}
 	}
 	$m.include($m.config.jQuery.ui.theme.url);
