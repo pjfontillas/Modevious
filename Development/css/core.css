@@ -172,3 +172,6 @@
 	-moz-box-shadow: 0 0 10px #000;
 	-webkit-box-shadow: 0 0 10px #000;
 }
+#soundmanager-debug {
+	display: none !important;
+}
