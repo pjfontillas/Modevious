@@ -22550,13 +22550,24 @@ location: true */
 	// 3. Use new URL as Modevious location and read in its other files
 	if (modeviousLocation !== $m.config.location) {
 		$m.config.location = modeviousLocation;
+		console.log('modeviousLocation: ' + modeviousLocation);
+		// this next part is not correct
 		if (typeof(window.$config) !== "undefined") {
-			if (typeof(window.$config.jQuery.ui.theme.url) === "undefined") {
+			if (typeof(window.$config.jQuery.ui.theme.url) !== "undefined") {
+				$m.config.jQuery.ui.theme.url = window.$config.jQuery.ui.theme.url;
+			}
+			else {
 				$m.config.jQuery.ui.theme.url = modeviousLocation + "jquery-ui.css";
 			}
-			if (typeof(window.$config.soundManager.url) === "undefined") {
+			if (typeof(window.$config.soundManager.url) !== "undefined") {
+				$m.config.soundManager.url = window.$config.soundManager.url;
+			}
+			else {
 				$m.config.soundManager.url = modeviousLocation + "swf";
 			}
+		} else {
+			$m.config.jQuery.ui.theme.url = modeviousLocation + "jquery-ui.css";
+			$m.config.soundManager.url = modeviousLocation + "swf";			
 		}
 	}
 	$m.include($m.config.jQuery.ui.theme.url);
@@ -22572,8 +22583,8 @@ var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpo
 $j(document).ready(function() {
 	// initialize console 
 	// if jQuery Dialog is available we will use that
-	var theBody = $j("body");
-	if (typeof(jQuery.dialog) === "undefined") {
+	var theBody = $j('body');
+	if (typeof(jQuery.fn.dialog) === "undefined") {
 		theBody.append([
 		"<div id=\"modevious_console\">",
 			"<div id=\"modevious_console_top\">",
@@ -22583,7 +22594,7 @@ $j(document).ready(function() {
 		].join(''));
 	}
 	theBody.append("<div id=\"modevious_console_text\"></div>");
-	if (typeof(jQuery.dialog) === "undefined") {
+	if (typeof(jQuery.fn.dialog) === "undefined") {
 		theBody.append([
 			"</div>",
 			"<div id=\"modevious_console_bottom\"></div>",
@@ -22596,25 +22607,25 @@ $j(document).ready(function() {
 		// allow for users to move the console
 		$j("#modevious_console").draggable({ handle: "#modevious_console_top, #modevious_console_bottom"}).css("position", "fixed");
 	} else {
-		theWindow = $(window);
-		theBody.dialog({
+		theWindow = $j(window);
+		$j('#modevious_console_text').dialog({
 			autoOpen: false,
 			width: theWindow.width() * 0.8,
-			height: theWindow.height() * 0.8,
-			maxWidth: theWindow.width(),
-			maxHeight: theWindow.height()
+			height: theWindow.height() * 0.8
 		});
 	}
 
-	// create keypress listener for code to open console
-	if (document.addEventListener) {
-		document.addEventListener("keydown", function(event) {
-			console.checkCode(event);
-		}, false);
-	} else {
-		document.attachEvent("onkeydown", function(event) {
-			console.checkCode(event);
-		});
+	// create keypress listener for code to open console if in debug mode
+	if (typeof(console.checkCode) !== 'undefined') {
+		if (document.addEventListener) {
+			document.addEventListener("keydown", function(event) {
+				console.checkCode(event);
+			}, false);
+		} else {
+			document.attachEvent("onkeydown", function(event) {
+				console.checkCode(event);
+			});
+		}
 	}
 
 	// initialize jQuery UI
