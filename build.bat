@@ -80,7 +80,7 @@ type css\*.css >> library.css
 del /f /q /s css\*.css
 
 :: copy remaining files, which should be images
-xcopy /s css\ ..\tmp\
+xcopy /s css ..\tmp
 del /f /q /s -rf css\
 
 :: at this point everything should be ready to deploy
