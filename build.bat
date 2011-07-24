@@ -1,4 +1,3 @@
-::!\bin\bash
 :: used by deploy script, can be used by itself to test build
 @echo off
 
