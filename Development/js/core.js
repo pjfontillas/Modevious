@@ -54,27 +54,37 @@ var Modevious = (function () {
 		 *		other components but for now only does configuration.
 		 */
 		init: function () {
-			if (typeof(window.$config) !== "undefined") {
-				if (typeof(window.$config.warnings) !== "undefined") {
+			if (typeof(window.$config) !== 'undefined') {
+				if (typeof(window.$config.warnings) !== 'undefined') {
 					this.config.warnings = window.$config.warnings;
 				}
-				if (typeof(window.$config.at) !== "undefined") {
+				if (typeof(window.$config.at) !== 'undefined') {
 					this.config.at = window.$config.at;
 				}
-				if (typeof(window.$config.dot) !== "undefined") {
+				if (typeof(window.$config.dot) !== 'undefined') {
 					this.config.dot = window.$config.dot;
 				}
-				if (typeof(window.$config.soundManager.url) !== "undefined") {
-					this.config.soundManager.url = window.$config.soundManager.url;
+				if (typeof(window.$config.soundManager) !== 'undefined') {
+					if (typeof(window.$config.soundManager.url) !== 'undefined') {
+						this.config.soundManager.url = window.$config.soundManager.url;
+					}
+					if (typeof(window.$config.soundManager.flashVersion) !== 'undefined') {
+						this.config.soundManager.flashVersion = window.$config.soundManager.flashVersion;
+					}
 				}
-				if (typeof(window.$config.soundManager.flashVersion) !== "undefined") {
-					this.config.soundManager.flashVersion = window.$config.soundManager.flashVersion;
+				if (typeof(window.$config.modevious) !== 'undefined') {
+					if (typeof(window.$config.modevious.location) !== 'undefined') {
+						this.config.location = window.$config.modevious.location;
+					}
 				}
-				if (typeof(window.$config.modevious.location) !== "undefined") {
-					this.config.location = window.$config.modevious.location;
-				}
-				if (typeof(window.$config.jQuery.ui.theme.url) !== "undefined") {
-					this.config.jQuery.ui.theme.url = window.$config.jQuery.ui.theme.url;
+				if (typeof(window.$config.jQuery) !== 'undefined') {
+					if (typeof(window.$config.jQuery.ui) !== 'undefined') {
+						if (typeof(window.$config.jQuery.ui.theme) !== 'undefined') {
+							if (typeof(window.$config.jQuery.ui.theme.url) !== 'undefined') {
+								this.config.jQuery.ui.theme.url = window.$config.jQuery.ui.theme.url;
+							}
+						}
+					}
 				}
 			}
 		},
@@ -524,7 +534,7 @@ $m.init(); // sets config
  *	"debug" mode that captures console logs so they can be sent
  *	via email instead.
  */
-if (typeof(console) === "undefined" || $m.config.debug) {
+if (typeof(console) === 'undefined' || $m.config.debug) {
 	console = {
 		content: [],
 		counter: 0,
@@ -655,7 +665,7 @@ if (typeof(console) === "undefined" || $m.config.debug) {
 		 *		This function moves the console to just under the current vertical offset.
 		 */
 		show: function () {
-			if (typeof(jQuery) === "undefined") {
+			if (typeof(jQuery) === 'undefined') {
 				$j("#modevious_console").css({
 					position: "fixed"
 				}).animate({
@@ -670,7 +680,7 @@ if (typeof(console) === "undefined" || $m.config.debug) {
 		 *		Moves the log to its height + 500px above the page, effectively hiding it.
 		 */
 		hide: function () {
-			if (typeof(jQuery) === "undefined") {
+			if (typeof(jQuery) === 'undefined') {
 				$j("#modevious_console").animate({
 					top: (($j("#modevious_console").height() + 500) * -1) + "px"
 				});
@@ -716,7 +726,7 @@ if (typeof(console) === "undefined" || $m.config.debug) {
 			return message; // chains message for possible use with other utilities
 		}
 	}
-	if (typeof(window.$config.console.code) !== "undefined") {
+	if (typeof(window.$config.console.code) !== 'undefined') {
 		this.config.code = window.$config.console.code;
 	}
 }
