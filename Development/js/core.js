@@ -726,8 +726,12 @@ if (typeof(console) === 'undefined' || $m.config.debug) {
 			return message; // chains message for possible use with other utilities
 		}
 	}
-	if (typeof(window.$config.console.code) !== 'undefined') {
-		this.config.code = window.$config.console.code;
+	if (typeof(window.$config) !== 'undefined') {
+		if (typeof(window.$config.console) !== 'undefined') {
+			if (typeof(window.$config.console.code) !== 'undefined') {
+				this.config.code = window.$config.console.code;
+			}			
+		}
 	}
 }
 
