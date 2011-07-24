@@ -1,4 +1,3 @@
-::!\bin\bash
 :: run build script to test
 @echo off
 
