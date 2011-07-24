@@ -1,6 +1,14 @@
 #!/bin/bash
 # used by deploy script, can be used by itself to test build
 
+# prep
+rm -rf tmp
+mkdir tmp
+
+# copy all files into tmp for processing
+cp -R Development/ tmp/
+cd tmp
+
 # check first parameter for build type
 if [ "$1" = "-m" ]
 	then
@@ -42,14 +50,6 @@ if [ "$1" = "-m" ]
 		rm -f js/*.min.js
 		rm -f css/*.min.css
 fi
-
-# prep
-rm -rf tmp
-mkdir tmp
-
-# copy all files into tmp for processing
-cp -R Development/ tmp/
-cd tmp
 
 # start by including jQuery in the library
 cat js/jquery$BUILDTYPE.js >> library.js
