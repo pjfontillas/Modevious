@@ -1,34 +1,12 @@
 #!/bin/bash
 # used by deploy script, can be used by itself to test build
 
-# prep
-rm -rf tmp
-mkdir tmp
-
-# copy all files into tmp for processing
-cp -R Development/ tmp/
-cd tmp
-
-# start by including jQuery in the library
-cat js/jquery$BUILDTYPE.js >> library.js
-rm -f js/jquery.js
-rm -f js/jquery.min.js
-
-# add the Core library
-cat js/core$BUILDTYPE.js >> library.js
-rm -f js/core*.js
-
-# then add Prototype, the only exception to minified files
-cat js/prototype.js >> library.js
-rm -f js/prototype.js
-
-# move jQuery UI CSS, which is exempt from concat similar to Prototype JS
-mv css/jquery-ui.css jquery-ui.css
-
 # check first parameter for build type
 if [ "$1" = "-m" ]
 	then
-		# remove non-minified files		
+		# remove non-minified files
+		BUILDTYPE=".MIN"
+		
 		# first _hide_ minified files in another tmp directory
 		mkdir js/tmp
 		for file in js/*.min.js; do
@@ -58,10 +36,36 @@ if [ "$1" = "-m" ]
 		rm -rf css/tmp
 	else
 		# remove minified files, we can straight delete them without
+		BUILDTYPE=""
+
 		# having to move stuff around like above
 		rm -f js/*.min.js
 		rm -f css/*.min.css
 fi
+
+# prep
+rm -rf tmp
+mkdir tmp
+
+# copy all files into tmp for processing
+cp -R Development/ tmp/
+cd tmp
+
+# start by including jQuery in the library
+cat js/jquery$BUILDTYPE.js >> library.js
+rm -f js/jquery.js
+rm -f js/jquery.min.js
+
+# add the Core library
+cat js/core$BUILDTYPE.js >> library.js
+rm -f js/core*.js
+
+# then add Prototype, the only exception to minified files
+cat js/prototype.js >> library.js
+rm -f js/prototype.js
+
+# move jQuery UI CSS, which is exempt from concat similar to Prototype JS
+mv css/jquery-ui.css jquery-ui.css
 
 # move init script to temporary location for later processing
 # note that there will only be one init file, the next line grabs either
