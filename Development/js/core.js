@@ -173,21 +173,21 @@ var Modevious = (function () {
 		 *		(e.g.'s case: jsVar) to the function to get its value.
 		 */
 		getUrlVariable: function (urlVariable) {
-			var urlArray = [];
-			var tempUrlArray = [];
-			tempUrlArray = location.href.split('?');
-			tempUrlArray[1].replace(/&amp;/gi, '&'); // replace &amp; with &
-			urlArray = tempUrlArray[1].split('&'); // split using &
-			for (var arrayPos = 0;arrayPos < urlArray.length;arrayPos++) {
-				tempUrlArray = urlArray[arrayPos].split('=');
-				if (tempUrlArray[0] === urlVariable) {
-					return tempUrlArray[1];
-				}
-			}
-			return null;
+            var locationSuffix = location.href.replace(/&amp;/gi, '&').split('?');
+            if (typeof(locationSuffix[1]) !== 'undefined') {
+                var variableName;
+                variableArray = locationSuffix[1].split('&'); // split using &
+                for (var arrayPos = 0; arrayPos < variableArray.length; arrayPos++) {
+                    variableName = variableArray[arrayPos].split('=')[0];
+                    if (variableName === urlVariable) {
+                        return variableArray[arrayPos].split('=')[1];
+                    }
+                }
+            }
+            return null;
 		},
 		getURLVariable: function (URLVariable) {
-			this.getUrlVariable(URLVariable);
+			return this.getUrlVariable(URLVariable);
 		},
 		/**
 		 *	include (String)
