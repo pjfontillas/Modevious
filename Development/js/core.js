@@ -713,14 +713,14 @@ if (typeof(console) === 'undefined' || $m.config.debug) {
 		write: function (message) {
 			var args = Array.prototype.slice.call(arguments);
 			// log and debug support
-			this.content[this.content.length] = [
+			this.content[this.console.length] = [
 				$m.getTime(),
 				": ",
 				message
 			].join('');
 			$j("#modevious_console_text").append([
 				"<p>",
-				this.content[this.content.length],
+				this.content[this.log.length - 1],
 				"</p>"
 			].join(''));
 			return message; // chains message for possible use with other utilities
