@@ -157,8 +157,4 @@ $j(document).ready(function () {
 		});
 	};
 	console.log("Sounds initialized");
-  
-	// Initialize Google Code Prettify
-	prettyPrint();
-	console.log("Initialized Google Code Prettify");
 });

@@ -61,7 +61,7 @@
 			var data, updateType;
 			$j("body").css("cursor", "progress"); // show that page is busy
 			function mups() {
-				$c.console.log([
+				console.log([
 					"Fetching updates for: ",
 					$c.updateName[$c.updateCounter],
 				].join(''));
@@ -99,12 +99,12 @@
 						"</div>"
 						].join(''));
 						$c.updateFound = true;
-						$c.console.log([
+						console.log([
 							"Found an update for: ",
 							$c.updateName[$c.updateCounter]
 						].join(''));
 					} else {
-						$c.console.log([
+						console.log([
 							"No update found for: ",
 							$c.updateName[$c.updateCounter]
 						].join(''));

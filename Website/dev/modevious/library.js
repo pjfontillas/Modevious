@@ -22722,4 +22722,7 @@ $j(document).ready(function() {
 			console.log("Sound Manager check after 5 seconds has returned true.");
 		}
 	}, 5000);
+	
+	prettyPrint();
+	console.log('Google Code Prettify initialized');
 });
